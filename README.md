@@ -1,6 +1,6 @@
 # NuMicro BSP Status
 
-| BSP     | Eclipse Building                                                                                   | VSCode Building                                                                                   |
+| BSP     | Eclipse                                                                                   | VSCode                                                                                   |
 |---------|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | M251    | ![Eclipse Build](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/Eclipse.yml/badge.svg?branch=M251_master)   | ![VSCode Build](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/VSCode.yml/badge.svg?branch=M251_master)   |
 | M253    | ![Eclipse Build](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/Eclipse.yml/badge.svg?branch=M253_master)   | ![VSCode Build](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/VSCode.yml/badge.svg?branch=M253_master)   |
