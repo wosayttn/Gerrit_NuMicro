@@ -3,12 +3,12 @@
 set -e
 set -x
 
-export GITHUB_TOKEN="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"
+export GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 SRC_GIT_BASE="http://wclin@10.1.8.206/p"
 DST_GITHUB_BASE="https://github.com/wosayttn"
 BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531")
-#BSP_LIST=("M253")
+#BSP_LIST=("M251")
 
 if [ -z "$GITHUB_TOKEN" ]; then
   echo "❌ Please set GITHUB_TOKEN environment variable first."
@@ -41,6 +41,11 @@ for BSP in "${BSP_LIST[@]}"; do
   echo "🧹 Removing Document/*.chm from history..."
   git filter-repo --path-glob "Document/*.chm" --invert-paths --force
 
+  find . -type d -name '_*'
+  echo "🧹 Removing _xxxx from history..."
+  git filter-repo --path-glob "Document/*.chm" --path-glob '**/_*/' --path-glob '_*/' --invert-paths --force
+  find . -type d -name '_*'
+  
   echo "🔗 Setting remote URL to GitHub: $DST_REPO_URL"
   #git remote remove origin
   git remote add origin "$DST_REPO_URL"
