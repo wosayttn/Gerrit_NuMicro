@@ -1,0 +1,5 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\CCWang20\\Desktop\\Workspaces\\Git\\TC8263_M55M1\\bsp\\SampleCode\\StdDriver\\QSPI_PDMA_Master\\VSCode\\out\\QSPI_PDMA_Master\\ARMCLANG\\Release"
+    ]
+}
