@@ -1,0 +1,23 @@
+{
+    "cmsis-csolution.actions": [
+        {
+            "path": "UART_RS485.csolution.yml",
+            "target": "ARMCLANG",
+            "config": {
+                "run": "Flash Device",
+                "debug": "Embedded Debug"
+            }
+        },
+        {
+            "path": "UART_RS485.csolution.yml",
+            "target": "GNUC",
+            "config": {
+                "run": "Flash Device",
+                "debug": "Embedded Debug"
+            }
+        }
+    ],
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\KL\\git\\m55m1\\bsp\\SampleCode\\StdDriver\\UART_RS485\\VSCode\\out\\UART_RS485\\ARMCLANG\\Release"
+    ]
+}

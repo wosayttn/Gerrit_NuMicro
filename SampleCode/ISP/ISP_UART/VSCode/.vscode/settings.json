@@ -1,0 +1,23 @@
+{
+    "cmsis-csolution.actions": [
+        {
+            "path": "ISP_UART.csolution.yml",
+            "target": "ARMCLANG",
+            "config": {
+                "run": "Flash Device",
+                "debug": "Embedded Debug"
+            }
+        },
+        {
+            "path": "ISP_UART.csolution.yml",
+            "target": "GNUC",
+            "config": {
+                "run": "Flash Device",
+                "debug": "Embedded Debug"
+            }
+        }
+    ],
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\KL\\git\\m5531\\bsp\\SampleCode\\ISP\\ISP_UART\\VSCode\\out\\ISP_UART\\ARMCLANG\\Release"
+    ]
+}
