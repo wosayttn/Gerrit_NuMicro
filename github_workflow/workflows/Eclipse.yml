@@ -42,7 +42,7 @@ jobs:
           #wget -q https://ftp.yz.yamagata-u.ac.jp/pub/eclipse/technology/epp/downloads/release/2025-06/M3/eclipse-embedcpp-2025-06-M3-linux-gtk-x86_64.tar.gz
           #tar -xzf eclipse-embedcpp-2025-06-M3-linux-gtk-x86_64.tar.gz
           #mv eclipse eclipse-cdt
-          wget -q https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz -O eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz
+          wget -q --no-check-certificate https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz -O eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz
           ls -al $PWD
           tar -xzf eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz
           mv eclipse eclipse-cdt
