@@ -4,7 +4,7 @@ set -e
 set -x
 
 BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531")
-#BSP_LIST=("M251")
+#BSP_LIST=("M55M1" "M5531")
 
 export GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
@@ -42,13 +42,29 @@ for BSP in "${BSP_LIST[@]}"; do
   echo "🧹 Removing Document/*.chm from history..."
   git filter-repo --path-glob "Document/*.chm" --invert-paths --force
 
-  find . -type d -name '_*'
   echo "🧹 Removing _xxxx from history..."
-  git filter-repo --path-glob "Document/*.chm" --path-glob '**/_*/' --path-glob '_*/' --invert-paths --force
+
+  find . -type d -name '_*'
+  if [[ "$BSP" == M55* ]]; then
+	git filter-repo \
+                --path-glob "Document/*.chm" \
+                --path-glob '_*/' \
+		--path-glob 'ThirdParty/_tflite_micro_EI' \
+                --path-glob 'Library/_*/' \
+		--path-glob 'Library/**/_*/' \
+                --path-glob 'SampleCode/_*/' \
+                --invert-paths --force
+  else
+	git filter-repo \
+		--path-glob "Document/*.chm" \
+		--path-glob '**/_*/' \
+		--path-glob '_*/' \
+		--invert-paths --force
+  fi
   find . -type d -name '_*'
 
-  git reset $(git commit-tree HEAD^{tree} -m "Initial commit") --hard
- 
+  git reset $(git commit-tree HEAD^{tree} -m "Commit at $(date -u +"%Y-%m-%dT%H:%M:%SZ")") --hard
+
   echo "🔗 Setting remote URL to GitHub: $DST_REPO_URL"
   #git remote remove origin
   git remote add origin "$DST_REPO_URL"

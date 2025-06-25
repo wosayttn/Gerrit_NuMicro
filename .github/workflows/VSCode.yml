@@ -2,7 +2,11 @@ name: VSCode building
 
 on:
   push:
+    branches:
+      - '**'  # Match all branches
   pull_request:
+    branches:
+      - '**'  # Match all target branches of pull requests
   workflow_dispatch:
 
 jobs:

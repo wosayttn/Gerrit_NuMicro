@@ -2,7 +2,11 @@ name: Eclipse building
 
 on:
   push:
+    branches:
+      - '**'  # Match all branches
   pull_request:
+    branches:
+      - '**'  # Match all target branches of pull requests
   workflow_dispatch:
 
 jobs:
@@ -39,13 +43,21 @@ jobs:
           ls -al $PWD
 
           echo "🌍 Downloading Eclipse for Linux"
+
           #wget -q https://ftp.yz.yamagata-u.ac.jp/pub/eclipse/technology/epp/downloads/release/2025-06/M3/eclipse-embedcpp-2025-06-M3-linux-gtk-x86_64.tar.gz
           #tar -xzf eclipse-embedcpp-2025-06-M3-linux-gtk-x86_64.tar.gz
           #mv eclipse eclipse-cdt
-          wget -q --no-check-certificate https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz -O eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz
+
+          #wget -q https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz -O eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz
+          #tar -xzf eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz
+          #mv eclipse eclipse-cdt
+          #ls -al $PWD
+
+          wget -q -O NuEclipse.tar.gz --no-check-certificate https://www.nuvoton.com/resource-download.jsp?tp_GUID=SW132023052507200264
+          tar -xzf NuEclipse.tar.gz
+          find . -name eclipse
+          mv NuEclipse_V1.02.029_Linux_Setup/eclipse ./eclipse-cdt
           ls -al $PWD
-          tar -xzf eclipse-embedcpp-2021-03-R-linux-gtk-x86_64.tar.gz
-          mv eclipse eclipse-cdt
 
       - name: Install dependencies (Windows)
         if: matrix.os == 'windows-latest'
