@@ -171,6 +171,7 @@ jobs:
             Hello,
 
             The build has completed. Please find the attached log file for details.
+            Failure: ${{ steps.prepare_logs.outputs.logs }}
 
             Best regards,
             NuMicro Actions
