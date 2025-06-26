@@ -33,7 +33,7 @@ for BSP in "${BSP_LIST[@]}"; do
   #git clone --mirror "$SRC_REPO_URL" "$LOCAL_DIR"
   git clone  "$SRC_REPO_URL" "$LOCAL_DIR"
 
-  cp -af github_workflow "$LOCAL_DIR"/.github
+  cp -af .github "$LOCAL_DIR"/.github
 
   cd "$LOCAL_DIR"
   git add -f .github/workflows/requirements.txt
