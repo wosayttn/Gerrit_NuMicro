@@ -61,11 +61,11 @@ csolution_cxt=`cbuild list contexts "$proj"`
 
 ctx_cmd=""
 for cxt in $csolution_cxt; do
-    ctx_cmd="${ctx_cmd} -c ${cxt}"
+    ctx_cmd="${ctx_cmd} -c ${cxt} "
 done
 
 echo "@@@@@@@@@ $proj $ctx_cmd -S"
-cbuild "$proj" "$ctx_cmd" -S
+cbuild "$proj" $ctx_cmd -S
 
 echo "@@@@@@@@@ $proj -S --rebuild --update-rte -d -v"
 cbuild "$proj" -S --rebuild --update-rte -d -v
