@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=z:\\m55m1bsp\\SampleCode\\XOM\\XOMLib\\VSCode\\out\\XOMLib\\GNUC\\Release"
+    ]
+}
