@@ -49,20 +49,29 @@ echo "📦 Running cbuild (update-rte & packs)..."
 csolution_cxt=`cbuild list contexts "$proj"`
 
 # cbuild 
+# for cxt in $csolution_cxt; do
+#    echo "Build $cxt in $proj"
+#    echo "cbuild "$proj" --context $cxt -S --packs"
+#    cbuild "$proj" --context $cxt -S --packs
+#    echo "cbuild "$proj" -S --rebuild --update-rte -d -v"
+#    cbuild "$proj" -S --rebuild --update-rte -d -v
+#    echo "cbuild "$proj" -S --clean"
+#    cbuild "$proj" -S --clean
+#done
+
+ctx_cmd=""
 for cxt in $csolution_cxt; do
-
-    echo "Build $cxt in $proj"
-
-    echo "cbuild "$proj" --context $cxt -S --packs"
-    cbuild "$proj" --context $cxt -S --packs
-
-    echo "cbuild "$proj" -S --rebuild --update-rte -d -v"
-    cbuild "$proj" -S --rebuild --update-rte -d -v
-
-    echo "cbuild "$proj" -S --clean"
-    cbuild "$proj" -S --clean
-
+    ctx_cmd="${ctx_cmd} -c ${cxt}"
 done
+
+echo "@@@@@@@@@ $proj $ctx_cmd -S"
+cbuild "$proj" "$ctx_cmd" -S
+
+echo "@@@@@@@@@ $proj -S --rebuild --update-rte -d -v"
+cbuild "$proj" -S --rebuild --update-rte -d -v
+
+echo "@@@@@@@@@ $proj -S --clean"
+cbuild "$proj" -S --clean
 
 # Complete
 vcpkg deactivate
