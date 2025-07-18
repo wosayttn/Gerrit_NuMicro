@@ -53,8 +53,13 @@ for cxt in $csolution_cxt; do
 
     echo "Build $cxt in $proj"
 
+    echo "cbuild "$proj" --context $cxt -S --packs"
     cbuild "$proj" --context $cxt -S --packs
+
+    echo "cbuild "$proj" -S --rebuild --update-rte -d -v"
     cbuild "$proj" -S --rebuild --update-rte -d -v
+
+    echo "cbuild "$proj" -S --clean"
     cbuild "$proj" -S --clean
 
 done
