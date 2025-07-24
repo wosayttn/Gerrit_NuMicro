@@ -12,6 +12,7 @@ BLACKLIST=(
     " warning: "
     " Error: "
     " Warning: "
+    " Warning[ "
     "warning csolution: "
 )
 

@@ -1,12 +1,12 @@
 name: IAR building
 
 on:
-  #push:
-  #  branches:
-  #    - "**" # Match all branches
-  #pull_request:
-  #  branches:
-  #    - "**" # Match all target branches of pull requests
+  push:
+    branches:
+      - '**'  # Match all branches
+  pull_request:
+    branches:
+      - '**'  # Match all target branches of pull requests
   workflow_dispatch:
 
 # Set a new GitHub Actions Secret named IAR_LMS_BEARER_TOKEN
@@ -36,14 +36,11 @@ jobs:
             exit 1
           fi
 
-          DEVICE_DIR="$IAR_PATH/arm/config/devices"
+          DEVICE_DIR="$IAR_PATH/config/devices"
           echo "📁 Using IAR device directory: $DEVICE_DIR"
 
           mkdir -p "$DEVICE_DIR"
           cp -af "$GITHUB_WORKSPACE/.github/IAR_Nuvoton/"* "$DEVICE_DIR/"
-
-          echo "📄 Listing /opt/iar for verification:"
-          find /opt/iar
 
           echo "🔧 Compiler version:"
           iccarm --version
@@ -54,7 +51,7 @@ jobs:
           REPO_ROOT="$GITHUB_WORKSPACE"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
 
-          mapfile -t solutions < <(find ./SampleCode/Template/Project -name '*.ewp')
+          mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
           declare -a failed_logs=()
 
           set +e
@@ -121,8 +118,7 @@ jobs:
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: wclin@nuvoton.com
-          #to: ${{ secrets.MAIL_TO }}
+          to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <wosayttn@gmail.com>
           attachments: ${{ steps.prepare_logs.outputs.logs }}
