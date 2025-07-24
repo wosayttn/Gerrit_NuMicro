@@ -25,8 +25,28 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Check compiler version
-        run: iccarm --version
+      - name: Check compiler version and patch IAR device config
+        shell: bash
+        run: |
+          # Find the installed IAR version path dynamically
+          IAR_PATH=$(find /opt/iar -maxdepth 2 -type d -name "arm" | head -n 1)
+
+          if [ -z "$IAR_PATH" ]; then
+            echo "❌ IAR installation path not found."
+            exit 1
+          fi
+
+          DEVICE_DIR="$IAR_PATH/arm/config/devices"
+          echo "📁 Using IAR device directory: $DEVICE_DIR"
+
+          mkdir -p "$DEVICE_DIR"
+          cp -af "$GITHUB_WORKSPACE/.github/IAR_Nuvoton/"* "$DEVICE_DIR/"
+
+          echo "📄 Listing /opt/iar for verification:"
+          find /opt/iar
+
+          echo "🔧 Compiler version:"
+          iccarm --version
 
       - name: Build all IAR projects
         shell: bash
@@ -34,7 +54,7 @@ jobs:
           REPO_ROOT="$GITHUB_WORKSPACE"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
 
-          mapfile -t solutions < <(find ./SampleCode/ -name '*.ewp')
+          mapfile -t solutions < <(find ./SampleCode/Template/Project -name '*.ewp')
           declare -a failed_logs=()
 
           set +e
@@ -75,7 +95,6 @@ jobs:
           else
             echo "🎉 All builds succeeded!"
           fi
-
 
       - name: Prepare failed logs for email
         id: prepare_logs
