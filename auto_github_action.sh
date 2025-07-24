@@ -5,8 +5,9 @@ set -x
 
 BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531")
 #BSP_LIST=("M55M1" "M5531")
+#BSP_LIST=("NUC121" "M253" "M251")
 
-export GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+export GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 SRC_GIT_BASE="http://wclin@10.1.8.206/p"
 DST_GITHUB_BASE="https://github.com/wosayttn"

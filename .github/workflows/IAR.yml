@@ -29,6 +29,7 @@ jobs:
         run: iccarm --version
 
       - name: Build all IAR projects
+        shell: bash
         run: |
           REPO_ROOT="$GITHUB_WORKSPACE"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
@@ -44,7 +45,7 @@ jobs:
             log_path="$dir/$sol_name.txt"
 
             #echo "🔨 Building $dir on $RUNNER_OS"
-            iarbuild $sol_path -build * -log warnings > "$log_path" 2>&1
+            iarbuild $sol_path -build '*' -log warnings > "$log_path" 2>&1
             ret1=$?
 
             # Check log file
@@ -75,13 +76,25 @@ jobs:
             echo "🎉 All builds succeeded!"
           fi
 
+
       - name: Prepare failed logs for email
         id: prepare_logs
         shell: bash
         if: failure() # only runs if previous step failed
         run: |
-          logs=$(cat failed_logs.txt)
-          echo "logs=$logs" >> "$GITHUB_OUTPUT"
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Send mail
         if: failure()
@@ -98,7 +111,9 @@ jobs:
             Hello,
 
             The build has completed. Please find the attached log file for details.
-            Failure: ${{ steps.prepare_logs.outputs.logs }}
+
+            Failure:
+            ${{ steps.prepare_logs.outputs.msglogs }}
 
             Best regards,
             NuMicro Actions

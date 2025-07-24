@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>NUC100DN series</tag>
+  <display>Nuvoton NUC100DN series (NUC100DN,NUC120DN)</display>
+  <data>$CUR_DIR$\NUC100DN.i79</data>
+</optionMenuItem>
+

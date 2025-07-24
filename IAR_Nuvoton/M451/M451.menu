@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M451AE series</tag>
+  <display>Nuvoton M451AE series (M451AE,M452AE,M453AE,M451MAE)</display>
+  <data>$CUR_DIR$\M451.i79</data>
+</optionMenuItem>
+
