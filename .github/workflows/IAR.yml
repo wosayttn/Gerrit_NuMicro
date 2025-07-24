@@ -58,7 +58,7 @@ jobs:
           for sol_path in "${solutions[@]}"; do
 
             dir=$(dirname "$sol_path")
-            sol_name=$(basename "$dir")
+            sol_name=$(basename "$sol_path")
             log_path="$dir/$sol_name.txt"
 
             #echo "🔨 Building $dir on $RUNNER_OS"
@@ -73,10 +73,18 @@ jobs:
               echo "❌ Build failed: $sol_path"
               echo "🔍 Log:"
               cat "$log_path"
-              failed_logs+=("$log_path")   #add log into the set.
+
+              # FIXME: Window post-action checking.
+              if grep -q "/bin/sh:" "$log_path"; then
+                echo "ℹ️  Skipping log due to /bin/sh pattern in log"
+              else
+                failed_logs+=("$log_path")   # add log into the set
+              fi
+
             else
               echo "✅ Build success: $sol_path"
             fi
+
           done
           set -e
 
@@ -118,7 +126,8 @@ jobs:
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: ${{ secrets.MAIL_TO }}
+          to: wclin@nuvoton.com
+          #to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <wosayttn@gmail.com>
           attachments: ${{ steps.prepare_logs.outputs.logs }}

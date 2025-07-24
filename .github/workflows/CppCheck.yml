@@ -1,0 +1,28 @@
+name: Cppcheck
+
+on:
+  push:
+    branches:
+      - '**'  # Match all branches
+  pull_request:
+    branches:
+      - '**'  # Match all target branches of pull requests
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: cppcheck-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cppcheck
+        uses: deep5050/cppcheck-action@main
+        with:
+          github_token: ${{secrets.ACTION_TOKEN}}
+
+      - name: publish report    
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{secrets.ACTION_TOKEN}}
+          BRANCH_NAME: '${{ github.ref_name }}'
