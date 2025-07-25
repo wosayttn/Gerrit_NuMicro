@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=z:\\m253bsp\\SampleCode\\StdDriver\\FMC_IAP\\VSCode\\out\\FMC_IAP_APROM\\ARMCLANG\\Release"
+    ]
+}
