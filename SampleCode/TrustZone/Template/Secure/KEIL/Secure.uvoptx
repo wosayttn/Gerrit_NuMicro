@@ -231,7 +231,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\partition_m3331.h</PathWithFileName>
+      <PathWithFileName>../../partition_m3331.h</PathWithFileName>
       <FilenameWithoutPath>partition_m3331.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

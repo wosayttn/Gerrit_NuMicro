@@ -4,7 +4,7 @@
 
 //-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
 
-// <n>Device pack:   Nuvoton::NuMicro_DFP@1.3.24
+// <n>Device pack:   Nuvoton::NuMicroM33_DFP@1.3.24
 // <i>Device pack used to generate this file
 
 // <h>ROM Configuration

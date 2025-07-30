@@ -1,6 +1,6 @@
 #! armclang --target=arm-arm-none-eabi -march=armv8-m.base -E -xc
 #define SCATTER_FILE
-#include "..\..\partition_m3331.h"
+#include "../../partition_m3331.h"
 
 LR_ROM FMC_NON_SECURE_BASE
 {
