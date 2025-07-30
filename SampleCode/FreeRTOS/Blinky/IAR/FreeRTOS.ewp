@@ -355,10 +355,10 @@
                     <state>$PROJ_DIR$\..\..\..\..\Library\CMSIS\Core\Include</state>
                     <state>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Include</state>
                     <state>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc</state>
-                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\SOURCE\include</state>
+                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\include</state>
                     <state>$PROJ_DIR$\..</state>
                     <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Demo\Common\include</state>
-                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\SOURCE\portable\IAR\ARM_CM4F</state>
+                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FreeRTOS\Source\portable\IAR\ARM_CM4F</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
