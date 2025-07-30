@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M46xxIHAE series</tag>
+  <display>Nuvoton M46xxIHAE series</display>
+  <data>$CUR_DIR$\M46xxIHAE.i79</data>
+</optionMenuItem>
+

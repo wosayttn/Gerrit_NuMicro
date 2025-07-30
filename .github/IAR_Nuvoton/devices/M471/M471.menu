@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M471 series</tag>
+  <display>Nuvoton M471V/K series</display>
+  <data>$CUR_DIR$\M471.i79</data>
+</optionMenuItem>
+
