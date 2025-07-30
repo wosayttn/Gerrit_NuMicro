@@ -774,7 +774,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$PROJ_DIR$\fmc_xom.icf</state>
+                    <state>$PROJ_DIR$\FMC_XOM.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>

@@ -352,7 +352,7 @@
                     <state>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Include</state>
                     <state>$PROJ_DIR$\..\..\..\..\Library\CMSIS\Core\Include</state>
                     <state>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc</state>
-                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FATFS\source</state>
+                    <state>$PROJ_DIR$\..\..\..\..\ThirdParty\FatFs\source</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>

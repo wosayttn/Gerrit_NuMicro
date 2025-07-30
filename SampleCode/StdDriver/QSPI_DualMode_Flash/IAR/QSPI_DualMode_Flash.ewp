@@ -1041,7 +1041,7 @@
     <group>
         <name>CMSIS</name>
         <file>
-            <name>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Source\IAR\startup_m3331.S</name>
+            <name>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Source\IAR\startup_m3331.s</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\..\..\Library\Device\Nuvoton\m3331\Source\system_m3331.c</name>

@@ -340,7 +340,7 @@
               <MiscControls>-Wno-format</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\Library\CMSIS\Core\Include;..\..\..\..\Library\Device\Nuvoton\m3331\Include;..\..\..\..\Library\StdDriver\inc;..\..\..\..\Library\UsbHostLib\inc;..\..\..\..\ThirdParty\FATFS\source</IncludePath>
+              <IncludePath>..\..\..\..\Library\CMSIS\Core\Include;..\..\..\..\Library\Device\Nuvoton\m3331\Include;..\..\..\..\Library\StdDriver\inc;..\..\..\..\Library\UsbHostLib\inc;..\..\..\..\ThirdParty\FatFs\source</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -457,7 +457,7 @@
             <File>
               <FileName>ff.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\FATFS\source\ff.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\FatFs\source\ff.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -422,7 +422,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\FATFS\source\ff.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\FatFs\source\ff.c</PathWithFileName>
       <FilenameWithoutPath>ff.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -442,7 +442,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\version.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\version.c</PathWithFileName>
       <FilenameWithoutPath>version.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -454,7 +454,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\bit.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\bit.c</PathWithFileName>
       <FilenameWithoutPath>bit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -466,7 +466,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\decoder.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\decoder.c</PathWithFileName>
       <FilenameWithoutPath>decoder.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -478,7 +478,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\fixed.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\fixed.c</PathWithFileName>
       <FilenameWithoutPath>fixed.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -490,7 +490,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\frame.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\frame.c</PathWithFileName>
       <FilenameWithoutPath>frame.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -502,7 +502,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\huffman.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\huffman.c</PathWithFileName>
       <FilenameWithoutPath>huffman.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -514,7 +514,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\layer3.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\layer3.c</PathWithFileName>
       <FilenameWithoutPath>layer3.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -526,7 +526,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\layer12.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\layer12.c</PathWithFileName>
       <FilenameWithoutPath>layer12.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -538,7 +538,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\MP3Func.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\MP3Func.c</PathWithFileName>
       <FilenameWithoutPath>MP3Func.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -550,7 +550,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\stream.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\stream.c</PathWithFileName>
       <FilenameWithoutPath>stream.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -562,7 +562,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\synth.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\synth.c</PathWithFileName>
       <FilenameWithoutPath>synth.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -574,7 +574,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\ThirdParty\libmad\src\timer.c</PathWithFileName>
+      <PathWithFileName>..\..\..\..\ThirdParty\libMAD\src\timer.c</PathWithFileName>
       <FilenameWithoutPath>timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

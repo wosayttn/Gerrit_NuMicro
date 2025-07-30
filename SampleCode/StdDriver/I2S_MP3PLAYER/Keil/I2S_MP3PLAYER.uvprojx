@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>__WINS__ OPT_SPEED</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\Library\CMSIS\Core\Include;..\..\..\..\Library\Device\Nuvoton\m3331\Include;..\..\..\..\ThirdParty\libmad\inc;..\..\..\..\Library\StdDriver\inc;..\..\..\..\Library\UsbHostLib\INCLUDE;..\..\..\..\Library\UsbHostLib\INCLUDE\inc_mass;..\..\..\..\ThirdParty\FATFS\source;..\..\I2S_WavMP3Player_New</IncludePath>
+              <IncludePath>..\..\..\..\Library\CMSIS\Core\Include;..\..\..\..\Library\Device\Nuvoton\m3331\Include;..\..\..\..\ThirdParty\libMAD\inc;..\..\..\..\Library\StdDriver\inc;..\..\..\..\Library\UsbHostLib\INCLUDE;..\..\..\..\Library\UsbHostLib\INCLUDE\inc_mass;..\..\..\..\ThirdParty\FatFs\source;..\..\I2S_WavMP3Player_New</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -492,7 +492,7 @@
             <File>
               <FileName>ff.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\FATFS\source\ff.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\FatFs\source\ff.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -502,62 +502,62 @@
             <File>
               <FileName>version.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\version.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\version.c</FilePath>
             </File>
             <File>
               <FileName>bit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\bit.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\bit.c</FilePath>
             </File>
             <File>
               <FileName>decoder.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\decoder.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\decoder.c</FilePath>
             </File>
             <File>
               <FileName>fixed.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\fixed.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\fixed.c</FilePath>
             </File>
             <File>
               <FileName>frame.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\frame.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\frame.c</FilePath>
             </File>
             <File>
               <FileName>huffman.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\huffman.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\huffman.c</FilePath>
             </File>
             <File>
               <FileName>layer3.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\layer3.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\layer3.c</FilePath>
             </File>
             <File>
               <FileName>layer12.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\layer12.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\layer12.c</FilePath>
             </File>
             <File>
               <FileName>MP3Func.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\MP3Func.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\MP3Func.c</FilePath>
             </File>
             <File>
               <FileName>stream.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\stream.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\stream.c</FilePath>
             </File>
             <File>
               <FileName>synth.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\synth.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\synth.c</FilePath>
             </File>
             <File>
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\ThirdParty\libmad\src\timer.c</FilePath>
+              <FilePath>..\..\..\..\ThirdParty\libMAD\src\timer.c</FilePath>
             </File>
           </Files>
         </Group>
