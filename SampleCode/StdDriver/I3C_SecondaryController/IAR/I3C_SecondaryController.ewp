@@ -774,7 +774,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\config\linker\Nuvoton\M2354.icf</state>
+                    <state>$TOOLKIT_DIR$\config\linker\Nuvoton\M333xxIGAE.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
