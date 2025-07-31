@@ -106,7 +106,7 @@ void I3C_Init(I3C_DEVICE_T *dev)
     CLK_EnableModuleClock(I3C0_MODULE);
     
     /* Select I3C module clock source */
-    CLK_SetModuleClock(I3C0_MODULE, CLK_CLKSEL3_I3C0SEL_PCLK0, NULL);
+    CLK_SetModuleClock(I3C0_MODULE, CLK_CLKSEL3_I3C0SEL_PCLK0, 0);
     i3c_engclk = CLK_GetPCLK0Freq();
     
     SYS_ResetModule(I3C0_RST);
