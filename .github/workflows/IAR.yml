@@ -36,11 +36,21 @@ jobs:
             exit 1
           fi
 
-          DEVICE_DIR="$IAR_PATH/config/devices"
+          DEVICE_DIR="$IAR_PATH/config/devices/Nuvoton/"
           echo "📁 Using IAR device directory: $DEVICE_DIR"
 
           mkdir -p "$DEVICE_DIR"
-          cp -af "$GITHUB_WORKSPACE/.github/IAR_Nuvoton/"* "$DEVICE_DIR/"
+          cp -af "$GITHUB_WORKSPACE/.github/IAR_Nuvoton/devices/"* "$DEVICE_DIR/"
+
+          find $DEVICE_DIR
+
+          LINKER_DIR="$IAR_PATH/config/linker/Nuvoton/"
+          echo "📁 Using IAR device directory: $LINKER_DIR"
+
+          mkdir -p "$LINKER_DIR"
+          cp -af "$GITHUB_WORKSPACE/.github/IAR_Nuvoton/linker/"* "$LINKER_DIR/"
+
+          find $LINKER_DIR
 
           echo "🔧 Compiler version:"
           iccarm --version
@@ -75,8 +85,8 @@ jobs:
               cat "$log_path"
 
               # FIXME: Window post-action checking.
-              if grep -q "/bin/sh:" "$log_path"; then
-                echo "ℹ️  Skipping log due to /bin/sh pattern in log"
+              if grep -Eq "/bin/sh:|NuBL33" "$log_path"; then
+                echo "ℹ️  Skipping log due to pattern matching in log"
               else
                 failed_logs+=("$log_path")   # add log into the set
               fi
@@ -126,8 +136,7 @@ jobs:
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: wclin@nuvoton.com
-          #to: ${{ secrets.MAIL_TO }}
+          to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <wosayttn@gmail.com>
           attachments: ${{ steps.prepare_logs.outputs.logs }}

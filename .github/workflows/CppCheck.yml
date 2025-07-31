@@ -1,28 +1,70 @@
-name: Cppcheck
+name: CppCheck
 
 on:
-  push:
-    branches:
-      - '**'  # Match all branches
-  pull_request:
-    branches:
-      - '**'  # Match all target branches of pull requests
+  #push:
+  #  branches:
+  #    - '**'  # Match all branches
+  #pull_request:
+  #  branches:
+  #    - '**'  # Match all target branches of pull requests
   workflow_dispatch:
 
 jobs:
   build:
-    name: cppcheck-test
+    name: Build project
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: cppcheck installation
+        run: |
+          sudo apt-get update
+          sudo apt-get -qq install cppcheck
 
       - name: cppcheck
-        uses: deep5050/cppcheck-action@main
-        with:
-          github_token: ${{secrets.ACTION_TOKEN}}
+        shell: bash
+        run: |
+              cppcheck --inline-suppr -UEXCLUDE_CPPCHECK --suppress=unusedFunction "Library\Commu" "Library\CryptoAccelerator" "Library\JpegAcceleratorLib" "Library\PowerDeliveryLib" "Library\SmartcardLib" "Library\StdDriver" "Library\UsbHostLib" -i "SampleCode\_CMSIS-Driver_Validation\Tools\SockServer\PC" "SampleCode"
+              failed_logs+=("cppcheck.txt")
 
-      - name: publish report    
-        uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{secrets.ACTION_TOKEN}}
-          BRANCH_NAME: '${{ github.ref_name }}'
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        if: failure() # only runs if previous step failed
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send mail
+        if: failure()
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
+          to: ${{ secrets.MAIL_TO }}
+          #cc: ${{ secrets.MAIL_CC }}
+          from: Github Action Workflow <wosayttn@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          body: |
+            Hello,
+
+            The build has completed. Please find the attached log file for details.
+
+            Failure:
+            ${{ steps.prepare_logs.outputs.msglogs }}
+
+            Best regards,
+            NuMicro Actions
