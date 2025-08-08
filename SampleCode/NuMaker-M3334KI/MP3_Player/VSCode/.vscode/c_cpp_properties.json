@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "name": "M3331 ARM Cortex-M33",
+            "compileCommands": "${workspaceFolder}/tmp/1/compile_commands.json",
+            "includePath": [
+                "C:/MCU_MS20/MAG071_M3331/m3331bsp/Library/Device/Nuvoton/m3331/Include",
+                "${workspaceFolder}/../../../../Library/CMSIS/Core/Include",
+                "${workspaceFolder}/../../../../Library/Device/Nuvoton/m3331/Include",
+                "${workspaceFolder}/../../../../ThirdParty/LibMAD/inc",
+                "${workspaceFolder}/../../../../Library/StdDriver/inc",
+                "${workspaceFolder}/../../../../Library/UsbHostLib/inc",
+                "${workspaceFolder}/../../../../Library/UsbHostLib/src_msc",
+                "${workspaceFolder}/../../../../ThirdParty/FatFs/source",
+                "${workspaceFolder}/../",
+                "C:/Users/${env:USERNAME}/AppData/Local/Arm/Packs/Nuvoton/NuMicroM33_DFP/1.0.0/Device/M3331/Include"
+            ],
+            "defines": [
+                "__MICROLIB"
+            ],
+            "compilerPath": "C:/Users/${env:USERNAME}/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/armclang.exe",
+            "cStandard": "c99",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-arm",
+            "compilerArgs": [
+                "--target=arm-arm-none-eabi",
+                "-mcpu=Cortex-M33",
+                "-mfpu=fpv5-sp-d16",
+                "-mfloat-abi=hard",
+                "-std=c99",
+                "-fno-rtti",
+                "-funsigned-char",
+                "-fshort-enums",
+                "-fshort-wchar",
+                "-ffunction-sections",
+                "-fdata-sections",
+                "-D__MICROLIB",
+                "-O0",
+                "-gdwarf-4"
+            ]
+        }
+    ],
+    "version": 4
+}
