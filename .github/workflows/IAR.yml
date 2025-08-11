@@ -1,12 +1,12 @@
 name: IAR building
 
 on:
-  push:
-    branches:
-      - '**'  # Match all branches
-  pull_request:
-    branches:
-      - '**'  # Match all target branches of pull requests
+  #push:
+  #  branches:
+  #    - '**'  # Match all branches
+  #pull_request:
+  # branches:
+  #    - '**'  # Match all target branches of pull requests
   workflow_dispatch:
 
 # Set a new GitHub Actions Secret named IAR_LMS_BEARER_TOKEN
