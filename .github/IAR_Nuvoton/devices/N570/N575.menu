@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>N575</tag>
+  <display>Nuvoton N575 series</display>
+  <data>$CUR_DIR$\N575.i79</data>
+</optionMenuItem>
+
