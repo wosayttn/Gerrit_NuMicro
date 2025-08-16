@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>NUC400AE series</tag>
+  <display>Nuvoton NUC400AE series (NUC442AE,NUC472AE)</display>
+  <data>$CUR_DIR$\NUC400AE.i79</data>
+</optionMenuItem>
+
