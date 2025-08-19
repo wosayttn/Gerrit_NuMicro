@@ -1,0 +1,7 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "cmake.copyCompileCommands": "${workspaceFolder}/build/armclang/compile_commands.json",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build/armclang", "--background-index", "--clang-tidy"
+    ]
+}

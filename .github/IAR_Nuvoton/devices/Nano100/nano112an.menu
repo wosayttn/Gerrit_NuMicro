@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>Nano112AN series</tag>
+  <display>Nuvoton Nano112AN series (Nano102AN,Nano112AN)</display>
+  <data>$CUR_DIR$\Nano112AN.i79</data>
+</optionMenuItem>
+

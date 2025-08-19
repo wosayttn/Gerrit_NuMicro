@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>Mini51XAE series</tag>
+  <display>Nuvoton Mini55DE series</display>
+  <data>$CUR_DIR$\Mini55DE.i79</data>
+</optionMenuItem>
+
