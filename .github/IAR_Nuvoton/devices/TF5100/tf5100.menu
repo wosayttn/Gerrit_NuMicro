@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>TF5100 series</tag>
+  <display>Nuvoton TF5100 series</display>
+  <data>$CUR_DIR$\TF5100.i79</data>
+</optionMenuItem>
+
