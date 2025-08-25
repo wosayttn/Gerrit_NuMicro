@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>NM1500AE series</tag>
+  <display>Nuvoton NM1500AE series (NM1510AE,NM1520AE,NM1530AE)</display>
+  <data>$CUR_DIR$\NM1500AE.i79</data>
+</optionMenuItem>
+
