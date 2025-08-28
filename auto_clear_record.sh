@@ -2,7 +2,7 @@
 
 # ---------- Parameter Settings ----------
 REPO="wosayttn/Gerrit_NuMicro"         # Please modify this to your own repo
-WORKFLOW_NAME="VSCode.yml IAR.yml Eclipse.yml CppCheck.yml"  # Please modify this to your workflow file names or IDs
+WORKFLOW_NAME="VSCode.yml IAR.yml Eclipse.yml CppCheck.yml UV2CSolution.yml"  # Please modify this to your workflow file names or IDs
 LIMIT=100                              # Maximum number of runs to query at a time
 
 # ---------- Validate Parameters ----------

@@ -2,11 +2,13 @@ name: Eclipse building
 
 on:
   push:
-    branches:
-      - '**'  # Match all branches
+    branches-ignore:
+      - main
+      - master
   pull_request:
-    branches:
-      - '**'  # Match all target branches of pull requests
+    branches-ignore:
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
