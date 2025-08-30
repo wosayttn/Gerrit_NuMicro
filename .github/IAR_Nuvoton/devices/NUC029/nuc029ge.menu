@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>NUC029GE series</tag>
+  <display>Nuvoton NUC029GE series</display>
+  <data>$CUR_DIR$\NUC029GE.i79</data>
+</optionMenuItem>
+

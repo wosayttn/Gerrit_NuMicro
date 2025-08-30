@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M251AE series</tag>
+  <display>Nuvoton M251AE series (M251,M252,M254,M256,M258)</display>
+  <data>$CUR_DIR$\M251AE.i79</data>
+</optionMenuItem>
+
