@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M091 series</tag>
+  <display>Nuvoton M091 series</display>
+  <data>$CUR_DIR$\M091.i79</data>
+</optionMenuItem>
+
