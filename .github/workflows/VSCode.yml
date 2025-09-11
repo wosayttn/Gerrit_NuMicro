@@ -130,3 +130,14 @@ jobs:
 
             Best regards,
             NuMicro Actions
+
+      - name: Collect artifacts with directory structure
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/
