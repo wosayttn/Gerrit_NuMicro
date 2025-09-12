@@ -3,7 +3,7 @@
 set -e
 set -x
 
-BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531")
+BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531" "M3351")
 #BSP_LIST=("M55M1" "M5531")
 #BSP_LIST=("NUC121" "M253" "M251")
 
@@ -37,6 +37,18 @@ for BSP in "${BSP_LIST[@]}"; do
   cp -af .github "$LOCAL_DIR"/.github
 
   cd "$LOCAL_DIR"
+  # Find and replace
+  NEW_FILE="$PATH_SCRIPT/vcpkg-configuration.json"
+  if [ -f "$NEW_FILE" ]; then
+    find . -type f -name "vcpkg-configuration.json" | while read -r FILE; do
+      echo "Replacing $FILE"
+      echo "cp $NEW_FILE $FILE"
+      cp -af "$NEW_FILE" "$FILE"
+    done
+
+    git add .
+  fi
+
   git add -f .github/workflows/requirements.txt
   git add .github && git diff --cached --quiet || git commit -m "Add/update .github folder"
 
