@@ -20,6 +20,8 @@ fi
 #echo "Installing git-filter-repo..."
 #pip install --quiet git-filter-repo
 
+PATH_SCRIPT=`pwd`
+
 for BSP in "${BSP_LIST[@]}"; do
   echo "======================================"
   echo "🔄 Processing $BSP BSP..."
