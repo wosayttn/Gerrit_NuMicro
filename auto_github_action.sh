@@ -3,6 +3,8 @@
 set -e
 set -x
 
+export PATH="$HOME/.local/bin:$PATH"
+
 BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531" "M3351")
 #BSP_LIST=("M55M1" "M5531")
 #BSP_LIST=("NUC121" "M253" "M251")
@@ -18,7 +20,7 @@ if [ -z "$GITHUB_TOKEN" ]; then
 fi
 
 #echo "Installing git-filter-repo..."
-#pip install --quiet git-filter-repo
+#pip3 install --quiet git-filter-repo --break-system-packages
 
 PATH_SCRIPT=`pwd`
 
