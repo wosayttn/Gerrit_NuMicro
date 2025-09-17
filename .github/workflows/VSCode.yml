@@ -47,6 +47,7 @@ jobs:
           REPO_ROOT="$GITHUB_WORKSPACE"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_build.sh"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
+          chmod +x "$GITHUB_WORKSPACE/.github/workflows/validate_vcpkg_config.py"
 
           mapfile -t solutions < <(find ./SampleCode -name '*.csolution.yml')
 
@@ -57,6 +58,20 @@ jobs:
             sol_dir=$(dirname "$sol_path")
             sol_name=$(basename "$sol_path")
             log_path="$sol_dir/$sol_name.txt"
+
+            prj_vckpg_config="$sol_dir/vcpkg-configuration.json"
+
+            # Build & Produce log file
+            python $REPO_ROOT/.github/workflows/validate_vcpkg_config.py "$prj_vckpg_config" > $log_path
+            retc=$?
+            
+            if [ $retc -ne 0 ]; then
+              echo "❌ Invalid vcpkg-configuration.json: $prj_vckpg_config"
+              echo "🔍 log:"
+              cat "$log_path"
+              failed_logs+=("$log_path")   #add log into the set.
+              continue
+            fi
 
             # Build & Produce log file
             $REPO_ROOT/.github/workflows/vcpkg_build.sh "$sol_path" > $log_path
@@ -116,7 +131,8 @@ jobs:
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: ${{ secrets.MAIL_TO }}
+          to:  wclin@nuvoton.com
+          #to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <wosayttn@gmail.com>
           attachments: ${{ steps.prepare_logs.outputs.logs }}
