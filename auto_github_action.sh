@@ -25,22 +25,33 @@ fi
 PATH_SCRIPT=`pwd`
 
 for BSP in "${BSP_LIST[@]}"; do
+
+  cd ${PATH_SCRIPT}
+ 
   echo "======================================"
   echo "🔄 Processing $BSP BSP..."
 
   SRC_REPO_URL="${SRC_GIT_BASE}/${BSP}/bsp.git"
   DST_REPO_URL="https://${GITHUB_TOKEN}@github.com/wosayttn/Gerrit_NuMicro.git"
-  LOCAL_DIR="${BSP}BSP"
+  GERRIT_DIR="${BSP}BSP_GERRIT"
+  GITHUB_DIR="${BSP}BSP_GITHUB"
 
-  rm -rf ${LOCAL_DIR}
-  
-  echo "📥 Cloning mirror from $SRC_REPO_URL..."
-  #git clone --mirror "$SRC_REPO_URL" "$LOCAL_DIR"
-  git clone  "$SRC_REPO_URL" "$LOCAL_DIR"
+  if [ ! -d "${GERRIT_DIR}" ]; then 
+      echo "📥 Cloning mirror from $SRC_REPO_URL..."
+      git clone  "$SRC_REPO_URL" "$GERRIT_DIR"
+  else
+      cd ${GERRIT_DIR}
+      git pull --rebase
+      cd ${PATH_SCRIPT}
+  fi
 
-  cp -af .github "$LOCAL_DIR"/.github
+  rm -rf ${GITHUB_DIR}
 
-  cd "$LOCAL_DIR"
+  cp -af ${GERRIT_DIR} ${GITHUB_DIR}
+
+  cp -af .github "${GITHUB_DIR}/.github"
+
+  cd "${GITHUB_DIR}"
   # Find and replace
   NEW_FILE="$PATH_SCRIPT/vcpkg-configuration.json"
   if [ -f "$NEW_FILE" ]; then
@@ -64,35 +75,52 @@ for BSP in "${BSP_LIST[@]}"; do
   find . -type d -name '_*'
   if [[ "$BSP" == M55* ]]; then
 	git filter-repo \
-                --path-glob "Document/*.chm" \
-                --path-glob '_*/' \
+		--path-glob "Document/*.chm" \
+		--path-glob '_*/' \
 		--path-glob 'ThirdParty/_tflite_micro_EI' \
-                --path-glob 'Library/_*/' \
+		--path-glob 'Library/_*/' \
 		--path-glob 'Library/**/_*/' \
-                --path-glob 'SampleCode/_*/' \
-                --invert-paths --force
+		--path-glob 'SampleCode/_*/' \
+		--invert-paths --force
+
+	#git filter-repo \
+	#	--path-glob "Document/*.chm" \
+	#	--path-glob '_*/' \
+	#	--path-glob 'ThirdParty/_tflite_micro_EI' \
+	#	--path-glob 'Library/_*/' \
+	#	--path-glob 'Library/**/_*/' \
+	#	--invert-paths --force
+
   else
 	git filter-repo \
 		--path-glob "Document/*.chm" \
 		--path-glob '**/_*/' \
 		--path-glob '_*/' \
 		--invert-paths --force
+
+	#git filter-repo \
+	#	--path-glob "Document/*.chm" \
+	#	--path-glob '_*/' \
+	#	--path-glob 'ThirdParty/_*/' \
+	#	--path-glob 'ThirdParty/**/_*/' \
+	#	--path-glob 'Library/_*/' \
+	#	--path-glob 'Library/**/_*/' \
+	#	--invert-paths --force
   fi
   find . -type d -name '_*'
 
   git reset $(git commit-tree HEAD^{tree} -m "Commit at $(date -u +"%Y-%m-%dT%H:%M:%SZ")") --hard
 
   echo "🔗 Setting remote URL to GitHub: $DST_REPO_URL"
-  #git remote remove origin
-  git remote add origin "$DST_REPO_URL"
+  git remote add github "$DST_REPO_URL"
 
   echo "🚀 Pushing cleaned repo to GitHub branch: $TARGET_BRANCH..."
   TARGET_BRANCH="${BSP}_master"
   git checkout -B "$TARGET_BRANCH"  # create local branch if needed
 
-  git push -u origin HEAD:"$TARGET_BRANCH" -f
+  git push -u github HEAD:"$TARGET_BRANCH" -f
 
-  cd ..
+  cd ${PATH_SCRIPT}
 
   echo "✅ Done with $BSP"
 
