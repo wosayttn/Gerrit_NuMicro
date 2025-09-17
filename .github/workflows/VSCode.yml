@@ -131,8 +131,7 @@ jobs:
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to:  wclin@nuvoton.com
-          #to: ${{ secrets.MAIL_TO }}
+          to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <wosayttn@gmail.com>
           attachments: ${{ steps.prepare_logs.outputs.logs }}
