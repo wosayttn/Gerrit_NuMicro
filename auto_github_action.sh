@@ -33,14 +33,15 @@ for BSP in "${BSP_LIST[@]}"; do
 
   SRC_REPO_URL="${SRC_GIT_BASE}/${BSP}/bsp.git"
   DST_REPO_URL="https://${GITHUB_TOKEN}@github.com/wosayttn/Gerrit_NuMicro.git"
-  GERRIT_DIR="${BSP}BSP_GERRIT"
-  GITHUB_DIR="${BSP}BSP_GITHUB"
+  GERRIT_DIR="${PATH_SCRIPT}/GERRIT/${BSP}BSP"
+  GITHUB_DIR="${PATH_SCRIPT}/GITHUB/${BSP}BSP"
 
   if [ ! -d "${GERRIT_DIR}" ]; then 
       echo "📥 Cloning mirror from $SRC_REPO_URL..."
       git clone  "$SRC_REPO_URL" "$GERRIT_DIR"
   else
       cd ${GERRIT_DIR}
+      git reset --hard HEAD
       git pull --rebase
       cd ${PATH_SCRIPT}
   fi
@@ -50,6 +51,7 @@ for BSP in "${BSP_LIST[@]}"; do
   cp -af ${GERRIT_DIR} ${GITHUB_DIR}
 
   cp -af .github "${GITHUB_DIR}/.github"
+  rm -rf "${GITHUB_DIR}/.github/IAR_Nuvoton"
 
   cd "${GITHUB_DIR}"
   # Find and replace
@@ -74,39 +76,47 @@ for BSP in "${BSP_LIST[@]}"; do
 
   find . -type d -name '_*'
   if [[ "$BSP" == M55* ]]; then
-	git filter-repo \
-		--path-glob "Document/*.chm" \
-		--path-glob '_*/' \
-		--path-glob 'ThirdParty/_tflite_micro_EI' \
-		--path-glob 'Library/_*/' \
-		--path-glob 'Library/**/_*/' \
-		--path-glob 'SampleCode/_*/' \
-		--invert-paths --force
-
 	#git filter-repo \
 	#	--path-glob "Document/*.chm" \
 	#	--path-glob '_*/' \
 	#	--path-glob 'ThirdParty/_tflite_micro_EI' \
 	#	--path-glob 'Library/_*/' \
 	#	--path-glob 'Library/**/_*/' \
+	#	--path-glob 'SampleCode/_*/' \
 	#	--invert-paths --force
 
-  else
 	git filter-repo \
 		--path-glob "Document/*.chm" \
-		--path-glob '**/_*/' \
 		--path-glob '_*/' \
+		--path-glob 'ThirdParty/_tflite_micro_EI' \
+	  --path-glob 'Library/_*/' \
+		--path-glob 'Library/**/_*/' \
 		--invert-paths --force
 
+  else
 	#git filter-repo \
 	#	--path-glob "Document/*.chm" \
+	#	--path-glob '**/_*/' \
 	#	--path-glob '_*/' \
-	#	--path-glob 'ThirdParty/_*/' \
-	#	--path-glob 'ThirdParty/**/_*/' \
-	#	--path-glob 'Library/_*/' \
-	#	--path-glob 'Library/**/_*/' \
 	#	--invert-paths --force
+
+	git filter-repo \
+		--path-glob "Document/*.chm" \
+		--path-glob '_*/' \
+		--path-glob 'ThirdParty/_*/' \
+		--path-glob 'ThirdParty/**/_*/' \
+		--path-glob 'Library/_*/' \
+		--path-glob 'Library/**/_*/' \
+		--invert-paths --force
   fi
+  
+  # _ThirdParty Workaround
+  if [ -d "${GERRIT_DIR}/_ThirdParty" ]; then
+	  cp -af "${GERRIT_DIR}/_ThirdParty" ${GITHUB_DIR}
+	  git add _ThirdParty
+          git commit -m "Restore _ThirdParty folder"
+  fi
+
   find . -type d -name '_*'
 
   git reset $(git commit-tree HEAD^{tree} -m "Commit at $(date -u +"%Y-%m-%dT%H:%M:%SZ")") --hard
