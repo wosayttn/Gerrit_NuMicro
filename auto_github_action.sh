@@ -24,6 +24,9 @@ fi
 
 PATH_SCRIPT=`pwd`
 
+if [ ! -d "${PATH_SCRIPT}/GERRIT/" ]; then mkdir -p "${PATH_SCRIPT}/GERRIT/"; fi
+if [ ! -d "${PATH_SCRIPT}/GITHUB/" ]; then mkdir -p "${PATH_SCRIPT}/GITHUB/"; fi
+
 for BSP in "${BSP_LIST[@]}"; do
 
   cd ${PATH_SCRIPT}

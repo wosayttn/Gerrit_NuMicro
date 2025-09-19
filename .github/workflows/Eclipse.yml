@@ -76,7 +76,7 @@ jobs:
 
             dir=$(dirname "$sol_path")
             sol_name=$(basename "$dir")
-            log_path="$dir/$sol_name.txt"
+            log_path="$dir/$sol_name.log"
 
             mkdir -p "$GITHUB_WORKSPACE/workspace"
 

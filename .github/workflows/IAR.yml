@@ -71,7 +71,7 @@ jobs:
 
             dir=$(dirname "$sol_path")
             sol_name=$(basename "$sol_path")
-            log_path="$dir/$sol_name.txt"
+            log_path="$dir/$sol_name.log"
 
             #echo "🔨 Building $dir on $RUNNER_OS"
             iarbuild $sol_path -build '*' -log warnings > "$log_path" 2>&1

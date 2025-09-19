@@ -42,7 +42,7 @@ def validate_json(file_path):
             errors.append(f"Details: {e}")
 
     if errors:
-        print("vcpkg-configuration.json validation failed:")
+        print(file_path,"validation failed:")
         for e in errors:
             print(" -", e)
         return 1
