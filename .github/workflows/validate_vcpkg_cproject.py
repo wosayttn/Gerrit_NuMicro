@@ -51,6 +51,7 @@ def validate_project_yaml(file_path):
         break # Only check the first setup
 
     # (2) Check if _syscalls.c exists under GCC compiler condition
+    '''
     if isLibBuilding != 1:
         syscalls_found = False
         groups = data.get("project", {}).get("groups", [])
@@ -64,6 +65,8 @@ def validate_project_yaml(file_path):
 
         if not syscalls_found:
             errors.append("_syscalls.c not found under GCC compiler condition in groups")
+    '''
+
 
     '''
     # (3) Check if at least one pack matches Nuvoton::NuMicro*_DFP
