@@ -1,0 +1,154 @@
+name: Project Checking
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+  pull_request:
+    branches-ignore:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  AllProjectsCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Packages on Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip python-is-python3
+          pip install -r "$GITHUB_WORKSPACE/.github/workflows/requirements.txt"
+
+      - name: Check VSCode vcpkg-configuration.json
+        shell: bash
+        run: |
+          echo "Building $GITHUB_REF_NAME"
+
+          REPO_ROOT="$GITHUB_WORKSPACE"
+
+          declare -a failed_logs=()
+
+          set +e
+
+          mapfile -t solutions < <(find ./SampleCode -name 'vcpkg-configuration.json')
+          for sol_path in "${solutions[@]}"; do
+            sol_dir=$(dirname "$sol_path")
+            sol_name=$(basename "$sol_path")
+            log_path="$sol_path.log"
+
+            # Produce log file
+            python $REPO_ROOT/.github/workflows/validate_vcpkg_config.py "$sol_path" > $log_path
+            retc=$?
+
+            if [ $retc -ne 0 ]; then
+              echo "❌ Invalid "$sol_path""
+              cat "$log_path"
+              echo " "
+              failed_logs+=("$log_path")   #add log into the set.
+            else
+              echo "✅ Check success: $sol_path"
+            fi
+          done
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#failed_logs[@]} -ne 0 ]]; then
+            echo "🚨 The following checking failed:"
+            for log in "${failed_logs[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${failed_logs[@]}" | sed 's/,$//' >> failed_logs.txt
+            echo "Wrote failed_logs.txt"
+          else
+            echo "🎉 All checking succeeded!"
+          fi
+
+          set -e
+
+      - name: Check VSCode CProject
+        if: startsWith(github.ref_name, 'M55') || startsWith(github.ref_name, 'M33')
+        shell: bash
+        run: |
+          echo "Building $GITHUB_REF_NAME"
+
+          REPO_ROOT="$GITHUB_WORKSPACE"
+
+          declare -a failed_logs=()
+
+          set +e
+          mapfile -t solutions < <(find ./SampleCode -name '*.cproject.yml')
+          for sol_path in "${solutions[@]}"; do
+            sol_dir=$(dirname "$sol_path")
+            sol_name=$(basename "$sol_path")
+            log_path="$sol_path.log"
+
+            # Produce log file
+            python $REPO_ROOT/.github/workflows/validate_vcpkg_cproject.py "$sol_path" > $log_path
+            retc=$?
+
+            if [ $retc -ne 0 ]; then
+              echo "❌ Invalid "$sol_path""
+              cat "$log_path"
+              echo " "
+              failed_logs+=("$log_path")   #add log into the set.
+            else
+              echo "✅ Check success: $sol_path"
+            fi
+          done
+
+          set -e
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#failed_logs[@]} -ne 0 ]]; then
+            echo "🚨 The following checking failed:"
+            for log in "${failed_logs[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${failed_logs[@]}" | sed 's/,$//' >> failed_logs.txt
+            echo "Wrote failed_logs.txt"
+            exit 1
+          else
+            echo "🎉 All checking succeeded!"
+          fi
+
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        if: failure()
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send failure mail
+        if: failure()
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job FAILED
+          to: ${{ secrets.MAIL_TO }}
+          from: Github Action Workflow <wosayttn@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          body: |
+            Hello,
+
+            The build has completed with **FAILURE**.
+
+            Failure logs:
+            ${{ steps.prepare_logs.outputs.msglogs }}
+
+            Best regards,
+            NuMicro Actions
