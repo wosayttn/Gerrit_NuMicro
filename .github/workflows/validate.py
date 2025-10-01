@@ -6,8 +6,6 @@ import json
 import yaml
 import xml.etree.ElementTree as ET
 
-PROJ_FOLDER_NAME='../../SampleCode'
-
 def xml_get_value(node, path_parent, tag_name):
     # Locate Parent
     TParent = node.find(path_parent)
@@ -199,15 +197,16 @@ def validate_project_file(file_abs_path, update_function):
 
 if __name__ == "__main__":
 
+    if len(sys.argv) != 2:
+        print(f"Usage: python {sys.argv[0]} CHECK_FOLDER")
+        sys.exit(1)
+
     err = 0
 
-    for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
+    for dirPath, dirNames, fileNames in os.walk(sys.argv[1]):
         for pattern, update_function in VALIDATION_FUNCTIONS.items():
             for file in fnmatch.filter(fileNames, pattern):
                 prjFileAbsPath = os.path.join(dirPath, file)
                 err |= validate_project_file(prjFileAbsPath, update_function)
 
-    if err == 0:
-        sys.exit(0)
-    else:
-        sys.exit(1)
+    sys.exit(err)
