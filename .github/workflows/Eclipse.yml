@@ -154,7 +154,7 @@ jobs:
 
             The build has completed. Please find the attached log file for details.
 
-            Failure: 
+            Failure:
             ${{ steps.prepare_logs.outputs.msglogs }}
 
             Best regards,

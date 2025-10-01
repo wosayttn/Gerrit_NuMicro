@@ -69,7 +69,7 @@ jobs:
           set -e
 
       - name: Check VSCode CProject
-        if: startsWith(github.ref_name, 'M55') || startsWith(github.ref_name, 'M33')
+        if: startsWith(github.ref_name, 'M55') || startsWith(github.ref_name, 'M33') || startsWith(github.ref_name, 'M2')
         shell: bash
         run: |
           echo "Building $GITHUB_REF_NAME"
@@ -128,6 +128,7 @@ jobs:
             i=1
             for log in "${logs[@]}"; do
               numbered_logs+="[$i] $log\n"
+              numbered_logs+="$(cat $log)\n\n"
               ((i++))
             done
             echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
@@ -141,7 +142,7 @@ jobs:
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job FAILED
           to: ${{ secrets.MAIL_TO }}
           from: Github Action Workflow <wosayttn@gmail.com>
-          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          #attachments: ${{ steps.prepare_logs.outputs.logs }}
           body: |
             Hello,
 
