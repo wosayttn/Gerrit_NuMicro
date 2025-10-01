@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# ---------- Parameter Settings ----------
-REPO="wosayttn/Gerrit_NuMicro"         # Please modify this to your own repo
-WORKFLOW_NAME="VSCode.yml IAR.yml Eclipse.yml CppCheck.yml UV2CSolution.yml"  # Please modify this to your workflow file names or IDs
-LIMIT=100                              # Maximum number of runs to query at a time
+source ./config.sh
 
-# ---------- Validate Parameters ----------
-if [[ "$REPO" == "your-username/your-repo" ]]; then
-    echo "⚠️ Please set REPO to your own GitHub repository (format: username/repo)"
-    exit 1
+# ---------- Parameter Settings ----------
+LIMIT=200                              # Maximum number of runs to query at a time
+
+# ---------- Check if GITHUB_TOKEN is configuraed ----------
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "❌ Please set GITHUB_TOKEN environment variable first."
+  exit 1
 fi
 
 # ---------- Check if gh CLI is installed ----------
@@ -22,6 +22,12 @@ if ! gh auth status &> /dev/null; then
     echo "🔐 GitHub CLI is not logged in. Please run: gh auth login"
     exit 1
 fi
+
+WORKFLOW_NAME=""
+# ---------- list all workflow file in workflows folder ----------
+for f in .github/workflows/*.yml; do
+    [ -f "$f" ] && WORKFLOW_NAME="$WORKFLOW_NAME $(basename "$f")"
+done
 
 for WN in $WORKFLOW_NAME; do
 

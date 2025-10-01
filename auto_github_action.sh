@@ -3,16 +3,9 @@
 set -e
 set -x
 
+source ./config.sh
+
 export PATH="$HOME/.local/bin:$PATH"
-
-BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531" "M3351")
-#BSP_LIST=("M55M1" "M5531")
-#BSP_LIST=("NUC121" "M253" "M251")
-
-export GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-SRC_GIT_BASE="http://wclin@10.1.8.206/p"
-DST_GITHUB_BASE="https://github.com/wosayttn"
 
 if [ -z "$GITHUB_TOKEN" ]; then
   echo "❌ Please set GITHUB_TOKEN environment variable first."
@@ -35,7 +28,6 @@ for BSP in "${BSP_LIST[@]}"; do
   echo "🔄 Processing $BSP BSP..."
 
   SRC_REPO_URL="${SRC_GIT_BASE}/${BSP}/bsp.git"
-  DST_REPO_URL="https://${GITHUB_TOKEN}@github.com/wosayttn/Gerrit_NuMicro.git"
   GERRIT_DIR="${PATH_SCRIPT}/GERRIT/${BSP}BSP"
   GITHUB_DIR="${PATH_SCRIPT}/GITHUB/${BSP}BSP"
 
@@ -113,7 +105,7 @@ for BSP in "${BSP_LIST[@]}"; do
 		--invert-paths --force
   fi
   
-  # _ThirdParty Workaround
+  # _ThirdParty miss Workaround
   if [ -d "${GERRIT_DIR}/_ThirdParty" ]; then
 	  cp -af "${GERRIT_DIR}/_ThirdParty" ${GITHUB_DIR}
 	  git add _ThirdParty
