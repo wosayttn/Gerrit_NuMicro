@@ -17,11 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      #- name: Install Packages on Linux
-      #  run: |
-      #    sudo apt-get update
-      #     sudo apt-get install -y python3 python3-pip python-is-python3
-      #    pip install -r "$GITHUB_WORKSPACE/.github/workflows/requirements.txt"
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ".github/workflows/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1     
 
       - name: All Project Check
         if: startsWith(github.ref_name, 'M55') || startsWith(github.ref_name, 'M33') || startsWith(github.ref_name, 'M2')

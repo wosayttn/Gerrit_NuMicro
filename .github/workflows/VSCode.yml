@@ -13,18 +13,9 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        #os: [ubuntu-latest, windows-latest]
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Packages on Windows
-        if: matrix.os == 'windows-latest'
-        run: choco install jq python
 
       - name: Install Packages on Linux
         if: matrix.os == 'ubuntu-latest'
