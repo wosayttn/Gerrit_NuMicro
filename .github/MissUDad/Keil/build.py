@@ -56,7 +56,7 @@ if __name__ == "__main__":
                     #p = subprocess.Popen(cleancommnd, startupinfo=si, stdout=f, stderr=f)
                     #p.wait(120)
 
-                    print("[" + str(prj_count) + "] "+ os.getcwd() + "\\" + file +  " building.\n")
+                    #print("[" + str(prj_count) + "] "+ os.getcwd() + "\\" + file +  " building.\n")
                     p = subprocess.Popen(buildcommnd, startupinfo=si, stdout=f, stderr=f)
                     p.wait(120)
 
