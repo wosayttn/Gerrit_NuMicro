@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
                     #print("[" + str(prj_count) + "] "+ os.getcwd() + "\\" + file +  " building.\n")
                     p = subprocess.Popen(buildcommnd, startupinfo=si, stdout=f, stderr=f)
-                    p.wait(120)
+                    p.wait(300)
 
                     # It's a bit strange keil report error code as 0 even build failed. so parse k.log
                     tmp = open(BUILDLOG, "r")
@@ -72,21 +72,21 @@ if __name__ == "__main__":
                     if found == 0:
                         err += 1
                         f.write(os.path.abspath(file))
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.")
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.\n", flush=True)
                     else:
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.")
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.\n", flush=True)
 
                 except subprocess.TimeoutExpired:
                     p.kill()
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.")
+                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.\n", flush=True)
                     err += 1
 
                 except Exception as e:
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.")
+                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.\n", flush=True)
                     err += 1
 
                 except OSError:
-                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Ooops")
+                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Oops\n", flush=True)
                     pass #Silently ignore
 
                 prj_count += 1
@@ -95,7 +95,7 @@ if __name__ == "__main__":
                 os.chdir(root)
 
     if err == 0:
-        print("Build " + str(prj_count-1) + " projects successfully.")
+        print("Build " + str(prj_count-1) + " projects successfully.\n", flush=True)
 
     f.close()
 
