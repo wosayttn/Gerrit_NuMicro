@@ -72,21 +72,21 @@ if __name__ == "__main__":
                     if found == 0:
                         err += 1
                         f.write(os.path.abspath(file))
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.\n")
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.")
                     else:
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.\n")
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.")
 
                 except subprocess.TimeoutExpired:
                     p.kill()
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.\n")
+                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.")
                     err += 1
 
                 except Exception as e:
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.\n")
+                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.")
                     err += 1
 
                 except OSError:
-                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Ooops\n")
+                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Ooops")
                     pass #Silently ignore
 
                 prj_count += 1
@@ -95,7 +95,7 @@ if __name__ == "__main__":
                 os.chdir(root)
 
     if err == 0:
-        print("Build " + str(prj_count-1) + " projects successfully.\n")
+        print("Build " + str(prj_count-1) + " projects successfully.")
 
     f.close()
 
