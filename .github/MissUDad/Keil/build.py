@@ -50,7 +50,7 @@ if __name__ == "__main__":
                     #       Refer to option -t to change the target.
                     #       For multi-projects, the command builds the targets as defined in the dialog Project - Batch Build.
                     # -o outputfile
-                    print("[" + str(prj_count) + "] Build " + os.path.abspath(file) +  "\n")
+                    #print("[" + str(prj_count) + "] Build " + os.path.abspath(file) +  "\n")
 
                     #print("[" + str(prj_count) + "] "+ os.getcwd() + "\\" + file +  " cleaning.\n")
                     #p = subprocess.Popen(cleancommnd, startupinfo=si, stdout=f, stderr=f)
@@ -72,9 +72,9 @@ if __name__ == "__main__":
                     if found == 0:
                         err += 1
                         f.write(os.path.abspath(file))
-                        print("\t" + os.getcwd() + "\\" + file +  " has error or warning.\n")
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.\n")
                     else:
-                        print("\t" + os.getcwd() + "\\" + file +  " pass.\n")
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.\n")
 
                 except subprocess.TimeoutExpired:
                     p.kill()
