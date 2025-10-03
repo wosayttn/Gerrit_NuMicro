@@ -1,0 +1,48 @@
+cbuild-run:
+  generated-by: csolution version 2.9.0
+  solution: NK_M258KE_LCD_TK.csolution.yml
+  target-type: ARMCLANG
+  compiler: AC6
+  device: Nuvoton::M258KE3AE
+  device-pack: Nuvoton::NuMicroM23_DFP@1.0.1
+  output:
+    - file: out/NK_M258KE_LCD_TK/ARMCLANG/FreeRun/NK_M258KE_LCD_TK_FreeRun.axf
+      info: generate by NK_M258KE_LCD_TK.FreeRun+ARMCLANG
+      type: elf
+      load: image+symbols
+    - file: out/NK_M258KE_LCD_TK/ARMCLANG/FreeRun/NK_M258KE_LCD_TK_FreeRun.bin
+      info: generate by NK_M258KE_LCD_TK.FreeRun+ARMCLANG
+      type: bin
+      load: none
+  system-resources:
+    memory:
+      - name: IROM1
+        access: rx
+        start: 0x00000000
+        size: 0x00020000
+        from-pack: Nuvoton::NuMicroM23_DFP@1.0.1
+      - name: IRAM1
+        access: rwx
+        start: 0x20000000
+        size: 0x00004000
+        from-pack: Nuvoton::NuMicroM23_DFP@1.0.1
+  system-descriptions:
+    - file: ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM23_DFP/1.0.1/SVD/Nuvoton/M251_v1.svd
+      type: svd
+  debugger:
+    name: CMSIS-DAP@pyOCD
+    protocol: swd
+    clock: 10000000
+    gdbserver:
+      - port: 3333
+  programming:
+    - algorithm: ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM23_DFP/1.0.1/Flash/M251_AP_128.FLM
+      start: 0x00000000
+      size: 0x00020000
+      ram-start: 0x20000000
+      ram-size: 0x00002000
+    - algorithm: ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM23_DFP/1.0.1/Flash/M251_LD_4.FLM
+      start: 0x00100000
+      size: 0x00001000
+      ram-start: 0x20000000
+      ram-size: 0x00002000
