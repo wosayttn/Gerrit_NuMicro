@@ -81,6 +81,7 @@ jobs:
             NuMicro Actions
 
       - name: Collect artifacts with directory structure
+        shell: bash
         run: |
           mkdir -p artifacts
           find SampleCode -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
