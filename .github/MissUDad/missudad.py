@@ -7,7 +7,6 @@ import shutil
 # Or append '*' symbol to build all projects.
 #IP_LIST=[ '*' ]
 IP_LIST=[ 'Template', 'Project' ]
-RUN_LIST=[ 'Template', 'Project' ]
 
 # Define VCOM port number of NuMaker board.
 COMX='COM4'
