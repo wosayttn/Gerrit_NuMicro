@@ -17,21 +17,11 @@ sys.path.append(os.path.join(os.path.dirname(os.getcwd())))
 import missudad
 
 PROJ_FOLDER_NAME = missudad.PROJ_FOLDER_NAME
-IP_LIST = missudad.IP_LIST
+RUN_LIST = missudad.RUN_LIST
 COMX=missudad.COMX
 UV4_EXE=missudad.UV4_EXE
 
 if __name__ == "__main__":
-
-    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
-    serial_port = serial.Serial(COMX, 115200, timeout=1)
-
-    # Create and start the read and write threads
-    #read_thread = threading.Thread(target=missudad.read_serial_port, daemon=True, args=(serial_port,))
-    #write_thread = threading.Thread(target=missudad.write_to_serial_port, daemon=True, args=(serial_port,))
-
-    #read_thread.start()
-    #write_thread.start()
 
     si = subprocess.STARTUPINFO()
     si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
@@ -42,7 +32,7 @@ if __name__ == "__main__":
     for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
         for file in fnmatch.filter(fileNames, '*.uvprojx'):
             runit = 0
-            for ip in IP_LIST:
+            for ip in RUN_LIST:
                 if ip.find('*') == 0 or file.find(ip) == 0:
                     runit = 1
                     break
@@ -56,6 +46,10 @@ if __name__ == "__main__":
                     p = subprocess.Popen(RunCmd, startupinfo=si)
                     p.wait(missudad.RUNTIME)
 
+                    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
+                    serial_port = serial.Serial(COMX, 115200, timeout=1)
+
+                    # Create and start the read threads
                     read_thread = threading.Thread(target=missudad.read_serial_port, args=(serial_port,))
                     read_thread.start()
                     read_thread.join()

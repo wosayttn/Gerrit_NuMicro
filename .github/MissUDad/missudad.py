@@ -5,8 +5,8 @@ import shutil
 # Define prefix string of IP name you preferred.
 # EX: IP_LIST=[ 'UART', 'SPI', 'CLK', 'SYS' ]
 # Or append '*' symbol to build all projects.
-#IP_LIST=[ '*' ]
-IP_LIST=[ 'Template', 'Project' ]
+IP_LIST=[ '*' ]
+RUN_LIST=[ 'Template', 'Project' ]
 
 # Define VCOM port number of NuMaker board.
 COMX='COM4'
