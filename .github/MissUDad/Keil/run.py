@@ -27,11 +27,11 @@ if __name__ == "__main__":
     serial_port = serial.Serial(COMX, 115200, timeout=1)
 
     # Create and start the read and write threads
-    read_thread = threading.Thread(target=missudad.read_serial_port, daemon=True, args=(serial_port,))
-    write_thread = threading.Thread(target=missudad.write_to_serial_port, daemon=True, args=(serial_port,))
+    #read_thread = threading.Thread(target=missudad.read_serial_port, daemon=True, args=(serial_port,))
+    #write_thread = threading.Thread(target=missudad.write_to_serial_port, daemon=True, args=(serial_port,))
 
-    read_thread.start()
-    write_thread.start()
+    #read_thread.start()
+    #write_thread.start()
 
     si = subprocess.STARTUPINFO()
     si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
@@ -50,19 +50,19 @@ if __name__ == "__main__":
             if runit == 1:
                 os.chdir(dirPath)
                 prjName = os.path.splitext(file)[0]
-                print(prjName+'\n')
-                print('###################################################################################')
+                print(prjName+' log:\n')
                 try:
                     RunCmd = UV4_EXE + ' -j0 -f ' + file
-                    #p = subprocess.Popen(RunCmd, startupinfo=si, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
                     p = subprocess.Popen(RunCmd, startupinfo=si)
                     p.wait(missudad.RUNTIME)
-                    time.sleep(missudad.RUNTIME)
+
+                    read_thread = threading.Thread(target=missudad.read_serial_port, args=(serial_port,))
+                    read_thread.start()
+                    read_thread.join()
                 except subprocess.TimeoutExpired:
                     p.kill()
                 except OSError:
                     pass    #Silently ignore
-                print('###################################################################################')
                 os.chdir(root)
 
     sys.exit(0)
