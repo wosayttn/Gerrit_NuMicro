@@ -49,9 +49,10 @@ def read_serial_port(serial_port):
 
 def write_to_serial_port(serial_port):
     while True:
-        message = input('$ ')
-        serial_port.write(message.encode('utf-8'))
-        print(message)
+        if sys.stdin.isatty():
+            message = input('$ ')
+            serial_port.write(message.encode('utf-8'))
+            print(message)
 
 def mirror_file(src_file, dst_file):
     print('Copy ' + src_file+ ' to ' + dst_file)

@@ -50,7 +50,8 @@ if __name__ == "__main__":
             if runit == 1:
                 os.chdir(dirPath)
                 prjName = os.path.splitext(file)[0]
-                print('#################################### '+prjName+' ####################################')
+                print(prjName+'\n')
+                print('###################################################################################')
                 try:
                     RunCmd = UV4_EXE + ' -j0 -f ' + file
                     #p = subprocess.Popen(RunCmd, startupinfo=si, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
@@ -61,7 +62,7 @@ if __name__ == "__main__":
                     p.kill()
                 except OSError:
                     pass    #Silently ignore
-                print('************************************ ' + prjName+' ************************************')
+                print('###################################################################################')
                 os.chdir(root)
 
     sys.exit(0)
