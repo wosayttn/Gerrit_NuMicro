@@ -5,10 +5,12 @@ import shutil
 # Define prefix string of IP name you preferred.
 # EX: IP_LIST=[ 'UART', 'SPI', 'CLK', 'SYS' ]
 # Or append '*' symbol to build all projects.
-IP_LIST=[ '*' ]
+#IP_LIST=[ '*' ]
+IP_LIST=[ 'Template', 'Project' ]
+RUN_LIST=[ 'Template', 'Project' ]
 
 # Define VCOM port number of NuMaker board.
-COMX='COM6'
+COMX='COM4'
 
 # Define running interval between SampleCodes. (Default: 20 seconds)
 # Notice: The value depends on firmware flash time and SampleCode running time.

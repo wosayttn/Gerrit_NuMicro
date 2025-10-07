@@ -17,7 +17,7 @@ sys.path.append(os.path.join(os.path.dirname(os.getcwd())))
 import missudad
 
 PROJ_FOLDER_NAME = missudad.PROJ_FOLDER_NAME
-IP_LIST = missudad.IP_LIST
+IP_LIST = missudad.RUN_LIST
 COMX=missudad.COMX
 UV4_EXE=missudad.UV4_EXE
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
         for file in fnmatch.filter(fileNames, '*.uvprojx'):
             runit = 0
-            for ip in IP_LIST:
+            for ip in RUN_LIST:
                 if ip.find('*') == 0 or file.find(ip) == 0:
                     runit = 1
                     break
@@ -63,7 +63,5 @@ if __name__ == "__main__":
                     pass    #Silently ignore
                 print('************************************ ' + prjName+' ************************************')
                 os.chdir(root)
-
-    print('Bye')
 
     sys.exit(0)
