@@ -37,7 +37,7 @@ if __name__ == "__main__":
             if buildit == 1:
                 os.chdir(dirPath)
                 try:
-                    BUILDLOG = os.path.basename(file) + ".log"
+                    BUILDLOG = file + ".log"
                     fp = open(BUILDLOG, "w")
 
                     prjName = os.path.splitext(file)[0]
@@ -50,7 +50,7 @@ if __name__ == "__main__":
                     tmp = open(BUILDLOG, "r")
                     lines = tmp.readlines()
                     tmp.close()
- 
+
                     found = 0
                     prjNamePat = prjName + " - "
                     for line in lines:
@@ -71,11 +71,11 @@ if __name__ == "__main__":
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
 
                 except Exception as e:
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has other exception.", flush=True)
+                    print("[" + str(prj_count) + "] "+ " Build " + file +  " has other exception.", flush=True)
                     err += 1
 
                 except OSError:
-                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Oops.", flush=True)
+                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + " Oops.", flush=True)
                     pass #Silently ignore
 
                 prj_count += 1
