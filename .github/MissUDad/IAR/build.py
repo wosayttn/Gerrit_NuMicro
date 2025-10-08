@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 import fnmatch
+import traceback
 import sys
 sys.path.append(os.path.join(os.path.dirname(os.getcwd())))
 import missudad
@@ -35,8 +36,9 @@ if __name__ == "__main__":
                     break
 
             if buildit == 1:
-                os.chdir(dirPath)
+
                 try:
+                    os.chdir(dirPath)
                     BUILDLOG = file + ".log"
                     fp = open(BUILDLOG, "w")
 
@@ -52,6 +54,7 @@ if __name__ == "__main__":
                     tmp.close()
 
                     found = 0
+                    total_conf = 0
                     prjNamePat = prjName + " - "
                     for line in lines:
                         if line.find(" ERROR, ") == 0:
@@ -70,9 +73,8 @@ if __name__ == "__main__":
                     else:
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
 
-                except Exception as e:
-                    print("[" + str(prj_count) + "] "+ " Build " + file +  " has other exception.", flush=True)
-                    err += 1
+                except Exception:
+                    traceback.print_exc()
 
                 except OSError:
                     print("[" + str(prj_count) + "] " + os.path.abspath(file) + " Oops.", flush=True)

@@ -23,6 +23,9 @@ if __name__ == "__main__":
     root = os.getcwd()
     os.chdir(root)
 
+    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
+    serial_port = serial.Serial(COMX, 115200, timeout=1)
+
     for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
         for file in fnmatch.filter(fileNames, '*.uvprojx'):
             runit = 0
@@ -36,9 +39,6 @@ if __name__ == "__main__":
                 prjName = os.path.splitext(file)[0]
                 print(prjName+' log:\n')
                 try:
-                    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
-                    serial_port = serial.Serial(COMX, 115200, timeout=1)
-
                     RunCmd = UV4_EXE + ' -j0 -f ' + file
                     p = subprocess.Popen(RunCmd, startupinfo=si)
                     p.wait(missudad.RUNTIME)

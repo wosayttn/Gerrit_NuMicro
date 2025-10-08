@@ -24,6 +24,9 @@ if __name__ == "__main__":
     root = os.getcwd()
     os.chdir(root)
 
+    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
+    serial_port = serial.Serial(COMX, 115200, timeout=1)
+
     for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
         for file in fnmatch.filter(fileNames, '*.eww'):
             runit = 0
@@ -40,9 +43,6 @@ if __name__ == "__main__":
                     buildcommnd = IARIDEPM_EXE + " " + file
                     p = subprocess.Popen(buildcommnd, startupinfo=si)
                     p.wait(10)
-
-                    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
-                    serial_port = serial.Serial(COMX, 115200, timeout=1)
 
                     generalXclPath = os.path.abspath(os.path.join('settings', prjName + '.Release.general.xcl'))
                     driverXclPath  = os.path.abspath(os.path.join('settings', prjName + '.Release.driver.xcl'))
