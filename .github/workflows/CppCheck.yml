@@ -26,6 +26,7 @@ jobs:
       - name: cppcheck
         shell: bash
         run: |
+              cppcheck --version
               cppcheck --inline-suppr -UEXCLUDE_CPPCHECK --suppress=unusedFunction "Library\Commu" "Library\CryptoAccelerator" "Library\JpegAcceleratorLib" "Library\PowerDeliveryLib" "Library\SmartcardLib" "Library\StdDriver" "Library\UsbHostLib" -i "SampleCode\_CMSIS-Driver_Validation\Tools\SockServer\PC" "SampleCode"
               failed_logs+=("cppcheck.txt")
 
@@ -54,7 +55,8 @@ jobs:
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: ${{ secrets.MAIL_TO }}
+          to: wclin@nuvoton.com
+          #to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <wosayttn@gmail.com>
           attachments: ${{ steps.prepare_logs.outputs.logs }}
