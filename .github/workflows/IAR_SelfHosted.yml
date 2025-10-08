@@ -1,10 +1,10 @@
-name: IAR Self-Hosted building
+name: IAR SH Runner building 
 
 on:
-  push:
-    branches-ignore:
-      - main
-      - master
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
   #pull_request:
   #  branches-ignore:
   #    - main
@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build MDK5 projects
+      - name: Build IAR projects
         shell: bash
         run: |
           MISSUDAD_IAR="$GITHUB_WORKSPACE/.github/MissUDad/IAR"
