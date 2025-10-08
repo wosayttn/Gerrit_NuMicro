@@ -1,6 +1,6 @@
 echo on
 
-py -3 run.py 
+py -3 run.py
 
 pause
 pause

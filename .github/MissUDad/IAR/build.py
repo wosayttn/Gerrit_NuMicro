@@ -7,20 +7,25 @@ sys.path.append(os.path.join(os.path.dirname(os.getcwd())))
 import missudad
 
 PROJ_FOLDER_NAME = missudad.PROJ_FOLDER_NAME
-IP_LIST = missudad.IP_LIST
+IP_LIST=missudad.IP_LIST
 IARBUILD_EXE=missudad.IARBUILD_EXE
 
 if __name__ == "__main__":
+
     si = subprocess.STARTUPINFO()
+
     si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+
     err = 0
+
     root = os.getcwd()
+    f = open('failed_logs.txt', "w+")
     os.chdir(root)
 
-    f = open('iar.txt', "w")
     prj_count = 1
 
     for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
+
         for file in fnmatch.filter(fileNames, '*.ewp'):
 
             buildit = 0
@@ -37,17 +42,15 @@ if __name__ == "__main__":
 
                     prjName = os.path.splitext(file)[0]
                     buildcommnd = IARBUILD_EXE + " " + file + " -build * -log warnings"
-                    print(buildcommnd)
                     subprocess.call(buildcommnd, startupinfo=si, stdout=fp, stderr=fp)
                     fp.flush()
                     fp.close()
 
                     # Find any error/warning
-                    fp = open(BUILDLOG, "r")
-                    lines = fp.readlines()
-                    fp.close()
-
-                    total_conf = 0
+                    tmp = open(BUILDLOG, "r")
+                    lines = tmp.readlines()
+                    tmp.close()
+ 
                     found = 0
                     prjNamePat = prjName + " - "
                     for line in lines:
@@ -62,28 +65,27 @@ if __name__ == "__main__":
 
                     if total_conf == 0 or (total_conf > 0 and found != 2*total_conf):
                         err += 1
-                        f.write("[" + str(prj_count) + "] "+ dirPath +  " has error or warning.\n")
-                        print("Build " + file + " has error or warning...\n")
-                    #else:
-                        #f.write("[" + str(prj_count) + "] "+ os.path.abspath(file) +  " pass...\n")
-                        #print("\t" + file +  " pass.\n")
+                        f.write(os.path.abspath(BUILDLOG) + "\n")
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.", flush=True)
+                    else:
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
+
+                except Exception as e:
+                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has other exception.", flush=True)
+                    err += 1
 
                 except OSError:
-                    err += 1
-                    f.write("[" + str(prj_count) + "] "+ dirPath +  " has error or warning.\n")
-                    print("Build " + file + " has error or warning...\n")
-                    pass    #Silently ignore
+                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Oops.", flush=True)
+                    pass #Silently ignore
 
                 prj_count += 1
-                f.flush()
+
+                #f.flush()
                 os.chdir(root)
 
     if err == 0:
-        f.write("Build " + str(prj_count-1) + " projects successfully.\n")
+        print("Build " + str(prj_count-1) + " projects successfully.", flush=True)
 
     f.close()
 
-    if err == 0:
-        sys.exit(0)
-    else:
-        sys.exit(1)
+    sys.exit(err)

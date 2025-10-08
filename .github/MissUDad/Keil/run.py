@@ -1,14 +1,8 @@
 import os
 import sys
-import time
 import subprocess
-import shutil
 import fnmatch
-import tempfile
-import glob
-import re
 import sys
-import datetime
 import serial
 import threading
 import time
@@ -42,12 +36,12 @@ if __name__ == "__main__":
                 prjName = os.path.splitext(file)[0]
                 print(prjName+' log:\n')
                 try:
+                    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
+                    serial_port = serial.Serial(COMX, 115200, timeout=1)
+
                     RunCmd = UV4_EXE + ' -j0 -f ' + file
                     p = subprocess.Popen(RunCmd, startupinfo=si)
                     p.wait(missudad.RUNTIME)
-
-                    # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
-                    serial_port = serial.Serial(COMX, 115200, timeout=1)
 
                     # Create and start the read threads
                     read_thread = threading.Thread(target=missudad.read_serial_port, args=(serial_port,))
