@@ -1,6 +1,7 @@
 import os
 import sys
 import shutil
+import time
 
 # Define prefix string of IP name you preferred.
 # EX: IP_LIST=[ 'UART', 'SPI', 'CLK', 'SYS' ]
@@ -28,12 +29,23 @@ ECLIPSE_EXE="C:\\Program Files (x86)\\Nuvoton Tools\\NuEclipse\\V1.02.025c\\NuEc
 '''
 Define your IAR embedded workbench installation path.
 '''
-CSPYBAT_EXE='C:\\Program Files\\IAR Systems\\Embedded Workbench 9.4\\common\\bin\\cspybat'
-IARIDEPM_EXE='C:\\Program Files\\IAR Systems\\Embedded Workbench 9.4\\common\\bin\\IarIdePm.exe'
-IARBUILD_EXE="C:\\Program Files\\IAR Systems\\Embedded Workbench 9.4\\common\\bin\\iarbuild.exe"
+IAR8_INSTALLATION_PATH="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.2\\"
+IAR9_INSTALLATION_PATH="C:\\Program Files\\IAR Systems\\Embedded Workbench 9.4\\"
+
+CSPY8BAT_EXE=IAR8_INSTALLATION_PATH + "common\\bin\\cspybat"
+IAR8IDEPM_EXE=IAR8_INSTALLATION_PATH + "common\\bin\\IarIdePm.exe"
+IAR8BUILD_EXE=IAR8_INSTALLATION_PATH + "common\\bin\\iarbuild.exe"
+
+CSPY9BAT_EXE=IAR9_INSTALLATION_PATH + "common\\bin\\cspybat"
+IAR9IDEPM_EXE=IAR9_INSTALLATION_PATH + "common\\bin\\IarIdePm.exe"
+IAR9BUILD_EXE=IAR9_INSTALLATION_PATH + "common\\bin\\iarbuild.exe"
+
+CSPYBAT_EXE=CSPY9BAT_EXE
+IARIDEPM_EXE=IAR9IDEPM_EXE
+IARBUILD_EXE=IAR9BUILD_EXE
 
 '''
-Define your Keil v537 installation path.
+Define your Keil v5 installation path.
 '''
 UV4_EXE="C:\\Keil_v5\\UV4\\Uv4.exe"
 
@@ -41,11 +53,51 @@ UV4_EXE="C:\\Keil_v5\\UV4\\Uv4.exe"
 '''
 Don't touch me. Just collect module function here.
 '''
-def read_serial_port(serial_port):
+def read_serial_port(serial_port, stop_event=None, eot_event=None):
+    """
+    Continuously read lines from the serial port and print them.
+    - stop_event: threading.Event to exit the loop gracefully
+    - eot_event: threading.Event to signal that EOT (\x04) was received
+    """
+    buffer = ""
+    start_time = time.time()
     while True:
-        if serial_port.in_waiting > 0:
-            data = serial_port.readline().decode('utf-8').strip()
-            print(data)
+        if stop_event and stop_event.is_set():
+            break
+        try:
+            if serial_port.in_waiting > 0:
+                # Read one byte at a time for EOT detection
+                byte = serial_port.read(1)
+                if not byte:
+                    continue
+
+                char = byte.decode('utf-8', errors='replace')
+
+                if char == '\x04':  # End-of-Transmission detected
+                    print("[EOT received]")
+                    if eot_event:
+                        eot_event.set()
+                    # Optionally, break loop if you want to stop reading
+                    break
+
+                buffer += char
+                if char == '\n':
+                    # Complete line received
+                    line = buffer.strip()
+                    print(line)
+                    buffer = ""
+
+            #Check elapsed time
+            elif time.time() - start_time >= timeout_seconds:
+                print("Thread timeout reached")
+                break
+
+            else:
+                time.sleep(0.01)  # Avoid busy-waiting
+
+        except serial.SerialException as e:
+            print(f"Serial port error: {e}")
+            break
 
 def write_to_serial_port(serial_port):
     while True:
@@ -69,8 +121,6 @@ def move_file(src_file, dst_file):
        os.makedirs(dst_folder)
 
     shutil.move(src_file, dst_file)
-
-import os
 
 def remove_file(file_path):
     if os.path.isfile(file_path):

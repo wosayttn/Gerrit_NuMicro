@@ -72,7 +72,7 @@ if __name__ == "__main__":
 
                     if found == 0:
                         err += 1
-                        f.write(os.path.abspath(file))
+                        f.write(os.path.abspath(BUILDLOG) + "\n")
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.", flush=True)
                     else:
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
