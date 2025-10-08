@@ -7,7 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(os.getcwd())))
 import missudad
 
 PROJ_FOLDER_NAME = missudad.PROJ_FOLDER_NAME
-IP_LIST = missudad.IP_LIST
+IP_LIST=missudad.IP_LIST
 UV4_EXE=missudad.UV4_EXE
 
 if __name__ == "__main__":
@@ -69,24 +69,25 @@ if __name__ == "__main__":
                     for line in lines:
                         if line.find("0 Error(s), 0 Warning(s)") >= 0:
                             found = 1
+
                     if found == 0:
                         err += 1
                         f.write(os.path.abspath(file))
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.\n", flush=True)
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.", flush=True)
                     else:
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.\n", flush=True)
+                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
 
                 except subprocess.TimeoutExpired:
                     p.kill()
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.\n", flush=True)
+                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has timeout expired exception.", flush=True)
                     err += 1
 
                 except Exception as e:
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has exception.\n", flush=True)
+                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has other exception.", flush=True)
                     err += 1
 
                 except OSError:
-                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Oops\n", flush=True)
+                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Oops.", flush=True)
                     pass #Silently ignore
 
                 prj_count += 1
@@ -95,9 +96,8 @@ if __name__ == "__main__":
                 os.chdir(root)
 
     if err == 0:
-        print("Build " + str(prj_count-1) + " projects successfully.\n", flush=True)
+        print("Build " + str(prj_count-1) + " projects successfully.", flush=True)
 
     f.close()
 
     sys.exit(err)
-

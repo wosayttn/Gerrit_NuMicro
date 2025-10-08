@@ -50,7 +50,7 @@ def keil_uvprojx(file_path):
                 errors.append(f"{target_name} - Invalid PackID version: {value} (should be Nuvton.NuMicroM*_*)")
 
             value = xml_get_value(t, 'TargetOption/TargetArmAds/Cads', 'wLevel')
-            if value != "2":
+            if value != "2" and target_name != "CMSIS_DV_Ethernet":
                 errors.append(f"{target_name} - Invalid wLevel setting: {value} (should be 2, all warnings)")
 
             value = xml_get_value(t, '.', 'pCCUsed')

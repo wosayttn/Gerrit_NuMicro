@@ -17,14 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: MDK5 project building
+      - name: Build MDK5 projects
         shell: bash
         run: |
-          echo "Building $GITHUB_REF_NAME"
-          REPO_ROOT="$GITHUB_WORKSPACE"
-          MISSUDAD_KEIL="$REPO_ROOT/.github/MissUDad/Keil"
-          echo "Building $MISSUDAD_KEIL"
+          MISSUDAD_KEIL="$GITHUB_WORKSPACE/.github/MissUDad/Keil"
 
+          set +e
           cd $MISSUDAD_KEIL
           python build.py
           retc=$?
@@ -36,10 +34,10 @@ jobs:
             echo "🎉 All building succeeded!" $REPO_ROOT
           fi
 
-          echo "Running $MISSUDAD_KEIL"
-
           cd $MISSUDAD_KEIL
           python run.py
+
+          set -e
 
           exit $retc
 
