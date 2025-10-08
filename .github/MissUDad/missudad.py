@@ -88,7 +88,7 @@ def read_serial_port(serial_port, stop_event=None, eot_event=None):
                     buffer = ""
 
             #Check elapsed time
-            elif time.time() - start_time >= timeout_seconds:
+            elif time.time() - start_time >= RUNTIME:
                 print("Thread timeout reached")
                 break
 
