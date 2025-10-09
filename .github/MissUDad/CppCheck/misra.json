@@ -1,0 +1,8 @@
+{
+  "script": "misra.py",
+  "args": [
+    "--rule-texts=./misra_rules.txt",
+    "--suppress-rules 17.3,21.12"
+  ]
+}
+

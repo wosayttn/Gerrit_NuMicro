@@ -23,50 +23,28 @@ jobs:
           sudo apt-get update
           sudo apt-get -qq install cppcheck
 
-      - name: cppcheck
+      - name: cppcheck and htmlreport
         shell: bash
         run: |
+              MISSUDAD_CPPCHECK="$GITHUB_WORKSPACE/.github/CppCheck"
+
+              cd $GITHUB_WORKSPACE
+
               cppcheck --version
-              cppcheck --inline-suppr -UEXCLUDE_CPPCHECK --suppress=unusedFunction "Library\Commu" "Library\CryptoAccelerator" "Library\JpegAcceleratorLib" "Library\PowerDeliveryLib" "Library\SmartcardLib" "Library\StdDriver" "Library\UsbHostLib" -i "SampleCode\_CMSIS-Driver_Validation\Tools\SockServer\PC" "SampleCode"
-              failed_logs+=("cppcheck.txt")
 
-      - name: Prepare failed logs for email
-        id: prepare_logs
-        shell: bash
-        if: failure() # only runs if previous step failed
-        run: |
-          if [[ -f failed_logs.txt ]]; then
-            logs=$(cat failed_logs.txt)
-            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+              cppcheck --enable=all --inconclusive --std=c99 --addon="$MISSUDAD_CPPCHECK/misra.json" -j 8 --force \
+                --output-file="$GITHUB_WORKSPACE/cppcheck_report.txt" --xml --xml-version=2 \
+                --template="{file}:{line}:{severity}:{id}:{message}" \
+                --checkers-report="$GITHUB_WORKSPACE/misra.log" \
+                --suppress=staticFunction \
+                --suppress=missingInclude \
+                --suppress=missingIncludeSystem \
+                --suppress=unusedFunction \
+                --suppress=misra-c2012-2.5 \
+                -I $GITHUB_WORKSPACE/Library/Device/Nuvoton/M3351/Include/ \
+                -I $GITHUB_WORKSPACE/Library/StdDriver/inc/ \
+                -I $GITHUB_WORKSPACE/Library/Device/Nuvoton/M3351/Include/ \
+                $GITHUB_WORKSPACE/Library/StdDriver/src/canfd.c
 
-            numbered_logs=""
-            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
-            i=1
-            for log in "${logs[@]}"; do
-              numbered_logs+="[$i] $log\n"
-              ((i++))
-            done
-            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Send mail
-        if: failure()
-        uses: dawidd6/action-send-mail@v5
-        with:
-          connection_url: ${{ secrets.MAIL_CONNECTION }}
-          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: wclin@nuvoton.com
-          #to: ${{ secrets.MAIL_TO }}
-          #cc: ${{ secrets.MAIL_CC }}
-          from: Github Action Workflow <wosayttn@gmail.com>
-          attachments: ${{ steps.prepare_logs.outputs.logs }}
-          body: |
-            Hello,
-
-            The build has completed. Please find the attached log file for details.
-
-            Failure:
-            ${{ steps.prepare_logs.outputs.msglogs }}
-
-            Best regards,
-            NuMicro Actions
+                cppcheck-htmlreport --file="$GITHUB_WORKSPACE/cppcheck_report.txt" --report-dir=cppcheck_html --title="BSP-StdDriver MISRA Report"
+                ls -al $GITHUB_WORKSPACE/cppcheck_html
