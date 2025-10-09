@@ -20,114 +20,139 @@ PATH_SCRIPT=`pwd`
 if [ ! -d "${PATH_SCRIPT}/GERRIT/" ]; then mkdir -p "${PATH_SCRIPT}/GERRIT/"; fi
 if [ ! -d "${PATH_SCRIPT}/GITHUB/" ]; then mkdir -p "${PATH_SCRIPT}/GITHUB/"; fi
 
-for BSP in "${BSP_LIST[@]}"; do
+# Read all departments
+DEPTS=$(jq -r 'keys[]' "$JSON_FILE")
 
-  cd ${PATH_SCRIPT}
- 
-  echo "======================================"
-  echo "🔄 Processing $BSP BSP..."
+for dept in $DEPTS; do
 
-  SRC_REPO_URL="${SRC_GIT_BASE}/${BSP}/bsp.git"
-  GERRIT_DIR="${PATH_SCRIPT}/GERRIT/${BSP}BSP"
-  GITHUB_DIR="${PATH_SCRIPT}/GITHUB/${BSP}BSP"
+  # Read the BSP list for this department
+  BSPS=$(jq -r --arg d "$dept" '.[$d][]' "$JSON_FILE")
 
-  if [ ! -d "${GERRIT_DIR}" ]; then 
-      echo "📥 Cloning mirror from $SRC_REPO_URL..."
-      git clone  "$SRC_REPO_URL" "$GERRIT_DIR"
-  else
-      cd ${GERRIT_DIR}
-      git reset --hard HEAD
-      git pull --rebase
-      cd ${PATH_SCRIPT}
-  fi
+  for bsp in $BSPS; do
 
-  rm -rf ${GITHUB_DIR}
-
-  cp -af ${GERRIT_DIR} ${GITHUB_DIR}
-
-  cp -af .github "${GITHUB_DIR}/.github"
-  rm -rf "${GITHUB_DIR}/.github/IAR_Nuvoton"
-
-  cd "${GITHUB_DIR}"
-  # Find and replace
-  NEW_FILE="$PATH_SCRIPT/vcpkg-configuration.json"
-  if [ -f "$NEW_FILE" ]; then
-    find . -type f -name "vcpkg-configuration.json" | while read -r FILE; do
-      echo "Replacing $FILE"
-      echo "cp $NEW_FILE $FILE"
-      cp -af "$NEW_FILE" "$FILE"
-    done
-
-    git add .
-  fi
-
-  git add -f .github/workflows/requirements.txt
-  git add .github && git diff --cached --quiet || git commit -m "Add/update .github folder"
-
-  echo "🧹 Removing Document/*.chm from history..."
-  git filter-repo --path-glob "Document/*.chm" --invert-paths --force
-
-  echo "🧹 Removing _xxxx from history..."
-
-  find . -type d -name '_*'
-  if [[ "$BSP" == M55* ]]; then
-	#git filter-repo \
-	#	--path-glob "Document/*.chm" \
-	#	--path-glob '_*/' \
-	#	--path-glob 'ThirdParty/_tflite_micro_EI' \
-	#	--path-glob 'Library/_*/' \
-	#	--path-glob 'Library/**/_*/' \
-	#	--path-glob 'SampleCode/_*/' \
-	#	--invert-paths --force
-
-	git filter-repo \
-		--path-glob "Document/*.chm" \
-		--path-glob '_*/' \
-		--path-glob 'ThirdParty/_tflite_micro_EI' \
-	  --path-glob 'Library/_*/' \
-		--path-glob 'Library/**/_*/' \
-		--invert-paths --force
-
-  else
-	#git filter-repo \
-	#	--path-glob "Document/*.chm" \
-	#	--path-glob '**/_*/' \
-	#	--path-glob '_*/' \
-	#	--invert-paths --force
-
-	git filter-repo \
-		--path-glob "Document/*.chm" \
-		--path-glob '_*/' \
-		--path-glob 'ThirdParty/_*/' \
-		--path-glob 'ThirdParty/**/_*/' \
-		--path-glob 'Library/_*/' \
-		--path-glob 'Library/**/_*/' \
-		--invert-paths --force
-  fi
+    cd ${PATH_SCRIPT}
   
-  # _ThirdParty miss Workaround
-  if [ -d "${GERRIT_DIR}/_ThirdParty" ]; then
-	  cp -af "${GERRIT_DIR}/_ThirdParty" ${GITHUB_DIR}
-	  git add _ThirdParty
-          git commit -m "Restore _ThirdParty folder"
-  fi
+    echo "======================================"
+    echo "🔄 Processing $bsp BSP..."
 
-  find . -type d -name '_*'
+    SRC_REPO_URL="${SRC_GIT_BASE}/${bsp}/bsp.git"
+    GERRIT_DIR="${PATH_SCRIPT}/GERRIT/${dept}_${bsp}"
+    GITHUB_DIR="${PATH_SCRIPT}/GITHUB/${dept}_${bsp}"
 
-  git reset $(git commit-tree HEAD^{tree} -m "Commit at $(date -u +"%Y-%m-%dT%H:%M:%SZ")") --hard
+    if [ ! -d "${GERRIT_DIR}" ]; then 
+        echo "📥 Cloning mirror from $SRC_REPO_URL..."
+        git clone  "$SRC_REPO_URL" "$GERRIT_DIR"
+    else
+        cd ${GERRIT_DIR}
+        git reset --hard HEAD
 
-  echo "🔗 Setting remote URL to GitHub: $DST_REPO_URL"
-  git remote add github "$DST_REPO_URL"
+        git fetch
+        LOCAL_HASH=$(git rev-parse HEAD)
+        REMOTE_HASH=$(git rev-parse @{u} 2>/dev/null || echo "none")
+        if [ "$REMOTE_HASH" = "none" ]; then
+            echo "⚠️ No upstream branch set for $(basename "$GERRIT_DIR")"
+            continue
+        else
+            if [ "$LOCAL_HASH" = "$REMOTE_HASH" ]; then
+                echo "✅ $bsp is already up to date. will skip the $bsp sync to github."
+                continue
+            else
+                git pull --rebase
+            fi
+        fi
+    fi
 
-  echo "🚀 Pushing cleaned repo to GitHub branch: $TARGET_BRANCH..."
-  TARGET_BRANCH="${BSP}_master"
-  git checkout -B "$TARGET_BRANCH"  # create local branch if needed
+    cd ${PATH_SCRIPT}
 
-  git push -u github HEAD:"$TARGET_BRANCH" -f
+    rm -rf ${GITHUB_DIR}
 
-  cd ${PATH_SCRIPT}
+    cp -af ${GERRIT_DIR} ${GITHUB_DIR}
 
-  echo "✅ Done with $BSP"
+    cp -af .github "${GITHUB_DIR}/.github"
+    rm -rf "${GITHUB_DIR}/.github/IAR_Nuvoton"
+
+    cd "${GITHUB_DIR}"
+    # Find and replace
+    NEW_FILE="$PATH_SCRIPT/vcpkg-configuration.json"
+    if [ -f "$NEW_FILE" ]; then
+      find . -type f -name "vcpkg-configuration.json" | while read -r FILE; do
+        echo "Replacing $FILE"
+        echo "cp $NEW_FILE $FILE"
+        cp -af "$NEW_FILE" "$FILE"
+      done
+
+      git add .
+    fi
+
+    git add -f .github/workflows/requirements.txt
+    git add -f .github && git diff --cached --quiet || git commit -m "Add/update .github folder"
+
+    echo "🧹 Removing Document/*.chm from history..."
+    git filter-repo --path-glob "Document/*.chm" --invert-paths --force
+
+    echo "🧹 Removing _xxxx from history..."
+
+    find . -type d -name '_*'
+    if [[ "$bsp" == M55* ]]; then
+    #git filter-repo \
+    #	--path-glob "Document/*.chm" \
+    #	--path-glob '_*/' \
+    #	--path-glob 'ThirdParty/_tflite_micro_EI' \
+    #	--path-glob 'Library/_*/' \
+    #	--path-glob 'Library/**/_*/' \
+    #	--path-glob 'SampleCode/_*/' \
+    #	--invert-paths --force
+
+    git filter-repo \
+      --path-glob "Document/*.chm" \
+      --path-glob '_*/' \
+      --path-glob 'ThirdParty/_tflite_micro_EI' \
+      --path-glob 'Library/_*/' \
+      --path-glob 'Library/**/_*/' \
+      --invert-paths --force
+
+    else
+    #git filter-repo \
+    #	--path-glob "Document/*.chm" \
+    #	--path-glob '**/_*/' \
+    #	--path-glob '_*/' \
+    #	--invert-paths --force
+
+    git filter-repo \
+      --path-glob "Document/*.chm" \
+      --path-glob '_*/' \
+      --path-glob 'ThirdParty/_*/' \
+      --path-glob 'ThirdParty/**/_*/' \
+      --path-glob 'Library/_*/' \
+      --path-glob 'Library/**/_*/' \
+      --invert-paths --force
+    fi
+    
+    # _ThirdParty miss Workaround
+    if [ -d "${GERRIT_DIR}/_ThirdParty" ]; then
+      cp -af "${GERRIT_DIR}/_ThirdParty" ${GITHUB_DIR}
+      git add _ThirdParty
+            git commit -m "Restore _ThirdParty folder"
+    fi
+
+    find . -type d -name '_*'
+
+    git reset $(git commit-tree HEAD^{tree} -m "Commit at $(date -u +"%Y-%m-%dT%H:%M:%SZ")") --hard
+
+    echo "🔗 Setting remote URL to GitHub: $DST_REPO_URL"
+    git remote add github "$DST_REPO_URL"
+
+    echo "🚀 Pushing cleaned repo to GitHub branch: $TARGET_BRANCH..."
+    TARGET_BRANCH="${dept}_${bsp}"
+    git checkout -B "$TARGET_BRANCH"  # create local branch if needed
+
+    git push -u github HEAD:"$TARGET_BRANCH" -f
+
+    cd ${PATH_SCRIPT}
+
+    echo "✅ Done with $bsp"
+
+  done
 
 done
 

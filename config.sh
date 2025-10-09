@@ -2,8 +2,8 @@
 
 # ---------- Settings ----------
 
-# Board Support Packages to process
-BSP_LIST=("NUC121" "M253" "M251" "M55M1" "M5531" "M3351")
+# JSON file
+JSON_FILE="./bsp_departments.json"
 
 # GitHub repository details, Use personal Access Tokens(PAT)
 # GitHub has deprecated personal password authentication and replaced it with Personal Access Tokens (PATs). 

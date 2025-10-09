@@ -61,7 +61,7 @@ jobs:
           fi
 
       - name: Send mail
-        if: failure()
+        if: failure() && startsWith(github.ref_name, 'MS70') 
         uses: dawidd6/action-send-mail@v5
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}

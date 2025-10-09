@@ -26,7 +26,7 @@ jobs:
         uses: ARM-software/cmsis-actions/armlm@v1     
 
       - name: All Project Check
-        if: startsWith(github.ref_name, 'M55') || startsWith(github.ref_name, 'M33') || startsWith(github.ref_name, 'M2')
+        if: github.ref_name != 'MS70_NUC121'
         shell: bash
         run: |
           echo "Building $GITHUB_REF_NAME"
@@ -69,7 +69,7 @@ jobs:
           fi
 
       - name: Send failure mail
-        if: failure()
+        if: failure() && startsWith(github.ref_name, 'MS70') 
         uses: dawidd6/action-send-mail@v5
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
