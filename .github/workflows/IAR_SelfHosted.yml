@@ -1,10 +1,10 @@
 name: IAR SH Runner building 
 
 on:
-  #push:
-  #  branches-ignore:
-  #    - main
-  #    - master
+  push:
+    branches-ignore:
+      - main
+      - master
   #pull_request:
   #  branches-ignore:
   #    - main
@@ -34,8 +34,8 @@ jobs:
             echo "🎉 All building succeeded!" $REPO_ROOT
           fi
 
-          cd $MISSUDAD_IAR
-          python run.py
+          #cd $MISSUDAD_IAR
+          #python run.py
 
           set -e
 

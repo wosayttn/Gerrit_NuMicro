@@ -40,11 +40,13 @@ if __name__ == "__main__":
                 try:
                     os.chdir(dirPath)
                     BUILDLOG = file + ".log"
+
                     fp = open(BUILDLOG, "w")
 
                     prjName = os.path.splitext(file)[0]
                     buildcommnd = IARBUILD_EXE + " " + file + " -build * -log warnings"
                     subprocess.call(buildcommnd, startupinfo=si, stdout=fp, stderr=fp)
+
                     fp.flush()
                     fp.close()
 

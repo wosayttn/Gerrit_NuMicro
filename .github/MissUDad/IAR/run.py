@@ -39,11 +39,17 @@ if __name__ == "__main__":
                 os.chdir(dirPath)
                 prjName = os.path.splitext(file)[0]
                 print(prjName+' log:\n')
+
                 try:
                     buildcommnd = IARIDEPM_EXE + " " + file
                     p = subprocess.Popen(buildcommnd, startupinfo=si)
                     p.wait(10)
+                except subprocess.TimeoutExpired:
+                    p.kill()
+                except OSError:
+                    pass    #Silently ignore
 
+                try:
                     generalXclPath = os.path.abspath(os.path.join('settings', prjName + '.Release.general.xcl'))
                     driverXclPath  = os.path.abspath(os.path.join('settings', prjName + '.Release.driver.xcl'))
                     cspybatCmd = CSPYBAT_EXE + ' -f \"' + generalXclPath + '\" --backend -f \"' + driverXclPath + '\"'
