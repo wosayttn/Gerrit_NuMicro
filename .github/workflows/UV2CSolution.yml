@@ -1,0 +1,164 @@
+name: UV2CSolution building
+
+on:
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  #pull_request:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Packages on Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip python-is-python3
+          pip install -r "$GITHUB_WORKSPACE/.github/workflows/requirements.txt"
+          sudo wget -O /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 && sudo chmod +x /usr/local/bin/yq && yq --version
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ".github/workflows/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1     
+
+      - name: Activate & Build each csolution
+        shell: bash
+        run: |
+          REPO_ROOT="$GITHUB_WORKSPACE"
+          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_build.sh"
+          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
+
+          mapfile -t solutions < <(find ./SampleCode -name '*.uvprojx')
+
+          declare -a failed_logs=()
+
+          uv2csolution -V
+
+          set +e
+          for uv_path in "${solutions[@]}"; do
+            uv_dir=$(dirname "$uv_path")
+            uv_name=$(basename "$uv_path")
+            log_path="$uv_dir/$uv_name.log"
+            name="${uv_name%.*}"
+            sol_path="$uv_dir/$name.csolution.yml"
+            uvlog_path="$uv_dir/$uv_name.csolution.txt"
+
+            python $REPO_ROOT/.github/workflows/uv2_helper.py "$uv_path"
+            uv2csolution "$uv_path" > "$uvlog_path" 2>&1
+
+            # Get target-types count
+            count=$(yq eval '.solution."target-types" | length' "$sol_path")
+
+            for i in $(seq 0 $((count - 1))); do
+              # Modify it to another with sequence number
+              # yq eval -i ".solution.\"target-types\"[$i].type = \"uv2csolution$i\"" "$sol_path"
+              yq eval -i ".solution.\"target-types\"[$i].optimize = \"size\"" "$sol_path"
+            done
+
+            #cat "$sol_path"
+  
+            # Build & Produce log file
+            $REPO_ROOT/.github/workflows/vcpkg_build.sh "$sol_path" > $log_path
+            ret1=$?
+
+            # Check log file
+            $REPO_ROOT/.github/workflows/vcpkg_blacklist_check.sh $log_path
+            ret2=$?
+
+            if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
+              echo " uv2csolution log: " >> "$log_path"
+              cat "$uvlog_path" >> "$log_path"
+
+              echo "❌ Build failed: $sol_path"
+              echo "🔍 Log:"
+              cat "$log_path"
+
+              # FIXME: avoid INCLIB issue.
+              if grep -q "error: Could not find incbin file" "$log_path"; then
+                echo "ℹ️  Skipping log due to pattern matching in log"
+              else
+                failed_logs+=("$log_path")   # add log into the set
+              fi
+
+            else
+              echo "✅ Build success: $sol_path"
+            fi
+
+          done
+          set -e
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#failed_logs[@]} -ne 0 ]]; then
+            echo "🚨 The following builds failed:"
+            for log in "${failed_logs[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${failed_logs[@]}" | sed 's/,$//' > failed_logs.txt
+            echo "Wrote failed_logs.txt"
+            exit 1
+          else
+            echo "🎉 All builds succeeded!"
+          fi
+
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        if: failure() # only runs if previous step failed
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send mail
+        if: failure()
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
+          to: wclin@nuvoton.com
+          #cc: ${{ secrets.MAIL_CC }}
+          from: Github Action Workflow <wosayttn@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          body: |
+            Hello,
+
+            The build has completed. Please find the attached log file for details.
+
+            Failure:
+            ${{ steps.prepare_logs.outputs.msglogs }}
+
+            Best regards,
+            NuMicro Actions
+
+      - name: Collect artifacts with directory structure
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/
