@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # JSON file
-JSON_FILE="bsp_departments.json"
+JSON_FILE="dept_bsp.json"
 
 # Read all departments
 departments=$(jq -r 'keys[]' "$JSON_FILE")

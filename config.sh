@@ -3,7 +3,7 @@
 # ---------- Settings ----------
 
 # JSON file
-JSON_FILE="./bsp_departments.json"
+JSON_FILE="./dept_bsp.json"
 
 # GitHub repository details, Use personal Access Tokens(PAT)
 # GitHub has deprecated personal password authentication and replaced it with Personal Access Tokens (PATs). 
@@ -15,7 +15,7 @@ JSON_FILE="./bsp_departments.json"
 #     Settings > < >Developer settings > Personal access tokens > Tokens (classic) > Generate new token
 # For security reasons, avoid hardcoding the token directly in scripts. Instead, consider using environment
 # Make sure to grant the necessary permissions to the token, such as repo access for private repositories.
-GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GITHUB_TOKEN="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # GitHub repository to push to
 GITHUB_REPO="wosayttn/Gerrit_NuMicro"
