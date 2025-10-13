@@ -17,15 +17,34 @@ jobs:
           sudo apt-get update
           sudo apt install -y clang-20 cmake ninja-build
 
-      - name: download & setup clang-tidy-automotive
+      - name: Cache clang-tidy-automotive build
+        uses: actions/cache@v4
+        with:
+          path: /opt/clang-tidy-automotive/
+          key: clang-tidy-automotive-${{ runner.os }}
+
+      - name: Setup clang-tidy-automotive
         shell: bash
         run: |
-          cd /opt
-          git clone https://github.com/PeterHallonmark/clang-tidy-automotive.git
-          cd clang-tidy-automotive
-          ./download.sh
-          ./setup.sh
-          ./configure.sh
-          ./build.sh
+          set -euxo pipefail
 
-          /opt/clang-tidy-automotive/build/bin/clang-tidy --version
+          # Clone clang-tidy-automotive (only if not already cached)
+          if [ ! -d /opt/clang-tidy-automotive ]; then
+            git clone --depth=1 https://github.com/PeterHallonmark/clang-tidy-automotive.git /opt/clang-tidy-automotive
+
+            cd /opt/clang-tidy-automotive
+            ./download.sh > /dev/null
+            ./setup.sh > /dev/null
+            ./configure.sh > /dev/null
+            ./build.sh
+          fi
+
+          cd /opt/clang-tidy-automotive
+          # Verify clang-tidy-automotive build
+          echo "=== clang-tidy-automotive version ==="
+          ./build/bin/clang-tidy --version
+
+          echo "=== Run automotive rule sample test ==="
+          ./build/bin/clang-tidy \
+            --checks="automotive-avoid-goto" \
+            test/checkers/automotive/statement/avoid-goto.c -- 
