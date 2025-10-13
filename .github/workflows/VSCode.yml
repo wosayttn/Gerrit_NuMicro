@@ -1,4 +1,4 @@
-name: VSCode building
+name: VSCode
 
 on:
   push:

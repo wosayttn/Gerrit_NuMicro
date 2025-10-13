@@ -1,4 +1,4 @@
-name: IAR SH Runner building 
+name: IAR
 
 on:
   push:

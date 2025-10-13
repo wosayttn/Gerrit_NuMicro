@@ -1,4 +1,4 @@
-name: MDK5 SH Runner building
+name: MDK5
 
 on:
   push:

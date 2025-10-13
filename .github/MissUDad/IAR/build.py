@@ -3,13 +3,32 @@ import sys
 import subprocess
 import fnmatch
 import traceback
+import xml.etree.ElementTree as ET
 import sys
 sys.path.append(os.path.join(os.path.dirname(os.getcwd())))
 import missudad
 
 PROJ_FOLDER_NAME = missudad.PROJ_FOLDER_NAME
 IP_LIST=missudad.IP_LIST
-IARBUILD_EXE=missudad.IARBUILD_EXE
+
+def get_toolchain_path(PRJ_EWP):
+    tree = ET.parse(PRJ_EWP)
+    root = tree.getroot()
+
+    # Search for <option> tags
+    for option in root.findall(".//option"):
+        name_elem = option.find("name")
+        state_elem = option.find("state")
+        if name_elem is not None and name_elem.text == "OGProductVersion":
+            if state_elem is not None:
+                version = state_elem.text.strip()
+                if version.startswith('8'):
+                    return missudad.IAR8BUILD_EXE
+                elif version.startswith('9'):
+                    return missudad.IAR9BUILD_EXE
+                break
+
+    return missudad.IAR9BUILD_EXE
 
 if __name__ == "__main__":
 
@@ -44,7 +63,7 @@ if __name__ == "__main__":
                     fp = open(BUILDLOG, "w")
 
                     prjName = os.path.splitext(file)[0]
-                    buildcommnd = IARBUILD_EXE + " " + file + " -build * -log warnings"
+                    buildcommnd = get_toolchain_path(file) + " " + file + " -build * -log warnings"
                     subprocess.call(buildcommnd, startupinfo=si, stdout=fp, stderr=fp)
 
                     fp.flush()
