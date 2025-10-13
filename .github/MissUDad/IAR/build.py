@@ -69,9 +69,11 @@ if __name__ == "__main__":
                             found += 1
 
                     if total_conf == 0 or (total_conf > 0 and found != 2*total_conf):
-                        err += 1
-                        f.write(os.path.abspath(BUILDLOG) + "\n")
+                        if err > 0:
+                            f.write(",")
+                        f.write(os.path.abspath(BUILDLOG))                            
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.", flush=True)
+                        err += 1
                     else:
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
 

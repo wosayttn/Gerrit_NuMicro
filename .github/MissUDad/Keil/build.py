@@ -71,20 +71,20 @@ if __name__ == "__main__":
                             found = 1
 
                     if found == 0:
-                        err += 1
-                        f.write(os.path.abspath(BUILDLOG) + "\n")
+                        if err > 0:
+                            f.write(",")
+                        f.write(os.path.abspath(BUILDLOG))                            
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.", flush=True)
+                        err += 1
                     else:
                         print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
 
                 except subprocess.TimeoutExpired:
                     p.kill()
                     print("[" + str(prj_count) + "] "+ "Build" + file +  " has timeout expired exception.", flush=True)
-                    err += 1
 
                 except Exception as e:
                     print("[" + str(prj_count) + "] "+ "Build" + file +  " has other exception.", flush=True)
-                    err += 1
 
                 except OSError:
                     print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Oops.", flush=True)
