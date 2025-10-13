@@ -46,7 +46,7 @@ jobs:
 
           echo "=== Run automotive rule sample test ==="
           ./build/bin/clang-tidy \
-            --checks="automotive-avoid-goto" \
+            --checks="automotive-*" \
             test/checkers/automotive/statement/avoid-goto.c -- 
 
       - name: clang-tidy checking
@@ -58,7 +58,7 @@ jobs:
 
               echo "🧩 BSP_SERIES=$BSP_SERIES"
               cd $GITHUB_WORKSPACE
-              find Library -type f "*.c" | while read -r file; do
-                $CLANG_TIDY --checks="automotive-avoid-goto" "$file" -- $INCLUDE_PATHS
+              find Library -type f -name "*.c" | while read -r file; do
+                $CLANG_TIDY --checks="automotive-*" "$file" -- $INCLUDE_PATHS
               done
 
