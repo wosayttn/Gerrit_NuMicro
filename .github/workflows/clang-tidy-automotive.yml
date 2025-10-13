@@ -1,0 +1,31 @@
+name: clang-tidy-automotive
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clang-tidy:
+    name: clang-tidy-automotive
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: dependency installation
+        run: |
+          sudo apt-get update
+          sudo apt install -y clang-20 cmake ninja-build
+
+      - name: download & setup clang-tidy-automotive
+        shell: bash
+        run: |
+          cd /opt
+          git clone https://github.com/PeterHallonmark/clang-tidy-automotive.git
+          cd clang-tidy-automotive
+          ./download.sh
+          ./setup.sh
+          ./configure.sh
+          ./build.sh
+
+          /opt/clang-tidy-automotive/build/bin/clang-tidy --version
