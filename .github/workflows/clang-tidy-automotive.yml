@@ -54,7 +54,7 @@ jobs:
         run: |
               CLANG_TIDY="/opt/clang-tidy-automotive/build/bin/clang-tidy"
               BSP_SERIES=$(ls $GITHUB_WORKSPACE/Library/Device/Nuvoton/ | head -n 1)
-              INCLUDE_PATHS="-I "$GITHUB_WORKSPACE/Library/CMSIS/Core/Include/ -I $GITHUB_WORKSPACE/Library/Device/Nuvoton/$BSP_SERIES/Include/ -I $GITHUB_WORKSPACE/Library/StdDriver/inc/"
+              INCLUDE_PATHS="-I $GITHUB_WORKSPACE/Library/CMSIS/Core/Include/ -I $GITHUB_WORKSPACE/Library/Device/Nuvoton/$BSP_SERIES/Include/ -I $GITHUB_WORKSPACE/Library/StdDriver/inc/"
 
               echo "🧩 BSP_SERIES=$BSP_SERIES"
               cd $GITHUB_WORKSPACE
