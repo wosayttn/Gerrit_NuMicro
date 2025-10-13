@@ -38,7 +38,7 @@ jobs:
               cppcheck --version
 
               cd $GITHUB_WORKSPACE
-              cp -af $MISSUDAD_MISRA_RULE .
+              #cp -af $MISSUDAD_MISRA_RULE .
               cppcheck --enable=all --inconclusive --std=c99 --addon="$MISSUDAD_MISRA_JSON" -j 8 --force \
                 --output-file="$GITHUB_WORKSPACE/cppcheck_report.txt" --xml --xml-version=2 \
                 --checkers-report="$GITHUB_WORKSPACE/misra.log" \
@@ -50,6 +50,8 @@ jobs:
                 -I "$GITHUB_WORKSPACE/Library/Device/Nuvoton/$BSP_SERIES/Include/" \
                 -I "$GITHUB_WORKSPACE/Library/StdDriver/inc/" \
                 $GITHUB_WORKSPACE/Library/StdDriver/src/
+
+                cat $GITHUB_WORKSPACE/misra.log
 
       - name: cppcheck-htmlreport
         shell: bash

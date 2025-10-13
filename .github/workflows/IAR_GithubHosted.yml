@@ -1,10 +1,10 @@
 name: IAR GH Runner building 
 
 on:
-  #push:
-  #  branches-ignore:
-  #    - main
-  #    - master
+  push:
+    branches-ignore:
+      - main
+      - master
   #pull_request:
   #  branches-ignore:
   #    - main
@@ -138,7 +138,8 @@ jobs:
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: ${{ secrets.MAIL_TO }}
+          to: wclin@nuvoton.com
+          #to: ${{ secrets.MAIL_TO }}
           #cc: ${{ secrets.MAIL_CC }}
           from: Github Action Workflow <wosayttn@gmail.com>
           attachments: ${{ steps.prepare_logs.outputs.logs }}
