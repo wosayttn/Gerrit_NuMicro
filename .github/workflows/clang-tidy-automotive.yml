@@ -1,0 +1,105 @@
+name: clang-tidy-automotive
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clang-tidy:
+    name: clang-tidy-automotive
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: dependency installation
+        run: |
+          sudo apt-get update
+          sudo apt install -y clang-20 cmake ninja-build
+
+      - name: Cache clang-tidy-automotive build
+        uses: actions/cache@v4
+        with:
+          path: /opt/clang-tidy-automotive/
+          key: clang-tidy-automotive-${{ runner.os }}
+
+      - name: Setup clang-tidy-automotive
+        shell: bash
+        run: |
+          set -euxo pipefail
+
+          # Clone clang-tidy-automotive (only if not already cached)
+          if [ ! -d /opt/clang-tidy-automotive ]; then
+            git clone --depth=1 https://github.com/PeterHallonmark/clang-tidy-automotive.git /opt/clang-tidy-automotive
+
+            cd /opt/clang-tidy-automotive
+            ./download.sh  > /dev/null 2>&1
+            ./setup.sh     > /dev/null 2>&1
+            ./configure.sh > /dev/null 2>&1
+            ./build.sh
+          fi
+
+          cd /opt/clang-tidy-automotive
+          # Verify clang-tidy-automotive build
+          echo "=== clang-tidy-automotive version ==="
+          ./build/bin/clang-tidy --version
+
+          echo "=== Run automotive rule sample test ==="
+          ./build/bin/clang-tidy \
+            --checks="automotive-*" \
+            test/checkers/automotive/statement/avoid-goto.c -- 
+
+      - name: clang-tidy checking
+        shell: bash
+        run: |
+          CLANG_TIDY_AUTOMOTIVE="/opt/clang-tidy-automotive/"
+          CLANG_TIDY_BIN="/opt/clang-tidy-automotive/build/bin/clang-tidy"
+          BSP_SERIES=$(ls $GITHUB_WORKSPACE/Library/Device/Nuvoton/ | head -n 1)
+          INCLUDE_PATHS="-I $GITHUB_WORKSPACE/Library/CMSIS/Core/Include/ -I $GITHUB_WORKSPACE/Library/Device/Nuvoton/$BSP_SERIES/Include/ -I $GITHUB_WORKSPACE/Library/StdDriver/inc/"
+
+          cd $GITHUB_WORKSPACE
+          mapfile -t solutions < <(find ./Library/StdDriver/src -name '*.c')
+          declare -a failed_logs=()
+
+          echo "🧩 BSP_SERIES=$BSP_SERIES"
+          cd $CLANG_TIDY_AUTOMOTIVE
+
+          set +e
+          for file_path in "${solutions[@]}"; do
+
+            dir=$(dirname "$file_path")
+            sol_name=$(basename "$file_path")
+            log_path="$dir/$sol_name.clang-tidy-automotive.log"
+
+            $CLANG_TIDY_BIN --checks="automotive-*" \
+                            --header-filter='.*' \
+                            --quiet \
+                            "$file_path" \
+                            -- \
+                            $INCLUDE_PATHS > log_path
+            ret=$?
+
+            if [[ $ret -ne 0 ]]; then
+              echo "❌ Clang-tidy failed: $sol_path"
+              echo "🔍 Log:"
+              cat "$log_path"
+
+              failed_logs+=("$log_path")   # add log into the set
+            fi
+
+          done
+
+          set -e
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#failed_logs[@]} -ne 0 ]]; then
+            echo "🚨 The following builds failed:"
+            for log in "${failed_logs[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${failed_logs[@]}" | sed 's/,$//' > "$GITHUB_WORKSPACE/failed_logs.txt"
+            echo "Wrote failed_logs.txt"
+            exit 1
+          else
+            echo "🎉 All check succeeded!"
+          fi
