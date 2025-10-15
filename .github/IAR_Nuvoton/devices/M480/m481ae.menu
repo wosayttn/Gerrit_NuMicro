@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M481AE series</tag>
+  <display>Nuvoton M480AE series (M481AE,M482AE,M483AE,M484AE,M485AE,M487AE)</display>
+  <data>$CUR_DIR$\M481AE.i79</data>
+</optionMenuItem>
+
