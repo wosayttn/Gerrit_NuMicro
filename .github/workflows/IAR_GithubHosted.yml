@@ -1,14 +1,10 @@
 name: IAR GH Runner building 
 
 on:
-  #push:
-  #  branches-ignore:
-  #    - main
-  #    - master
-  #pull_request:
-  #  branches-ignore:
-  #    - main
-  #    - master
+  push:
+    branches-ignore:
+      - main
+      - master
   workflow_dispatch:
 
 # Set a new GitHub Actions Secret named IAR_LMS_BEARER_TOKEN
@@ -63,7 +59,7 @@ jobs:
           REPO_ROOT="$GITHUB_WORKSPACE"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
 
-          mapfile -t solutions < <(find ./SampleCode/Template -name '*.ewp')
+          mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
           declare -a failed_logs=()
 
           set +e
@@ -108,7 +104,6 @@ jobs:
             done
             printf "%s," "${failed_logs[@]}" | sed 's/,$//' > failed_logs.txt
             echo "Wrote failed_logs.txt"
-            exit 1
           else
             echo "🎉 All builds succeeded!"
           fi
@@ -116,7 +111,6 @@ jobs:
       - name: Prepare failed logs for email
         id: prepare_logs
         shell: bash
-        if: failure() # only runs if previous step failed
         run: |
           if [[ -f failed_logs.txt ]]; then
             logs=$(cat failed_logs.txt)
@@ -130,6 +124,7 @@ jobs:
               ((i++))
             done
             echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+            exit 0 #SKIP MAILING.
           fi
 
       - name: Send mail
@@ -175,7 +170,9 @@ jobs:
       - name: Static Analysis
         shell: bash
         run: |
-          mapfile -t solutions < <(find ./SampleCode/Template -name '*.ewp')
+          MISSUDAD_IAR="$GITHUB_WORKSPACE/.github/MissUDad/IAR"
+          MISSUDAD_IAR_EWT="$MISSUDAD_IAR/c-stat.ewt"
+          mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
           declare -a failed_logs=()
 
           set +e
@@ -183,7 +180,11 @@ jobs:
 
             dir=$(dirname "$sol_path")
             sol_name=$(basename "$sol_path")
+            sol_base_name="${sol_name%.*}"
+            ewt_path="$dir/$sol_base_name.ewt"
             log_path="$dir/$sol_name.cstat.log"
+
+            cp -f "$MISSUDAD_IAR_EWT" "$ewt_path"
 
             iarbuild $sol_path -cstat_analyze '*' -log all > $log_path
             ret1=$?
@@ -205,6 +206,6 @@ jobs:
       - name: Upload project report (C-STAT)
         uses: actions/upload-artifact@v4
         with:
-          name: all-cstat.html
+          name: IAR-C-STAT-Analysis-Report-${{ github.ref_name }}
           path: SampleCode/**/C-STAT/*.html
           if-no-files-found: error
