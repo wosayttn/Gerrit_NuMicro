@@ -1,10 +1,10 @@
 name: IAR GH Runner building 
 
 on:
-  push:
-    branches-ignore:
-      - main
-      - master
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
   workflow_dispatch:
 
 # Set a new GitHub Actions Secret named IAR_LMS_BEARER_TOKEN
