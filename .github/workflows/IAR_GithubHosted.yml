@@ -17,7 +17,7 @@ jobs:
   build-project:
     name: Build project
     runs-on: ubuntu-latest
-    container: ghcr.io/iarsystems/arm:9.60.4-st
+    container: ghcr.io/iarsystems/arm:9.70.1-base
     steps:
       - uses: actions/checkout@v4
         with:
@@ -164,7 +164,7 @@ jobs:
     name: Static Code Analysis
     needs: build-project
     runs-on: ubuntu-latest
-    container: ghcr.io/iarsystems/arm:9.60.4-st
+    container: ghcr.io/iarsystems/arm:9.70.1-base
     steps:
       - uses: actions/checkout@v4
       - name: Static Analysis

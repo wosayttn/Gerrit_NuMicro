@@ -13,7 +13,7 @@ on:
 
 jobs:
   CppCheck:
-    name: MISRA Analysis
+    name: MISRA-C Static Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

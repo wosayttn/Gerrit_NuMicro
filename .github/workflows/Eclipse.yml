@@ -14,55 +14,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    container:
+      image: ghcr.io/wosayttn/numicro-cicd:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      # ---------- Cache toolchains & Eclipse ----------
-      - name: Cache ARM Toolchains & Eclipse
-        uses: actions/cache@v4
-        with:
-          path: |
-            gcc-arm-none-eabi-10.3-2021.10
-            gcc-arm-10.3-2021.07-*
-            eclipse-cdt
-          key: toolchains-eclipse-v1
-
-      - name: Install dependencies (Linux)
-        shell: bash
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget unzip default-jre make
-
-          if [ ! -d gcc-arm-none-eabi-10.3-2021.10 ]; then
-            echo "🌍 Downloading arm-none-eabi-toolchain for Linux x64"
-            wget -q https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
-            tar -jxf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2
-          fi
-          echo "$PWD/gcc-arm-none-eabi-10.3-2021.10/bin" >> $GITHUB_PATH
-
-          if [ ! -d gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf ]; then
-            echo "🌍 Downloading aarch64-elf-toolchain for Linux x64"
-            wget -q https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf.tar.xz
-            tar -xf gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf.tar.xz
-          fi
-          echo "$PWD/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf/bin" >> $GITHUB_PATH
-
-          if [ ! -d eclipse-cdt ]; then
-            echo "🌍 Downloading Eclipse for Linux"
-            wget -q -O NuEclipse.tar.gz --no-check-certificate https://www.nuvoton.com/resource-download.jsp?tp_GUID=SW132023052507200264
-            tar -xzf NuEclipse.tar.gz
-            mv NuEclipse_V1.02.029_Linux_Setup/eclipse ./eclipse-cdt
-          fi
-
       - name: Build all Eclipse projects
         shell: bash
         run: |
           REPO_ROOT="$GITHUB_WORKSPACE"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"         
+
+          export PATH="/opt/eclipse-cdt/:/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf/bin:/opt/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/bin:$PATH"
+          echo $PATH
 
           echo "✅ Version check"
           arm-none-eabi-gcc --version
@@ -81,7 +52,7 @@ jobs:
             mkdir -p "$GITHUB_WORKSPACE/workspace"
 
             #echo "🔨 Building $dir on $RUNNER_OS"
-            timeout 5m ./eclipse-cdt/eclipse \
+            timeout 5m eclipse \
               -nosplash \
               -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
               -data "$GITHUB_WORKSPACE/workspace" \

@@ -4,33 +4,47 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  Code-Analysis:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build IAR projects
+      - name: Code analysis
         shell: bash
         run: |
-          CODE_ANALYSIS="D:\code-analysis"
+          CODE_ANALYSIS="D:/code-analysis"
           CODE_ANALYSIS_SCRIPT="$GITHUB_WORKSPACE/_Script/"
+          CODE_ANALYSIS_REPORT="$CODE_ANALYSIS_SCRIPT/code-analysis/output/code-analysis-report.zip"
 
           set +e
           mkdir -p "$GITHUB_WORKSPACE/_Script/"
-          cp -af "$CODE_ANALYSIS"  $CODE_ANALYSIS_SCRIPT
-
+          cp -af "$CODE_ANALYSIS" $CODE_ANALYSIS_SCRIPT
           cd "$CODE_ANALYSIS_SCRIPT/code-analysis"
-          python code-analysis.py
-          retc=$?
-          if [ $retc -ne 0 ]; then
-            echo "❌ Build Failed:"
-          else
-            echo "🎉 Code analysis succeeded!"
+          ./code-analysis.sh
+          if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
+            echo "$CODE_ANALYSIS_REPORT" > $GITHUB_WORKSPACE/failed_logs.txt
           fi
-
           set -e
 
-          exit $retc
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        if: failure() # only runs if previous step failed
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
 
       - name: Send mail
         if: failure() && startsWith(github.ref_name, 'MS70') 
@@ -46,7 +60,7 @@ jobs:
           body: |
             Hello,
 
-            The  has completed. Please find the attached log file for details.
+            The analysis has completed. Please find the attached log file for details.
 
             Best regards,
             NuMicro Actions
