@@ -1,0 +1,52 @@
+name: Code Analysis
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build IAR projects
+        shell: bash
+        run: |
+          CODE_ANALYSIS="D:\code-analysis"
+          CODE_ANALYSIS_SCRIPT="$GITHUB_WORKSPACE/_Script/"
+
+          set +e
+          mkdir -p "$GITHUB_WORKSPACE/_Script/"
+          cp -af "$CODE_ANALYSIS"  $CODE_ANALYSIS_SCRIPT
+
+          cd "$CODE_ANALYSIS_SCRIPT/code-analysis"
+          python code-analysis.py
+          retc=$?
+          if [ $retc -ne 0 ]; then
+            echo "❌ Build Failed:"
+          else
+            echo "🎉 Code analysis succeeded!"
+          fi
+
+          set -e
+
+          exit $retc
+
+      - name: Send mail
+        if: failure() && startsWith(github.ref_name, 'MS70') 
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
+          to: wclin@nuvoton.com
+          #to: ${{ secrets.MAIL_TO }}
+          #cc: ${{ secrets.MAIL_CC }}
+          from: Github Action Workflow <wosayttn@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          body: |
+            Hello,
+
+            The  has completed. Please find the attached log file for details.
+
+            Best regards,
+            NuMicro Actions
