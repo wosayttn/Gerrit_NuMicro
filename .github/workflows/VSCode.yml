@@ -38,7 +38,10 @@ jobs:
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_build.sh"
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
 
-          mapfile -t solutions < <(find ./SampleCode -name '*.csolution.yml')
+          mapfile -t solutions < <(
+            find ./SampleCode -type f -name '*.csolution.yml' \
+            -not -path '*/_CMSIS-Pack/*'
+          )
 
           declare -a failed_logs=()
 
