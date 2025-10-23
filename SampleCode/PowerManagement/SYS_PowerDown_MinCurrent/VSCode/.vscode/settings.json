@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\mcchang2\\Desktop\\BSP_Temp\\M3351\\bsp_20250924\\SampleCode\\PowerManagement\\SYS_PowerDown_MinCurrent\\VSCode\\out\\SYS_PowerDown_MinCurrent\\ARMCLANG\\Release"
+    ]
+}
