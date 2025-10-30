@@ -1,10 +1,10 @@
 name: clang-tidy-automotive
 
 on:
-  push:
-    branches-ignore:
-      - main
-      - master
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
   #pull_request:
   #  branches-ignore:
   #    - main

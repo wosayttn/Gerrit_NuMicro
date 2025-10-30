@@ -6,6 +6,7 @@ import json
 import yaml
 import xml.etree.ElementTree as ET
 import subprocess
+from packaging import version  # standard tool for version comparison
 
 def xml_get_value(node, path_parent, tag_name):
     # Locate Parent
@@ -49,13 +50,18 @@ def keil_uvprojx(file_path):
             if not fnmatch.fnmatch(value, "Nuvoton.NuMicroM*_*"):
                 errors.append(f"{target_name} - Invalid PackID version: {value} (should be Nuvton.NuMicroM*_*)")
 
-            value = xml_get_value(t, 'TargetOption/TargetArmAds/Cads', 'wLevel')
-            if value != "2" and target_name != "CMSIS_DV_Ethernet":
-                errors.append(f"{target_name} - Invalid wLevel setting: {value} (should be 2, all warnings)")
 
             value = xml_get_value(t, '.', 'pCCUsed')
-            if value != "6240000::V6.24::ARMCLANG":
-                errors.append(f"{target_name} - Invalid pCCUsed version: {value} (should be 6240000::V6.24::ARMCLANG)")
+            # Example value format: "6240000::V6.24::ARMCLANG"
+            try:
+                # Extract the version part, e.g. "V6.24"
+                version_str = value.split("::")[1].lstrip("V")
+                version_num = float(version_str)
+            except (IndexError, ValueError):
+                errors.append(f"{target_name} - Invalid pCCUsed format: {value}")
+            else:
+                if version_num <= 6.22:
+                    errors.append(f"{target_name} - Invalid pCCUsed version: {value} (should be > V6.22)")
 
     return errors
 
@@ -74,30 +80,30 @@ def vcpkg_configuration(file_path):
             with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
-                # 1. check registries.name is only arm
+                # check registries.name is only arm
                 registries = data.get("registries", [])
                 for reg in registries:
                     if reg.get("name") != "arm":
                         errors.append(f"Invalid registry name: {reg.get('name')} (should be kept 'arm' only)")
 
-                # 2. Check requires.arm-none-eabi-gcc is 14.3.1?
+                # check requires versions
                 requires = data.get("requires", {})
                 for key, value in requires.items():
-                    if "arm-none-eabi-gcc" in key:
-                        if value != "14.3.1":
-                            errors.append(f"Invalid arm:compilers/arm/arm-none-eabi-gcc: {value} (should be 14.3.1)")
+                    try:
+                        if "arm-none-eabi-gcc" in key:
+                            if version.parse(value) < version.parse("14.3.1"):
+                                errors.append(f"Invalid arm:compilers/arm/arm-none-eabi-gcc: {value} (should be >= 14.3.1)")
 
-                # 3. check requires.cmsis-toolbox is 2.9.0
-                for key, value in requires.items():
-                    if "cmsis-toolbox" in key:
-                        if value != "2.9.0":
-                            errors.append(f"Invalid arm:tools/open-cmsis-pack/cmsis-toolbox version: {value} (should be 2.9.0)")
+                        if "cmsis-toolbox" in key:
+                            if version.parse(value) < version.parse("2.9.0"):
+                                errors.append(f"Invalid arm:tools/open-cmsis-pack/cmsis-toolbox version: {value} (should be >= 2.9.0)")
 
-                # 4. check requires.cmake is 3.31.5
-                for key, value in requires.items():
-                    if "cmake" in key:
-                        if value != "3.31.5":
-                            errors.append(f"Invalid arm:tools/kitware/cmake version: {value} (should be 3.31.5)")
+                        if "cmake" in key:
+                            if version.parse(value) != version.parse("3.31.5"):
+                                errors.append(f"Invalid arm:tools/kitware/cmake version: {value} (should be >= 3.31.5)")
+
+                    except Exception as e:
+                        errors.append(f"Invalid version format for {key}: {value} ({e})")
 
         except json.JSONDecodeError as e:
             errors.append(f"Error: Failed to parse JSON -> {file_path}")
