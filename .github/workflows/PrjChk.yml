@@ -2,13 +2,11 @@ name: Project Checking
 
 on:
   push:
-    branches-ignore:
-      - main
-      - master
+    branches:
+      - MS70*
   #pull_request:
-  #  branches-ignore:
-  #    - main
-  #    - master
+  #  branches:
+  #   - MS70*
   workflow_dispatch:
 
 jobs:
@@ -26,7 +24,6 @@ jobs:
         uses: ARM-software/cmsis-actions/armlm@v1     
 
       - name: All Project Check
-        if: github.ref_name != 'MS70_NUC121'
         shell: bash
         run: |
           echo "Building $GITHUB_REF_NAME"
@@ -34,7 +31,7 @@ jobs:
           echo "Building $REPO_ROOT"
 
           set +e
-          log_path="all.log"
+          log_path="failed_logs.txt"
           check_folder_path="$REPO_ROOT/SampleCode"
           python3 $REPO_ROOT/.github/workflows/validate.py $check_folder_path > $log_path
           retc=$?
@@ -54,12 +51,12 @@ jobs:
         shell: bash
         if: failure()
         run: |
-          if [[ -f all.log ]]; then
+          if [[ -f failed_logs.txt ]]; then
             numbered_logs=""
             # Read line by line instead of splitting on commas
             while IFS= read -r line; do
               numbered_logs+="$line"$'\n'
-            done < all.log
+            done < failed_logs.txt
 
             {
               echo "msglogs<<EOF"
@@ -69,7 +66,7 @@ jobs:
           fi
 
       - name: Send failure mail
-        if: failure() && startsWith(github.ref_name, 'MS70') 
+        if: failure()
         uses: dawidd6/action-send-mail@v5
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
