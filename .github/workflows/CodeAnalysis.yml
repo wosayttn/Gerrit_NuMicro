@@ -1,6 +1,9 @@
 name: Code Analysis
 
 on:
+  push:
+    branches:
+      - MS70_M3351
   workflow_dispatch:
 
 jobs:
@@ -25,7 +28,6 @@ jobs:
       - name: Prepare failed logs for email
         id: prepare_logs
         shell: bash
-        if: failure() # only runs if previous step failed
         run: |
           if [[ -f failed_logs.txt ]]; then
             logs=$(cat failed_logs.txt)
