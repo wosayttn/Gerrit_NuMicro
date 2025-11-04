@@ -13,18 +13,13 @@ jobs:
         shell: bash
         run: |
           CODE_ANALYSIS="D:/code-analysis"
-          CODE_ANALYSIS_SCRIPT="$GITHUB_WORKSPACE/_Script/"
-          CODE_ANALYSIS_REPORT="$CODE_ANALYSIS_SCRIPT/code-analysis/output/code-analysis-report.zip"
+          CODE_ANALYSIS_REPORT="$GITHUB_WORKSPACE/output/code-analysis-report.zip"
 
-          set +e
-          mkdir -p "$GITHUB_WORKSPACE/_Script/"
-          cp -af "$CODE_ANALYSIS" $CODE_ANALYSIS_SCRIPT
-          cd "$CODE_ANALYSIS_SCRIPT/code-analysis"
-          ./code-analysis.sh
+          cd "$CODE_ANALYSIS"
+          python code-analysis.py $GITHUB_WORKSPACE
           if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
             echo "$CODE_ANALYSIS_REPORT" > $GITHUB_WORKSPACE/failed_logs.txt
           fi
-          set -e
 
       - name: Prepare failed logs for email
         id: prepare_logs
