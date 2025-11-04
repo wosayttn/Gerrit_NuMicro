@@ -16,7 +16,8 @@ jobs:
           CODE_ANALYSIS_REPORT="$GITHUB_WORKSPACE/output/code-analysis-report.zip"
 
           cd "$CODE_ANALYSIS"
-          python code-analysis.py $GITHUB_WORKSPACE
+          pip install -r requirements.txt
+          python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
           if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
             echo "$CODE_ANALYSIS_REPORT" > $GITHUB_WORKSPACE/failed_logs.txt
           fi
