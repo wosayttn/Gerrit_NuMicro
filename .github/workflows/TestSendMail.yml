@@ -21,10 +21,14 @@ jobs:
           exit 1   # <-- Mark job as failed
 
       - name: Send mail
-        if: failure()   # <-- Only runs when previous failed
+        if: failure()
         uses: ./.github/actions/send-mail
         with:
           mail-connection: ${{ secrets.MAIL_CONNECTION }}
-          mail-to: wclin@nuvoton.com
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: wclin@nuvoton.com
           workflow-name: ${{ github.workflow }}
           ref-name: ${{ github.ref_name }}
