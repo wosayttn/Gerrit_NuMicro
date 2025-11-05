@@ -43,7 +43,7 @@ jobs:
             -not -path '*/_CMSIS-Pack/*'
           )
 
-          declare -a failed_logs=()
+          declare -a attachments=()
 
           set +e
           for sol_path in "${solutions[@]}"; do
@@ -63,7 +63,7 @@ jobs:
               echo "❌ Build failed: $sol_path"
               echo "🔍 Log:"
               cat "$log_path"
-              failed_logs+=("$log_path")   #add log into the set.
+              attachments+=("$log_path")   #add log into the set.
             else
               echo "✅ Build success: $sol_path"
             fi
@@ -72,57 +72,25 @@ jobs:
           set -e
 
           # List all the paths of failed logs at the end (if any)
-          if [[ ${#failed_logs[@]} -ne 0 ]]; then
+          if [[ ${#attachments[@]} -ne 0 ]]; then
             echo "🚨 The following builds failed:"
-            for log in "${failed_logs[@]}"; do
+            for log in "${attachments[@]}"; do
               echo "  - $log"
             done
-            printf "%s," "${failed_logs[@]}" | sed 's/,$//' > failed_logs.txt
-            echo "Wrote failed_logs.txt"
+            printf "%s," "${attachments[@]}" | sed 's/,$//' > attachments.txt
+            echo "Wrote attachments.txt"
             exit 1
           else
             echo "🎉 All builds succeeded!"
           fi
 
-      - name: Prepare failed logs for email
-        id: prepare_logs
-        shell: bash
-        if: failure() # only runs if previous step failed
-        run: |
-          if [[ -f failed_logs.txt ]]; then
-            logs=$(cat failed_logs.txt)
-            echo "logs=$logs" >> "$GITHUB_OUTPUT"
-
-            numbered_logs=""
-            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
-            i=1
-            for log in "${logs[@]}"; do
-              numbered_logs+="[$i] $log\n"
-              ((i++))
-            done
-            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Send mail
-        if: failure() && startsWith(github.ref_name, 'MS70') 
-        uses: dawidd6/action-send-mail@v5
+        if: failure()   # <-- Only runs when previous failed
+        uses: ./.github/actions/send-mail
         with:
-          connection_url: ${{ secrets.MAIL_CONNECTION }}
-          subject: "${{ github.workflow }} | ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}"
-          to: ${{ secrets.MAIL_TO }}
-          #cc: ${{ secrets.MAIL_CC }}
-          from: Github Action Workflow <wosayttn@gmail.com>
-          attachments: ${{ steps.prepare_logs.outputs.logs }}
-          body: |
-            Hello,
-
-            The build has completed. Please find the attached log file for details.
-
-            Failure:
-            ${{ steps.prepare_logs.outputs.msglogs }}
-
-            Best regards,
-            NuMicro Actions
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
 
       - name: Collect artifacts with directory structure
         run: |

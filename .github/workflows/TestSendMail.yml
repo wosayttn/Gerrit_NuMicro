@@ -17,7 +17,7 @@ jobs:
         shell: bash
         run: |
           echo "Error: Build failed due to some reason." > test.log
-          echo "test.log" > failed_logs.txt
+          echo "test.log" > attachments.txt
           exit 1   # <-- Mark job as failed
 
       - name: Send mail
