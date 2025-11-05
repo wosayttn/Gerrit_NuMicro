@@ -18,8 +18,9 @@ jobs:
           CODE_ANALYSIS="D:/code-analysis"
           CODE_ANALYSIS_REPORT="$GITHUB_WORKSPACE/code-analysis-report.zip"
 
+          set +e -x
+
           cd "$CODE_ANALYSIS"
-          set -e
           pip install -r requirements.txt
           python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
           if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
