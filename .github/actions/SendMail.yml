@@ -1,0 +1,65 @@
+name: "Send email"
+description: "Prepare failed log list and send email notification"
+
+inputs:
+  mail-connection:
+    required: true
+    description: Connection URL to mail server (secrets.MAIL_CONNECTION)
+  mail-to:
+    required: true
+    description: Recipient email address
+  ref-name:
+    required: true
+    description: Branch name
+  workflow-name:
+    required: true
+    description: Workflow name
+
+runs:
+  using: composite
+  steps:
+
+    - name: Prepare failed logs for email
+      id: prepare_logs
+      shell: bash
+      run: |
+        if [[ -f failed_logs.txt ]]; then
+          logs=$(cat failed_logs.txt)
+          echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+          numbered_logs=""
+          IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+          i=1
+          for log in "${logs[@]}"; do
+            numbered_logs+="[$i] $log\n"
+            ((i++))
+          done
+          echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+
+          exit 1
+        fi
+
+    - name: Send mail
+      if: failure() && startsWith(inputs.ref-name, 'MS70')
+      uses: dawidd6/action-send-mail@v5
+      with:
+        connection_url: ${{ inputs.mail-connection }}
+        subject: "${{ inputs.workflow-name }} [${{ inputs.ref-name }}] Job failure"
+        to: ${{ inputs.mail-to }}
+        from: Github Action Workflow <wosayttn@gmail.com>
+        attachments: ${{ steps.prepare_logs.outputs.logs }}
+        body: |
+          Hello,
+
+          Datetime: ${{ github.event.head_commit.timestamp }}
+          Workflow: ${{ inputs.workflow-name }}
+          Repository: ${{ github.repository }} ${{ inputs.ref-name }}
+
+          The build has failed. Please find the attached log file for details.
+
+
+          Failure:
+          ${{ steps.prepare_logs.outputs.msglogs }}
+
+          Best regards,
+          NuMicro Actions
