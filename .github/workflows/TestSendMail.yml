@@ -19,7 +19,7 @@ jobs:
           echo "test.log" > failed_logs.txt
 
       - name: Send mail
-        uses: ./.github/actions/SendMail
+        uses: ./.github/actions/send-mail
         with:
           mail-connection: ${{ secrets.MAIL_CONNECTION }}
           mail-to: wclin@nuvoton.com
