@@ -34,8 +34,6 @@ runs:
             ((i++))
           done
           echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
-
-          exit 1
         fi
 
     - name: Send mail
