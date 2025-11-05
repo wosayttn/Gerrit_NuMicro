@@ -40,7 +40,7 @@ runs:
       uses: dawidd6/action-send-mail@v5
       with:
         connection_url: ${{ inputs.mail-connection }}
-        subject: "${{ inputs.workflow-name }} [${{ inputs.ref-name }}] Job failure"
+        subject: "${{ github.repository }} | ${{ inputs.workflow-name }} [${{ inputs.ref-name }}] Job failure"
         to: ${{ inputs.mail-to }}
         from: Github Action Workflow <wosayttn@gmail.com>
         attachments: ${{ steps.prepare_logs.outputs.logs }}
@@ -48,11 +48,10 @@ runs:
           Hello,
 
           Datetime: ${{ github.event.head_commit.timestamp }}
-          Workflow: ${{ inputs.workflow-name }}
           Repository: ${{ github.repository }} ${{ inputs.ref-name }}
+          Workflow: ${{ inputs.workflow-name }}
 
           The build has failed. Please find the attached log file for details.
-
 
           Failure:
           ${{ steps.prepare_logs.outputs.msglogs }}
