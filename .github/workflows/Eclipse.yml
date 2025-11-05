@@ -5,6 +5,7 @@ on:
     branches-ignore:
       - main
       - master
+      - MS70_M3351
   #pull_request:
   #  branches-ignore:
   #    - main

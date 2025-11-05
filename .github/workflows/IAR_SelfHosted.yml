@@ -1,10 +1,10 @@
 name: IAR
 
 on:
-  push:
-    branches-ignore:
-      - main
-      - master
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
   workflow_dispatch:
 
 jobs:

@@ -2,13 +2,8 @@ name: clang-tidy-automotive
 
 on:
   #push:
-  #  branches-ignore:
-  #    - main
-  #    - master
-  #pull_request:
-  #  branches-ignore:
-  #    - main
-  #    - master
+  #  branches:
+  #    - MS70_M3351
   workflow_dispatch:
 
 jobs:
