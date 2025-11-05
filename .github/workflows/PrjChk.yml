@@ -1,0 +1,86 @@
+name: Project Checking
+
+on:
+  push:
+    branches:
+      - MS70*
+  #pull_request:
+  #  branches:
+  #   - MS70*
+  workflow_dispatch:
+
+jobs:
+  AllProjectsCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ".github/workflows/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1     
+
+      - name: All Project Check
+        shell: bash
+        run: |
+          echo "Building $GITHUB_REF_NAME"
+          REPO_ROOT="$GITHUB_WORKSPACE"
+          echo "Building $REPO_ROOT"
+
+          set +e
+          log_path="failed_logs.txt"
+          check_folder_path="$REPO_ROOT/SampleCode"
+          python3 $REPO_ROOT/.github/workflows/validate.py $check_folder_path > $log_path
+          retc=$?
+
+          if [ $retc -ne 0 ]; then
+            echo "❌ validation failed. See below for details:"
+            cat "$log_path"
+          else
+            echo "🎉 All checking succeeded!"
+          fi
+          set -e
+
+          exit $retc
+
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        if: failure()
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            numbered_logs=""
+            # Read line by line instead of splitting on commas
+            while IFS= read -r line; do
+              numbered_logs+="$line"$'\n'
+            done < failed_logs.txt
+
+            {
+              echo "msglogs<<EOF"
+              echo "$numbered_logs"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send failure mail
+        if: failure()
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job FAILED
+          #to: ${{ secrets.MAIL_TO }}
+          to: wclin@nuvoton.com
+          from: Github Action Workflow <wosayttn@gmail.com>
+          body: |
+            Hello,
+
+            The validation has completed with **FAILURE**.
+
+            Failure logs:
+            ${{ steps.prepare_logs.outputs.msglogs }}
+
+            Best regards,
+            NuMicro Actions

@@ -1,0 +1,66 @@
+name: Code Analysis
+
+on:
+  push:
+    branches:
+      - MS70_M3351
+  workflow_dispatch:
+
+jobs:
+  Code-Analysis:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Code analysis
+        shell: bash
+        run: |
+          CODE_ANALYSIS="D:/code-analysis"
+          CODE_ANALYSIS_REPORT="$GITHUB_WORKSPACE/code-analysis-report.zip"
+
+          set +e -x
+
+          cd "$CODE_ANALYSIS"
+          pip install -r requirements.txt
+          python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
+          if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
+            echo "$CODE_ANALYSIS_REPORT" > $GITHUB_WORKSPACE/failed_logs.txt
+          fi
+
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+      - name: Send mail
+        if: failure() && startsWith(github.ref_name, 'MS70') 
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
+          to: wclin@nuvoton.com
+          #to: ${{ secrets.MAIL_TO }}
+          #cc: ${{ secrets.MAIL_CC }}
+          from: Github Action Workflow <wosayttn@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          body: |
+            Hello,
+
+            The analysis has completed. Please find the attached log file for details.
+
+            Best regards,
+            NuMicro Actions

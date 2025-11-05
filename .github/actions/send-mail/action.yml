@@ -1,0 +1,73 @@
+name: "Send email"
+description: "Prepare failed log list and send email notification"
+
+inputs:
+  mail-connection:
+    required: true
+    description: Connection URL to mail server (secrets.MAIL_CONNECTION)
+  ref-name:
+    required: true
+    description: Branch name
+  workflow-name:
+    required: true
+    description: Workflow name
+
+runs:
+  using: composite
+  steps:
+    - name: Prepare failed logs for email
+      id: prepare_logs
+      shell: bash
+      run: |
+        if [[ -f attachments.txt ]]; then
+          logs=$(cat attachments.txt)
+          echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+          numbered_logs=""
+          IFS=',' read -ra logs <<< "$(cat attachments.txt)"
+          i=1
+          for log in "${logs[@]}"; do
+            numbered_logs+="[$i] $log\n"
+            ((i++))
+          done
+          echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Set recipient
+      id: recipient
+      shell: bash
+      run: |
+        if [[ "${inputs.ref-name}" == MS10* ]]; then
+          echo "mail_to=${{ secrets.MAIL_TO_MS10 }}" >> "$GITHUB_OUTPUT"
+        else if [[ "${inputs.ref-name}" == MS20* ]]; then
+          echo "mail_to=${{ secrets.MAIL_TO_MS20 }}" >> "$GITHUB_OUTPUT"
+        else if [[ "${inputs.ref-name}" == MS40* ]]; then
+          echo "mail_to=${{ secrets.MAIL_TO_MS40 }}" >> "$GITHUB_OUTPUT"
+        else if [[ "${inputs.ref-name}" == MS70* ]]; then
+          echo "mail_to=${{ secrets.MAIL_TO_MS70 }}" >> "$GITHUB_OUTPUT"
+        else
+          echo "mail_to=wclin@nuvoton.com" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v5
+      with:
+        connection_url: ${{ inputs.mail-connection }}
+        subject: "${{ github.repository }} | ${{ inputs.workflow-name }} [${{ inputs.ref-name }}] Job failure"
+        to: ${{ steps.recipient.outputs.mail_to }}
+        from: Github Action Workflow <wosayttn@gmail.com>
+        attachments: ${{ steps.prepare_logs.outputs.logs }}
+        body: |
+          Hello,
+
+          Datetime: ${{ github.event.head_commit.timestamp }}
+          Repository: ${{ github.repository }} ${{ inputs.ref-name }}
+          Workflow: ${{ inputs.workflow-name }}
+
+          The build has failed. Please find the attached log file for details.
+
+          Failure:
+          ${{ steps.prepare_logs.outputs.msglogs }}
+
+          Best regards,
+          NuMicro Actions

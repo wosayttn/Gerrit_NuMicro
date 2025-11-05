@@ -1,0 +1,144 @@
+name: NuEclipse
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+      - MS70_M3351
+  #pull_request:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/wosayttn/numicro-cicd:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build all Eclipse projects
+        shell: bash
+        run: |
+          REPO_ROOT="$GITHUB_WORKSPACE"
+          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"         
+
+          export PATH="/opt/eclipse-cdt/:/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf/bin:/opt/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/bin:$PATH"
+          echo $PATH
+
+          echo "✅ Version check"
+          arm-none-eabi-gcc --version
+          aarch64-none-elf-gcc --version
+
+          mapfile -t solutions < <(find ./SampleCode -type f -name .cproject -exec dirname {} \;)
+          declare -a failed_logs=()
+
+          set +e
+          for sol_path in "${solutions[@]}"; do
+
+            dir=$(dirname "$sol_path")
+            sol_name=$(basename "$dir")
+            log_path="$dir/$sol_name.log"
+
+            mkdir -p "$GITHUB_WORKSPACE/workspace"
+
+            #echo "🔨 Building $dir on $RUNNER_OS"
+            timeout 5m eclipse \
+              -nosplash \
+              -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
+              -data "$GITHUB_WORKSPACE/workspace" \
+              -import "$GITHUB_WORKSPACE/$sol_path" \
+              -build all > "$log_path" 2>&1
+            ret1=$?
+
+            # Check log file
+            $REPO_ROOT/.github/workflows/vcpkg_blacklist_check.sh $log_path
+            ret2=$?
+
+            if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
+              echo "❌ Build failed: $sol_path"
+              echo "🔍 Log:"
+              cat "$log_path"
+              failed_logs+=("$log_path")   #add log into the set.
+            else
+              echo "✅ Build success: $sol_path"
+            fi
+
+            rm -rf "$GITHUB_WORKSPACE/workspace"
+
+          done
+          set -e
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#failed_logs[@]} -ne 0 ]]; then
+            echo "🚨 The following builds failed:"
+            for log in "${failed_logs[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${failed_logs[@]}" | sed 's/,$//' > failed_logs.txt
+            echo "Wrote failed_logs.txt"
+            exit 1
+          else
+            echo "🎉 All builds succeeded!"
+          fi
+
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        if: failure() # only runs if previous step failed
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send mail
+        if: failure() && startsWith(github.ref_name, 'MS70') 
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
+          to: ${{ secrets.MAIL_TO }}
+          #cc: ${{ secrets.MAIL_CC }}
+          from: Github Action Workflow <wosayttn@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          body: |
+            Hello,
+
+            The build has completed. Please find the attached log file for details.
+
+            Failure:
+            ${{ steps.prepare_logs.outputs.msglogs }}
+
+            Best regards,
+            NuMicro Actions
+
+      - name: Collect artifacts with directory structure
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.hex" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/

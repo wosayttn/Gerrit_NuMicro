@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>N570 series</tag>
+  <display>Nuvoton N570 series (N570,N570S)</display>
+  <data>$CUR_DIR$\N570.i79</data>
+</optionMenuItem>
+

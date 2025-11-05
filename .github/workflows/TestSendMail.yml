@@ -1,0 +1,30 @@
+name: Test send mail
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  SendMailTest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Simulate failure
+        shell: bash
+        run: |
+          echo "Error: Build failed due to some reason." > test.log
+          echo "test.log" > attachments.txt
+          exit 1   # <-- Mark job as failed
+
+      - name: Send mail
+        if: failure()   # <-- Only runs when previous failed
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to: wclin@nuvoton.com
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}

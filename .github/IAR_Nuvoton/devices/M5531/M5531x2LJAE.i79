@@ -1,0 +1,45 @@
+[FILEFORMAT]
+rev=1.6
+
+[CHIP]
+//Chip name
+name=M5531
+
+//What endian modes does the chip support? (le_be8_be32(default), le_be8, le_be32, le, be8_be32, be8, be32)
+endiansupport=le
+
+//Does the chip support the thumb instruction set? (true(default), false)
+thumbsupport=true
+
+//Does the chip support the arm instruction set? (true(default), false)
+armsupport=false
+
+//Does the chip have an FPU coprocessor?
+//(VFPv1,VFPv2,VFP9-S,None(default)
+fpu=VFPv5_D16
+SIMD=true
+trustzoneoptional=true
+trustzone=true
+
+
+[CORE]
+//Name of the ARM processor core
+name=Cortex-M55
+
+
+[DDF FILE]
+//Name of the ddf file
+name=Nuvoton\iom5531.ddf
+
+
+[LINKER FILE]
+//Name of the linker config file
+name=$TOOLKIT_DIR$\config\linker\Nuvoton\M5531x2LJAE.icf
+
+
+[FLASH LOADER]
+nsname=$TOOLKIT_DIR$\config\flashloader\Nuvoton\M5531_APROM_2M.board
+little=$TOOLKIT_DIR$\config\flashloader\Nuvoton\M5531_APROM_2M.board
+//big=
+//args=
+

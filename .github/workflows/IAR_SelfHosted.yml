@@ -1,0 +1,91 @@
+name: IAR
+
+on:
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build IAR projects
+        shell: bash
+        run: |
+          MISSUDAD_IAR="$GITHUB_WORKSPACE/.github/MissUDad/IAR"
+
+          set +e
+          cd $MISSUDAD_IAR
+          python build.py
+          retc=$?
+          if [ $retc -ne 0 ]; then
+            echo "❌ Build Failed:"
+            cat "$MISSUDAD_IAR/failed_logs.txt"
+            cp -af "$MISSUDAD_IAR/failed_logs.txt" "$GITHUB_WORKSPACE/"
+          else
+            echo "🎉 All building succeeded!" $REPO_ROOT
+          fi
+
+          #cd $MISSUDAD_IAR
+          #python run.py
+
+          set -e
+
+          exit $retc
+
+      - name: Prepare failed logs for email
+        id: prepare_logs
+        shell: bash
+        if: failure() # only runs if previous step failed
+        run: |
+          if [[ -f failed_logs.txt ]]; then
+            logs=$(cat failed_logs.txt)
+            echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+            numbered_logs=""
+            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
+            i=1
+            for log in "${logs[@]}"; do
+              numbered_logs+="[$i] $log\n"
+              ((i++))
+            done
+            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send mail
+        if: failure() && startsWith(github.ref_name, 'MS70') 
+        uses: dawidd6/action-send-mail@v5
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
+          to: wclin@nuvoton.com
+          #to: ${{ secrets.MAIL_TO }}
+          #cc: ${{ secrets.MAIL_CC }}
+          from: Github Action Workflow <wosayttn@gmail.com>
+          attachments: ${{ steps.prepare_logs.outputs.logs }}
+          body: |
+            Hello,
+
+            The build has completed. Please find the attached log file for details.
+
+            Failure:
+            ${{ steps.prepare_logs.outputs.msglogs }}
+
+            Best regards,
+            NuMicro Actions
+
+      - name: Collect artifacts with directory structure
+        shell: bash
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/

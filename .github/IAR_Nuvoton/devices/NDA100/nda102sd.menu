@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>NDA102 series</tag>
+  <display>Nuvoton NDA102SD series</display>
+  <data>$CUR_DIR$\nda102sd.i79</data>
+</optionMenuItem>
+

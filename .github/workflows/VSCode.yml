@@ -1,0 +1,104 @@
+name: VSCode
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+  #pull_request:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Packages on Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip python-is-python3
+          pip install -r "$GITHUB_WORKSPACE/.github/workflows/requirements.txt"
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ".github/workflows/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1     
+
+      - name: Activate & Build each csolution
+        shell: bash
+        run: |
+          REPO_ROOT="$GITHUB_WORKSPACE"
+          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_build.sh"
+          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
+
+          mapfile -t solutions < <(
+            find ./SampleCode -type f -name '*.csolution.yml' \
+            -not -path '*/_CMSIS-Pack/*'
+          )
+
+          declare -a attachments=()
+
+          set +e
+          for sol_path in "${solutions[@]}"; do
+            sol_dir=$(dirname "$sol_path")
+            sol_name=$(basename "$sol_path")
+            log_path="$sol_dir/$sol_name.log"
+
+            # Build & Produce log file
+            $REPO_ROOT/.github/workflows/vcpkg_build.sh "$sol_path" > $log_path
+            ret1=$?
+
+            # Check log file
+            $REPO_ROOT/.github/workflows/vcpkg_blacklist_check.sh $log_path
+            ret2=$?
+
+            if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
+              echo "❌ Build failed: $sol_path"
+              echo "🔍 Log:"
+              cat "$log_path"
+              attachments+=("$log_path")   #add log into the set.
+            else
+              echo "✅ Build success: $sol_path"
+            fi
+
+          done
+          set -e
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#attachments[@]} -ne 0 ]]; then
+            echo "🚨 The following builds failed:"
+            for log in "${attachments[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${attachments[@]}" | sed 's/,$//' > attachments.txt
+            echo "Wrote attachments.txt"
+            exit 1
+          else
+            echo "🎉 All builds succeeded!"
+          fi
+
+      - name: Send mail
+        if: failure()   # <-- Only runs when previous failed
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
+
+      - name: Collect artifacts with directory structure
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/

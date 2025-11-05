@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>NUC950</tag>
+  <display>Nuvoton NUC950</display>
+  <data>$CUR_DIR$\NUC950.i79</data>
+</optionMenuItem>
+
