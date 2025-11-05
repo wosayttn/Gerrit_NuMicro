@@ -4,13 +4,20 @@ description: "Prepare failed log list and send email notification"
 inputs:
   mail-connection:
     required: true
-    description: Connection URL to mail server (secrets.MAIL_CONNECTION)
+  mail-to-ms10:
+    required: true
+  mail-to-ms20:
+    required: true
+  mail-to-ms40:
+    required: true
+  mail-to-ms70:
+    required: true
+  default-mail-to:
+    required: true
   ref-name:
     required: true
-    description: Branch name
   workflow-name:
     required: true
-    description: Workflow name
 
 runs:
   using: composite
@@ -37,16 +44,16 @@ runs:
       id: recipient
       shell: bash
       run: |
-        if [[ "${inputs.ref-name}" == MS10* ]]; then
-          echo "mail_to=${{ secrets.MAIL_TO_MS10 }}" >> "$GITHUB_OUTPUT"
-        else if [[ "${inputs.ref-name}" == MS20* ]]; then
-          echo "mail_to=${{ secrets.MAIL_TO_MS20 }}" >> "$GITHUB_OUTPUT"
-        else if [[ "${inputs.ref-name}" == MS40* ]]; then
-          echo "mail_to=${{ secrets.MAIL_TO_MS40 }}" >> "$GITHUB_OUTPUT"
-        else if [[ "${inputs.ref-name}" == MS70* ]]; then
-          echo "mail_to=${{ secrets.MAIL_TO_MS70 }}" >> "$GITHUB_OUTPUT"
+        if [[ "${{ inputs.ref-name }}" == MS10* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms10 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS20* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms20 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS40* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms40 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS70* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms70 }}" >> "$GITHUB_OUTPUT"
         else
-          echo "mail_to=wclin@nuvoton.com" >> "$GITHUB_OUTPUT"
+          echo "mail_to=${{ inputs.default-mail-to }}" >> "$GITHUB_OUTPUT"
         fi
 
     - name: Send mail

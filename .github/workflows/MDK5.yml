@@ -2,9 +2,8 @@ name: MDK5
 
 on:
   push:
-    branches-ignore:
-      - main
-      - master
+    branches:
+      - MS70*
   workflow_dispatch:
 
 jobs:
