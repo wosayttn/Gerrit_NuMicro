@@ -39,7 +39,6 @@ runs:
         fi
 
     - name: Send mail
-      if: failure() && startsWith(inputs.ref-name, 'MS70')
       uses: dawidd6/action-send-mail@v5
       with:
         connection_url: ${{ inputs.mail-connection }}

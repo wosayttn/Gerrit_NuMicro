@@ -13,14 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Send mail
+      - name: Simulate failure
         shell: bash
         run: |
-          echo "Simulating a failed build..."
           echo "Error: Build failed due to some reason." > test.log
           echo "test.log" > failed_logs.txt
+          exit 1   # <-- Mark job as failed
 
       - name: Send mail
+        if: failure()   # <-- Only runs when previous failed
         uses: ./.github/actions/send-mail
         with:
           mail-connection: ${{ secrets.MAIL_CONNECTION }}
