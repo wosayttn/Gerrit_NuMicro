@@ -64,7 +64,7 @@ runs:
         to: ${{ steps.recipient.outputs.mail_to }}
         from: Github Action Workflow <wosayttn@gmail.com>
         attachments: ${{ steps.prepare_logs.outputs.logs }}
-        body_html: |
+        html_body: |
           <html>
           <body style="font-family: Arial, sans-serif; font-size: 14px;">
 
