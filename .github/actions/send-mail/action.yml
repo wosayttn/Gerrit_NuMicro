@@ -60,7 +60,7 @@ runs:
       uses: dawidd6/action-send-mail@v5
       with:
         connection_url: ${{ inputs.mail-connection }}
-        subject: "[Github Action] | ${{ inputs.workflow-name }} [${{ inputs.ref-name }}] Job"
+        subject: "[Github Action] | [${{ inputs.ref-name }}] | [${{ inputs.workflow-name }}] Job"
         to: ${{ steps.recipient.outputs.mail_to }}
         from: Github Action Workflow <wosayttn@gmail.com>
         attachments: ${{ steps.prepare_logs.outputs.logs }}
