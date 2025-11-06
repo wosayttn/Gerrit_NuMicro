@@ -6,7 +6,7 @@ source ./config.sh   # must define JSON_FILE
 README_FILE="README.md"
 
 # Define workflow set
-WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5" "CodeAnalysis")
+WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5" "CodeAnalysis" "PrjChk")
 
 # Start README
 {
@@ -39,7 +39,9 @@ for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
       printf "| %s " "$branch" >> "$README_FILE"
 
       for wf in "${WORKFLOWS[@]}"; do
-          printf "| ![](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/%s.yml/badge.svg?branch=%s) " "$wf" "$branch" >> "$README_FILE"
+          printf "| [![](%s)](%s)" \
+            "https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/${wf}.yml/badge.svg?branch=$branch" \
+            "https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/${wf}.yml?query=branch:$branch"  >> "$README_FILE"
       done
 
       printf "|\n" >> "$README_FILE"
