@@ -64,17 +64,29 @@ runs:
         to: ${{ steps.recipient.outputs.mail_to }}
         from: Github Action Workflow <wosayttn@gmail.com>
         attachments: ${{ steps.prepare_logs.outputs.logs }}
-        body: |
-          Hello,
+        body_html: |
+          <html>
+          <body style="font-family: Arial, sans-serif; font-size: 14px;">
 
-          Datetime: ${{ github.event.head_commit.timestamp }}
-          Repository: ${{ github.repository }}/${{ inputs.ref-name }}
-          Workflow: ${{ inputs.workflow-name }}
+            <p>Hello,</p>
 
-          Please find the attached log files for details.
+            <p><strong>Datetime:</strong> ${{ github.event.head_commit.timestamp }}<br>
+            <strong>Repository:</strong> 
+            <a href="https://github.com/${{ github.repository }}">${{ github.repository }}</a> / ${{ inputs.ref-name }}<br>
+            <strong>Workflow:</strong> ${{ inputs.workflow-name }}</p>
 
-          Attached files:
-          ${{ steps.prepare_logs.outputs.msglogs }}
+            <!-- Added Repository Home Hyperlink -->
+            <p><strong>Repository Home:</strong><br>
+            <a href="https://github.com/wosayttn/Gerrit_NuMicro">Gerrit_NuMicro Repository</a>
 
-          Best regards,
-          NuMicro Actions
+            <p>Please find the attached log files for details.</p>
+
+            <p><strong>Attached files:</strong></p>
+            <pre style="background:#f6f8fa;padding:10px;border-radius:4px;">${{ steps.prepare_logs.outputs.msglogs }}</pre>
+
+            <br>
+            <p>Best regards,<br>
+            <strong>NuMicro Actions</strong></p>
+
+          </body>
+          </html>
