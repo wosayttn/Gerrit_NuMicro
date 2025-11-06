@@ -22,7 +22,23 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Prepare failed logs for email
+    - name: Set recipient
+      id: recipient
+      shell: bash
+      run: |
+        if [[ "${{ inputs.ref-name }}" == MS10* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms10 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS20* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms20 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS40* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms40 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS70* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms70 }}" >> "$GITHUB_OUTPUT"
+        else
+          echo "mail_to=${{ inputs.default-mail-to }}" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Prepare attachments
       id: prepare_logs
       shell: bash
       run: |
@@ -38,22 +54,6 @@ runs:
             ((i++))
           done
           echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
-        fi
-
-    - name: Set recipient
-      id: recipient
-      shell: bash
-      run: |
-        if [[ "${{ inputs.ref-name }}" == MS10* ]]; then
-          echo "mail_to=${{ inputs.mail-to-ms10 }}" >> "$GITHUB_OUTPUT"
-        elif [[ "${{ inputs.ref-name }}" == MS20* ]]; then
-          echo "mail_to=${{ inputs.mail-to-ms20 }}" >> "$GITHUB_OUTPUT"
-        elif [[ "${{ inputs.ref-name }}" == MS40* ]]; then
-          echo "mail_to=${{ inputs.mail-to-ms40 }}" >> "$GITHUB_OUTPUT"
-        elif [[ "${{ inputs.ref-name }}" == MS70* ]]; then
-          echo "mail_to=${{ inputs.mail-to-ms70 }}" >> "$GITHUB_OUTPUT"
-        else
-          echo "mail_to=${{ inputs.default-mail-to }}" >> "$GITHUB_OUTPUT"
         fi
 
     - name: Send mail
@@ -73,7 +73,7 @@ runs:
 
           Please find the attached log files for details.
 
-          Failure:
+          Attached files:
           ${{ steps.prepare_logs.outputs.msglogs }}
 
           Best regards,

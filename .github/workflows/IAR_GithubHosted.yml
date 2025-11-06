@@ -60,7 +60,7 @@ jobs:
           chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
 
           mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
-          declare -a failed_logs=()
+          declare -a attachments=()
 
           set +e
           for sol_path in "${solutions[@]}"; do
@@ -86,7 +86,7 @@ jobs:
               if grep -Eq "/bin/sh:|NuBL33" "$log_path"; then
                 echo "ℹ️  Skipping log due to pattern matching in log"
               else
-                failed_logs+=("$log_path")   # add log into the set
+                attachments+=("$log_path")   # add log into the set
               fi
 
             else
@@ -97,57 +97,30 @@ jobs:
           set -e
 
           # List all the paths of failed logs at the end (if any)
-          if [[ ${#failed_logs[@]} -ne 0 ]]; then
+          if [[ ${#attachments[@]} -ne 0 ]]; then
             echo "🚨 The following builds failed:"
-            for log in "${failed_logs[@]}"; do
+            for log in "${attachments[@]}"; do
               echo "  - $log"
             done
-            printf "%s," "${failed_logs[@]}" | sed 's/,$//' > failed_logs.txt
-            echo "Wrote failed_logs.txt"
+            printf "%s," "${attachments[@]}" | sed 's/,$//' > attachments.txt
+            echo "Wrote attachments.txt"
           else
             echo "🎉 All builds succeeded!"
           fi
 
-      - name: Prepare failed logs for email
-        id: prepare_logs
-        shell: bash
-        run: |
-          if [[ -f failed_logs.txt ]]; then
-            logs=$(cat failed_logs.txt)
-            echo "logs=$logs" >> "$GITHUB_OUTPUT"
-
-            numbered_logs=""
-            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
-            i=1
-            for log in "${logs[@]}"; do
-              numbered_logs+="[$i] $log\n"
-              ((i++))
-            done
-            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
-            exit 0 #SKIP MAILING.
-          fi
-
       - name: Send mail
-        if: failure() && startsWith(github.ref_name, 'MS70') 
-        uses: dawidd6/action-send-mail@v5
+        if: failure()
+        uses: ./.github/actions/send-mail
         with:
-          connection_url: ${{ secrets.MAIL_CONNECTION }}
-          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: wclin@nuvoton.com
-          #to: ${{ secrets.MAIL_TO }}
-          #cc: ${{ secrets.MAIL_CC }}
-          from: Github Action Workflow <wosayttn@gmail.com>
-          attachments: ${{ steps.prepare_logs.outputs.logs }}
-          body: |
-            Hello,
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
 
-            The build has completed. Please find the attached log file for details.
-
-            Failure:
-            ${{ steps.prepare_logs.outputs.msglogs }}
-
-            Best regards,
-            NuMicro Actions
 
       - name: Collect artifacts with directory structure
         run: |
@@ -173,7 +146,7 @@ jobs:
           MISSUDAD_IAR="$GITHUB_WORKSPACE/.github/MissUDad/IAR"
           MISSUDAD_IAR_EWT="$MISSUDAD_IAR/c-stat.ewt"
           mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
-          declare -a failed_logs=()
+          declare -a attachments=()
 
           set +e
           for sol_path in "${solutions[@]}"; do
@@ -196,6 +169,7 @@ jobs:
               echo "❌ Build failed: $sol_path"
               echo "🔍 Log:"
               cat "$log_path"
+              attachments+=("$log_path")   #add log into the set.
             else
               echo "✅ Analysis success: $sol_path"
             fi

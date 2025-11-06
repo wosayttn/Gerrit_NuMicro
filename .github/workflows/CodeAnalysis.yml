@@ -24,43 +24,19 @@ jobs:
           pip install -r requirements.txt
           python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
           if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
-            echo "$CODE_ANALYSIS_REPORT" > $GITHUB_WORKSPACE/failed_logs.txt
-          fi
-
-      - name: Prepare failed logs for email
-        id: prepare_logs
-        shell: bash
-        run: |
-          if [[ -f failed_logs.txt ]]; then
-            logs=$(cat failed_logs.txt)
-            echo "logs=$logs" >> "$GITHUB_OUTPUT"
-
-            numbered_logs=""
-            IFS=',' read -ra logs <<< "$(cat failed_logs.txt)"
-            i=1
-            for log in "${logs[@]}"; do
-              numbered_logs+="[$i] $log\n"
-              ((i++))
-            done
-            echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
-            exit 1
+            echo "$CODE_ANALYSIS_REPORT" > $GITHUB_WORKSPACE/attachments.txt
           fi
 
       - name: Send mail
-        if: failure() && startsWith(github.ref_name, 'MS70') 
-        uses: dawidd6/action-send-mail@v5
+        if: failure()
+        uses: ./.github/actions/send-mail
         with:
-          connection_url: ${{ secrets.MAIL_CONNECTION }}
-          subject: ${{ github.repository }} [${{ github.ref_name }}] Job ${{ job.status }}
-          to: wclin@nuvoton.com
-          #to: ${{ secrets.MAIL_TO }}
-          #cc: ${{ secrets.MAIL_CC }}
-          from: Github Action Workflow <wosayttn@gmail.com>
-          attachments: ${{ steps.prepare_logs.outputs.logs }}
-          body: |
-            Hello,
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO }}
+          mail-to-ms20: ${{ secrets.MAIL_TO }}
+          mail-to-ms40: ${{ secrets.MAIL_TO }}
+          mail-to-ms70: ${{ secrets.MAIL_TO }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
 
-            The analysis has completed. Please find the attached log file for details.
-
-            Best regards,
-            NuMicro Actions
