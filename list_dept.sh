@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# JSON file
-JSON_FILE="dept_bsp.json"
+set -e
+set -x
+
+source ./config.sh
 
 # Read all departments
 departments=$(jq -r 'keys[]' "$JSON_FILE")
