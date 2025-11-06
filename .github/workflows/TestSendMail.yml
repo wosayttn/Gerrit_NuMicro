@@ -1,10 +1,6 @@
 name: Test send mail
 
 on:
-  push:
-    branches:
-      - main
-      - master
   workflow_dispatch:
 
 jobs:
@@ -16,12 +12,13 @@ jobs:
       - name: Simulate failure
         shell: bash
         run: |
-          echo "Error: Build failed due to some reason." > test.log
-          echo "test.log" > attachments.txt
-          exit 1   # <-- Mark job as failed
+          TEST_FILE="test.log"
+
+          echo "Hello World!! " > $TEST_FILE
+          echo "Test for ${{ github.ref_name }}" >> $TEST_FILE
+          echo "$TEST_FILE" > attachments.txt
 
       - name: Send mail
-        if: failure()
         uses: ./.github/actions/send-mail
         with:
           mail-connection: ${{ secrets.MAIL_CONNECTION }}
@@ -29,6 +26,6 @@ jobs:
           mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
           mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
           mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
-          default-mail-to: wclin@nuvoton.com
+          default-mail-to: ${{ secrets.MAIL_TO }}
           workflow-name: ${{ github.workflow }}
           ref-name: ${{ github.ref_name }}

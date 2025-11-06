@@ -93,7 +93,7 @@ jobs:
           mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
           mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
           mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
-          default-mail-to: wclin@nuvoton.com
+          default-mail-to: ${{ secrets.MAIL_TO }}
           workflow-name: ${{ github.workflow }}
           ref-name: ${{ github.ref_name }}
 
