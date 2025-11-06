@@ -12,11 +12,14 @@ jobs:
       - name: Simulate failure
         shell: bash
         run: |
-          TEST_FILE="test.log"
+          TEST_FILE1="test1.log"
+          TEST_FILE2="test2.log"
 
-          echo "Hello World!! " > $TEST_FILE
-          echo "Test for ${{ github.ref_name }}" >> $TEST_FILE
-          echo "$TEST_FILE" > attachments.txt
+          echo "Hello World!! " > $TEST_FILE1
+          echo "Test for ${{ github.ref_name }}" >> $TEST_FILE1
+          cat $TEST_FILE1 > $TEST_FILE2
+
+          echo "$TEST_FILE1,$TEST_FILE2" > attachments.txt
 
       - name: Send mail
         uses: ./.github/actions/send-mail
