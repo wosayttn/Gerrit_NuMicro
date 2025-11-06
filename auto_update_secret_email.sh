@@ -30,6 +30,7 @@ for group in $(jq -r 'keys[]' "$JSON_FILE"); do
     # Update GITHUB Secret
     SECRET_NAME="MAIL_TO_${group}"
     gh secret set "$SECRET_NAME" --body "$emails" --repo "$GITHUB_REPO"
+    #gh secret set "$SECRET_NAME" --body "wclin@nuvoton.com" --repo "$GITHUB_REPO"
 
 done
 
