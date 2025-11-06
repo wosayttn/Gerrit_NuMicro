@@ -19,7 +19,7 @@ if __name__ == "__main__":
     err = 0
 
     root = os.getcwd()
-    f = open('failed_logs.txt', "w+")
+    f = open('attachments.txt', "w+")
     os.chdir(root)
 
     prj_count = 1

@@ -1,4 +1,4 @@
-name: Code Analysis
+name: CodeAnalysis
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Code-Analysis:
+  CodeAnalysis:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
