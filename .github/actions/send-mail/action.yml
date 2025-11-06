@@ -74,18 +74,14 @@ runs:
             <p><strong>Repository/Branch: </strong> ${{ github.repository }} / ${{ inputs.ref-name }} </p>
             <p><strong>Workflow: </strong> ${{ inputs.workflow-name }}</p>
 
-            <br>
-            <br>
-
             <p><strong>Please find the attached log files for details.</strong></p>
             <pre style="background:#f6f8fa;padding:10px;border-radius:4px;">${{ steps.prepare_logs.outputs.msglogs }}</pre>
-
             <br>
 
-            <p><strong>Repository Home: </strong> <a href="https://github.com/wosayttn/Gerrit_NuMicro">Gerrit_NuMicro Repository</a></p>
+            <p><strong>Thanks for your efforts!! </strong></p>
 
             <p>Best regards,</p>
-            <p>Github Actions for NuMicro</p>
+            <p><a href="https://github.com/wosayttn/Gerrit_NuMicro">Github Actions for NuMicro</a></p>
 
           </body>
           </html>
