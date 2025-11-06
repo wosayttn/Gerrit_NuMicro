@@ -1,4 +1,4 @@
-name: Buildroot building
+name: Buildroot
 
 on:
   workflow_dispatch:

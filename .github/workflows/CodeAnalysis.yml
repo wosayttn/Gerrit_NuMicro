@@ -25,6 +25,7 @@ jobs:
           python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
           if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
             echo "$CODE_ANALYSIS_REPORT" > $GITHUB_WORKSPACE/attachments.txt
+            exit 1
           fi
 
       - name: Send mail

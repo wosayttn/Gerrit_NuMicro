@@ -1,4 +1,4 @@
-name: IAR GH Runner building 
+name: IAR GH Runner 
 
 on:
   #push:

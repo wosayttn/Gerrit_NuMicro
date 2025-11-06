@@ -1,4 +1,4 @@
-name: UV2CSolution building
+name: UV2CSolution
 
 on:
   #push:
