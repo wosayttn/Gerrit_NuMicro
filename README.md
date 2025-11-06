@@ -1,22 +1,23 @@
 # NuMicro BSP Status
 
-## Department: MS10
+## MS10
 
 | BSP     | NuEclipse | VSCode | IAR | MDK5 |
 |---------|-----------|--------|-----|------|
 
-## Department: MS20
+## MS20
 
 | BSP     | NuEclipse | VSCode | IAR | MDK5 |
 |---------|-----------|--------|-----|------|
 | M3331 | ![NuEclipse](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/NuEclipse.yml/badge.svg?branch=MS20_M3331) | ![VSCode](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/VSCode.yml/badge.svg?branch=MS20_M3331) | ![IAR](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/IAR.yml/badge.svg?branch=MS20_M3331) | ![MDK5](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/MDK5.yml/badge.svg?branch=MS20_M3331) |
 
-## Department: MS40
+## MS40
 
 | BSP     | NuEclipse | VSCode | IAR | MDK5 |
 |---------|-----------|--------|-----|------|
+| M2L31 | ![NuEclipse](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/NuEclipse.yml/badge.svg?branch=MS40_M2L31) | ![VSCode](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/VSCode.yml/badge.svg?branch=MS40_M2L31) | ![IAR](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/IAR.yml/badge.svg?branch=MS40_M2L31) | ![MDK5](https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows/MDK5.yml/badge.svg?branch=MS40_M2L31) |
 
-## Department: MS70
+## MS70
 
 | BSP     | NuEclipse | VSCode | IAR | MDK5 |
 |---------|-----------|--------|-----|------|

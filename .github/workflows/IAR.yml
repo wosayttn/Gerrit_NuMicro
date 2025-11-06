@@ -1,10 +1,9 @@
 name: IAR
 
 on:
-  #push:
-  #  branches-ignore:
-  #    - main
-  #    - master
+  push:
+    branches:
+      - MS70*
   workflow_dispatch:
 
 jobs:

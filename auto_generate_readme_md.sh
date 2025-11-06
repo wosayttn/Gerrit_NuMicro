@@ -14,7 +14,7 @@ echo "" >> "$README_FILE"
 
 # Loop through all departments
 for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
-    echo "## Department: $dept" >> "$README_FILE"
+    echo "## $dept" >> "$README_FILE"
     echo "" >> "$README_FILE"
 
     # Markdown table header
