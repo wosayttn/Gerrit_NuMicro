@@ -51,4 +51,21 @@ for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
 
 done
 
+# Fetch runners JSON from GitHub
+RUNNERS_JSON=$(gh api -H "Accept: application/vnd.github+json" /repos/$GITHUB_REPO/actions/runners)
+
+# Start README
+{
+  echo "# Self-Hosted Runner List"
+
+  # Start the Markdown table
+  echo "| RUNNER | LABELS |"
+
+  echo "|--------|--------|"
+
+} >> "$README_FILE"
+
+# Populate table rows
+echo "$RUNNERS_JSON" | jq -r '.runners[] | "| \(.name) | \(.labels | map(.name) | join(", ")) |"' >> "$README_FILE"
+
 echo "✅ README.md generated."
