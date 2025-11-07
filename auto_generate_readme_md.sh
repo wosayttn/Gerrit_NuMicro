@@ -59,7 +59,7 @@ RUNNERS_JSON=$(gh api -H "Accept: application/vnd.github+json" /repos/$GITHUB_RE
   echo "# Self-Hosted Runner List"
 
   # Start the Markdown table
-  echo "| RUNNER | LABELS |"
+  echo "| NAME | LABELS |"
 
   echo "|--------|--------|"
 
