@@ -1,14 +1,6 @@
 name: VSCode
 
 on:
-  push:
-    branches-ignore:
-      - main
-      - master
-  #pull_request:
-  #  branches-ignore:
-  #    - main
-  #    - master
   workflow_dispatch:
 
 jobs:

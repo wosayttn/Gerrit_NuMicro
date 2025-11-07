@@ -1,12 +1,6 @@
 name: Project Checking
 
 on:
-  push:
-    branches:
-      - MS70*
-  #pull_request:
-  #  branches:
-  #   - MS70*
   workflow_dispatch:
 
 jobs:
