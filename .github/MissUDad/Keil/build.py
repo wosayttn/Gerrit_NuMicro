@@ -74,20 +74,24 @@ if __name__ == "__main__":
                         if err > 0:
                             f.write(",")
                         f.write(os.path.abspath(BUILDLOG))                            
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.", flush=True)
+                        print("❌ Build failed: " + os.path.abspath(file), flush=True)
                         err += 1
                     else:
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
+                        print("✅ Build success: " + os.path.abspath(file), flush=True)
 
                 except subprocess.TimeoutExpired:
                     p.kill()
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has timeout expired exception.", flush=True)
+                    print("❌ Build TimeoutExpired: " + os.path.abspath(file), flush=True)
 
                 except Exception as e:
-                    print("[" + str(prj_count) + "] "+ "Build" + file +  " has other exception.", flush=True)
+                    print("❌ Build Exception: " + os.path.abspath(file), flush=True)
+                    traceback.print_exc()
+                    err += 1
+                    pass #Silently ignore
 
                 except OSError:
-                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + "Oops.", flush=True)
+                    print("❌ Build OSError: " + os.path.abspath(file), flush=True)
+                    err += 1
                     pass #Silently ignore
 
                 prj_count += 1
@@ -96,7 +100,7 @@ if __name__ == "__main__":
                 os.chdir(root)
 
     if err == 0:
-        print("Build " + str(prj_count-1) + " projects successfully.", flush=True)
+        print("🎉 Build " + str(prj_count-1) + " projects successfully.", flush=True)
 
     f.close()
 

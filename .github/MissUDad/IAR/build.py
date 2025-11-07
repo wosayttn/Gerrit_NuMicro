@@ -12,6 +12,14 @@ PROJ_FOLDER_NAME = missudad.PROJ_FOLDER_NAME
 IP_LIST=missudad.IP_LIST
 
 def get_toolchain_path(PRJ_EWP):
+    '''
+    Parse OGLastSavedByProductVersion value in EWP project file.
+    <option>
+        <name>OGLastSavedByProductVersion</name>
+        <state>9.50.2.71646</state>
+    </option>
+    '''
+
     tree = ET.parse(PRJ_EWP)
     root = tree.getroot()
 
@@ -19,7 +27,7 @@ def get_toolchain_path(PRJ_EWP):
     for option in root.findall(".//option"):
         name_elem = option.find("name")
         state_elem = option.find("state")
-        if name_elem is not None and name_elem.text == "OGProductVersion":
+        if name_elem is not None and name_elem.text == "OGLastSavedByProductVersion":
             if state_elem is not None:
                 version = state_elem.text.strip()
                 if version.startswith('8'):
@@ -90,17 +98,21 @@ if __name__ == "__main__":
                     if total_conf == 0 or (total_conf > 0 and found != 2*total_conf):
                         if err > 0:
                             f.write(",")
-                        f.write(os.path.abspath(BUILDLOG))                            
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " has error or warning.", flush=True)
+                        f.write(os.path.abspath(BUILDLOG))
+                        print("❌ Build failed: " + os.path.abspath(file), flush=True)
                         err += 1
                     else:
-                        print("[" + str(prj_count) + "] " + os.getcwd() + "\\" + file +  " pass.", flush=True)
+                        print("✅ Build success: " + os.path.abspath(file), flush=True)
 
                 except Exception:
+                    print("❌ Build Exception: " + os.path.abspath(file), flush=True)
                     traceback.print_exc()
+                    err += 1
+                    pass #Silently ignore
 
                 except OSError:
-                    print("[" + str(prj_count) + "] " + os.path.abspath(file) + " Oops.", flush=True)
+                    print("❌ Build OSError: " + os.path.abspath(file), flush=True)
+                    err += 1
                     pass #Silently ignore
 
                 prj_count += 1
@@ -109,7 +121,7 @@ if __name__ == "__main__":
                 os.chdir(root)
 
     if err == 0:
-        print("Build " + str(prj_count-1) + " projects successfully.", flush=True)
+        print("🎉 Build " + str(prj_count-1) + " projects successfully.", flush=True)
 
     f.close()
 
