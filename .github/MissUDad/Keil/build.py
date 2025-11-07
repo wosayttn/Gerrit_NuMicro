@@ -6,6 +6,9 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(os.getcwd())))
 import missudad
 
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+
 PROJ_FOLDER_NAME = missudad.PROJ_FOLDER_NAME
 IP_LIST=missudad.IP_LIST
 UV4_EXE=missudad.UV4_EXE
