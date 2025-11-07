@@ -2,8 +2,9 @@ name: IAR
 
 on:
   push:
-    branches:
-      - MS70*
+    branches-ignore:
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
