@@ -50,6 +50,7 @@ runs:
           IFS=',' read -ra logs <<< "$(cat attachments.txt)"
           i=1
           for log in "${logs[@]}"; do
+            log="${log//\\//}"
             numbered_logs+="[$i] $log\n"
             ((i++))
           done

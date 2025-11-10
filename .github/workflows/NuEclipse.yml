@@ -6,6 +6,7 @@ on:
       - main
       - master
       - MS*_M33*
+      - MS40_M2U51
   #pull_request:
   #  branches-ignore:
   #    - main

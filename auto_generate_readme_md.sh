@@ -12,7 +12,8 @@ WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5" "CodeAnalysis")
 
 # Start README
 {
-  echo "# NuMicro BSP Status"
+  echo "# NuMicro BSPs"
+  echo "## Current Status"
 } > "$README_FILE"
 
 # Table Header
@@ -56,7 +57,7 @@ RUNNERS_JSON=$(gh api -H "Accept: application/vnd.github+json" /repos/$GITHUB_RE
 
 # Start README
 {
-  echo "# Self-Hosted Runner List"
+  echo "## Self-Hosted Runner List"
 
   # Start the Markdown table
   echo "| NAME | LABELS |"
