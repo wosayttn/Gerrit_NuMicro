@@ -24,10 +24,10 @@ if [ ! -d "${PATH_SCRIPT}/GITHUB/" ]; then mkdir -p "${PATH_SCRIPT}/GITHUB/"; fi
 DEPTS=$(jq -r 'keys[]' "$JSON_FILE")
 
 for dept in $DEPTS; do
+  cd ${PATH_SCRIPT}
 
   # Read the BSP list for this department
   BSPS=$(jq -r --arg d "$dept" '.[$d][]' "$JSON_FILE")
-
   for bsp in $BSPS; do
 
     cd ${PATH_SCRIPT}
