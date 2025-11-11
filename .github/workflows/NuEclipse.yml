@@ -68,8 +68,6 @@ jobs:
 
             if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
               echo "❌ Build failed: $sol_path"
-              echo "🔍 Log:"
-              cat "$log_path"
               attachments+=("$log_path")   #add log into the set.
             else
               echo "✅ Build success: $sol_path"

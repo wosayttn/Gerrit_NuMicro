@@ -50,10 +50,26 @@ runs:
           IFS=',' read -ra logs <<< "$(cat attachments.txt)"
           i=1
           for log in "${logs[@]}"; do
+
+            # Normalize paths          
             log="${log//\\//}"
+
+            # Append to numbered list (for summary)            
             numbered_logs+="[$i] $log\n"
+
+            # Print full log content into job output
+            echo "📄 $log"
+            if [[ -f "$log" ]]; then
+              cat "$log"
+            else
+              echo "❌ Not found"
+            fi
+            echo
+
             ((i++))
           done
+
+          # Output metadata back to GITHUB_OUTPUT          
           echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
         fi
 
