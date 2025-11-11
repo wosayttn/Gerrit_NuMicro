@@ -39,7 +39,7 @@ def get_toolchain_path(PRJ_EWP):
                     return missudad.IAR9BUILD_EXE
                 break
 
-    return missudad.IAR9BUILD_EXE
+    return missudad.IAR7BUILD_EXE
 
 if __name__ == "__main__":
 
