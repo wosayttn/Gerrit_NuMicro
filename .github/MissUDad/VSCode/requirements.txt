@@ -1,3 +1,4 @@
+cbor
 cbor2
 intelhex
 ecdsa

@@ -69,7 +69,7 @@ for dept in $DEPTS; do
     cp -af ${GERRIT_DIR} ${GITHUB_DIR}
 
     cp -af .github "${GITHUB_DIR}/.github"
-    #rm -rf "${GITHUB_DIR}/.github/IAR_Nuvoton"
+    rm -rf "${GITHUB_DIR}/.github/IAR_Nuvoton"
 
     cd "${GITHUB_DIR}"
     # Find and replace
@@ -84,7 +84,7 @@ for dept in $DEPTS; do
       git add .
     fi
 
-    git add -f .github/workflows/requirements.txt
+    #git add -f .github/workflows/requirements.txt
     git add -f .github && git diff --cached --quiet || git commit -m "Add/update .github folder"
 
     echo "🧹 Removing Document/*.chm from history..."
