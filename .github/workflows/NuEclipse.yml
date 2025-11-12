@@ -7,10 +7,6 @@ on:
       - master
       - MS*_M33*
       - MS40_M2U51
-  #pull_request:
-  #  branches-ignore:
-  #    - main
-  #    - master
   workflow_dispatch:
 
 jobs:
@@ -32,7 +28,9 @@ jobs:
         shell: bash
         run: |
           REPO_ROOT="$GITHUB_WORKSPACE"
-          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"         
+          VSCODE_BLACKLIST_CHECK_SCRIPT="$REPO_ROOT/.github/MissUDad/VSCode/vcpkg_blacklist_check.sh"
+          
+          chmod +x "$VSCODE_BLACKLIST_CHECK_SCRIPT"
 
           export PATH="/opt/eclipse-cdt/:/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf/bin:/opt/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/bin:$PATH"
           echo $PATH
@@ -63,7 +61,7 @@ jobs:
             ret1=$?
 
             # Check log file
-            $REPO_ROOT/.github/workflows/vcpkg_blacklist_check.sh $log_path
+            $VSCODE_BLACKLIST_CHECK_SCRIPT $log_path
             ret2=$?
 
             if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then

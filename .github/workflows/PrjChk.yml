@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - MS70*
-  #pull_request:
-  #  branches:
-  #   - MS70*
   workflow_dispatch:
 
 jobs:
@@ -18,7 +15,7 @@ jobs:
       - name: Install tools
         uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
-          config: ".github/workflows/vcpkg-configuration.json"
+          config: "$GITHUB_WORKSPACE/.github/MissUDad/VSCode/vcpkg-configuration.json"
 
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1     
@@ -28,18 +25,20 @@ jobs:
         run: |
           echo "Building $GITHUB_REF_NAME"
           REPO_ROOT="$GITHUB_WORKSPACE"
+          PRJCHK_SCRIPT="$REPO_ROOT/.github/MissUDad/Misc/validate.py"
+
           echo "Building $REPO_ROOT"
 
           set +e
           check_folder_path="$REPO_ROOT/SampleCode"
-          python3 $REPO_ROOT/.github/workflows/validate.py $check_folder_path > PrjChk.log
+          python3 $PRJCHK_SCRIPT $check_folder_path > PrjChk.log
           retc=$?
           if [ $retc -ne 0 ]; then
-            echo "❌ validation failed. See below for details:"
+            echo "❌ validation failed."
             echo "PrjChk.log" > attachments.txt
             exit $retc
           else
-            echo "🎉 All checking succeeded!"
+            echo "🎉 All validation succeeded!"
           fi
 
       - name: Send mail

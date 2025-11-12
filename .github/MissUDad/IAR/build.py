@@ -33,13 +33,13 @@ def get_toolchain_path(PRJ_EWP):
         if name_elem is not None and name_elem.text == "OGLastSavedByProductVersion":
             if state_elem is not None:
                 version = state_elem.text.strip()
-                if version.startswith('8'):
-                    return missudad.IAR8BUILD_EXE
-                elif version.startswith('9'):
+                if version.startswith('9'):
                     return missudad.IAR9BUILD_EXE
+                else:
+                    return missudad.IAR8BUILD_EXE
                 break
 
-    return missudad.IAR7BUILD_EXE
+    return missudad.IAR8BUILD_EXE
 
 if __name__ == "__main__":
 

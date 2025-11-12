@@ -5,10 +5,6 @@ on:
     branches-ignore:
       - main
       - master
-  #pull_request:
-  #  branches-ignore:
-  #    - main
-  #    - master
   workflow_dispatch:
 
 jobs:
@@ -21,12 +17,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python3 python3-pip python-is-python3
-          pip install -r "$GITHUB_WORKSPACE/.github/workflows/requirements.txt"
+          pip install -r "$GITHUB_WORKSPACE/.github/MissUDad/VSCode/requirements.txt"
 
       - name: Install tools
         uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
-          config: ".github/workflows/vcpkg-configuration.json"
+          config: "$GITHUB_WORKSPACE/.github/MissUDad/VSCode/vcpkg-configuration.json"
 
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1     
@@ -35,8 +31,11 @@ jobs:
         shell: bash
         run: |
           REPO_ROOT="$GITHUB_WORKSPACE"
-          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_build.sh"
-          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
+          VSCODE_BUILD_SCRIPT="$REPO_ROOT/.github/MissUDad/VSCode/vcpkg_build.sh"
+          VSCODE_BLACKLIST_CHECK_SCRIPT="$REPO_ROOT/.github/MissUDad/VSCode/vcpkg_blacklist_check.sh"
+          
+          chmod +x "$VSCODE_BUILD_SCRIPT"
+          chmod +x "$VSCODE_BLACKLIST_CHECK_SCRIPT"
 
           mapfile -t solutions < <(
             find ./SampleCode -type f -name '*.csolution.yml' \
@@ -52,11 +51,11 @@ jobs:
             log_path="$sol_dir/$sol_name.log"
 
             # Build & Produce log file
-            $REPO_ROOT/.github/workflows/vcpkg_build.sh "$sol_path" > $log_path
+            $VSCODE_BUILD_SCRIPT "$sol_path" > $log_path
             ret1=$?
 
             # Check log file
-            $REPO_ROOT/.github/workflows/vcpkg_blacklist_check.sh $log_path
+            $VSCODE_BLACKLIST_CHECK_SCRIPT $log_path
             ret2=$?
 
             if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
