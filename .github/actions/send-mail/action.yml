@@ -57,10 +57,16 @@ runs:
             # Append to numbered list (for summary)            
             numbered_logs+="[$i] $log\n"
 
-            # Print full log content into job output
-            echo "📄 $log"
+            echo "📂 Attachment: $log"
             if [[ -f "$log" ]]; then
-              cat "$log"
+              # Detect file type (text or binary)
+              if file "$log" | grep -qE 'text|UTF-8|ASCII|log'; then
+                echo "📄 Content:"
+                cat "$log"
+                echo "🔚 End of $log"
+              else
+                echo "📦 Skipped (not a text file)"
+              fi
             else
               echo "❌ Not found"
             fi
