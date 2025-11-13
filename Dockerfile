@@ -48,39 +48,10 @@ RUN if [ ! -d cppcheck ]; then \
     fi
 
 # -----------------------------
-# Install clang-tidy-automotive
-# -----------------------------
-RUN if [ ! -d clang-tidy-automotive ]; then \
-        echo "🌍 Cloning clang-tidy-automotive"; \
-        git clone --depth=1 https://github.com/wosayttn/clang-tidy-automotive /opt/clang-tidy-automotive; \
-        cd /opt/clang-tidy-automotive; \
-        \
-        echo "🌍 Downloading LLVM 20.1.8"; \
-        wget -q https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-20.1.8.tar.gz; \
-        tar -xzf llvmorg-20.1.8.tar.gz; \
-        rm -f llvmorg-20.1.8.tar.gz; \
-        \
-        echo "🌍 Setting up clang-tidy-automotive"; \
-        ./setup.sh > /dev/null 2>&1; \
-        mkdir build && cd build; \
-        cmake -G Ninja \
-              -DCMAKE_CXX_COMPILER=/usr/bin/clang++-20 \
-              -DCMAKE_C_COMPILER=/usr/bin/clang-20 \
-              -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-              -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-              -DCMAKE_BUILD_TYPE=Release \
-              -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" \
-              -DLLVM_TARGETS_TO_BUILD="X86" \
-              ../llvm-project-llvmorg-20.1.8/llvm > /dev/null 2>&1; \
-        ninja -j$(nproc) clang-tidy; \
-    fi
-
-# -----------------------------
 # Add tools to PATH
 # -----------------------------
 ENV PATH="/opt/eclipse-cdt:${PATH}"
 ENV PATH="/opt/cppcheck/build:${PATH}"
-ENV PATH="/opt/clang-tidy-automotive/build/bin:${PATH}"
 
 # Set default working directory for user projects
 WORKDIR /workspace
@@ -90,7 +61,6 @@ WORKDIR /workspace
 # -----------------------------
 RUN eclipse -version || echo "✅ Eclipse CDT installed"
 RUN cppcheck --version || echo "✅ cppcheck installed"
-RUN clang-tidy --version || echo "✅ clang-tidy-automotive installed"
 
 # Default command
 CMD ["/bin/bash"]
