@@ -55,8 +55,8 @@ RUN if [ ! -d cppcheck ]; then \
 # Add tools to PATH
 # -----------------------------
 ENV PATH="/opt/eclipse-cdt:${PATH}"
-EVN PATH="/opt/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/bin:${PATH}"
-EVN PATH="/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf/bin:${PATH}"
+ENV PATH="/opt/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/bin:${PATH}"
+ENV PATH="/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf/bin:${PATH}"
 ENV PATH="/opt/cppcheck/build:${PATH}"
 
 # Set default working directory for user projects
