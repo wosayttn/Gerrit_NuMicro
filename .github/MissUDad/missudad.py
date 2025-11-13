@@ -31,7 +31,7 @@ ECLIPSE_EXE="C:\\Program Files (x86)\\Nuvoton Tools\\NuEclipse\\V1.02.025c\\NuEc
 Define your IAR embedded workbench installation path.
 '''
 IAR7_INSTALLATION_PATH="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 7.5\\"
-IAR8_INSTALLATION_PATH="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.2\\"
+IAR8_INSTALLATION_PATH="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.4\\"
 IAR9_INSTALLATION_PATH="C:\\Program Files\\IAR Systems\\Embedded Workbench 9.2\\"
 
 CSPY7BAT_EXE=IAR7_INSTALLATION_PATH + "common\\bin\\cspybat"
