@@ -38,7 +38,7 @@ RUN if [ ! -d eclipse-cdt ]; then \
         tar -xf NuEclipse_V1.02.029_Linux_Setup/Others/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.xz -C  /opt; \
         tar -xf NuEclipse_V1.02.029_Linux_Setup/Others/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf.tar.xz -C /opt; \
         rm -rf NuEclipse_V1.02.029_Linux_Setup; \
-        du /opt/
+        du /opt/; \
     fi
 
 # -----------------------------
