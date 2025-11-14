@@ -1,0 +1,35 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "armclang",
+            "displayName": "build with ARMCLANG",
+            "description": "",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_VERBOSE_MAKEFILE": "OFF",
+                "CMAKE_C_COMPILER_WORKS": true,
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
+                "C_COMPILER_ID": "ARMCLANG",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "gcc",
+            "displayName": "build with GCC",
+            "description": "",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_VERBOSE_MAKEFILE": "OFF",
+                "CMAKE_C_COMPILER_WORKS": true,
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
+                "C_COMPILER_ID": "GCC",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        }
+    ]
+}
