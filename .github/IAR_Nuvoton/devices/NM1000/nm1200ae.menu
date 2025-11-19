@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>NM1200AE series</tag>
+  <display>Nuvoton NM1200AE series (NM1100AE,NM1200AE)</display>
+  <data>$CUR_DIR$\NM1200AE.i79</data>
+</optionMenuItem>
+

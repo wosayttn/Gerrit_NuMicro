@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>I91300 series</tag>
+  <display>Nuvoton I91300 series</display>
+  <data>$CUR_DIR$\I91300.i79</data>
+</optionMenuItem>
+

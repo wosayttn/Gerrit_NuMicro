@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M471x6AE series</tag>
+  <display>Nuvoton M471M/R1/S series</display>
+  <data>$CUR_DIR$\M471x6AE.i79</data>
+</optionMenuItem>
+

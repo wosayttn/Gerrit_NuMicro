@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>CM303xHxxAE series</tag>
+  <display>Nuvoton CM303xHxxAE series</display>
+  <data>$CUR_DIR$\CM303xHxxAE.i79</data>
+</optionMenuItem>
+

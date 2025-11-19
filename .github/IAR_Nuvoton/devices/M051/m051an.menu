@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<optionMenuItem>
+  <tag>M051AN series</tag>
+  <display>Nuvoton M051AN series (M052AN,M054AN,M058AN,M0516AN)</display>
+  <data>$CUR_DIR$\M051AN.i79</data>
+</optionMenuItem>
+
