@@ -1,0 +1,44 @@
+name: CodeAnalysis
+
+on:
+  #push:
+  #  branches:
+  #    - MS70_M3351
+  workflow_dispatch:
+
+jobs:
+  CodeAnalysis:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Code analysis
+        shell: bash
+        run: |
+          CODE_ANALYSIS="D:/code-analysis"
+          CODE_ANALYSIS_REPORT="$GITHUB_WORKSPACE/code-analysis-report.zip"
+
+          set +e -x
+
+          cd "$CODE_ANALYSIS"
+          pip install -r requirements.txt
+          python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
+          if  [[ -f "$CODE_ANALYSIS_REPORT" ]]; then
+            cd $GITHUB_WORKSPACE
+            echo "$CODE_ANALYSIS_REPORT" > attachments.txt
+            exit 1
+          fi
+
+      - name: Send mail
+        if: failure()
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
+
