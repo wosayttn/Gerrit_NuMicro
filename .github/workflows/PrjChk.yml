@@ -1,0 +1,55 @@
+name: Project Checking
+
+on:
+  push:
+    branches:
+      - MS70*
+  workflow_dispatch:
+
+jobs:
+  AllProjectsCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: "$GITHUB_WORKSPACE/.github/MissUDad/VSCode/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1     
+
+      - name: All Project Check
+        shell: bash
+        run: |
+          echo "Building $GITHUB_REF_NAME"
+          REPO_ROOT="$GITHUB_WORKSPACE"
+          PRJCHK_SCRIPT="$REPO_ROOT/.github/MissUDad/Misc/validate.py"
+
+          echo "Building $REPO_ROOT"
+
+          set +e
+          check_folder_path="$REPO_ROOT/SampleCode"
+          python3 $PRJCHK_SCRIPT $check_folder_path > PrjChk.log
+          retc=$?
+          if [ $retc -ne 0 ]; then
+            echo "❌ validation failed."
+            echo "PrjChk.log" > attachments.txt
+            exit $retc
+          else
+            echo "🎉 All validation succeeded!"
+          fi
+
+      - name: Send mail
+        if: failure()
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO }}
+          mail-to-ms20: ${{ secrets.MAIL_TO }}
+          mail-to-ms40: ${{ secrets.MAIL_TO }}
+          mail-to-ms70: ${{ secrets.MAIL_TO }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
