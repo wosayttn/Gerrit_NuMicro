@@ -1,0 +1,154 @@
+project:
+  packs:
+    - pack: Nuvoton::NuMicroM23_DFP
+  setups:
+    - output:
+        # bin, elf, hex, lib
+        type: bin
+      add-path:
+        - ../../../../Library/Device/Nuvoton/M2U51/Include
+        - ../../../../Library/CMSIS/Core/Include
+        - ../../../../Library/StdDriver/inc
+      misc:
+        - for-compiler: AC6
+          C:
+            - -D__MICROLIB
+            - -std=c99
+          C-CPP:
+            - -fno-rtti
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+          CPP:
+            - -xc++
+            - -std=c++98
+          ASM:
+            - -masm=auto
+            - -D__MICROLIB
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --map --datacompressor=off --info=inline --entry Reset_Handler
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+            - --diag_suppress=6314
+        - for-compiler: GCC
+          C:
+            - -std=gnu11 -mthumb -masm-syntax-unified -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections
+          Link:
+            - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
+            - -Wl,--gc-sections,-Map="$elf()$.map"
+            - -Wl,--no-warn-rwx-segments
+    - setup: Options for FMC_MultiBoot_Base
+      output :
+        base-name: FMC_MultiBoot_Base
+      for-context: .Base
+      processor:
+        endian: little
+      debug: "on"
+      define:
+        - __BASE__
+      linker:
+        - script: ./FMC_MultiBoot.sct
+          for-compiler: AC6
+        - script: ./FMC_MultiBoot.ld
+          for-compiler: GCC
+          define:
+          - FLASH_BASE: 0x0
+            
+    - setup: Options for FMC_MultiBoot_Boot0
+      output :
+        base-name: FMC_MultiBoot_Boot0
+      for-context: .Boot0
+      define:
+        - __BOOT0__
+      misc:
+        - for-compiler: AC6
+          Link:
+            - --pd="-DFLASH_BASE=0x2000"
+      linker:
+        - script: ./FMC_MultiBoot.sct
+          for-compiler: AC6
+        - script: ./FMC_MultiBoot.ld
+          for-compiler: GCC
+          define:
+          - FLASH_BASE: 0x2000
+    - setup: Options for FMC_MultiBoot_Boot1
+      output :
+        base-name: FMC_MultiBoot_Boot1
+      for-context: .Boot1
+      define:
+        - __BOOT1__
+      misc:
+        - for-compiler: AC6
+          Link:
+            - --pd="-DFLASH_BASE=0x4000"
+      linker:
+        - script: ./FMC_MultiBoot.sct
+          for-compiler: AC6
+        - script: ./FMC_MultiBoot.ld
+          for-compiler: GCC
+          define:
+          - FLASH_BASE: 0x4000
+    - setup: Options for FMC_MultiBoot_Boot2
+      output :
+        base-name: FMC_MultiBoot_Boot2
+      for-context: .Boot2
+      define:
+        - __BOOT2__
+      misc:
+        - for-compiler: AC6
+          Link:
+            - --pd="-DFLASH_BASE=0x6000"
+      linker:
+        - script: ./FMC_MultiBoot.sct
+          for-compiler: AC6
+        - script: ./FMC_MultiBoot.ld
+          for-compiler: GCC
+          define:
+          - FLASH_BASE: 0x6000
+    - setup: Options for FMC_MultiBoot_BootLD
+      output :
+        base-name: FMC_MultiBoot_BootLD
+      for-context: .BootLD
+      processor:
+        endian: little
+      debug: "on"
+      define:
+        - __LDROM__
+      misc:
+        - for-compiler: AC6
+          Link:
+            - --pd="-DFLASH_BASE=0x0F100000"
+      linker:
+        - script: ../../../../Library/Device/Nuvoton/M2U51/Source/ARM/LDROM.sct
+          for-compiler: AC6
+        - script: ../../../../Library/Device/Nuvoton/M2U51/Source/GCC/LDROM.ld
+          for-compiler: GCC
+          define:
+          - FLASH_BASE: 0x0F100000
+
+  groups:
+    - group: CMSIS
+      files:
+        - file: ../../../../Library/Device/Nuvoton/M2U51/Source/system_M2U51.c
+        - file: ../../../../Library/Device/Nuvoton/M2U51/Source/ARM/startup_M2U51.c
+          for-compiler: AC6
+        - file: ./startup_M2U51.S
+          for-compiler: GCC        
+    - group: User
+      files:
+        - file: ../main.c
+    - group: Library
+      files:
+        - file: ../../../../Library/StdDriver/src/clk.c
+        - file: ../../../../Library/StdDriver/src/fmc.c
+        - file: ../../../../Library/StdDriver/src/sys.c
+        - file: ../../../../Library/StdDriver/src/uart.c
+        - file: ../../../../Library/StdDriver/src/retarget.c
