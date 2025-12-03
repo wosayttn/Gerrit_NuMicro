@@ -8,7 +8,7 @@ README_FILE="README.md"
 URL_PREFIX="https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows"
 
 # Define workflow set
-WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5" "CodeAnalysis")
+WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5")
 
 # Start README
 {

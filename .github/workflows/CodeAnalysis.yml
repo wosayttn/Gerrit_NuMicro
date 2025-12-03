@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - MS70_M3351
+      - MS70_M55*
   workflow_dispatch:
 
 jobs:
