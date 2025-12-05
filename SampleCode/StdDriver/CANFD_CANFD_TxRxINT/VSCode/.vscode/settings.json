@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\mcchang2\\Desktop\\BSP_Temp\\M3351\\bsp_20250924\\SampleCode\\StdDriver\\CANFD_CANFD_TxRxINT\\VSCode\\out\\CANFD_CANFD_TxRxINT\\ARMCLANG\\Release"
+    ]
+}

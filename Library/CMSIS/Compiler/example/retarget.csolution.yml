@@ -1,0 +1,38 @@
+# A solution is a collection of related projects that share same base configuration.
+solution:
+  created-for: CMSIS-Toolbox@2.9.0
+  cdefault:
+
+  # Compilers that can be selected
+  select-compiler:
+    - compiler: AC6
+    - compiler: GCC
+    - compiler: IAR
+    - compiler: CLANG
+
+  # List the packs that define the device and/or board.
+  packs:
+    - pack: Nuvoton::NuMicroM55_DFP
+
+  # List different targets that are used to deploy the solution.
+  target-types:
+    - type: ARMCLANG
+      compiler: AC6
+      device: Nuvoton::M55M1H2LJAE
+    - type: GNUC
+      compiler: GCC
+      device: Nuvoton::M55M1H2LJAE
+
+  # List of different build configurations.
+  build-types:
+    - type: Debug
+      debug: on
+      optimize: none
+
+    - type: Release
+      debug: off
+      optimize: size
+
+  # List related projects.
+  projects:
+    - project: ./retarget.cproject.yml
