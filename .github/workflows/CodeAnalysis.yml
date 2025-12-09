@@ -1,10 +1,9 @@
 name: CodeAnalysis
 
 on:
-  push:
-    branches:
-      - MS70_M3351
-      - MS70_M55*
+  #push:
+  #  branches:
+  #    - MS70_*
   workflow_dispatch:
 
 jobs:
