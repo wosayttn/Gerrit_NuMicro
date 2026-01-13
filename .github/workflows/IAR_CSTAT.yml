@@ -17,7 +17,7 @@ jobs:
   cstat-project:
     name: Static Code Analysis
     runs-on: ubuntu-latest
-    timeout-minutes: 330   # ⏱️ Global 5.5-hour timeout for the entire job    
+    timeout-minutes: 350   # ⏱️ Global 5.8-hour timeout for the entire job    
     container: ghcr.io/iarsystems/arm:9.70.1-base
     steps:
       - uses: actions/checkout@v4

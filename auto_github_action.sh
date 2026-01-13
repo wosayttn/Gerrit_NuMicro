@@ -93,16 +93,6 @@ for dept in $DEPTS; do
     echo "🧹 Removing _xxxx from history..."
 
     find . -type d -name '_*'
-    if [[ "$bsp" == M55* ]]; then
-    #git filter-repo \
-    #	--path-glob "Document/*.chm" \
-    #	--path-glob '_*/' \
-    #	--path-glob 'ThirdParty/_tflite_micro_EI' \
-    #	--path-glob 'Library/_*/' \
-    #	--path-glob 'Library/**/_*/' \
-    #	--path-glob 'SampleCode/_*/' \
-    #	--invert-paths --force
-
     git filter-repo \
       --path-glob "Document/*.chm" \
       --path-glob '_*/' \
@@ -110,23 +100,6 @@ for dept in $DEPTS; do
       --path-glob 'Library/_*/' \
       --path-glob 'Library/**/_*/' \
       --invert-paths --force
-
-    else
-    #git filter-repo \
-    #	--path-glob "Document/*.chm" \
-    #	--path-glob '**/_*/' \
-    #	--path-glob '_*/' \
-    #	--invert-paths --force
-
-    git filter-repo \
-      --path-glob "Document/*.chm" \
-      --path-glob '_*/' \
-      --path-glob 'ThirdParty/_*/' \
-      --path-glob 'ThirdParty/**/_*/' \
-      --path-glob 'Library/_*/' \
-      --path-glob 'Library/**/_*/' \
-      --invert-paths --force
-    fi
     
     # _ThirdParty miss Workaround
     if [ -d "${GERRIT_DIR}/_ThirdParty" ]; then
