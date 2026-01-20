@@ -37,10 +37,6 @@ def get_toolchain_path(PRJ_EWP):
                     return missudad.IAR9BUILD_EXE
                 elif version.startswith('8'):
                     return missudad.IAR8BUILD_EXE
-                elif version.startswith('7'):
-                    return missudad.IAR7BUILD_EXE
-                elif version.startswith('6'):
-                    return missudad.IAR7BUILD_EXE
                 break
 
     return missudad.IAR8BUILD_EXE
