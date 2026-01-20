@@ -1,0 +1,108 @@
+name: NuEclipse
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/wosayttn/numicro-cicd:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build all Eclipse projects
+        shell: bash
+        run: |
+          REPO_ROOT="$GITHUB_WORKSPACE"
+          VSCODE_BLACKLIST_CHECK_SCRIPT="$REPO_ROOT/.github/MissUDad/VSCode/vcpkg_blacklist_check.sh"
+          
+          chmod +x "$VSCODE_BLACKLIST_CHECK_SCRIPT"
+
+          export PATH="/opt/eclipse-cdt/:/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-elf/bin:/opt/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/bin:$PATH"
+          echo $PATH
+
+          echo "✅ Version check"
+          arm-none-eabi-gcc --version
+          aarch64-none-elf-gcc --version
+
+          mapfile -t solutions < <(find ./SampleCode -type f -name .cproject -exec dirname {} \;)
+          declare -a attachments=()
+
+          set +e
+          for sol_path in "${solutions[@]}"; do
+
+            dir=$(dirname "$sol_path")
+            sol_name=$(basename "$dir")
+            log_path="$sol_path/$sol_name.log"
+
+            mkdir -p "$GITHUB_WORKSPACE/workspace"
+
+            #echo "🔨 Building $dir on $RUNNER_OS"
+            timeout 5m eclipse \
+              -nosplash \
+              -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
+              -data "$GITHUB_WORKSPACE/workspace" \
+              -import "$GITHUB_WORKSPACE/$sol_path" \
+              -build all > "$log_path" 2>&1
+            ret1=$?
+
+            # Check log file
+            $VSCODE_BLACKLIST_CHECK_SCRIPT $log_path
+            ret2=$?
+
+            if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
+              echo "❌ Build failed: $sol_path"
+              attachments+=("$log_path")   #add log into the set.
+            else
+              echo "✅ Build success: $sol_path"
+            fi
+
+            rm -rf "$GITHUB_WORKSPACE/workspace"
+
+          done
+          set -e
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#attachments[@]} -ne 0 ]]; then
+            echo "🚨 The following builds failed:"
+            for log in "${attachments[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${attachments[@]}" | sed 's/,$//' > attachments.txt
+            echo "Wrote attachments.txt"
+            exit 1
+          else
+            echo "🎉 All builds succeeded!"
+          fi
+
+      - name: Send mail
+        if: failure()
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
+
+      - name: Collect artifacts with directory structure
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.hex" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" width="900" height="1000">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #333; }
+      .subtitle { font: bold 16px sans-serif; fill: #666; }
+      .label { font: 14px monospace; fill: #000; }
+      .address { font: 12px monospace; fill: #555; }
+      .size { font: 11px sans-serif; fill: #444; }
+      .section-flash { fill: #4CAF50; stroke: #2E7D32; stroke-width: 2; }
+      .section-ram-data { fill: #2196F3; stroke: #1565C0; stroke-width: 2; }
+      .section-ram-bss { fill: #FFC107; stroke: #F57C00; stroke-width: 2; }
+      .section-ram-heap { fill: #9C27B0; stroke: #6A1B9A; stroke-width: 2; }
+      .section-ram-stack { fill: #F44336; stroke: #C62828; stroke-width: 2; }
+      .section-unused { fill: #E0E0E0; stroke: #9E9E9E; stroke-width: 1; stroke-dasharray: 4,4; }
+      .region-border { fill: none; stroke: #333; stroke-width: 3; }
+      .grid-line { stroke: #CCC; stroke-width: 1; stroke-dasharray: 2,2; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="title">M3331 Memory Map - Blinky Project</text>
+  <text x="450" y="55" text-anchor="middle" class="address">FLASH: 512 KB (0x00000000 - 0x0007FFFF) | RAM: 320 KB (0x20000000 - 0x2004FFFF)</text>
+  
+  <!-- FLASH Region -->
+  <g id="flash-region">
+    <!-- Border -->
+    <rect x="50" y="80" width="350" height="400" class="region-border"/>
+    <text x="225" y="105" text-anchor="middle" class="subtitle">FLASH (0x00000000)</text>
+    
+    <!-- .text section (0x22C8 = 8,904 bytes) -->
+    <rect x="60" y="120" width="330" height="160" class="section-flash"/>
+    <text x="225" y="145" text-anchor="middle" class="label">.text (Code + Rodata)</text>
+    <text x="225" y="165" text-anchor="middle" class="address">0x00000000 - 0x000022C7</text>
+    <text x="225" y="185" text-anchor="middle" class="size">Size: 0x22C8 (8,904 bytes)</text>
+    <text x="70" y="205" class="size">• Vector Table (0x284 bytes)</text>
+    <text x="70" y="220" class="size">• Application Code</text>
+    <text x="70" y="235" class="size">• Library Code</text>
+    <text x="70" y="250" class="size">• Constant Data</text>
+    <text x="70" y="265" class="size">• Exception Tables</text>
+    
+    <!-- .data load address -->
+    <rect x="60" y="290" width="330" height="40" class="section-flash"/>
+    <text x="225" y="310" text-anchor="middle" class="label">.data (Load Address)</text>
+    <text x="225" y="325" text-anchor="middle" class="address">0x000022DC (Size: 0x70 / 112 bytes)</text>
+    
+    <!-- Unused Flash -->
+    <rect x="60" y="340" width="330" height="130" class="section-unused"/>
+    <text x="225" y="375" text-anchor="middle" class="label">Unused Flash</text>
+    <text x="225" y="395" text-anchor="middle" class="address">0x0000234C - 0x0007FFFF</text>
+    <text x="225" y="415" text-anchor="middle" class="size">~519,092 bytes available</text>
+    <text x="225" y="435" text-anchor="middle" class="size">Usage: 1.7% (8,908 / 524,288)</text>
+  </g>
+  
+  <!-- RAM Region -->
+  <g id="ram-region">
+    <!-- Border -->
+    <rect x="500" y="80" width="350" height="850" class="region-border"/>
+    <text x="675" y="105" text-anchor="middle" class="subtitle">RAM (0x20000000)</text>
+    
+    <!-- .data section -->
+    <rect x="510" y="120" width="330" height="60" class="section-ram-data"/>
+    <text x="675" y="145" text-anchor="middle" class="label">.data (Initialized Data)</text>
+    <text x="675" y="165" text-anchor="middle" class="address">0x20000000 - 0x2000006F</text>
+    <text x="675" y="175" text-anchor="middle" class="size">Size: 0x70 (112 bytes)</text>
+    
+    <!-- .bss section -->
+    <rect x="510" y="190" width="330" height="80" class="section-ram-bss"/>
+    <text x="675" y="215" text-anchor="middle" class="label">.bss (Uninitialized Data)</text>
+    <text x="675" y="235" text-anchor="middle" class="address">0x20000070 - 0x200001DF</text>
+    <text x="675" y="255" text-anchor="middle" class="size">Size: 0x170 (368 bytes)</text>
+    
+    <!-- .heap section -->
+    <rect x="510" y="280" width="330" height="100" class="section-ram-heap"/>
+    <text x="675" y="310" text-anchor="middle" class="label">.heap (Dynamic Memory)</text>
+    <text x="675" y="330" text-anchor="middle" class="address">0x200001E0 - 0x20000DDF</text>
+    <text x="675" y="350" text-anchor="middle" class="size">Size: 0xC00 (3,072 bytes)</text>
+    <text x="675" y="365" text-anchor="middle" class="size">For malloc/free</text>
+    
+    <!-- Unused RAM (middle) -->
+    <rect x="510" y="390" width="330" height="440" class="section-unused"/>
+    <text x="675" y="470" text-anchor="middle" class="label">Unused RAM</text>
+    <text x="675" y="490" text-anchor="middle" class="address">0x20000DE0 - 0x2004FBFF</text>
+    <text x="675" y="510" text-anchor="middle" class="size">~323,104 bytes</text>
+    <g transform="translate(525, 540)">
+      <text x="0" y="0" class="size">Available for:</text>
+      <text x="0" y="20" class="size">• Additional .bss variables</text>
+      <text x="0" y="40" class="size">• Heap expansion</text>
+      <text x="0" y="60" class="size">• Stack expansion</text>
+      <text x="0" y="80" class="size">• DMA buffers</text>
+      <text x="0" y="100" class="size">• User data structures</text>
+    </g>
+    <text x="675" y="760" text-anchor="middle" class="size">Total Used: 3,552 bytes (1.1%)</text>
+    <text x="675" y="780" text-anchor="middle" class="size">Total Available: 324,096 bytes (98.9%)</text>
+    
+    <!-- .stack section (at top of RAM) -->
+    <rect x="510" y="840" width="330" height="80" class="section-ram-stack"/>
+    <text x="675" y="865" text-anchor="middle" class="label">.stack (Call Stack)</text>
+    <text x="675" y="885" text-anchor="middle" class="address">0x2004FC00 - 0x2004FFFF</text>
+    <text x="675" y="905" text-anchor="middle" class="size">Size: 0x400 (1,024 bytes)</text>
+    <text x="675" y="915" text-anchor="middle" class="size">Grows downward ↓</text>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(50, 530)">
+    <text x="0" y="0" class="subtitle">Section Legend:</text>
+    
+    <rect x="0" y="10" width="30" height="20" class="section-flash"/>
+    <text x="35" y="25" class="size">.text - Program code and constants (Flash)</text>
+    
+    <rect x="0" y="35" width="30" height="20" class="section-ram-data"/>
+    <text x="35" y="50" class="size">.data - Initialized global/static variables (RAM)</text>
+    
+    <rect x="0" y="60" width="30" height="20" class="section-ram-bss"/>
+    <text x="35" y="75" class="size">.bss - Uninitialized global/static variables (RAM)</text>
+    
+    <rect x="0" y="85" width="30" height="20" class="section-ram-heap"/>
+    <text x="35" y="100" class="size">.heap - Dynamic memory allocation (RAM)</text>
+    
+    <rect x="0" y="110" width="30" height="20" class="section-ram-stack"/>
+    <text x="35" y="125" class="size">.stack - Function call stack (RAM)</text>
+    
+    <rect x="0" y="135" width="30" height="20" class="section-unused"/>
+    <text x="35" y="150" class="size">Unused - Available for use</text>
+  </g>
+  
+  <!-- Memory Summary -->
+  <g id="summary" transform="translate(50, 710)">
+    <rect x="-5" y="-5" width="360" height="200" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="0" y="15" class="subtitle">Memory Summary:</text>
+    
+    <text x="10" y="40" class="size" font-weight="bold">Flash Usage:</text>
+    <text x="20" y="60" class="size">• Total: 512 KB (524,288 bytes)</text>
+    <text x="20" y="75" class="size">• Used: 8,908 bytes (1.7%)</text>
+    <text x="20" y="90" class="size">• Free: 515,380 bytes (98.3%)</text>
+    
+    <text x="10" y="115" class="size" font-weight="bold">RAM Usage:</text>
+    <text x="20" y="135" class="size">• Total: 320 KB (327,680 bytes)</text>
+    <text x="20" y="150" class="size">• Used: 3,552 bytes (1.1%)</text>
+    <text x="20" y="165" class="size">  - Data/BSS: 480 bytes</text>
+    <text x="20" y="180" class="size">  - Heap: 3,072 bytes</text>
+    <text x="20" y="195" class="size">• Free: 324,128 bytes (98.9%)</text>
+  </g>
+  
+  <!-- Notes -->
+  <text x="50" y="970" class="size">Note: Stack grows downward from 0x2004FFFF. Heap can expand into unused RAM.</text>
+  <text x="50" y="990" class="size">Generated from: Blinky.map (GCC ARM Compiler)</text>
+</svg>

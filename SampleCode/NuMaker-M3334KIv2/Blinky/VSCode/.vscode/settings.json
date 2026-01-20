@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\MCU_MS20\\MAG071_M3331\\m3331bsp\\SampleCode\\NuMaker-M3334KIv2\\Blinky\\VSCode\\out\\Blinky\\GNUC\\debug"
+    ]
+}
