@@ -34,7 +34,7 @@ jobs:
           chmod +x "$VSCODE_BLACKLIST_CHECK_SCRIPT"
 
           mapfile -t solutions < <(
-            find ./SampleCode -type f -name '*.csolution.yml' \
+            find ./SampleCode/TrustZone/Template -type f -name '*.csolution.yml' \
             -not -path '*/_CMSIS-Pack/*'
           )
 

@@ -54,7 +54,7 @@ project:
             - -Wl,-Map,"$OutDir()$/$Project$.map"
   linker:
     - for-compiler: AC6
-      script: ../Keil/nonsecure.sct
+      script: ../KEIL/nonsecure.sct
     - for-compiler: GCC
       script: Nonsecure.ld
   groups:

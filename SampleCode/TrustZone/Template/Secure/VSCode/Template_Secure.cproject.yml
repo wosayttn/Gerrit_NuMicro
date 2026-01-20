@@ -56,7 +56,7 @@ project:
             - -Wl,--out-implib="../lib/libnsc_vscode.a",--cmse-implib
   linker:
     - for-compiler: AC6
-      script: ../Keil/secure.sct
+      script: ../KEIL/secure.sct
     - for-compiler: GCC
       script: ./Secure.ld
   groups:
