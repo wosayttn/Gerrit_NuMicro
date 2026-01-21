@@ -35,7 +35,7 @@ def get_toolchain_path(PRJ_EWP):
                 version = state_elem.text.strip()
                 if version.startswith('9'):
                     return missudad.IAR9BUILD_EXE
-                else if version.startswith('8'):
+                elif version.startswith('8'):
                     return missudad.IAR8BUILD_EXE
                 break
 
