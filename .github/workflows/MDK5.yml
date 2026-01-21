@@ -1,0 +1,61 @@
+name: MDK5
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build MDK5 projects
+        shell: bash
+        run: |
+          MISSUDAD_KEIL="$GITHUB_WORKSPACE/.github/MissUDad/Keil"
+
+          set +e
+          cd $MISSUDAD_KEIL
+          python build.py
+          retc=$?
+          if [ $retc -ne 0 ]; then
+
+            echo "❌ Build Failed:"
+            cat "$MISSUDAD_KEIL/attachments.txt"
+            cp -af "$MISSUDAD_KEIL/attachments.txt" "$GITHUB_WORKSPACE/"
+            exit $retc
+
+          else
+
+            echo "🎉 All building succeeded!" $REPO_ROOT
+
+          fi
+
+      - name: Send mail
+        if: failure()
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
+
+      - name: Collect artifacts with directory structure
+        shell: bash
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/
