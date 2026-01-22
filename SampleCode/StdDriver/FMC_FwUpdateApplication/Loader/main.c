@@ -1,0 +1,310 @@
+/******************************************************************************
+ * @file     main.c
+ * @version  V1.00
+ * @brief    Firmware update sample code (Bank0 Loader).
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * @copyright (C) 2025 Nuvoton Technology Corp. All rights reserved.
+ *****************************************************************************/
+
+#include <stdio.h>
+#include "NuMicro.h"
+#include "xmodem.h"
+#include "NuDB_common.h"
+
+#define CREATE_BANK1_APP   1
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* Global variables                                                                                        */
+/*---------------------------------------------------------------------------------------------------------*/
+static volatile uint32_t  s_u32ExecBank;             /* CPU executing in which Bank              */
+static volatile uint32_t  s_u32DbLength;             /* dual bank program remaining length       */
+static volatile uint32_t  s_u32DbAddr;               /* dual bank program current flash address  */
+static volatile uint32_t  s_u32TickCnt;              /* timer ticks - 100 ticks per second       */
+
+uint32_t  FuncCrc32(uint32_t u32Start, uint32_t u32Len)
+{
+    uint32_t  u32Idx, u32Data = 0UL;
+
+    /* WDTAT_RVS, CHECKSUM_RVS, CHECKSUM_COM */
+    for (u32Idx = 0; u32Idx < u32Len; u32Idx += 4)
+    {
+        u32Data += *(uint32_t *)(u32Start + u32Idx);
+    }
+
+    u32Data = 0xFFFFFFFF - u32Data + 1UL;
+
+    return u32Data;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* Interrupt Handler                                                                                       */
+/*---------------------------------------------------------------------------------------------------------*/
+void SysTick_Handler(void)
+{
+    /* Increase timer tick */
+    s_u32TickCnt++;
+
+    /* Calculate CRC32 value, just to consume CPU time  */
+    FuncCrc32(FMC_APROM_BASE, 0x100);
+}
+
+void WDT0_IRQHandler(void)
+{
+    WDT_RESET_COUNTER(WDT0);
+
+    if (WDT_GET_TIMEOUT_INT_FLAG(WDT0) == 1)
+    {
+        /* Clear WDT time-out interrupt flag */
+        WDT_CLEAR_TIMEOUT_INT_FLAG(WDT0);
+    }
+}
+
+int32_t SYS_Init(void)
+{
+    /* Unlock protected registers */
+    SYS_UnlockReg();
+
+    /*------------------------------------------------------------------------*/
+    /* Init System Clock                                                      */
+    /*------------------------------------------------------------------------*/
+    /* Enable HXT clock */
+    CLK_EnableXtalRC(CLK_PWRCTL_HXTEN_Msk);
+
+    /* Wait for HXT clock ready */
+    CLK_WaitClockReady(CLK_STATUS_HXTSTB_Msk);
+
+    /* Set PCLK0 to HCLK/2 */
+    CLK_SET_PCLK0DIV(CLK_PCLKDIV_APB0DIV_DIV2);
+    /* Set PCLK1 to HCLK/2 */
+    CLK_SET_PCLK1DIV(CLK_PCLKDIV_APB1DIV_DIV2);
+
+    /* Set core clock */
+    CLK_SetCoreClock(FREQ_144MHZ);
+
+    /* Update System Core Clock */
+    SystemCoreClockUpdate();
+
+    /* Enable module clock */
+    CLK_EnableModuleClock(ISP_MODULE);
+    CLK_EnableModuleClock(CRC_MODULE);
+
+    /* Enable UART module clock */
+    SetDebugUartCLK();
+
+    /*------------------------------------------------------------------------*/
+    /* Init I/O Multi-function                                                */
+    /*------------------------------------------------------------------------*/
+    SetDebugUartMFP();
+
+    /* Lock protected registers */
+    SYS_LockReg();
+
+    return 0;
+}
+
+void Download(void)
+{
+    int32_t  i32Err;
+    uint32_t u32ExecBank = s_u32ExecBank;
+
+    printf("\n Bank%d processing, download data to Bank%d APP Base.\n\n\n", u32ExecBank, u32ExecBank);
+
+    /* Dual bank background program address */
+    s_u32DbAddr   = APP_BASE;
+    /* Dual bank background program length */
+    s_u32DbLength = APP_SIZE;
+
+    if (SysTick_Config(SystemCoreClock / 1000))
+    {
+        /* Setup SysTick Timer for 1 ms interrupts  */
+        printf("[Error] SysTick_Config failed !\n");
+
+        while (1);
+    }
+
+    /* Use Xmodem to download firmware from PC*/
+    i32Err = XmodemRecv(s_u32DbAddr);
+
+    if (i32Err < 0)
+    {
+        printf("\n[Error] Xmodem transfer fail !\n");
+
+        while (1);
+    }
+    else
+    {
+        printf("\nXomdem transfer done.\n");
+        printf("Total trnasfer size is %d\n", i32Err);
+    }
+
+    printf("\n Firmware download completed.\n");
+}
+
+int32_t main(void)
+{
+    uint8_t u8GetCh;
+    uint32_t i, u32ExecBank;
+    uint32_t u32Loader0ChkSum, u32Loader1ChkSum;
+    uint32_t u32App0ChkSum, u32App1ChkSum;
+
+    /* Initial clocks and multi-functions */
+    SYS_Init();
+
+    /* Init Debug UART for print message */
+    InitDebugUart();
+
+    /* Unlock protected registers */
+    SYS_UnlockReg();
+    /* Enable ISP and APROM update */
+    FMC_ENABLE_ISP();
+    FMC_ENABLE_AP_UPDATE();
+
+    do
+    {
+        printf("\n\n");
+        printf("+------------------------+\n");
+        printf("|  Boot from 0x%08X  |\n", FMC_GetVECMAP());
+        printf("+------------------------+\n");
+
+        /* Check CPU run at Bank0 or Bank1*/
+        s_u32ExecBank = (uint32_t)((FMC->ISPSTS & FMC_ISPSTS_FBS_Msk) >> FMC_ISPSTS_FBS_Pos);
+        printf("\n Bank%d Loader processing \n\n", s_u32ExecBank);
+
+        /* Get loader CRC */
+        u32Loader0ChkSum = FMC_GetChkSum(LOADER_BASE, LOADER_SIZE);
+        u32Loader1ChkSum = FMC_GetChkSum(FMC_APROM_BANK_SIZE + LOADER_BASE, LOADER_SIZE);
+        printf(" Loader0 checksum: 0x%08X\n Loader1 checksum: 0x%08X\n", u32Loader0ChkSum, u32Loader1ChkSum);
+
+        /* Get app CRC */
+        u32App0ChkSum = FMC_GetChkSum(APP_BASE, APP_SIZE);
+        u32App1ChkSum = FMC_GetChkSum(FMC_APROM_BANK_SIZE + APP_BASE, APP_SIZE);
+        printf(" App0 checksum: 0x%08X \n App1 checksum: 0x%08X\n", u32App0ChkSum, u32App1ChkSum);
+
+        /* Store the firmware CRC to FW_CRC_BASE for future verification. */
+        printf("\n Firmware CRC in [0x%08X] is [0x%08X]\n", (uint32_t)FW_CRC_BASE, FMC_Read(FW_CRC_BASE));
+
+        if (FMC_Read(FW_CRC_BASE) == 0xFFFFFFFF)
+        {
+            FMC_Write8Bytes(FW_CRC_BASE, u32App0ChkSum, 0xFFFFFFFF);
+            printf("\n Update Firmware CRC in [0x%08X] is [0x%08X]\n", (uint32_t)FW_CRC_BASE, FMC_Read(FW_CRC_BASE));
+        }
+
+        /* Store the backup firmware CRC to BACKUP_FW_CRC_BASE for future verification. */
+        printf("\n Backup Firmware CRC in [0x%08X] is [0x%08X]\n", (uint32_t)BACKUP_FW_CRC_BASE, FMC_Read(BACKUP_FW_CRC_BASE));
+
+        if (FMC_Read(BACKUP_FW_CRC_BASE) == 0xFFFFFFFF)
+        {
+
+            FMC_Write8Bytes(BACKUP_FW_CRC_BASE, u32App1ChkSum, 0xFFFFFFFF);
+            printf("\n Update Firmware CRC in [0x%08X] is [0x%08X]\n", (uint32_t)BACKUP_FW_CRC_BASE, FMC_Read(BACKUP_FW_CRC_BASE));
+        }
+
+        /* Create the other bank loader for executing bank remap */
+        if ((s_u32ExecBank == 0) && (u32Loader0ChkSum != u32Loader1ChkSum))
+        {
+            printf("\n Create Bank%d Loader ... \n",  s_u32ExecBank ^ 1);
+
+            /* Erase loader region */
+            for (i = LOADER_BASE; i < (LOADER_BASE + LOADER_SIZE); i += FMC_FLASH_PAGE_SIZE)
+            {
+                FMC_Erase(FMC_APROM_BANK_SIZE * (s_u32ExecBank ^ 1) + i);
+            }
+
+            /* Create loader in the other bank */
+            for (i = LOADER_BASE; i < (LOADER_BASE + LOADER_SIZE); i += 8)
+            {
+                u32ExecBank = s_u32ExecBank;
+                FMC_Write8Bytes(FMC_APROM_BANK_SIZE * (u32ExecBank ^ 1) + i,
+                                FMC_Read((FMC_BANK_SIZE * u32ExecBank) + i),
+                                FMC_Read((FMC_BANK_SIZE * u32ExecBank) + i + 4)
+                               );
+            }
+
+            printf(" Create Bank%d Loader completed. \n", (s_u32ExecBank ^ 1));
+        }
+
+#if CREATE_BANK1_APP
+
+        if ((s_u32ExecBank == 0) && ((FMC_CheckAllOne((APP_BASE + FMC_APROM_BANK_SIZE), APP_SIZE)) == READ_ALLONE_YES))
+        {
+            printf("\n Create Bank%d App ... \n", s_u32ExecBank ^ 1);
+
+            /* Erase app region */
+            for (i = APP_BASE; i < (APP_BASE + APP_SIZE); i += FMC_FLASH_PAGE_SIZE)
+            {
+                FMC_Erase(FMC_BANK_SIZE * (s_u32ExecBank ^ 1) + i);
+            }
+
+            /* Create app in the other bank (just for test) */
+            for (i = APP_BASE; i < (APP_BASE + APP_SIZE); i += 8)
+            {
+                u32ExecBank = s_u32ExecBank;
+                FMC_Write8Bytes(FMC_BANK_SIZE * (u32ExecBank ^ 1) + i,
+                                FMC_Read((FMC_BANK_SIZE * u32ExecBank) + i),
+                                FMC_Read((FMC_BANK_SIZE * u32ExecBank) + i + 4)
+                               );
+            }
+
+            printf(" Create Bank%d App completed! \n", (s_u32ExecBank ^ 1));
+        }
+
+#endif
+
+        /* To check if system has been reset by WDT time-out reset or not */
+        if (WDT_GET_RESET_FLAG(WDT0) == 1)
+        {
+            WDT_CLEAR_RESET_FLAG(WDT0);
+            printf("\n === System reset by WDT time-out event === \n");
+            printf(" Press any key to remap back to backup FW\n");
+            getchar();
+
+            /* Remap to Bank1 to execute backup firmware */
+            FMC_RemapBank(1);
+            s_u32ExecBank = (uint32_t)((FMC->ISPSTS & FMC_ISPSTS_FBS_Msk) >> FMC_ISPSTS_FBS_Pos);
+            printf("\n Bank%d Loader after remap  \n\n", s_u32ExecBank);
+
+            UART_WAIT_TX_EMPTY(DEBUG_PORT);
+            /* Remap to App */
+            FMC_SetVectorPageAddr(APP_BASE);
+            SYS_ResetCPU();
+        }
+
+        printf("\n Execute Bank%d APP ? [y/n] \n", s_u32ExecBank);
+        u8GetCh = (uint8_t)getchar();
+        printf("\n User select [%c] \n", u8GetCh);
+
+        if (u8GetCh == 'y')
+        {
+            UART_WAIT_TX_EMPTY(DEBUG_PORT);
+            /* Remap to App */
+            FMC_SetVectorPageAddr(APP_BASE);
+            SYS_ResetCPU();
+        }
+        else
+        {
+            printf("\n Download new firmware ? [y/n] \n");
+            u8GetCh = (uint8_t)getchar();
+            printf("\n User select [%c] \n", u8GetCh);
+
+            if (u8GetCh == 'y')
+            {
+                /* Download new firmware */
+                Download();
+                printf("\nPress any key to execute new firmware.\n");
+                getchar();
+                /* Remap to App */
+                FMC_SetVectorPageAddr(APP_BASE);
+                SYS_ResetCPU();
+            }
+            else
+            {
+                /* Remap to Loader */
+                FMC_SetVectorPageAddr(LOADER_BASE);
+                SYS_ResetCPU();
+            }
+        }
+    } while (1);
+}
+
+/*** (C) COPYRIGHT 2025 Nuvoton Technology Corp. ***/
