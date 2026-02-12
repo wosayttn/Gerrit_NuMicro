@@ -30,6 +30,16 @@ def keil_uvprojx(file_path):
         errors.append(f"Error: File not found -> {file_path}")
     else:
 
+        # 1. Get the directory name of the file
+        parent_dir = os.path.basename(os.path.dirname(file_path))
+
+        # 2. Check if the parent directory is NOT strictly 'Keil'
+        if parent_dir.lower() == "keil":
+            if parent_dir != "Keil":
+                errors.append(f"Error: '{file_path}' Directory name must be strictly 'Keil' (case-sensitive). Found: '{parent_dir}'")
+                return errors
+
+        # 3. Check if file exists
         try:
             tree = ET.parse(file_path)
             prj_tree_root = tree.getroot()
@@ -168,10 +178,72 @@ def vcpkg_cbuild(yaml_file):
 
     return errors
 
+
+def vscode_csolution(file_path):
+
+    errors = []
+
+    if not os.path.exists(file_path):
+        errors.append(f"Error: File not found -> {file_path}")
+    else:
+
+        # 1. Get the directory name of the file
+        parent_dir = os.path.basename(os.path.dirname(file_path))
+
+        # 2. Check if the parent directory is NOT strictly 'VSCode'
+        if parent_dir.lower() == "vscode":
+            if parent_dir != "VSCode":
+                errors.append(f"Error: '{file_path}' Directory name must be strictly 'VSCode' (case-sensitive). Found: '{parent_dir}'")
+                return errors
+
+    return errors
+
+def nueclipse_project(file_path):
+
+    errors = []
+
+    if not os.path.exists(file_path):
+        errors.append(f"Error: File not found -> {file_path}")
+    else:
+
+        # 1. Get the directory name of the file
+        parent_dir = os.path.basename(os.path.dirname(file_path))
+
+        # 2. Check if the parent directory is NOT strictly 'GCC'
+        if parent_dir.lower() == "gcc":
+            if parent_dir != "GCC":
+                errors.append(f"Error: '{file_path}' Directory name must be strictly 'GCC' (case-sensitive). Found: '{parent_dir}'")
+                return errors
+
+    return errors
+
+def iar_project(file_path):
+
+    errors = []
+
+    if not os.path.exists(file_path):
+        errors.append(f"Error: File not found -> {file_path}")
+    else:
+
+        # 1. Get the directory name of the file
+        parent_dir = os.path.basename(os.path.dirname(file_path))
+
+        # 2. Check if the parent directory is NOT strictly 'IAR'
+        if parent_dir.lower() == "iar":
+            if parent_dir != "IAR":
+                errors.append(f"Error: '{file_path}' Directory name must be strictly 'IAR' (case-sensitive). Found: '{parent_dir}'")
+                return errors
+
+    return errors
+
+
 VALIDATION_FUNCTIONS = {
     '*.cbuild.yml': vcpkg_cbuild,
     'vcpkg-configuration.json': vcpkg_configuration,
     '*.uvproj*': keil_uvprojx,
+    '*.csolution': vscode_csolution,
+    '.project': nueclipse_project,
+    '*.eww' : iar_project
 }
 
 def validate_project_file(file_abs_path, update_function):
