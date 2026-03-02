@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" width="900" height="1100">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #333; }
+      .subtitle { font: bold 16px sans-serif; fill: #666; }
+      .label { font: 14px monospace; fill: #000; }
+      .address { font: 12px monospace; fill: #555; }
+      .size { font: 11px sans-serif; fill: #444; }
+      .section-flash { fill: #4CAF50; stroke: #2E7D32; stroke-width: 2; }
+      .section-ram-stack { fill: #F44336; stroke: #C62828; stroke-width: 2; }
+      .section-ram-data { fill: #2196F3; stroke: #1565C0; stroke-width: 2; }
+      .section-ram-bss { fill: #FFC107; stroke: #F57C00; stroke-width: 2; }
+      .section-ram-heap { fill: #9C27B0; stroke: #6A1B9A; stroke-width: 2; }
+      .section-unused { fill: #E0E0E0; stroke: #9E9E9E; stroke-width: 1; stroke-dasharray: 4,4; }
+      .region-border { fill: none; stroke: #333; stroke-width: 3; }
+      .highlight { fill: #FF5722; stroke: #D84315; stroke-width: 2; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="title">M3331 Memory Map - Blinky (GCC with Stack at RAM Start)</text>
+  <text x="450" y="55" text-anchor="middle" class="address">FLASH: 512 KB (0x00000000 - 0x0007FFFF) | RAM: 320 KB (0x20000000 - 0x2004FFFF)</text>
+  
+  <!-- FLASH Region -->
+  <g id="flash-region">
+    <!-- Border -->
+    <rect x="50" y="80" width="350" height="400" class="region-border"/>
+    <text x="225" y="105" text-anchor="middle" class="subtitle">FLASH (0x00000000)</text>
+    
+    <!-- .text section -->
+    <rect x="60" y="120" width="330" height="160" class="section-flash"/>
+    <text x="225" y="145" text-anchor="middle" class="label">.text (Code + Rodata)</text>
+    <text x="225" y="165" text-anchor="middle" class="address">0x00000000 - 0x000022C7</text>
+    <text x="225" y="185" text-anchor="middle" class="size">Size: 0x22C8 (8,904 bytes)</text>
+    <text x="70" y="205" class="size">• Vector Table (0x284 bytes)</text>
+    <text x="70" y="220" class="size">• Application Code</text>
+    <text x="70" y="235" class="size">• Library Functions</text>
+    <text x="70" y="250" class="size">• Constant Data</text>
+    <text x="70" y="265" class="size">• Exception Tables</text>
+    
+    <!-- .data load address -->
+    <rect x="60" y="290" width="330" height="40" class="section-flash"/>
+    <text x="225" y="310" text-anchor="middle" class="label">.data (Load Address)</text>
+    <text x="225" y="325" text-anchor="middle" class="address">0x000022DC (Size: 0x70 / 112 bytes)</text>
+    
+    <!-- Arrow showing data copy -->
+    <path d="M 225 330 Q 350 380, 500 420" class="arrow"/>
+    <text x="320" y="360" class="size" style="fill: #666;">Copy at startup →</text>
+    
+    <!-- Unused Flash -->
+    <rect x="60" y="340" width="330" height="130" class="section-unused"/>
+    <text x="225" y="375" text-anchor="middle" class="label">Unused Flash</text>
+    <text x="225" y="395" text-anchor="middle" class="address">0x0000234C - 0x0007FFFF</text>
+    <text x="225" y="415" text-anchor="middle" class="size">~519,092 bytes available</text>
+    <text x="225" y="435" text-anchor="middle" class="size">Flash Usage: 1.7% (9,020 / 524,288)</text>
+  </g>
+  
+  <!-- RAM Region -->
+  <g id="ram-region">
+    <!-- Border -->
+    <rect x="500" y="80" width="350" height="950" class="region-border"/>
+    <text x="675" y="105" text-anchor="middle" class="subtitle">RAM (0x20000000)</text>
+    
+    <!-- .stack section - AT THE BEGINNING! -->
+    <rect x="510" y="120" width="330" height="100" class="highlight"/>
+    <text x="675" y="145" text-anchor="middle" class="label" style="fill: white; font-weight: bold;">⭐ .stack (Call Stack)</text>
+    <text x="675" y="165" text-anchor="middle" class="address" style="fill: white;">0x20000000 - 0x200003FF</text>
+    <text x="675" y="185" text-anchor="middle" class="size" style="fill: white;">Size: 0x400 (1,024 bytes)</text>
+    <text x="675" y="200" text-anchor="middle" class="size" style="fill: white; font-weight: bold;">MOVED TO RAM START!</text>
+    <text x="675" y="215" text-anchor="middle" class="size" style="fill: white;">Stack grows downward ↓</text>
+    
+    <!-- .stackseal (if enabled) -->
+    <rect x="510" y="230" width="330" height="30" class="section-unused"/>
+    <text x="675" y="248" text-anchor="middle" class="size">.stackseal (0 bytes - disabled)</text>
+    
+    <!-- .data section -->
+    <rect x="510" y="270" width="330" height="70" class="section-ram-data"/>
+    <text x="675" y="295" text-anchor="middle" class="label">.data (Initialized Data)</text>
+    <text x="675" y="315" text-anchor="middle" class="address">0x20000400 - 0x2000046F</text>
+    <text x="675" y="335" text-anchor="middle" class="size">Size: 0x70 (112 bytes)</text>
+    
+    <!-- .bss section -->
+    <rect x="510" y="350" width="330" height="80" class="section-ram-bss"/>
+    <text x="675" y="375" text-anchor="middle" class="label">.bss (Uninitialized Data)</text>
+    <text x="675" y="395" text-anchor="middle" class="address">0x20000470 - 0x200005DF</text>
+    <text x="675" y="415" text-anchor="middle" class="size">Size: 0x170 (368 bytes)</text>
+    
+    <!-- .heap section -->
+    <rect x="510" y="440" width="330" height="100" class="section-ram-heap"/>
+    <text x="675" y="470" text-anchor="middle" class="label">.heap (Dynamic Memory)</text>
+    <text x="675" y="490" text-anchor="middle" class="address">0x200005E0 - 0x200011DF</text>
+    <text x="675" y="510" text-anchor="middle" class="size">Size: 0xC00 (3,072 bytes)</text>
+    <text x="675" y="525" text-anchor="middle" class="size">For malloc/free</text>
+    
+    <!-- Unused RAM (large middle section) -->
+    <rect x="510" y="550" width="330" height="390" class="section-unused"/>
+    <text x="675" y="630" text-anchor="middle" class="label">Unused RAM</text>
+    <text x="675" y="650" text-anchor="middle" class="address">0x200011E0 - 0x2004FFFF</text>
+    <text x="675" y="670" text-anchor="middle" class="size">~323,104 bytes</text>
+    <g transform="translate(525, 700)">
+      <text x="0" y="0" class="size" font-weight="bold">Available for:</text>
+      <text x="0" y="20" class="size">• Additional global variables</text>
+      <text x="0" y="40" class="size">• Heap expansion (if needed)</text>
+      <text x="0" y="60" class="size">• Stack expansion (grows down)</text>
+      <text x="0" y="80" class="size">• DMA buffers</text>
+      <text x="0" y="100" class="size">• Communication buffers</text>
+      <text x="0" y="120" class="size">• RTOS tasks (if used)</text>
+      <text x="0" y="140" class="size">• User data structures</text>
+    </g>
+    <text x="675" y="880" text-anchor="middle" class="size" font-weight="bold">Total Used RAM: 4,576 bytes (1.4%)</text>
+    <text x="675" y="900" text-anchor="middle" class="size" font-weight="bold">Total Free RAM: 323,104 bytes (98.6%)</text>
+    
+    <!-- Memory Layout Visualization -->
+    <g transform="translate(510, 950)">
+      <rect x="0" y="0" width="330" height="70" fill="none" stroke="#FF5722" stroke-width="2" rx="5"/>
+      <text x="165" y="25" text-anchor="middle" class="size" font-weight="bold" style="fill: #FF5722;">New Layout (Modified):</text>
+      <text x="165" y="43" text-anchor="middle" class="size">Stack → Data → BSS → Heap → [Unused]</text>
+      <text x="165" y="60" text-anchor="middle" class="size">(Bottom to Top of RAM)</text>
+    </g>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(50, 530)">
+    <text x="0" y="0" class="subtitle">Section Legend:</text>
+    
+    <rect x="0" y="10" width="30" height="20" class="section-flash"/>
+    <text x="35" y="25" class="size">.text - Program code and constants (Flash)</text>
+    
+    <rect x="0" y="35" width="30" height="20" class="highlight"/>
+    <text x="35" y="50" class="size">.stack - Function call stack (RAM, at start!)</text>
+    
+    <rect x="0" y="60" width="30" height="20" class="section-ram-data"/>
+    <text x="35" y="75" class="size">.data - Initialized global/static variables (RAM)</text>
+    
+    <rect x="0" y="85" width="30" height="20" class="section-ram-bss"/>
+    <text x="35" y="100" class="size">.bss - Uninitialized global/static variables (RAM)</text>
+    
+    <rect x="0" y="110" width="30" height="20" class="section-ram-heap"/>
+    <text x="35" y="125" class="size">.heap - Dynamic memory allocation (RAM)</text>
+    
+    <rect x="0" y="135" width="30" height="20" class="section-unused"/>
+    <text x="35" y="150" class="size">Unused - Available for expansion</text>
+  </g>
+  
+  <!-- Memory Summary -->
+  <g id="summary" transform="translate(50, 710)">
+    <rect x="-5" y="-5" width="360" height="240" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="0" y="15" class="subtitle">Memory Summary (GCC):</text>
+    
+    <text x="10" y="40" class="size" font-weight="bold">Flash Usage:</text>
+    <text x="20" y="60" class="size">• Total: 512 KB (524,288 bytes)</text>
+    <text x="20" y="75" class="size">• .text: 8,904 bytes</text>
+    <text x="20" y="90" class="size">• .data load: 112 bytes</text>
+    <text x="20" y="105" class="size">• Total Used: 9,020 bytes (1.7%)</text>
+    <text x="20" y="120" class="size">• Free: 515,268 bytes (98.3%)</text>
+    
+    <text x="10" y="145" class="size" font-weight="bold">RAM Usage:</text>
+    <text x="20" y="165" class="size">• Total: 320 KB (327,680 bytes)</text>
+    <text x="20" y="180" class="size">• Stack: 1,024 bytes (at 0x20000000)</text>
+    <text x="20" y="195" class="size">• Data: 112 bytes</text>
+    <text x="20" y="210" class="size">• BSS: 368 bytes</text>
+    <text x="20" y="225" class="size">• Heap: 3,072 bytes</text>
+  </g>
+  
+  <!-- Key Change Highlight -->
+  <g id="change-note" transform="translate(50, 970)">
+    <rect x="-5" y="-5" width="800" height="90" fill="#FFF3E0" stroke="#FF9800" stroke-width="2" rx="5"/>
+    <text x="10" y="20" class="subtitle" style="fill: #FF5722;">✅ Linker Script Modified Successfully!</text>
+    <text x="20" y="45" class="size" font-weight="bold">Change: Stack moved from end of RAM (0x2004FC00) to start of RAM (0x20000000)</text>
+    <text x="20" y="62" class="size">• Stack now at: 0x20000000 - 0x200003FF (1,024 bytes)</text>
+    <text x="20" y="77" class="size">• Reason: Custom memory layout for specific application requirements</text>
+  </g>
+</svg>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" width="900" height="1000">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #333; }
+      .subtitle { font: bold 16px sans-serif; fill: #666; }
+      .label { font: 14px monospace; fill: #000; }
+      .address { font: 12px monospace; fill: #555; }
+      .size { font: 11px sans-serif; fill: #444; }
+      .section-flash { fill: #4CAF50; stroke: #2E7D32; stroke-width: 2; }
+      .section-ram-stack { fill: #F44336; stroke: #C62828; stroke-width: 2; }
+      .section-ram-data { fill: #2196F3; stroke: #1565C0; stroke-width: 2; }
+      .section-ram-bss { fill: #FFC107; stroke: #F57C00; stroke-width: 2; }
+      .section-ram-heap { fill: #9C27B0; stroke: #6A1B9A; stroke-width: 2; }
+      .section-unused { fill: #E0E0E0; stroke: #9E9E9E; stroke-width: 1; stroke-dasharray: 4,4; }
+      .region-border { fill: none; stroke: #333; stroke-width: 3; }
+      .highlight { fill: #FF5722; stroke: #D84315; stroke-width: 2; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="title">M3331 Memory Map - Blinky (ARM Compiler 6)</text>
+  <text x="450" y="55" text-anchor="middle" class="address">FLASH: 512 KB (0x00000000 - 0x0007FFFF) | RAM: 320 KB (0x20000000 - 0x2004FFFF)</text>
+  
+  <!-- FLASH Region -->
+  <g id="flash-region">
+    <!-- Border -->
+    <rect x="50" y="80" width="350" height="400" class="region-border"/>
+    <text x="225" y="105" text-anchor="middle" class="subtitle">FLASH (0x00000000)</text>
+    
+    <!-- ER_ROM section -->
+    <rect x="60" y="120" width="330" height="180" class="section-flash"/>
+    <text x="225" y="145" text-anchor="middle" class="label">ER_ROM (Code + RO Data)</text>
+    <text x="225" y="165" text-anchor="middle" class="address">0x00000000 - 0x00001737</text>
+    <text x="225" y="185" text-anchor="middle" class="size">Size: 0x1738 (5,944 bytes)</text>
+    <text x="70" y="205" class="size">• RESET Vector (0x284 bytes)</text>
+    <text x="70" y="220" class="size">• Code: 5,156 bytes</text>
+    <text x="70" y="235" class="size">• RO Data: 788 bytes</text>
+    <text x="70" y="250" class="size">  - Constants</text>
+    <text x="70" y="265" class="size">  - String literals</text>
+    <text x="70" y="280" class="size">  - Region Table</text>
+    
+    <!-- RW_RAM Load Address -->
+    <rect x="60" y="310" width="330" height="40" class="section-flash"/>
+    <text x="225" y="330" text-anchor="middle" class="label">RW_RAM (Load Address)</text>
+    <text x="225" y="345" text-anchor="middle" class="address">0x00001738 - 0x0000179B (12 bytes)</text>
+    
+    <!-- Unused Flash -->
+    <rect x="60" y="360" width="330" height="110" class="section-unused"/>
+    <text x="225" y="390" text-anchor="middle" class="label">Unused Flash</text>
+    <text x="225" y="410" text-anchor="middle" class="address">0x0000179C - 0x0007FFFF</text>
+    <text x="225" y="430" text-anchor="middle" class="size">~518,372 bytes available</text>
+    <text x="225" y="450" text-anchor="middle" class="size">Flash Usage: 1.1% (5,956 / 524,288)</text>
+  </g>
+  
+  <!-- RAM Region -->
+  <g id="ram-region">
+    <!-- Border -->
+    <rect x="500" y="80" width="350" height="850" class="region-border"/>
+    <text x="675" y="105" text-anchor="middle" class="subtitle">RAM (0x20000000)</text>
+    
+    <!-- ARM_LIB_STACK section (at beginning!) -->
+    <rect x="510" y="120" width="330" height="80" class="section-ram-stack"/>
+    <text x="675" y="145" text-anchor="middle" class="label">ARM_LIB_STACK</text>
+    <text x="675" y="165" text-anchor="middle" class="address">0x20000000 - 0x200001FF</text>
+    <text x="675" y="185" text-anchor="middle" class="size">Size: 0x200 (512 bytes)</text>
+    <text x="675" y="195" text-anchor="middle" class="size">Stack grows downward ↓</text>
+    
+    <!-- RW_RAM section (.data + .bss) -->
+    <rect x="510" y="210" width="330" height="100" class="section-ram-data"/>
+    <text x="675" y="235" text-anchor="middle" class="label">RW_RAM (.data + .bss)</text>
+    <text x="675" y="255" text-anchor="middle" class="address">0x20000200 - 0x20000263</text>
+    <text x="675" y="275" text-anchor="middle" class="size">Size: 0x64 (100 bytes)</text>
+    <text x="675" y="290" class="size">• .data: 12 bytes (SystemCoreClock, etc)</text>
+    <text x="675" y="305" class="size">• .bss: 88 bytes (__stdout, g_u32ticks)</text>
+    
+    <!-- ARM_LIB_HEAP section -->
+    <rect x="510" y="320" width="330" height="90" class="section-ram-heap"/>
+    <text x="675" y="350" text-anchor="middle" class="label">ARM_LIB_HEAP</text>
+    <text x="675" y="370" text-anchor="middle" class="address">0x20000268 - 0x20000E67</text>
+    <text x="675" y="390" text-anchor="middle" class="size">Size: 0xC00 (3,072 bytes)</text>
+    <text x="675" y="405" class="size">For malloc/free/new</text>
+    
+    <!-- Unused RAM -->
+    <rect x="510" y="420" width="330" height="410" class="section-unused"/>
+    <text x="675" y="500" text-anchor="middle" class="label">Unused RAM</text>
+    <text x="675" y="520" text-anchor="middle" class="address">0x20000E68 - 0x2004FFFF</text>
+    <text x="675" y="540" text-anchor="middle" class="size">~323,992 bytes</text>
+    <g transform="translate(525, 570)">
+      <text x="0" y="0" class="size">Available for:</text>
+      <text x="0" y="20" class="size">• Additional .data/.bss</text>
+      <text x="0" y="40" class="size">• Heap expansion (malloc)</text>
+      <text x="0" y="60" class="size">• Stack expansion (if needed)</text>
+      <text x="0" y="80" class="size">• DMA buffers</text>
+      <text x="0" y="100" class="size">• Communication buffers</text>
+      <text x="0" y="120" class="size">• User data structures</text>
+    </g>
+    <text x="675" y="760" text-anchor="middle" class="size">Total Used: 3,684 bytes (1.1%)</text>
+    <text x="675" y="780" text-anchor="middle" class="size">Total Available: 323,996 bytes (98.9%)</text>
+    
+    <!-- Note about stack location -->
+    <g transform="translate(510, 840)">
+      <rect x="0" y="0" width="330" height="80" class="highlight"/>
+      <text x="165" y="25" text-anchor="middle" class="label" style="fill: white;">⚠️ Stack at RAM Start</text>
+      <text x="165" y="45" text-anchor="middle" class="size" style="fill: white;">Stack moved to beginning of RAM</text>
+      <text x="165" y="60" text-anchor="middle" class="size" style="fill: white;">as per linker script modification</text>
+      <text x="165" y="75" text-anchor="middle" class="size" style="fill: white;">(Different from GCC layout!)</text>
+    </g>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(50, 530)">
+    <text x="0" y="0" class="subtitle">Section Legend:</text>
+    
+    <rect x="0" y="10" width="30" height="20" class="section-flash"/>
+    <text x="35" y="25" class="size">ER_ROM - Code and read-only data (Flash)</text>
+    
+    <rect x="0" y="35" width="30" height="20" class="section-ram-stack"/>
+    <text x="35" y="50" class="size">ARM_LIB_STACK - Call stack (RAM, at start!)</text>
+    
+    <rect x="0" y="60" width="30" height="20" class="section-ram-data"/>
+    <text x="35" y="75" class="size">RW_RAM - Initialized & uninitialized data (RAM)</text>
+    
+    <rect x="0" y="85" width="30" height="20" class="section-ram-heap"/>
+    <text x="35" y="100" class="size">ARM_LIB_HEAP - Dynamic memory (RAM)</text>
+    
+    <rect x="0" y="110" width="30" height="20" class="section-unused"/>
+    <text x="35" y="125" class="size">Unused - Available for expansion</text>
+  </g>
+  
+  <!-- Memory Summary -->
+  <g id="summary" transform="translate(50, 690)">
+    <rect x="-5" y="-5" width="360" height="230" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="0" y="15" class="subtitle">Memory Summary (ARM Compiler):</text>
+    
+    <text x="10" y="40" class="size" font-weight="bold">Flash Usage:</text>
+    <text x="20" y="60" class="size">• Total: 512 KB (524,288 bytes)</text>
+    <text x="20" y="75" class="size">• Code: 5,156 bytes</text>
+    <text x="20" y="90" class="size">• RO Data: 788 bytes</text>
+    <text x="20" y="105" class="size">• RW Data (load): 12 bytes</text>
+    <text x="20" y="120" class="size">• Total Used: 5,956 bytes (1.1%)</text>
+    <text x="20" y="135" class="size">• Free: 518,332 bytes (98.9%)</text>
+    
+    <text x="10" y="160" class="size" font-weight="bold">RAM Usage:</text>
+    <text x="20" y="180" class="size">• Total: 320 KB (327,680 bytes)</text>
+    <text x="20" y="195" class="size">• Stack: 512 bytes (at 0x20000000)</text>
+    <text x="20" y="210" class="size">• Data+BSS: 100 bytes</text>
+    <text x="20" y="225" class="size">• Heap: 3,072 bytes</text>
+  </g>
+  
+  <!-- Comparison Note -->
+  <g id="comparison" transform="translate(50, 940)">
+    <text x="0" y="0" class="size" font-weight="bold">Key Difference from GCC:</text>
+    <text x="0" y="18" class="size">• Stack is at RAM START (0x20000000-0x200001FF) - Modified layout!</text>
+    <text x="0" y="36" class="size">• ARM Compiler uses scatter file (.sct) vs GCC linker script (.ld)</text>
+  </g>
+</svg>

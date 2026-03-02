@@ -1,0 +1,334 @@
+###############################################################################
+#
+# IAR ELF Linker V8.42.1.232/W32 for ARM                  09/Jan/2026  12:06:25
+# Copyright 2007-2019 IAR Systems AB.
+#
+#    Output file  =
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Exe\App.out
+#    Map file     =
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\List\App.map
+#    Command line =
+#        -f C:\Users\wschang0\AppData\Local\Temp\EW6D15.tmp
+#        (C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\clk.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\fmc.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\main.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\retarget.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\startup_m3331.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\sys.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\system_m3331.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\uart.o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj\xmodem.o
+#        --no_out_extension -o
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Exe\App.out
+#        --map
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\List\App.map
+#        --config
+#        C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App.icf
+#        --semihosting --entry Reset_Handler --inline --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__Heap_Handler  = NoFree
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The no free heap was selected because no calls to memory
+deallocation functions were found in the application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x1'0000 { ro section .intvec };
+"P1":  place in [from 0x1'0000 to 0xffff] { ro };
+define block CSTACK with size = 2K, alignment = 8 { };
+define block PROC_STACK_S with size = 0, alignment = 8 { };
+define block MAIN_STACK_NS with size = 0, alignment = 8 { };
+define block PROC_STACK_NS with size = 0, alignment = 8 { };
+define block HEAP with size = 0, alignment = 8 { };
+"P3":  place in [from 0x0 to 0x0] |
+                [from 0x2000'0000 to 0x2004'ffff] {
+          rw, block CSTACK, block PROC_STACK_S, block MAIN_STACK_NS,
+          block PROC_STACK_NS, block HEAP };
+initialize by copy { rw };
+
+No sections matched the following patterns:
+
+  ro section application_specific_ro  in "P2|P4"
+  rw section application_specific_rw  in "P2|P4"
+
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                       0x284
+  .intvec            const       0x1'0000   0x284  startup_m3331.o [1]
+                               - 0x1'0284   0x284
+
+"P1":                                      0x1b2a
+  .text              ro code     0x1'0284   0x750  clk.o [1]
+  .text              ro code     0x1'09d4   0x104  system_m3331.o [1]
+  .text              ro code     0x1'0ad8   0x501  xprintfsmall_nomb.o [2]
+  .text              ro code     0x1'0fda    0x3a  zero_init3.o [3]
+  .text              ro code     0x1'1014    0x16  strchr.o [3]
+  .text              ro code     0x1'102c    0x40  xfail_s.o [2]
+  .text              ro code     0x1'106c    0x36  strlen.o [3]
+  .text              ro code     0x1'10a4    0x58  memchr.o [3]
+  .text              ro code     0x1'10fc     0x6  abort.o [2]
+  .text              ro code     0x1'1104    0x14  exit.o [4]
+  .text              ro code     0x1'1118   0x33c  xmodem.o [1]
+  .text              ro code     0x1'1454   0x250  main.o [1]
+  .text              ro code     0x1'16a4   0x120  uart.o [1]
+  .text              ro code     0x1'17c4    0x28  printf.o [2]
+  .text              ro code     0x1'17ec     0xc  getchar.o [2]
+  .text              ro code     0x1'17f8    0xac  fflush.o [2]
+  .text              ro code     0x1'18a4    0x10  sys.o [1]
+  .text              ro code     0x1'18b4    0x58  fgetc.o [2]
+  .text              ro code     0x1'190c    0x90  retarget.o [1]
+  .text              ro code     0x1'199c    0xb6  xfrprep.o [2]
+  .text              ro code     0x1'1a54    0x48  no_free_heap0.o [2]
+  .text              ro code     0x1'1a9c    0x2c  xgetmemchunk.o [2]
+  .rodata            const       0x1'1ac8    0xdc  main.o [1]
+  .text              ro code     0x1'1ba4    0x9c  packbits_init.o [3]
+  .text              ro code     0x1'1c40    0x28  startup_m3331.o [1]
+  .text              ro code     0x1'1c68     0xc  cstartup_M.o [3]
+  .text              ro code     0x1'1c74    0x1e  cmain.o [3]
+  .text              ro code     0x1'1c94    0x28  data_init.o [3]
+  .text              ro code     0x1'1cbc     0x4  exit.o [2]
+  .text              ro code     0x1'1cc0     0xa  cexit.o [3]
+  .iar.init_table    const       0x1'1ccc    0x2c  - Linker created -
+  .text              ro code     0x1'1cf8    0x16  xprout.o [2]
+  .text              ro code     0x1'1d10     0xc  putchar.o [2]
+  .rodata            const       0x1'1d1c     0x0  zero_init3.o [3]
+  .rodata            const       0x1'1d1c     0x0  packbits_init.o [3]
+  Initializer bytes  const       0x1'1d1c    0x92  <for P3 s0>
+                               - 0x1'1dae  0x1b2a
+
+"P3", part 1 of 3:                          0x104
+  P3 s0                       0x2000'0000   0x104  <Init block>
+    .data            inited   0x2000'0000    0x48  xfiles.o [2]
+    .data            inited   0x2000'0048    0x48  xfiles.o [2]
+    .data            inited   0x2000'0090    0x48  xfiles.o [2]
+    .data            inited   0x2000'00d8    0x20  xfiles.o [2]
+    .data            inited   0x2000'00f8     0xc  system_m3331.o [1]
+                            - 0x2000'0104   0x104
+
+"P3", part 2 of 3:                          0x4bc
+  .bss               zero     0x2000'0104   0x408  xmodem.o [1]
+  .bss               zero     0x2000'050c    0x50  xfiles.o [2]
+  .bss               zero     0x2000'055c    0x50  xfiles.o [2]
+  .bss               zero     0x2000'05ac     0x8  main.o [1]
+  .bss               zero     0x2000'05b4     0x4  no_free_heap0.o [2]
+  .bss               zero     0x2000'05b8     0x4  xfail_s.o [2]
+  .bss               zero     0x2000'05bc     0x4  xgetmemchunk.o [2]
+                            - 0x2000'05c0   0x4bc
+
+"P3", part 3 of 3:                          0x800
+  CSTACK                      0x2000'05c0   0x800  <Block>
+    CSTACK           uninit   0x2000'05c0   0x800  <Block tail>
+  HEAP                        0x2000'0dc0     0x0  <Block>
+                            - 0x2000'0dc0   0x800
+
+Unused ranges:
+
+         From           To         Size
+         ----           --         ----
+     0x1'1dae  0x1fff'ffff  0x1ffe'e252
+  0x2000'0dc0       0xffff  0xe000'f240
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x4bc:
+          0x2000'0104  0x4bc
+
+Copy/packbits (__iar_packbits_init3)
+    1 source range, total size 0x92 (56% of destination):
+             0x1'1d1c   0x92
+    1 destination range, total size 0x104:
+          0x2000'0000  0x104
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module               ro code  ro data  rw data
+    ------               -------  -------  -------
+command line/config:
+    ----------------------------------------------
+    Total:
+
+C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj: [1]
+    clk.o                  1'872
+    main.o                   592      220        8
+    retarget.o               144
+    startup_m3331.o           40      644
+    sys.o                     16
+    system_m3331.o           260        7       12
+    uart.o                   288
+    xmodem.o                 828             1'032
+    ----------------------------------------------
+    Total:                 4'040      871    1'052
+
+dl7M_tlf.a: [2]
+    abort.o                    6
+    exit.o                     4
+    fflush.o                 172
+    fgetc.o                   88
+    getchar.o                 12
+    no_free_heap0.o           72                 4
+    printf.o                  40
+    putchar.o                 12
+    xfail_s.o                 64                 4
+    xfiles.o                          139      408
+    xfrprep.o                182
+    xgetmemchunk.o            44                 4
+    xprintfsmall_nomb.o    1'281
+    xprout.o                  22
+    ----------------------------------------------
+    Total:                 1'999      139      420
+
+rt7M_tl.a: [3]
+    cexit.o                   10
+    cmain.o                   30
+    cstartup_M.o              12
+    data_init.o               40
+    memchr.o                  88
+    packbits_init.o          156
+    strchr.o                  22
+    strlen.o                  54
+    zero_init3.o              58
+    ----------------------------------------------
+    Total:                   470
+
+shb_l.a: [4]
+    exit.o                    20
+    ----------------------------------------------
+    Total:                    20
+
+    Gaps                      13        2
+    Linker created                     44    2'048
+--------------------------------------------------
+    Grand Total:           6'542    1'056    3'520
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base      0x1'1ccc          --   Gb  - Linker created -
+.iar.init_table$$Limit     0x1'1cf8          --   Gb  - Linker created -
+?main                      0x1'1c75         Code  Gb  cmain.o [3]
+CLK_EnableModuleClock      0x1'05f3   0x30  Code  Gb  clk.o [1]
+CLK_EnablePLL              0x1'062b  0x17e  Code  Gb  clk.o [1]
+CLK_GetCPUFreq             0x1'0285   0xa4  Code  Gb  clk.o [1]
+CLK_GetModuleClockDivider
+                           0x1'087d   0x50  Code  Gb  clk.o [1]
+CLK_GetModuleClockSource
+                           0x1'0811   0x6c  Code  Gb  clk.o [1]
+CLK_GetPLLClockFreq        0x1'07c9   0x48  Code  Gb  clk.o [1]
+CLK_SetCoreClock           0x1'0329   0x98  Code  Gb  clk.o [1]
+CLK_SetHCLK                0x1'03c1  0x156  Code  Gb  clk.o [1]
+CLK_SetModuleClock         0x1'0517   0xd4  Code  Gb  clk.o [1]
+CLK_WaitClockReady         0x1'07a9   0x20  Code  Gb  clk.o [1]
+CSTACK$$Base            0x2000'05c0         Data  Gb  - Linker created -
+CSTACK$$Limit           0x2000'0dc0         Data  Gb  - Linker created -
+CyclesPerUs             0x2000'00fc    0x4  Data  Gb  system_m3331.o [1]
+Default_Handler            0x1'1c65    0x2  Code  Gb  startup_m3331.o [1]
+HEAP$$Base              0x2000'0dc0          --   Gb  - Linker created -
+HEAP$$Limit             0x2000'0dc0          --   Gb  - Linker created -
+PllClock                0x2000'0100    0x4  Data  Gb  system_m3331.o [1]
+Region$$Table$$Base        0x1'1ccc          --   Gb  - Linker created -
+Region$$Table$$Limit       0x1'1cf8          --   Gb  - Linker created -
+Reset_Handler              0x1'1c41   0x1a  Code  Gb  startup_m3331.o [1]
+SCU_IRQHandler             0x1'09d5    0x2  Code  Gb  system_m3331.o [1]
+SYS_Init                   0x1'1455   0x46  Code  Gb  main.o [1]
+SYS_ResetCPU               0x1'18a5    0xc  Code  Gb  sys.o [1]
+SendChar_ToUART            0x1'196f    0x2  Code  Gb  retarget.o [1]
+SystemCoreClock         0x2000'00f8    0x4  Data  Gb  system_m3331.o [1]
+SystemCoreClockUpdate      0x1'09d7   0x20  Code  Gb  system_m3331.o [1]
+SystemInit                 0x1'09f9   0xac  Code  Gb  system_m3331.o [1]
+UART_Open                  0x1'16a5   0xce  Code  Gb  uart.o [1]
+Xmodem                     0x1'114b  0x2e4  Code  Gb  xmodem.o [1]
+_Files                  0x2000'00d8   0x20  Data  Gb  xfiles.o [2]
+_Frprep                    0x1'199d   0xb6  Code  Gb  xfrprep.o [2]
+_LitobSmallNoMb            0x1'0e97   0xce  Code  Lc  xprintfsmall_nomb.o [2]
+_PrintfSmallNoMb           0x1'0ad9  0x3b2  Code  Gb  xprintfsmall_nomb.o [2]
+_Prout                     0x1'1cf9   0x16  Code  Gb  xprout.o [2]
+_PutcharSmallNoMb          0x1'0f65   0x20  Code  Lc  xprintfsmall_nomb.o [2]
+_PutcharsSmallNoMb         0x1'0f85   0x2e  Code  Lc  xprintfsmall_nomb.o [2]
+__cmain                    0x1'1c75         Code  Gb  cmain.o [3]
+__data_GetMemChunk         0x1'1a9d   0x2c  Code  Gb  xgetmemchunk.o [2]
+__data_GetMemChunk::start
+                        0x2000'05bc    0x4  Data  Lc  xgetmemchunk.o [2]
+__exit                     0x1'1105   0x14  Code  Gb  exit.o [4]
+__iar_Fail_s               0x1'102d   0x1c  Code  Gb  xfail_s.o [2]
+__iar_Memchr               0x1'10a5         Code  Gb  memchr.o [3]
+__iar_Stderr            0x2000'0090   0x48  Data  Gb  xfiles.o [2]
+__iar_Stdin             0x2000'0000   0x48  Data  Gb  xfiles.o [2]
+__iar_Stdout            0x2000'0048   0x48  Data  Gb  xfiles.o [2]
+__iar_Strchr               0x1'1015         Code  Gb  strchr.o [3]
+__iar_data_init3           0x1'1c95   0x28  Code  Gb  data_init.o [3]
+__iar_packbits_init3       0x1'1ba5   0x9c  Code  Gb  packbits_init.o [3]
+__iar_program_start        0x1'1c69         Code  Gb  cstartup_M.o [3]
+__iar_zero_init3           0x1'0fdb   0x3a  Code  Gb  zero_init3.o [3]
+__no_free_malloc           0x1'1a55   0x44  Code  Gb  no_free_heap0.o [2]
+__read                     0x1'1941   0x2e  Code  Gb  retarget.o [1]
+__vector_table             0x1'0000  0x284  Data  Gb  startup_m3331.o [1]
+__write                    0x1'190d   0x34  Code  Gb  retarget.o [1]
+_call_main                 0x1'1c81         Code  Gb  cmain.o [3]
+_exit                      0x1'1cc1         Code  Gb  cexit.o [3]
+_main                      0x1'1c8f         Code  Gb  cmain.o [3]
+abort                      0x1'10fd    0x6  Code  Gb  abort.o [2]
+crc16_ccitt                0x1'1119   0x32  Code  Lc  xmodem.o [1]
+ebuf                    0x2000'050c   0x50  Data  Lc  xfiles.o [2]
+exit                       0x1'1cbd    0x4  Code  Gb  exit.o [2]
+fflush                     0x1'186d   0x34  Code  Gb  fflush.o [2]
+fflushOne                  0x1'17f9   0x74  Code  Lc  fflush.o [2]
+fgetc                      0x1'18b5   0x58  Code  Gb  fgetc.o [2]
+fputc                      0x1'1991    0xc  Code  Gb  retarget.o [1]
+getchar                    0x1'17ed    0x6  Code  Gb  getchar.o [2]
+main                       0x1'149d  0x130  Code  Gb  main.o [1]
+memchr                     0x1'10a5         Code  Gb  memchr.o [3]
+obuf                    0x2000'055c   0x50  Data  Lc  xfiles.o [2]
+printf                     0x1'17c5   0x28  Code  Gb  printf.o [2]
+putchar                    0x1'1d11    0xc  Code  Gb  putchar.o [2]
+qs                      0x2000'05b4    0x4  Data  Lc  no_free_heap0.o [2]
+s_au8XmdBuf             0x2000'0104  0x408  Data  Lc  xmodem.o [1]
+s_u32DbAddr             0x2000'05b0    0x4  Data  Lc  main.o [1]
+s_u32DbLength           0x2000'05ac    0x4  Data  Lc  main.o [1]
+sec_hand                0x2000'05b8    0x4  Data  Lc  xfail_s.o [2]
+strchr                     0x1'1015         Code  Gb  strchr.o [3]
+strlen                     0x1'106d         Code  Gb  strlen.o [3]
+
+
+[1] = C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\StdDriver\FMC_DualBankFwUpdate\App\IAR\App\Obj
+[2] = dl7M_tlf.a
+[3] = rt7M_tl.a
+[4] = shb_l.a
+
+  6'542 bytes of readonly  code memory
+  1'056 bytes of readonly  data memory
+  3'520 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
