@@ -5,8 +5,192 @@ import fnmatch
 import json
 import yaml
 import xml.etree.ElementTree as ET
+import requests
+import glob
 import subprocess
 from packaging import version  # standard tool for version comparison
+
+
+def to_int(hex_val):
+    """Convert hex string to integer for accurate comparison."""
+    try:
+        if isinstance(hex_val, str):
+            return int(hex_val, 16)
+    except (ValueError, TypeError):
+        return None
+    return None
+
+def download_pdsc(pack_id, pack_url, download_dir="."):
+    """Download PDSC if not present locally."""
+    parts = pack_id.split('.')
+    if len(parts) < 2: return None
+    
+    pdsc_filename = f"{parts[0]}.{parts[1]}.pdsc"
+    save_path = os.path.join(download_dir, pdsc_filename)
+    
+    if os.path.exists(save_path):
+        return save_path
+
+    base_url = pack_url if pack_url.endswith('/') else pack_url + '/'
+    full_url = f"{base_url}{pdsc_filename}"
+    
+    try:
+        response = requests.get(full_url, timeout=15)
+        response.raise_for_status()
+        with open(save_path, 'wb') as f:
+            f.write(response.content)
+        return save_path
+    except:
+        return None
+
+def parse_pdsc_memory(pdsc_path, device_name):
+    """Extract authoritative memory layout from PDSC."""
+    if not pdsc_path or not os.path.exists(pdsc_path): return None
+    
+    try:
+        tree = ET.parse(pdsc_path)
+        root = tree.getroot()
+        parent_map = {c: p for p in root.iter() for c in p}
+        device_node = None
+        for device in root.findall(".//device"):
+            if device.get('Dname', '').upper() == device_name.upper():
+                device_node = device
+                break
+        
+        if not device_node: return None
+
+        pdsc_mem = {}
+        curr = device_node
+        while curr is not None:
+            for mem in curr.findall("memory"):
+                m_id = mem.get('id') or mem.get('name')
+                if m_id in ['IROM1', 'IROM2', 'IRAM1', 'IRAM2']:
+                    if m_id not in pdsc_mem:
+                        pdsc_mem[m_id] = {
+                            "val_start": to_int(mem.get('start')),
+                            "val_size": to_int(mem.get('size')),
+                            "raw_start": mem.get('start'),
+                            "raw_size": mem.get('size')
+                        }
+            curr = parent_map.get(curr)
+        return pdsc_mem
+    except:
+        return None
+
+def parse_pdsc_device_info(pdsc_path, device_name):
+    """
+    Extracts memory layout and TrustZone capability from PDSC.
+    Returns (memory_map, has_trustzone)
+    """
+    if not pdsc_path or not os.path.exists(pdsc_path): return None, False
+    
+    try:
+        tree = ET.parse(pdsc_path)
+        root = tree.getroot()
+        parent_map = {c: p for p in root.iter() for c in p}
+        
+        device_node = None
+        for device in root.findall(".//device"):
+            if device.get('Dname', '').upper() == device_name.upper():
+                device_node = device
+                break
+        
+        if not device_node: return None, False
+
+        # Determine TrustZone support
+        # Dtz: 'TZ' means TrustZone is supported.
+        tz_attr = device_node.get('Dtz')
+        has_tz = (tz_attr is not None and tz_attr.upper() == "TZ")
+
+        pdsc_mem = {}
+        curr = device_node
+        while curr is not None:
+            # Also check parent nodes (Family/SubFamily) for TrustZone property
+            if not has_tz:
+                tz_prop = curr.find("compile")
+                if tz_prop is not None and tz_prop.get('Dtz') == "TZ":
+                    has_tz = True
+
+            for mem in curr.findall("memory"):
+                m_id = mem.get('id') or mem.get('name')
+                if m_id in ['IROM1', 'IROM2', 'IRAM1', 'IRAM2']:
+                    if m_id not in pdsc_mem:
+                        pdsc_mem[m_id] = {
+                            "val_start": to_int(mem.get('start')),
+                            "val_size": to_int(mem.get('size')),
+                            "raw_start": mem.get('start'),
+                            "raw_size": mem.get('size')
+                        }
+            curr = parent_map.get(curr)
+            
+        return pdsc_mem, has_tz
+    except:
+        return None, False
+
+def process_single_project(uvprojx_path):
+    """Inspect targets and only report mismatches based on TZ capability."""
+    try:
+        tree = ET.parse(uvprojx_path)
+        root = tree.getroot()
+    except:
+        return [f"[ERROR] Could not parse XML: {uvprojx_path}"]
+
+    all_project_errors = []
+
+    for target in root.findall(".//Target"):
+        t_name = target.find("TargetName").text
+        device_node = target.find(".//Device")
+        pack_id_node = target.find(".//PackID")
+        pack_url_node = target.find(".//PackURL")
+        cpu_node = target.find(".//Cpu")
+
+        if any(x is None for x in [device_node, pack_id_node, pack_url_node, cpu_node]):
+            continue
+
+        device_name = device_node.text
+        pdsc_file = download_pdsc(pack_id_node.text, pack_url_node.text)
+        if not pdsc_file:
+            all_project_errors.append(f"    [PDSC ERROR] Fetch failed for Target <{t_name}>")
+            continue
+
+        # 1. Get Memory Map and TrustZone Capability
+        truth, has_tz = parse_pdsc_device_info(pdsc_file, device_name)
+        if not truth:
+            all_project_errors.append(f"    [DEVICE ERROR] {device_name} not in PDSC <{t_name}>")
+            continue
+
+        # 2. Define Check List (Filter IROM2/IRAM2 if no TrustZone)
+        check_list = ['IROM1', 'IRAM1']
+        if has_tz:
+            check_list += ['IROM2', 'IRAM2']
+
+        # 3. Parse Project Memory
+        matches = re.findall(r"(\w+)\((0x[0-9a-fA-F]+),(0x[0-9a-fA-F]+)\)", cpu_node.text)
+        proj_mem = {}
+        for m in matches:
+            m_id = m[0]
+            if m_id == "IROM": m_id = "IROM1"
+            if m_id == "IRAM": m_id = "IRAM1"
+            proj_mem[m_id] = {"v_s": to_int(m[1]), "v_z": to_int(m[2]), "r_s": m[1], "r_z": m[2]}
+
+        # 4. Compare only relevant regions
+        for m_id in check_list:
+            p_val = truth.get(m_id)
+            u_val = proj_mem.get(m_id)
+            
+            if not p_val: continue 
+            
+            if not u_val:
+                all_project_errors.append(f"    [MISSING] {m_id} expected in Target <{t_name}>")
+            elif u_val['v_s'] != p_val['val_start'] or u_val['v_z'] != p_val['val_size']:
+                all_project_errors.append(
+                    f"    [MISMATCH] {m_id} in Target <{t_name}>!\n"
+                    f"               Device Name: {device_name}\n"
+                    f"               Proj: {u_val['r_s']}, {u_val['r_z']}\n"
+                    f"               Pack: {p_val['raw_start']}, {p_val['raw_size']}"
+                )
+
+    return all_project_errors
 
 def xml_get_value(node, path_parent, tag_name):
     # Locate Parent
@@ -72,6 +256,9 @@ def keil_uvprojx(file_path):
             else:
                 if version_num <= 6.22:
                     errors.append(f"{target_name} - Invalid pCCUsed version: {value} (should be > V6.22)")
+
+        # pdsc checking
+        errors += process_single_project(file_path)
 
     return errors
 
