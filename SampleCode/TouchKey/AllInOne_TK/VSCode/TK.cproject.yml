@@ -1,0 +1,170 @@
+project:
+  packs:
+    - pack: Nuvoton::NuMicroM23_DFP
+  setups:
+    - output:
+        # bin, elf, hex, lib
+        type: bin
+    - setup: Options for FreeRun
+      for-context: .FreeRun
+      add-path:
+        - ../../../../Library/Device/Nuvoton/M2L31/Include
+        - ../../../../Library/StdDriver/inc
+        - ../../../../Library/TKLib/Include
+        - ../../../../Library/CMSIS/Core/Include
+      debug: "on"
+      define:
+        - DEMO_FREERUN
+        - DEMO_USE_LED
+        - DEBUG_PORT: UART3
+      misc:
+        - for-compiler: AC6
+          C:
+            - -D__MICROLIB
+            - -std=c99
+          C-CPP:
+            - -fno-rtti
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+          CPP:
+            - -xc++
+            - -std=c++98
+          ASM:
+            - -masm=auto
+            - -D__MICROLIB
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --map --datacompressor=off --info=inline --entry Reset_Handler
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+            - --diag_suppress=6314
+        - for-compiler: GCC
+          C:
+            - -std=gnu11 -mthumb -masm-syntax-unified -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections
+          Link:
+            - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
+            - -Wl,--gc-sections,-Map="$elf()$.map"
+            - -Wl,--no-warn-rwx-segments
+    - setup: Options for Calibration
+      for-context: .Calibration
+      add-path:
+        - ../../../../Library/Device/Nuvoton/M2L31/Include
+        - ../../../../Library/StdDriver/inc
+        - ../../../../Library/TKLib/Include
+        - ../../../../Library/CMSIS/Core/Include
+      debug: "on"
+      define:
+        - DEMO_LED
+        - DEMO_CALIBRATION
+        - DEBUG_PORT: UART3
+        - _DEBUG_ENABLE_SEMIHOST
+        - LIB_CALIBRATION
+      misc:
+        - for-compiler: AC6
+          C:
+            - -D__MICROLIB
+            - -std=c99
+          C-CPP:
+            - -fno-rtti
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+          CPP:
+            - -xc++
+            - -std=c++98
+          ASM:
+            - -masm=auto
+            - -D__MICROLIB
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --map --datacompressor=off --info=inline --entry Reset_Handler
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+            - --diag_suppress=6314
+        - for-compiler: GCC
+          C:
+            - -std=gnu11 -mthumb -masm-syntax-unified -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections
+          Link:
+            - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
+            - -Wl,--gc-sections,-Map="$elf()$.map"
+            - -Wl,--no-warn-rwx-segments
+  linker:
+    - script: ./TK.sct
+      for-context: .FreeRun
+      for-compiler: AC6
+    - script: ./TK.sct
+      for-context: .Calibration
+      for-compiler: AC6
+    - script: ./gcc_arm_tk.ld
+      for-context: .FreeRun
+      for-compiler: GCC
+    - script: ./gcc_arm_tk.ld
+      for-context: .Calibration
+      for-compiler: GCC      
+  groups:
+    - group: Startup
+      files:
+        - file: ../../../../Library/Device/Nuvoton/M2L31/Source/system_M2L31.c
+        - file: ../startup_M2L31_user.c
+          for-compiler: AC6
+        - file: ../../../../Library/Device/Nuvoton/M2L31/Source/GCC/startup_M2L31.S
+          for-compiler: GCC        
+        
+    - group: Source
+      for-context: .FreeRun
+      files:
+        - file: ../TK_DebugUART.c
+        - file: ../TK_Main.c
+        - file: ../TK_MultPinFunctions.c
+        - file: ../TK_SysTick.c
+        - file: ../TK_Powerdown.c
+        - file: ../TK_TC8260_AllInOne_Led.c
+    - group: Driver
+      files:
+        - file: ../../../../Library/StdDriver/src/clk.c
+        - file: ../../../../Library/StdDriver/src/uart.c
+        - file: ../../../../Library/StdDriver/src/timer.c
+        - file: ../../../../Library/StdDriver/src/sys.c
+        - file: ../../../../Library/StdDriver/src/retarget.c
+        - file: ../../../../Library/StdDriver/src/gpio.c
+        - file: ../../../../Library/StdDriver/src/rmc.c
+    - group: Library
+      for-context: .FreeRun
+      files:
+        - file: ../../../../Library/TKLib/TKLib_FreeRun.lib
+          for-compiler: AC6
+        - file: ../../../../Library/TKLib/libTKLib_FreeRun.a
+          for-compiler: GCC
+    - group: Source
+      for-context: .Calibration
+      files:
+        - file: ../TK_DebugUART.c
+        - file: ../TK_Main.c
+        - file: ../TK_MultPinFunctions.c
+        - file: ../TK_SysTick.c
+        - file: ../TK_MassProduction.c
+        - file: ../TK_Powerdown.c
+        - file: ../TK_TC8260_AllInOne_Led.c
+        - file: ../TK_UartCmd.c
+    - group: Library
+      for-context: .Calibration
+      files:
+        - file: ../../../../Library/TKLib/TKLib_Calibration.lib
+          for-compiler: AC6
+        - file: ../../../../Library/TKLib/libTKLib_Calibration.a
+          for-compiler: GCC
