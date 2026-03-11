@@ -80,9 +80,11 @@ def process_single_project(uvprojx_path):
     except:
         return
 
-    project_header_printed = False
     check_list = ['IROM1', 'IROM2', 'IROM3', 'IRAM1', 'IRAM2', 'IRAM3']
 
+    return_errors = []
+
+    project_header_printed = False
     for target in root.findall(".//Target"):
         t_name = target.find("TargetName").text
         device_node = target.find(".//Device")
@@ -128,14 +130,17 @@ def process_single_project(uvprojx_path):
                 )
 
         if target_errors:
-            if not project_header_printed:
-                print(f"\n[!] ISSUES FOUND IN: {uvprojx_path}")
-                project_header_printed = True
-            print(f"  Target: {t_name} ({device_name})")
-            for err in target_errors:
-                print(err)
+            # Insert Target info at the very beginning (index 0)
+            target_errors.insert(0, f"  Target: {t_name} ({device_name})")
 
-    return target_errors
+            # Insert File header only if it hasn't been printed/added yet
+            if not project_header_printed:
+                target_errors.insert(0, f"\n[!] ISSUES FOUND IN: {uvprojx_path}")
+                project_header_printed = True            
+
+            return_errors += target_errors
+
+    return return_errors
 
 def xml_get_value(node, path_parent, tag_name):
     # Locate Parent
