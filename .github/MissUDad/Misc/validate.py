@@ -53,7 +53,10 @@ def parse_pdsc_memory(pdsc_path, device_name):
             if device.get('Dname', '').upper() == device_name.upper():
                 device_node = device
                 break
-        if not device_node: return None
+
+        # FIX: Explicit check to avoid DeprecationWarning
+        if device_node is None: return None
+
         pdsc_mem = {}
         curr = device_node
         while curr is not None:
