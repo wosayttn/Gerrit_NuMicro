@@ -1,0 +1,109 @@
+project:
+  packs:
+    - pack: Nuvoton::NuMicroM33_DFP
+  setups:
+    - output:
+        # bin, elf, hex, lib
+        type: ["elf", "bin"]
+    - setup: Options for NuBL2
+      processor:
+        fpu: sp
+        endian: little
+        trustzone: secure
+      add-path:
+        - ../../../../../Library/CMSIS/Core/Include
+        - ../../../../../Library/CMSIS/Compiler/include
+        - ../../../../../Library/Device/Nuvoton/M3351/Include
+        - ../../../../../Library/StdDriver/inc
+        - ../../../../../Library/CryptoAccelerator
+        - ../../../../../ThirdParty/mbedtls/include
+        - ../..
+      define:
+        - MBEDTLS_CONFIG_FILE
+        - DEBUG_PORT: UART0_NS
+      misc:
+        - for-compiler: AC6
+          C:
+            - -std=c11
+          C-CPP:
+            - -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -ffunction-sections -fdata-sections -Wall
+            - -D__MICROLIB
+          CPP:
+            - -xc++
+            - -std=c++11
+          ASM:
+            - -masm=auto
+          Link:
+            - --library_type=microlib --map --load_addr_map_info --xref --callgraph --symbols
+            - --info sizes --info totals --info unused --info veneers
+            - --strict --summary_stderr --info summarysizes
+            - --import-cmse-lib-out "../lib/nsclib.o"
+        - for-compiler: GCC
+          C:
+            - -std=gnu11
+          C-CPP:
+            - -mthumb -masm-syntax-unified -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections
+          Link:
+            - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
+            - -Wl,--gc-sections,-Map="$elf()$.map"
+            - -Wl,--out-implib="../lib/libnsc.a",--cmse-implib
+            - -Wl,--no-warn-rwx-segments
+    - setup: Options for DirectBoot
+      for-context: .DirectBoot
+      output:
+        base-name: $Project$_DirectBoot
+      misc:
+        - for-compiler: AC6
+          Link:
+            - --pd="-DSIGNED_HDR_SIZE=0x0"
+        - for-compiler: GCC
+          Link:
+            - -Wl,--defsym="SIGNED_HDR_SIZE=0x0"
+    - setup: Options for SecureBoot
+      for-context: .SecureBoot
+      output:
+        base-name: $Project$_SecureBoot
+      misc:
+        - for-compiler: AC6
+          Link:
+            - --pd="-DSIGNED_HDR_SIZE=0x400"
+        - for-compiler: GCC
+          Link:
+            - -Wl,--defsym="SIGNED_HDR_SIZE=0x400"
+  linker:
+    - script: ./NuBL2.scf
+      for-compiler: AC6
+    - script: ./NuBL2.ld
+      for-compiler: GCC
+  groups:
+    - group: CMSIS
+      files:
+        - file: ../../../../../Library/Device/Nuvoton/M3351/Source/startup_M3351.c
+        - file: ../../../../../Library/Device/Nuvoton/M3351/Source/system_M3351.c
+    - group: Library
+      files:
+        - file: ../../../../../Library/StdDriver/src/retarget.c
+        - file: ../../../../../Library/StdDriver/src/clk.c
+        - file: ../../../../../Library/StdDriver/src/sys.c
+        - file: ../../../../../Library/StdDriver/src/uart.c
+        - file: ../../../../../Library/StdDriver/src/fmc.c
+        - file: ../../../../../Library/StdDriver/src/gpio.c
+        - file: ../../../../../Library/StdDriver/src/crypto.c
+        - file: ../../../../../Library/StdDriver/src/rng.c
+        - file: ../../../../../Library/CryptoAccelerator/lib/mbedcrypto.lib
+          for-compiler: AC6
+        - file: ../../../../../Library/CryptoAccelerator/lib/libmbedcrypto.a
+          for-compiler: GCC
+    - group: User
+      files:
+        - file: ../main.c
+        - file: ../active_sc.c
+        - file: ../VerifyNuBL3x.c
+        - file: ../crypto_mbedtls.c
+        - file: ../../partition_M3351.h
+  executes:
+    - execute: GenerateSignedImage
+      for-context: .SecureBoot
+      run: python ../../../FwSign.py $input$ ../../FwKey/ECC-P256.pem 0
+      input:
+        - $bin()$

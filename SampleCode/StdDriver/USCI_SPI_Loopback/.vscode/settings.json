@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\CCWang20\\Desktop\\Workspaces\\Git\\M3351\\SampleCode\\StdDriver\\USCI_SPI_Loopback\\VSCode\\out\\USCI_SPI_Loopback\\ARMCLANG\\Release"
+    ]
+}
