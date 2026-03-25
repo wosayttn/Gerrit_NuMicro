@@ -39,13 +39,13 @@ for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
 
       branch="${dept}_${bsp}"
 
-      printf "|%s" "$branch" >> "$README_FILE"
+      COMMIT_BADGE="![](https://img.shields.io/github/last-commit/${GITHUB_REPO}/${branch}?label=Last%20Commit&style=flat-square)"
+      printf "| **%s**<br>%s " "$branch" "$COMMIT_BADGE" >> "$README_FILE"
 
       for wf in "${WORKFLOWS[@]}"; do
             printf "|[![](%s)](%s)<br>![](%s)" \
               "$URL_PREFIX/${wf}.yml/badge.svg?branch=$branch" \
-              "$URL_PREFIX/${wf}.yml?query=branch:$branch" \
-              "https://img.shields.io/github/last-commit/${GITHUB_REPO}/${branch}?label=last"  >> "$README_FILE"
+              "$URL_PREFIX/${wf}.yml?query=branch:$branch" >> "$README_FILE"
       done
 
       printf "|\n" >> "$README_FILE"
