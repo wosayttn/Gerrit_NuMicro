@@ -42,9 +42,10 @@ for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
       printf "|%s" "$branch" >> "$README_FILE"
 
       for wf in "${WORKFLOWS[@]}"; do
-          printf "|[![](%s)](%s)" \
-            "$URL_PREFIX/${wf}.yml/badge.svg?branch=$branch" \
-            "$URL_PREFIX/${wf}.yml?query=branch:$branch"  >> "$README_FILE"
+            printf "|[![](%s)](%s)<br>![](%s)" \
+              "$URL_PREFIX/${wf}.yml/badge.svg?branch=$branch" \
+              "$URL_PREFIX/${wf}.yml?query=branch:$branch" \
+              "https://img.shields.io/github/last-commit/${GITHUB_REPO}/${branch}?label=last"  >> "$README_FILE"
       done
 
       printf "|\n" >> "$README_FILE"
