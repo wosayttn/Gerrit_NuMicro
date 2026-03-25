@@ -43,7 +43,7 @@ for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
       printf "| **%s**<br>%s " "$branch" "$COMMIT_BADGE" >> "$README_FILE"
 
       for wf in "${WORKFLOWS[@]}"; do
-            printf "|[![](%s)](%s)<br>![](%s)" \
+            printf "| <br>[![](%s)](%s) " \
               "$URL_PREFIX/${wf}.yml/badge.svg?branch=$branch" \
               "$URL_PREFIX/${wf}.yml?query=branch:$branch" >> "$README_FILE"
       done
