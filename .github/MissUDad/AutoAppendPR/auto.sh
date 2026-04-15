@@ -3,8 +3,8 @@
 # 1. 抓取當前目錄下所有符合命名規則的 Python Check Scripts
 # 使用 nullglob 避免找不到檔案時將萬用字元當成字串處理
 shopt -s nullglob
-# 這裡設定萬用字元比對所有 AppendUninitializedVariableCheck 開頭的 .py 檔
-CHECK_SCRIPTS=( "$(pwd)"/AppendUninitializedVariableCheck*.py )
+# 這裡設定萬用字元比對所有 Append...Check... 開頭的 .py 檔
+CHECK_SCRIPTS=( "$(pwd)"/Append*Check*.py )
 shopt -u nullglob
 
 # 檢查是否有找到任何腳本
@@ -36,8 +36,8 @@ for dir in */; do
     if cd "$dir"; then
         # 1. Discard changes to tracked files (like modified .uvprojx or .cproject)
         git restore . 
-        # 2. Remove new untracked files/folders
-        git clean -fd
+        # 2. Force clean untracked/ignored files and folders
+        git clean -ffdx
         git pull --rebase
 
         # 3. 依序執行所有找到的 Python Modification Scripts
@@ -50,13 +50,15 @@ for dir in */; do
                 echo "  [SKIP] Python script not found: $APP_SCRIPT"
             fi
         done
+        
+        #continue
 
         # 4. Stage ONLY tracked files (prevents adding .bak files)
         git add -u "SampleCode/"
         
         # Check if there are actually changes to commit
         if ! git diff --cached --exit-code > /dev/null; then
-            git commit -m "[MDK5/CSolution/Eclipse] Append uninitialized variable checking."
+            git commit -m "[MDK5/CSolution/Eclipse/IAR] Append no-unaligned-access flag."
             
             # 5. Gerrit Hook & Change-Id Generation
             # Download hook if missing to ensure Change-Id is generated
