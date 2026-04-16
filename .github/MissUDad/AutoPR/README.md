@@ -71,7 +71,7 @@ python3 -c "import ruamel.yaml, requests; print('OK')"
 | `AppendUninitializedVariableCheckVS.py` | 在 VS Code/CSolution YAML 加上未初始化變數警告旗標（AC6/GCC） | `*.cproject.yml / *.cproject.yaml` |
 | `CheckMDKProject_AutoFix.py` | 依 PDSC 自動修正 `.uvprojx` 的 `Cpu` 記憶體區段設定 | `.uvprojx` |
 | `FixFullWidthChar.py` | 批次修正常見全形/智慧引號字元（直接覆寫原檔） | `.c/.h/.cpp/.hpp` |
-| `auto.sh` | 自動巡覽子專案，執行所有 `Append*Check*.py`，commit 並可選擇 push | 專案資料夾 |
+| `auto.sh` | 自動巡覽子專案，執行所有 `Append*Check*.py`，可透過開關決定是否 `git add/commit/push` | 專案資料夾 |
 
 > 多數腳本都只處理路徑中包含 `SampleCode` 的專案檔。
 
@@ -225,18 +225,56 @@ python3 FixFullWidthChar.py [target_path]
   2. `git clean -ffdx`
   3. `git pull --rebase`
   4. 執行所有 Append 類 Python 腳本
-  5. `git add -u SampleCode/`
-  6. 有變更就 `git commit`
-  7. 視參數決定是否 push 到 `refs/for/master`
+  5. 若有 `--commit`：`git add -u SampleCode/`
+  6. 若有 staged 變更則 `git commit`
+  7. commit 後 push 到 `refs/for/master`
 
 **用法**
 ```bash
-./auto.sh            # 目前邏輯：不帶 --push 時，會關閉 push
-./auto.sh --push     # 啟用 push 到 refs/for/master
+./auto.sh            # 預設 dry-run：只跑腳本，不做 git add/commit/push
+./auto.sh --commit   # 啟用 git add/commit，並 push 到 refs/for/master
 ```
 
 **補充**
-- 腳本內訊息含 `Push skipped (--no-push)`，但目前參數解析實作是「只辨識 `--push`，其他參數都視為不 push」。
+- 目前只辨識 `--commit`；未帶參數時不會進行 `git add/commit/push`。
+
+**流程圖（Mermaid）**
+
+```mermaid
+flowchart TD
+  A([Start]) --> B[解析參數]
+  B --> C{是否為 --commit?}
+  C -->|是| C1[DO_COMMIT=1]
+  C -->|否| C2[DO_COMMIT=0]
+  C1 --> D[收集 Append*Check*.py]
+  C2 --> D
+  D --> E{有找到腳本?}
+  E -->|否| X([結束: 回傳錯誤])
+  E -->|是| F[迴圈處理每個子專案]
+
+  F --> G[git restore .]
+  G --> H[git clean -ffdx]
+  H --> I[git pull --rebase]
+  I --> J[依序執行所有 Append 腳本]
+  J --> K{DO_COMMIT == 1?}
+
+  K -->|否| L[略過 git add/commit/push]
+  L --> M{還有下一個專案?}
+
+  K -->|是| N[git add -u SampleCode/]
+  N --> O{staged 有變更?}
+  O -->|否| P[略過 commit]
+  P --> M
+  O -->|是| Q[git commit]
+  Q --> R{commit-msg hook 存在?}
+  R -->|否| S[下載 hook + chmod +x + amend]
+  R -->|是| T[git push 到 refs/for/master]
+  S --> T
+  T --> M
+
+  M -->|是| F
+  M -->|否| Z([All projects processed])
+```
 
 ---
 
@@ -246,9 +284,9 @@ python3 FixFullWidthChar.py [target_path]
    - `python3 AppendNoUnalignedAccessCheckIAR.py .`
 2. 檢查 diff 是否符合預期
 3. 再用 `auto.sh` 套用到多個 BSP 專案
-4. 最後決定是否 push：
-   - 先不推送：`./auto.sh`
-   - 直接推送：`./auto.sh --push`
+4. 最後決定是否提交與推送：
+  - 先不提交：`./auto.sh`
+  - 直接提交並推送：`./auto.sh --commit`
 
 ---
 

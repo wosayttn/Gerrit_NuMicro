@@ -1,19 +1,25 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: $0 [--push]"
-    echo "  --push     Push commits to refs/for/master (default)"
+    echo "Usage: $0 [--commit]"
+    echo "  --commit   Stage SampleCode changes, commit, and push to refs/for/master"
 }
 
-PUSH_TO_GERRIT=1
+DO_COMMIT=0
 
 while [ $# -gt 0 ]; do
     case "$1" in
-        --push)
-            PUSH_TO_GERRIT=1
+        --commit)
+            DO_COMMIT=1
+            ;;
+        -h|--help)
+            usage
+            exit 0
             ;;
         *)
-            PUSH_TO_GERRIT=0
+            echo "[ERROR] Unknown option: $1"
+            usage
+            exit 1
             ;;
     esac
     shift
@@ -37,10 +43,10 @@ for script in "${CHECK_SCRIPTS[@]}"; do
     echo "  - $(basename "$script")"
 done
 
-if [ "$PUSH_TO_GERRIT" -eq 1 ]; then
-    echo "Push to Gerrit: enabled (refs/for/master)"
+if [ "$DO_COMMIT" -eq 1 ]; then
+    echo "Git add/commit/push: enabled"
 else
-    echo "Push to Gerrit: disabled"
+    echo "Git add/commit/push: disabled (dry-run mode)"
 fi
 
 echo "-------------------------------------------------------"
@@ -76,31 +82,31 @@ for dir in */; do
             fi
         done
 
-        # 4. Stage ONLY tracked files (prevents adding .bak files)
-        git add -u "SampleCode/"
-        
-        # Check if there are actually changes to commit
-        if ! git diff --cached --exit-code > /dev/null; then
-            git commit -m "[MDK5/CSolution/Eclipse/IAR] Append no-unaligned-access flag."
-            
-            # 5. Gerrit Hook & Change-Id Generation
-            # Download hook if missing to ensure Change-Id is generated
-            if [ ! -f ".git/hooks/commit-msg" ]; then
-                curl -Lo .git/hooks/commit-msg http://10.1.8.206/tools/hooks/commit-msg
-                chmod +x .git/hooks/commit-msg
-                # Amend to trigger the hook and add Change-Id
-                git commit --amend --no-edit
-            fi
+        if [ "$DO_COMMIT" -eq 1 ]; then
+            # 4. Stage ONLY tracked files (prevents adding generated files)
+            git add -u "SampleCode/"
 
-            # 6. Push to Gerrit
-            if [ "$PUSH_TO_GERRIT" -eq 1 ]; then
+            # Check if there are actually changes to commit
+            if ! git diff --cached --exit-code > /dev/null; then
+                git commit -m "[MDK5/CSolution/Eclipse/IAR] Append no-unaligned-access flag."
+
+                # 5. Gerrit Hook & Change-Id Generation
+                # Download hook if missing to ensure Change-Id is generated
+                if [ ! -f ".git/hooks/commit-msg" ]; then
+                    curl -Lo .git/hooks/commit-msg http://10.1.8.206/tools/hooks/commit-msg
+                    chmod +x .git/hooks/commit-msg
+                    # Amend to trigger the hook and add Change-Id
+                    git commit --amend --no-edit
+                fi
+
+                # 6. Push to Gerrit
                 echo "  -> Pushing to Gerrit..."
                 git push origin HEAD:refs/for/master
             else
-                echo "  [INFO] Push skipped (--no-push)."
+                echo "  [INFO] No changes detected, skipping commit."
             fi
         else
-            echo "  [INFO] No changes detected, skipping commit."
+            echo "  [INFO] Commit skipped (run with --commit to enable git add/commit/push)."
         fi
 
         # Return to root
