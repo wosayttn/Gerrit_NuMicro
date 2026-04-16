@@ -28,8 +28,7 @@ source .venv/bin/activate
 
 本資料夾已提供：
 
-- `requirements.txt`（標準檔名）
-- `requirement.txt`（相同內容，保留相容）
+- `requirements.txt`
 
 安裝方式：
 
@@ -71,7 +70,7 @@ python3 -c "import ruamel.yaml, requests; print('OK')"
 | `AppendUninitializedVariableCheckMDK5.py` | 在 Keil 專案加上 `-Wconditional-uninitialized` | `.uvprojx` |
 | `AppendUninitializedVariableCheckVS.py` | 在 VS Code/CSolution YAML 加上未初始化變數警告旗標（AC6/GCC） | `*.cproject.yml / *.cproject.yaml` |
 | `CheckMDKProject_AutoFix.py` | 依 PDSC 自動修正 `.uvprojx` 的 `Cpu` 記憶體區段設定 | `.uvprojx` |
-| `FixFullWidthChar.py` | 批次修正常見全形/智慧引號字元並輸出 `.bak` | `.c/.h/.cpp/.hpp` |
+| `FixFullWidthChar.py` | 批次修正常見全形/智慧引號字元（直接覆寫原檔） | `.c/.h/.cpp/.hpp` |
 | `auto.sh` | 自動巡覽子專案，執行所有 `Append*Check*.py`，commit 並可選擇 push | 專案資料夾 |
 
 > 多數腳本都只處理路徑中包含 `SampleCode` 的專案檔。
@@ -205,6 +204,7 @@ python3 CheckMDKProject_AutoFix.py
 **功能**
 - 掃描指定路徑下 C/C++ 原始碼
 - 修正常見全形/智慧引號（例如 `“ ” ‘ ’ ， ； （ ） 全形空白`）
+- 直接覆寫原檔（不額外產生 `.bak`）
 
 **用法**
 ```bash
