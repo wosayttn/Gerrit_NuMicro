@@ -1,5 +1,24 @@
 #!/bin/bash
 
+usage() {
+    echo "Usage: $0 [--push]"
+    echo "  --push     Push commits to refs/for/master (default)"
+}
+
+PUSH_TO_GERRIT=1
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --push)
+            PUSH_TO_GERRIT=1
+            ;;
+        *)
+            PUSH_TO_GERRIT=0
+            ;;
+    esac
+    shift
+done
+
 # 1. 抓取當前目錄下所有符合命名規則的 Python Check Scripts
 # 使用 nullglob 避免找不到檔案時將萬用字元當成字串處理
 shopt -s nullglob
@@ -17,6 +36,12 @@ echo "Found ${#CHECK_SCRIPTS[@]} Check Scripts to run:"
 for script in "${CHECK_SCRIPTS[@]}"; do
     echo "  - $(basename "$script")"
 done
+
+if [ "$PUSH_TO_GERRIT" -eq 1 ]; then
+    echo "Push to Gerrit: enabled (refs/for/master)"
+else
+    echo "Push to Gerrit: disabled"
+fi
 
 echo "-------------------------------------------------------"
 echo "Starting automated updates for all project directories..."
@@ -50,8 +75,6 @@ for dir in */; do
                 echo "  [SKIP] Python script not found: $APP_SCRIPT"
             fi
         done
-        
-        #continue
 
         # 4. Stage ONLY tracked files (prevents adding .bak files)
         git add -u "SampleCode/"
@@ -70,8 +93,12 @@ for dir in */; do
             fi
 
             # 6. Push to Gerrit
-            echo "  -> Pushing to Gerrit..."
-            git push origin HEAD:refs/for/master
+            if [ "$PUSH_TO_GERRIT" -eq 1 ]; then
+                echo "  -> Pushing to Gerrit..."
+                git push origin HEAD:refs/for/master
+            else
+                echo "  [INFO] Push skipped (--no-push)."
+            fi
         else
             echo "  [INFO] No changes detected, skipping commit."
         fi
