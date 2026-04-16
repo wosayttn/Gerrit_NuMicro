@@ -19,14 +19,14 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-# 1. 抓取當前目錄下所有符合命名規則的 Python Check Scripts
-# 使用 nullglob 避免找不到檔案時將萬用字元當成字串處理
+# 1. Collect all Python check scripts matching the naming rule in current directory
+# Use nullglob to avoid treating unmatched wildcards as literal strings
 shopt -s nullglob
-# 這裡設定萬用字元比對所有 Append...Check... 開頭的 .py 檔
+# Match all .py scripts with names starting with Append...Check...
 CHECK_SCRIPTS=( "$(pwd)"/Append*Check*.py )
 shopt -u nullglob
 
-# 檢查是否有找到任何腳本
+# Verify that at least one script was found
 if [ ${#CHECK_SCRIPTS[@]} -eq 0 ]; then
     echo "[ERROR] No Python CHECK_SCRIPTs found in $(pwd)!"
     exit 1
@@ -65,7 +65,7 @@ for dir in */; do
         git clean -ffdx
         git pull --rebase
 
-        # 3. 依序執行所有找到的 Python Modification Scripts
+        # 3. Run all discovered Python modification scripts in sequence
         for APP_SCRIPT in "${CHECK_SCRIPTS[@]}"; do
             if [ -f "$APP_SCRIPT" ]; then
                 echo "  -> Running check script: $(basename "$APP_SCRIPT")"

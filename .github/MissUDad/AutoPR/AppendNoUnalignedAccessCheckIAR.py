@@ -1,3 +1,5 @@
+"""Append '--no_unaligned_access' and enable IExtraOptionsCheck in IAR .ewp files under SampleCode."""
+
 import xml.etree.ElementTree as ET
 import os
 import glob

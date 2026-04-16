@@ -1,3 +1,5 @@
+"""Append no-unaligned-access flags to MDK5 .uvprojx targets based on AC5/AC6 compiler type."""
+
 import xml.etree.ElementTree as ET
 import os
 import glob

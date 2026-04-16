@@ -1,3 +1,5 @@
+"""Append uninitialized-variable warning flags to VS/CSolution YAML compiler misc settings."""
+
 import os
 import glob
 import sys

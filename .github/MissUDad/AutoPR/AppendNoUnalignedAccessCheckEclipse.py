@@ -1,3 +1,5 @@
+"""Append '-mno-unaligned-access' to Eclipse .cproject compiler options in SampleCode projects."""
+
 import xml.etree.ElementTree as ET
 import os
 import glob

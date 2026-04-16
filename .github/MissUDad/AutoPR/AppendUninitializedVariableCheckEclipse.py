@@ -1,9 +1,11 @@
+"""Append '-Wmaybe-uninitialized' to Eclipse .cproject compiler options in SampleCode projects."""
+
 import xml.etree.ElementTree as ET
 import os
 import glob
 import uuid
 
-# 將旗標修正為正確的 GCC 指令 -Wmaybe-uninitialized
+# GCC warning flag for potential uninitialized variable usage
 EXTRA_CFLAGS = '-Wmaybe-uninitialized'
 
 def append_misc_controls(file_path, extra_flag):
@@ -12,11 +14,11 @@ def append_misc_controls(file_path, extra_flag):
         return
 
     try:
-        # 為了保留 Eclipse .cproject 檔案特有的 <?fileVersion ...?> 與 <?xml ...?> 標頭
+        # Preserve Eclipse .cproject headers, including <?fileVersion ...?> and <?xml ...?>
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # 擷取 <cproject 開始前的所有宣告 (包含 xml 版號與 fileVersion)
+        # Extract all declarations before <cproject> (xml version and fileVersion)
         idx = content.find('<cproject')
         if idx != -1:
             header = content[:idx].strip()
@@ -31,17 +33,17 @@ def append_misc_controls(file_path, extra_flag):
 
     is_modified = False
 
-    # 在 Eclipse CDT 架構下，尋找所有 C 與 C++ 編譯器的 <tool> 節點
+    # In Eclipse CDT structure, find all C/C++ compiler <tool> nodes
     for tool in root.findall(".//tool"):
         super_class = tool.get("superClass", "")
-        # 確認此節點是否為編譯器
+        # Check whether this node is a compiler tool
         if "tool.c.compiler" in super_class or "tool.cpp.compiler" in super_class:
             
-            # 判斷是 C 還是 C++，以決定對應的 other option superClass
+            # Determine C or C++ to select the matching 'other flags' superClass
             is_c = "tool.c.compiler" in super_class
             opt_super = "ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other" if is_c else "ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.other"
             
-            # 尋找是否已經有 "Other compiler flags" 這個節點
+            # Check if the "Other compiler flags" option already exists
             other_opt = None
             for opt in tool.findall("option"):
                 if opt.get("superClass") == opt_super:
@@ -49,7 +51,7 @@ def append_misc_controls(file_path, extra_flag):
                     break
             
             if other_opt is not None:
-                # 若存在，則檢查並將旗標附加於字串後方
+                # If present, append the flag when missing
                 current_val = other_opt.get("value", "")
                 if extra_flag not in current_val:
                     new_val = f"{current_val} {extra_flag}".strip()
@@ -59,7 +61,7 @@ def append_misc_controls(file_path, extra_flag):
                 else:
                     print(f"  Flag exists in {super_class}, skipping")
             else:
-                # 若原先不存在 "其它編譯旗標" 的屬性欄位，主動為它創建一個新的 option 節點
+                # If missing, create a new option node for extra compiler flags
                 new_id = f"{opt_super}.{uuid.uuid4().hex[:8]}"
                 ET.SubElement(tool, "option", {
                     "id": new_id,
@@ -72,9 +74,9 @@ def append_misc_controls(file_path, extra_flag):
                 is_modified = True
                 print(f"  Added '{extra_flag}' to {super_class}")
 
-    # 若發生異動，重新存檔
+    # Save file only when changes were made
     if is_modified:
-        # Eclipse 偏好使用 short_empty_elements (例如 <option ... />)
+        # Eclipse prefers short empty elements, e.g. <option ... />
         xml_content = ET.tostring(root, encoding='utf-8', method='xml', 
                                   xml_declaration=False, 
                                   short_empty_elements=True).decode('utf-8')
@@ -87,7 +89,7 @@ def scan_directory(base_dir):
     """Recursively search and fix GCC projects within 'SampleCode' folders."""
     print(f"Scanning/Fixing 'SampleCode' GCC projects under: {os.path.abspath(base_dir)}...")
     
-    # 針對 GCC 環境，將搜尋模式改為查找隱藏檔 .cproject
+    # For GCC projects, search hidden .cproject files
     search_pattern = os.path.join(base_dir, "**", ".cproject")
     target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f.split(os.sep)]
     

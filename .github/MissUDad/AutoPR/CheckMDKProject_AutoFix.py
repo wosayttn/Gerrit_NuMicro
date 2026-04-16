@@ -1,9 +1,10 @@
+"""Auto-fix MDK5 .uvprojx CPU memory regions by comparing against CMSIS Pack PDSC definitions."""
+
 import xml.etree.ElementTree as ET
 import re
 import os
 import requests
 import glob
-import shutil
 
 def to_int(hex_val):
     """Converts hex string to integer for accurate comparison."""
@@ -128,9 +129,6 @@ def process_single_project(uvprojx_path):
             cpu_node.text = new_cpu_text
 
     if is_modified:
-        # Create a backup before overwriting
-        shutil.copy2(uvprojx_path, uvprojx_path + ".bak")
-        
         # Enforce long tags (short_empty_elements=False) to ensure Keil compatibility
         # This prevents <Tag /> and forces <Tag></Tag>
         xml_content = ET.tostring(root, 

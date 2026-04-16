@@ -1,3 +1,5 @@
+"""Append '-mno-unaligned-access' into VS/CSolution YAML misc compiler options for SampleCode projects."""
+
 import os
 import glob
 import sys

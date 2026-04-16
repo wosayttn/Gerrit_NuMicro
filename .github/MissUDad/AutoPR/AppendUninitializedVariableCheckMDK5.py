@@ -1,3 +1,5 @@
+"""Append '-Wconditional-uninitialized' to MDK5 .uvprojx compiler MiscControls for SampleCode targets."""
+
 import xml.etree.ElementTree as ET
 import os
 import glob

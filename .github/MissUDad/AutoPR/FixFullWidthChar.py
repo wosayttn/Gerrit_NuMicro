@@ -1,7 +1,8 @@
+"""Replace common full-width and smart punctuation characters with ASCII equivalents in C/C++ source files."""
+
 import os
 import sys
 import io
-import shutil
 
 # Force UTF-8 output for terminal compatibility
 if sys.stdout.encoding != 'utf-8':
@@ -38,8 +39,6 @@ def fix_file_content(file_path):
                 changes_made.append(f"Fixed {count} instances of {repr(char)}")
 
         if new_content != original_content:
-            # Create backup
-            shutil.copy2(file_path, file_path + ".bak")
             # Write fixed content
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(new_content)
@@ -74,7 +73,7 @@ def scan_and_fix(path):
                 print(f"        -> {msg}")
 
     print("=" * 60)
-    print(f"Done. Fixed {fixed_count} files. Backups created with .bak extension.")
+    print(f"Done. Fixed {fixed_count} files.")
 
 if __name__ == "__main__":
     # WARNING: This will modify files. Ensure you have a git commit or backup first.
