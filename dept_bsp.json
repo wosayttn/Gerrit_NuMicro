@@ -1,6 +1,119 @@
 {
-    "MS10": ["M480"],
-    "MS20": ["M460", "M3331"],
-    "MS40": ["M2L31", "M2003", "M2U51", "M031" ],
-    "MS70": ["NUC121", "M251", "M253", "M55M1", "M5531", "M3351"]
+    "MS10": {
+        "M480": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        }
+    },
+    "MS20": {
+        "M460": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M3331": {
+            "Workflow": [
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        }
+    },
+    "MS40": {
+        "M2L31": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M2003": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M2003J": {
+            "Workflow": [
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M2U51": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M031": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        }
+    },
+    "MS70": {
+        "NUC121": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M251": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M253": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M55M1": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M5531": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
+        "M3351": {
+            "Workflow": [
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        }
+    }
 }

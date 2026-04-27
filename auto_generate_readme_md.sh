@@ -35,17 +35,23 @@ WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5")
 # Process each department and BSP entries
 for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
 
-  for bsp in $(jq -r --arg d "$dept" '.[$d][]' "$JSON_FILE"); do
+  for bsp in $(jq -r --arg d "$dept" '.[$d] | keys[]' "$JSON_FILE"); do
 
       branch="${dept}_${bsp}"
 
       COMMIT_BADGE="![](https://img.shields.io/github/last-commit/${GITHUB_REPO}/${branch}?label=Last%20Commit&style=flat-square)"
       printf "| **%s**<br>%s " "$branch" "$COMMIT_BADGE" >> "$README_FILE"
 
+      workflows=$(jq -r --arg d "$dept" --arg b "$bsp" '.[$d][$b].Workflow[]?' "$JSON_FILE")
+
       for wf in "${WORKFLOWS[@]}"; do
-            printf "| <br>[![](%s)](%s) " \
-              "$URL_PREFIX/${wf}.yml/badge.svg?branch=$branch" \
-              "$URL_PREFIX/${wf}.yml?query=branch:$branch" >> "$README_FILE"
+          if echo "$workflows" | grep -qx "$wf"; then
+              printf "| <br>[![](%s)](%s) " \
+                "$URL_PREFIX/${wf}.yml/badge.svg?branch=$branch" \
+                "$URL_PREFIX/${wf}.yml?query=branch:$branch" >> "$README_FILE"
+          else
+              printf "| N/A " >> "$README_FILE"
+          fi
       done
 
       printf "|\n" >> "$README_FILE"

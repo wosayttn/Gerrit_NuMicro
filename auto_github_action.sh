@@ -27,7 +27,7 @@ for dept in $DEPTS; do
   cd ${PATH_SCRIPT}
 
   # Read the BSP list for this department
-  BSPS=$(jq -r --arg d "$dept" '.[$d][]' "$JSON_FILE")
+  BSPS=$(jq -r --arg d "$dept" '.[$d] | keys[]' "$JSON_FILE")
   for bsp in $BSPS; do
 
     cd ${PATH_SCRIPT}
@@ -69,6 +69,15 @@ for dept in $DEPTS; do
     cp -af ${GERRIT_DIR} ${GITHUB_DIR}
 
     cp -af .github "${GITHUB_DIR}/.github"
+    
+    # BSP.workflow is exist or not. if not, remove "${GITHUB_DIR}/.github/workflows/xxx.yml"
+    workflows=$(jq -r --arg d "$dept" --arg b "$bsp" '.[$d][$b].Workflow[]?' "${PATH_SCRIPT}/$JSON_FILE")
+    for wf in "NuEclipse" "VSCode" "IAR" "MDK5"; do
+        if ! echo "$workflows" | grep -qx "$wf"; then
+            rm -f "${GITHUB_DIR}/.github/workflows/${wf}.yml"
+        fi
+    done
+
     rm -rf "${GITHUB_DIR}/.github/IAR_Nuvoton"
 
     cd "${GITHUB_DIR}"
