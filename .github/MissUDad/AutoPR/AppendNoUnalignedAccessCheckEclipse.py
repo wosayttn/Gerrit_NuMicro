@@ -1,4 +1,4 @@
-"""Append '-mno-unaligned-access' to Eclipse .cproject compiler options in SampleCode projects."""
+"""Append '-mno-unaligned-access' to Eclipse .cproject compiler options."""
 
 import xml.etree.ElementTree as ET
 import os
@@ -75,13 +75,13 @@ def append_misc_controls(file_path, extra_flag):
         print(f"  Saved changes to: {file_path}")
 
 def scan_directory(base_dir):
-    print(f"Scanning/Fixing 'SampleCode' GCC projects under: {os.path.abspath(base_dir)}...")
+    print(f"Scanning/Fixing GCC projects under: {os.path.abspath(base_dir)}...")
 
     search_pattern = os.path.join(base_dir, "**", ".cproject")
-    target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f.split(os.sep)]
+    target_files = glob.glob(search_pattern, recursive=True)
 
     if not target_files:
-        print("No SampleCode .cproject projects found.")
+        print("No .cproject projects found.")
         return
 
     for f in target_files:

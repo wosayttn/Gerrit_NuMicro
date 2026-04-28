@@ -48,7 +48,7 @@ python3 -m pip install ruamel.yaml requests
   - `AppendNoUnalignedAccessCheckVS.py`
   - `AppendUninitializedVariableCheckVS.py`
 - `requests`：
-  - `CheckMDKProject_AutoFix.py`
+  - `FixMDKProjectMemoryRegions.py`
 
 ### 1.6 安裝驗證（可選）
 
@@ -69,11 +69,15 @@ python3 -c "import ruamel.yaml, requests; print('OK')"
 | `AppendUninitializedVariableCheckEclipse.py` | 在 Eclipse/GCC 專案加上 `-Wmaybe-uninitialized` | `.cproject` |
 | `AppendUninitializedVariableCheckMDK5.py` | 在 Keil 專案加上 `-Wconditional-uninitialized` | `.uvprojx` |
 | `AppendUninitializedVariableCheckVS.py` | 在 VS Code/CSolution YAML 加上未初始化變數警告旗標（AC6/GCC） | `*.cproject.yml / *.cproject.yaml` |
-| `CheckMDKProject_AutoFix.py` | 依 PDSC 自動修正 `.uvprojx` 的 `Cpu` 記憶體區段設定 | `.uvprojx` |
+| `FixMDKProjectMemoryRegions.py` | 依 PDSC 自動修正 `.uvprojx` 的 `Cpu` 記憶體區段設定 | `.uvprojx` |
+| `BuildUncommittedEclipse.py` | 從 `git status` 找出未提交變更，回推並建置相關 Eclipse/GCC 專案 | `.cproject` |
+| `BuildUncommittedIAR.py` | 從 `git status` 找出未提交變更，回推並建置相關 IAR 專案 | `.ewp` |
+| `BuildUncommittedMDK5.py` | 從 `git status` 找出未提交變更，回推並建置相關 MDK5/Keil 專案 | `.uvprojx` |
+| `BuildUncommittedVS.py` | 從 `git status` 找出未提交變更，回推並建置相關 VS Code/CSolution 專案 | `*.csolution.yml / *.csolution.yaml` |
 | `FixFullWidthChar.py` | 批次修正常見全形/智慧引號字元（直接覆寫原檔） | `.c/.h/.cpp/.hpp` |
-| `auto.sh` | 自動巡覽子專案，執行所有 `Append*Check*.py`，可透過開關決定是否 `git add/commit/push` | 專案資料夾 |
+| `auto.sh` | 自動巡覽子專案，執行所有 `Append*Check*.py` 與 `FixMDKProjectMemoryRegions.py`，可透過參數決定是否 `git add/commit/push` | 專案資料夾 |
 
-> 多數腳本都只處理路徑中包含 `SampleCode` 的專案檔。
+> `auto.sh` 會把腳本套用到各子專案中的 `SampleCode`、`Library`、`ThirdParty` 目錄；各 Python 腳本則只處理傳入的目錄。
 
 ---
 
@@ -82,7 +86,7 @@ python3 -c "import ruamel.yaml, requests; print('OK')"
 ### 3.1 `AppendNoUnalignedAccessCheckEclipse.py`
 
 **功能**
-- 掃描 `.cproject`（限 `SampleCode`）
+- 掃描指定目錄下的 `.cproject`
 - 在 C/C++ 編譯器 `Other compiler flags` 追加 `-mno-unaligned-access`
 
 **用法**
@@ -96,7 +100,7 @@ python3 AppendNoUnalignedAccessCheckEclipse.py [base_dir]
 ### 3.2 `AppendNoUnalignedAccessCheckIAR.py`
 
 **功能**
-- 掃描 IAR `.ewp`（限 `SampleCode`）
+- 掃描指定目錄下的 IAR `.ewp`
 - 在 `IExtraOptions` 追加 `--no_unaligned_access`
 - 同步確保 `IExtraOptionsCheck` 存在且為 `1`
 
@@ -110,7 +114,7 @@ python3 AppendNoUnalignedAccessCheckIAR.py [base_dir]
 ### 3.3 `AppendNoUnalignedAccessCheckMDK5.py`
 
 **功能**
-- 掃描 `.uvprojx`（限 `SampleCode`）
+- 掃描指定目錄下的 `.uvprojx`
 - 依目標編譯器自動加旗標：
   - AC5: `--no_unaligned_access`
   - AC6: `-mno-unaligned-access`
@@ -126,7 +130,7 @@ python3 AppendNoUnalignedAccessCheckMDK5.py [base_dir]
 ### 3.4 `AppendNoUnalignedAccessCheckVS.py`
 
 **功能**
-- 掃描 `*.cproject.yml / *.cproject.yaml`（限 `SampleCode`）
+- 掃描指定目錄下的 `*.cproject.yml / *.cproject.yaml`
 - 在 `setups[].misc[]` 中補齊：
   - `for-compiler: AC6` 的 `C-CPP` 加入 `-mno-unaligned-access`
   - `for-compiler: GCC` 的 `C-CPP` 加入 `-mno-unaligned-access`
@@ -141,35 +145,35 @@ python3 AppendNoUnalignedAccessCheckVS.py [base_dir]
 ### 3.5 `AppendUninitializedVariableCheckEclipse.py`
 
 **功能**
-- 掃描 `.cproject`（限 `SampleCode`）
+- 掃描指定目錄下的 `.cproject`
 - 在 C/C++ 編譯器 `Other compiler flags` 追加 `-Wmaybe-uninitialized`
 
 **用法**
 ```bash
-python3 AppendUninitializedVariableCheckEclipse.py
+python3 AppendUninitializedVariableCheckEclipse.py [base_dir]
 ```
-> 此腳本目前固定掃描 `.`，未使用命令列參數。
+- `base_dir` 可省略，預設 `.`
 
 ---
 
 ### 3.6 `AppendUninitializedVariableCheckMDK5.py`
 
 **功能**
-- 掃描 `.uvprojx`（限 `SampleCode`）
+- 掃描指定目錄下的 `.uvprojx`
 - 在 `MiscControls` 追加 `-Wconditional-uninitialized`
 
 **用法**
 ```bash
-python3 AppendUninitializedVariableCheckMDK5.py
+python3 AppendUninitializedVariableCheckMDK5.py [base_dir]
 ```
-> 此腳本目前固定掃描 `.`，未使用命令列參數。
+- `base_dir` 可省略，預設 `.`
 
 ---
 
 ### 3.7 `AppendUninitializedVariableCheckVS.py`
 
 **功能**
-- 掃描 `*.cproject.yml / *.cproject.yaml`（限 `SampleCode`）
+- 掃描指定目錄下的 `*.cproject.yml / *.cproject.yaml`
 - 在 `setups[].misc[]` 補齊：
   - `AC6`：`-Wconditional-uninitialized`
   - `GCC`：`-Wmaybe-uninitialized`
@@ -181,17 +185,18 @@ python3 AppendUninitializedVariableCheckVS.py [base_dir]
 
 ---
 
-### 3.8 `CheckMDKProject_AutoFix.py`
+### 3.8 `FixMDKProjectMemoryRegions.py`
 
 **功能**
-- 掃描 `.uvprojx`（限 `SampleCode`）
+- 掃描指定目錄下的 `.uvprojx`
 - 依 `PackID + PackURL` 下載對應 `.pdsc`
 - 比對並修正 `Cpu` 文字中的 `IROMx/IRAMx(start,size)`
 
 **用法**
 ```bash
-python3 CheckMDKProject_AutoFix.py
+python3 FixMDKProjectMemoryRegions.py [base_dir]
 ```
+- `base_dir` 可省略，預設 `.`
 
 **注意**
 - 需要網路可連到 Pack URL
@@ -199,7 +204,64 @@ python3 CheckMDKProject_AutoFix.py
 
 ---
 
-### 3.9 `FixFullWidthChar.py`
+### 3.9 `BuildUncommittedEclipse.py`
+
+**功能**
+- 執行 `git status` 取得未提交變更
+- 由變更檔路徑回推對應的 Eclipse/GCC 專案目錄
+- 只建置有關聯的 `.cproject` 專案，不改動原本 `GCC/build.py`
+
+**用法**
+```bash
+python3 BuildUncommittedEclipse.py [start_dir]
+```
+- `start_dir` 可省略，預設 `.`
+
+---
+
+### 3.10 `BuildUncommittedIAR.py`
+
+**功能**
+- 執行 `git status` 取得未提交變更
+- 回推對應的 IAR `.ewp`
+- 只建置有關聯的 IAR 專案，不改動原本 `IAR/build.py`
+
+**用法**
+```bash
+python3 BuildUncommittedIAR.py [start_dir]
+```
+
+---
+
+### 3.11 `BuildUncommittedMDK5.py`
+
+**功能**
+- 執行 `git status` 取得未提交變更
+- 回推對應的 MDK5 `.uvprojx`
+- 只建置有關聯的 Keil 專案，不改動原本 `Keil/build.py`
+
+**用法**
+```bash
+python3 BuildUncommittedMDK5.py [start_dir]
+```
+
+---
+
+### 3.12 `BuildUncommittedVS.py`
+
+**功能**
+- 執行 `git status` 取得未提交變更
+- 回推對應的 VS Code `.csolution.yml/.yaml`
+- 只建置有關聯的 VS Code/CMSIS 專案，不改動原本 `VSCode/build.py`
+
+**用法**
+```bash
+python3 BuildUncommittedVS.py [start_dir]
+```
+
+---
+
+### 3.13 `FixFullWidthChar.py`
 
 **功能**
 - 掃描指定路徑下 C/C++ 原始碼
@@ -215,36 +277,38 @@ python3 FixFullWidthChar.py [target_path]
 
 ---
 
-### 3.10 `auto.sh`
+### 3.14 `auto.sh`
 
 **功能**
-- 自動尋找目前目錄下 `Append*Check*.py`
+- 自動尋找目前目錄下 `Append*Check*.py` 與 `FixMDKProjectMemoryRegions.py`
 - 逐一進入每個子資料夾（略過隱藏資料夾）
+- 只處理各子專案中存在的 `SampleCode`、`Library`、`ThirdParty` 目錄
 - 執行：
   1. `git restore .`
   2. `git clean -ffdx`
   3. `git pull --rebase`
-  4. 執行所有 Append 類 Python 腳本
-  5. 若有 `--commit`：`git add -u SampleCode/`
+  4. 對每個目標目錄執行所有 Append/Fix 類 Python 腳本
+  5. 若有 `--commit <message>`：`git add -u SampleCode/ Library/ ThirdParty/`
   6. 若有 staged 變更則 `git commit`
   7. commit 後 push 到 `refs/for/master`
 
 **用法**
 ```bash
 ./auto.sh            # 預設 dry-run：只跑腳本，不做 git add/commit/push
-./auto.sh --commit   # 啟用 git add/commit，並 push 到 refs/for/master
+./auto.sh --commit "[MDK5/CSolution/Eclipse/IAR] Append no-unaligned-access flag."  # 啟用 git add/commit，並 push 到 refs/for/master
 ```
 
 **補充**
-- 目前只辨識 `--commit`；未帶參數時不會進行 `git add/commit/push`。
+- `--commit` 必須帶入 commit message；未帶 message 會直接報錯。
+- 未帶 `--commit` 時不會進行 `git add/commit/push`。
 
 **流程圖（Mermaid）**
 
 ```mermaid
 flowchart TD
   A([Start]) --> B[解析參數]
-  B --> C{是否為 --commit?}
-  C -->|是| C1[DO_COMMIT=1]
+  B --> C{是否帶 --commit <message>?}
+  C -->|是| C1[DO_COMMIT=1 並記錄 Commit Message]
   C -->|否| C2[DO_COMMIT=0]
   C1 --> D[收集 Append*Check*.py]
   C2 --> D
@@ -255,13 +319,13 @@ flowchart TD
   F --> G[git restore .]
   G --> H[git clean -ffdx]
   H --> I[git pull --rebase]
-  I --> J[依序執行所有 Append 腳本]
+  I --> J[依序對 SampleCode/Library/ThirdParty 執行所有 Append/Fix 腳本]
   J --> K{DO_COMMIT == 1?}
 
   K -->|否| L[略過 git add/commit/push]
   L --> M{還有下一個專案?}
 
-  K -->|是| N[git add -u SampleCode/]
+  K -->|是| N[git add -u SampleCode/ Library/ ThirdParty/（依實際存在目錄）]
   N --> O{staged 有變更?}
   O -->|否| P[略過 commit]
   P --> M
@@ -286,7 +350,7 @@ flowchart TD
 3. 再用 `auto.sh` 套用到多個 BSP 專案
 4. 最後決定是否提交與推送：
   - 先不提交：`./auto.sh`
-  - 直接提交並推送：`./auto.sh --commit`
+  - 直接提交並推送：`./auto.sh --commit "[MDK5/CSolution/Eclipse/IAR] Append no-unaligned-access flag."`
 
 ---
 

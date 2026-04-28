@@ -72,11 +72,11 @@ def append_misc_controls(file_path):
         print(f"  Saved changes to: {file_path}")
 
 def scan_directory(base_dir):
-    print(f"Scanning/Fixing 'SampleCode' projects under: {os.path.abspath(base_dir)}...")
+    print(f"Scanning/Fixing MDK5 projects under: {os.path.abspath(base_dir)}...")
     search_pattern = os.path.join(base_dir, "**", "*.uvprojx")
-    target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f.split(os.sep)]
+    target_files = glob.glob(search_pattern, recursive=True)
     if not target_files:
-        print("No SampleCode projects found.")
+        print("No MDK5 projects found.")
         return
     for f in target_files:
         print(f"\nChecking: {f}")

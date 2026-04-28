@@ -5,6 +5,7 @@ import re
 import os
 import requests
 import glob
+import sys
 
 def to_int(hex_val):
     """Converts hex string to integer for accurate comparison."""
@@ -142,11 +143,15 @@ def process_single_project(uvprojx_path):
         print(f"  [DONE] Saved changes to {uvprojx_path}")
 
 def scan_directory(base_dir):
-    """Scans for uvprojx files specifically within SampleCode folders."""
+    """Scans for uvprojx files within the provided folder."""
     search_pattern = os.path.join(base_dir, "**", "*.uvprojx")
-    target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f.split(os.sep)]
+    target_files = glob.glob(search_pattern, recursive=True)
+    if not target_files:
+        print(f"[INFO] No MDK5 projects found under: {os.path.abspath(base_dir)}")
+        return
     for f in target_files:
         process_single_project(f)
 
 if __name__ == "__main__":
-    scan_directory(".")
+    base_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
+    scan_directory(base_dir)

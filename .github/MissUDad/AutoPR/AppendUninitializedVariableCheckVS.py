@@ -70,7 +70,7 @@ def update_cproject_yml(file_path):
 def scan_directory(base_dir):
     print(f"Force-Scanning projects under: {os.path.abspath(base_dir)}")
     search_pattern = os.path.join(base_dir, "**", "*.cproject.y*ml")
-    target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f]
+    target_files = glob.glob(search_pattern, recursive=True)
     
     for f in target_files:
         print(f"\nChecking: {f}")

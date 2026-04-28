@@ -1,9 +1,10 @@
-"""Append '-Wmaybe-uninitialized' to Eclipse .cproject compiler options in SampleCode projects."""
+"""Append '-Wmaybe-uninitialized' to Eclipse .cproject compiler options."""
 
 import xml.etree.ElementTree as ET
 import os
 import glob
 import uuid
+import sys
 
 # GCC warning flag for potential uninitialized variable usage
 EXTRA_CFLAGS = '-Wmaybe-uninitialized'
@@ -86,15 +87,15 @@ def append_misc_controls(file_path, extra_flag):
         print(f"  Saved changes to: {file_path}")
 
 def scan_directory(base_dir):
-    """Recursively search and fix GCC projects within 'SampleCode' folders."""
-    print(f"Scanning/Fixing 'SampleCode' GCC projects under: {os.path.abspath(base_dir)}...")
+    """Recursively search and fix GCC projects within the provided folder."""
+    print(f"Scanning/Fixing GCC projects under: {os.path.abspath(base_dir)}...")
     
     # For GCC projects, search hidden .cproject files
     search_pattern = os.path.join(base_dir, "**", ".cproject")
-    target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f.split(os.sep)]
+    target_files = glob.glob(search_pattern, recursive=True)
     
     if not target_files:
-        print("No SampleCode .cproject projects found.")
+        print("No .cproject projects found.")
         return
         
     for f in target_files:
@@ -104,4 +105,5 @@ def scan_directory(base_dir):
     print("\nScan and Append complete.")
 
 if __name__ == "__main__":
-    scan_directory('.')
+    base_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
+    scan_directory(base_dir)

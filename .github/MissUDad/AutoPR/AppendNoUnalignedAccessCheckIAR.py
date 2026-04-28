@@ -1,4 +1,4 @@
-"""Append '--no_unaligned_access' and enable IExtraOptionsCheck in IAR .ewp files under SampleCode."""
+"""Append '--no_unaligned_access' and enable IExtraOptionsCheck in IAR .ewp files."""
 
 import xml.etree.ElementTree as ET
 import os
@@ -98,11 +98,11 @@ def append_extra_options(file_path, extra_flag):
         print(f"  Saved changes to: {file_path}")
 
 def scan_directory(base_dir):
-    print(f"Scanning/Fixing 'SampleCode' IAR projects under: {os.path.abspath(base_dir)}...")
+    print(f"Scanning/Fixing IAR projects under: {os.path.abspath(base_dir)}...")
     search_pattern = os.path.join(base_dir, "**", "*.ewp")
-    target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f.split(os.sep)]
+    target_files = glob.glob(search_pattern, recursive=True)
     if not target_files:
-        print("No SampleCode IAR projects found.")
+        print("No IAR projects found.")
         return
     for f in target_files:
         print(f"\nChecking: {f}")

@@ -1,4 +1,4 @@
-"""Append '-Wconditional-uninitialized' to MDK5 .uvprojx compiler MiscControls for SampleCode targets."""
+"""Append '-Wconditional-uninitialized' to MDK5 .uvprojx compiler MiscControls."""
 
 import xml.etree.ElementTree as ET
 import os
@@ -65,12 +65,12 @@ def append_misc_controls(file_path, extra_flag):
 
 def scan_directory(base_dir):
 
-    """Recursively search and fix projects within 'SampleCode' folders."""
-    print(f"Scanning/Fixing 'SampleCode' projects under: {os.path.abspath(base_dir)}...")
+    """Recursively search and fix projects within the provided folder."""
+    print(f"Scanning/Fixing MDK5 projects under: {os.path.abspath(base_dir)}...")
     search_pattern = os.path.join(base_dir, "**", "*.uvprojx")
-    target_files = [f for f in glob.glob(search_pattern, recursive=True) if "SampleCode" in f.split(os.sep)]
+    target_files = glob.glob(search_pattern, recursive=True)
     if not target_files:
-        print("No SampleCode projects found.")
+        print("No MDK5 projects found.")
         return
     for f in target_files:
         print(f"\nChecking: {f}")
@@ -80,4 +80,5 @@ def scan_directory(base_dir):
 
 
 if __name__ == "__main__":
-    scan_directory('.')
+    base_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
+    scan_directory(base_dir)
