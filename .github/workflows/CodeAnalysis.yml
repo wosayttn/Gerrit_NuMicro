@@ -26,9 +26,11 @@ jobs:
           
           cd $GITHUB_WORKSPACE
           found_report=0
-          for file in code-analysis-report*.zip; do
+          # Check both the workspace and the code analysis directory just in case
+          for file in "$GITHUB_WORKSPACE"/code-analysis-report*.zip "$CODE_ANALYSIS"/code-analysis-report*.zip; do
             if [[ -f "$file" ]]; then
-              echo "$GITHUB_WORKSPACE/$file" >> attachments.txt
+              # Write the absolute path directly to attachments.txt
+              echo "$file" >> "$GITHUB_WORKSPACE/attachments.txt"
               found_report=1
             fi
           done
