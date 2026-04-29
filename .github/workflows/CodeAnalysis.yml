@@ -2,11 +2,9 @@ name: CodeAnalysis
 
 on:
   push:
-<<<<<<< HEAD
-    branches:
-      - MS70_*
-=======
->>>>>>> ff1908713 (update code-analysis workflow.)
+    branches-ignore:
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
