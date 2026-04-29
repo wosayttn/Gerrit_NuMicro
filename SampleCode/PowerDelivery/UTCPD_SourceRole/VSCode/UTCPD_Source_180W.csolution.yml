@@ -1,0 +1,27 @@
+solution:
+  created-by: uv2csolution@1.6.0
+  created-for: CMSIS-Toolbox@2.7.0
+  select-compiler:
+    - compiler: AC6@>=5.19.0
+    - compiler: GCC@>=10.3.1
+  build-types:
+    - type: Release # build-type name, used in context with: .Release
+      optimize: size # balanced optimization
+  target-types:
+    - type: ARMCLANG
+      compiler: AC6
+      device: Nuvoton::M2003FC1AE
+      target-set:
+        - set:
+          images:
+            - project-context: UTCPD_Source_180W.Release
+          debugger:
+            name: Nu-Link@pyOCD
+            port: 3333
+            protocol: swd
+            clock: 10000000
+  #    - type: GNUC
+  #      compiler: GCC
+  #      device: Nuvoton::M2003FC1AE
+  projects:
+    - project: UTCPD_Source_180W.cproject.yml

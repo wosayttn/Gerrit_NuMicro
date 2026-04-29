@@ -1,0 +1,86 @@
+/*------------------------------------------------------------
+ * M2003 IAR Linker Configuration
+ * Revised to keep current executable layout while making
+ * APROM / LDROM intent clearer for post-build processing.
+ *
+ * Notes:
+ * 1. APROM is still the whole ROM_region image.
+ * 2. Section name "APROM" is optional and only used when code/data
+ *    is explicitly placed into section APROM.
+ * 3. Existing generic readonly placement is kept, so .text/.rodata/
+ *    .intvec continue to link normally.
+ *-----------------------------------------------------------*/
+
+/*-------------------------
+  Memory regions
+--------------------------*/
+define symbol __ICFEDIT_region_ROM_start__   = 0x00000000;
+define symbol __ICFEDIT_region_ROM_end__     = 0x00007FFF;
+
+define symbol __ICFEDIT_region_LDROM_start__ = 0x00100000;
+define symbol __ICFEDIT_region_LDROM_end__   = 0x00100FFF;
+
+define symbol __ICFEDIT_region_RAM_start__   = 0x20000000;
+define symbol __ICFEDIT_region_RAM_end__     = 0x20000FFF;
+
+
+/*-------------------------
+  Define memory
+--------------------------*/
+define memory mem with size = 4G;
+
+define region ROM_region   = mem:[from __ICFEDIT_region_ROM_start__   to __ICFEDIT_region_ROM_end__];
+define region LDROM_region = mem:[from __ICFEDIT_region_LDROM_start__ to __ICFEDIT_region_LDROM_end__];
+define region RAM_region   = mem:[from __ICFEDIT_region_RAM_start__   to __ICFEDIT_region_RAM_end__];
+
+
+/*-------------------------
+  Stack / Heap
+--------------------------*/
+define symbol __ICFEDIT_size_cstack__ = 0x300;
+define symbol __ICFEDIT_size_heap__   = 0x000;
+
+define block CSTACK with alignment = 8, size = __ICFEDIT_size_cstack__ { };
+define block HEAP   with alignment = 8, size = __ICFEDIT_size_heap__   { };
+
+
+/*-------------------------
+  Initialization
+--------------------------*/
+initialize by copy { readwrite };
+do not initialize  { section .noinit };
+
+
+/*-------------------------
+  Place sections
+--------------------------*/
+
+/* Vector table / reset section */
+place at address mem:__ICFEDIT_region_ROM_start__ { readonly section .intvec };
+
+/*
+ * APROM image area:
+ * - Keep generic readonly placement so normal sections (.text/.rodata/etc.)
+ *   still go to ROM_region.
+ * - Also allow an optional explicit section name "APROM" for code/data that
+ *   the user intentionally tags for APROM.
+ */
+place in ROM_region
+{
+    readonly section APROM,
+    readonly
+};
+
+/* RW / ZI data in SRAM */
+place in RAM_region
+{
+    readwrite,
+    block CSTACK,
+    block HEAP
+};
+
+/* LDROM dedicated section */
+place in LDROM_region
+{
+    readonly section LDROM
+};

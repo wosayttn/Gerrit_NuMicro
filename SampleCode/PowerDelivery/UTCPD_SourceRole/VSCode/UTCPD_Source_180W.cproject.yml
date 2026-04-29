@@ -1,0 +1,156 @@
+project:
+  linker:
+    - script: ./scatter.scf
+      for-compiler: AC6
+#    - script: ./scatter.ld
+#      for-compiler: GCC
+
+  packs:
+    - pack: Nuvoton::NuMicroM23_DFP@^1.0.4
+
+  setups:
+    - setup: Common
+      add-path:
+        - ../../../../Library/CMSIS/Core/Include
+        - ../../../../Library/StdDriver/inc
+        - ../../../../Library/Device/Nuvoton/M2003/Include
+        - ../../../../Library/Device/Nuvoton/NPD48/Include
+        - ../../../../Library/PowerDeliveryLib/Include
+        - ../../../../Library/PowerDeliveryLib/Include/Inc
+      debug: "off"
+      define:
+        - CONFIG_OB_SOLUTION: "1"
+        - OPT_FPGA: "0"
+        - DEBUG_PORT: UART0
+        - OPT_CAPTIVE_CABLE: "1"
+        - OPT_M2003: "1"
+        - NPD48_ALERT: GPB_IRQn
+        - OPT_SRC_ONLY: "1"
+        - OPT_SNK_ONLY: "0"
+        - NPD48_FPGA: "0"
+        - CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
+        - CHROMIUM_EC: "1"
+        - CONFIG_USB_PD_FRS_TCPC: "0"
+        - CONFIG_USB_PD_REV30: "1"
+        - CONFIG_TC8260_FRS: "0"
+
+    - setup: ARMCLANG
+      for-compiler: AC6
+      define:
+        - __MICROLIB
+      define-asm:
+        - __MICROLIB
+      misc:
+        - C:
+            - -std=c99
+            - -Oz
+          C-CPP:
+            - -flto
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+            - -fdata-sections
+            - -w
+          CPP:
+            - -xc++
+            - -std=c++98
+            - -fno-exceptions
+            - -fno-rtti
+          ASM:
+            - -masm=auto
+            - -Wno-unused-command-line-argument
+            - -Wa,--diag_suppress=A1950W
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --xref
+            - --callgraph
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --info unused
+            - --info veneers
+            - --lto
+            - --datacompressor=off
+            - --entry Reset_Handler
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+            - --remove
+
+#    - setup: GCC
+#      for-compiler: GCC
+#      misc:
+#        - C:
+#            - -std=c99
+#            - -Os
+#          C-CPP:
+#            - -flto
+#            - -funsigned-char
+#            - -fshort-enums
+#            - -fshort-wchar
+#            - -ffunction-sections
+#            - -fdata-sections
+#            - -fno-unwind-tables
+#            - -fno-asynchronous-unwind-tables
+#            - -fomit-frame-pointer
+#            - -w
+#          CPP:
+#            - -xc++
+#            - -fno-exceptions
+#            - -fno-rtti
+#          ASM:
+#            - -x
+#            - assembler-with-cpp
+#          Link:
+#            - --specs=nano.specs
+#            - --specs=nosys.specs
+#            - -Wl,-Map=$elf()$.map
+#            - -Wl,--gc-sections
+#            - -Wl,--print-memory-usage
+#            - -Wl,--entry=Reset_Handler    
+  groups:
+    - group: CMSIS
+      files:
+        - file: ../../../../Library/Device/Nuvoton/M2003/Source/system_M2003.c
+        - file: ./startup_M2003_PD.s
+#          for-compiler: AC6
+#        - file: ../../../../Library/Device/Nuvoton/M2003/Source/GCC/startup_M2003.S
+#          for-compiler: GCC
+
+    - group: Library
+      files:
+        - file: ../../../../Library/StdDriver/src/retarget.c
+        - file: ../../../../Library/StdDriver/src/uart.c
+        - file: ../../../../Library/StdDriver/src/clk.c
+        - file: ../../../../Library/StdDriver/src/sys.c
+        - file: ../../../../Library/StdDriver/src/timer.c
+        - file: ../../../../Library/StdDriver/src/gpio.c
+        - file: ../../../../Library/StdDriver/src/i2c.c
+
+    - group: NPD48_Driver
+      files:
+        - file: ../../../../Library/Device/Nuvoton/NPD48/src/i2c_interrupt.c
+        - file: ../../../../Library/Device/Nuvoton/NPD48/src/utcpd.c
+
+    - group: User
+      files:
+        - file: ../main.c
+        - file: ../usb_pd_policy.c
+        - file: ../commandshell.c
+        - file: ../NPD48_ADC.c
+        - file: ../NPD48_Protection.c
+        - file: ../NPD48_VINGATE2_CTRL.c
+        - file: ../NPD48_VBUS_DrawnCurrent_Compensation.c
+        - file: ../NPD48_InterConnection.c
+        - file: ../usb_pd_falling_transition.c
+        - file: ../NPD48_ChipInit.c
+
+    - group: Lib
+      files:
+        - file: ../../../../Library/PowerDeliveryLib/PD_SRC.lib
+          for-compiler: AC6
+#        - file: ../../../../Library/PowerDeliveryLib/libPD_SRC.a
+#          for-compiler: GCC
