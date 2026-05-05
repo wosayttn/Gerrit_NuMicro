@@ -21,23 +21,37 @@ jobs:
           set +e -x
 
           cd "$CODE_ANALYSIS"
+
+          git pull
+
           pip install -r requirements.txt
+
           python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
-          
-          cd $GITHUB_WORKSPACE
-          found_report=0
-          # Check both the workspace and the code analysis directory just in case
-          for file in "$GITHUB_WORKSPACE"/code-analysis-report*.zip; do
-            if [[ -f "$file" ]]; then
-              # Write the absolute path directly to attachments.txt
-              echo "$file" >> "$GITHUB_WORKSPACE/attachments.txt"
-              found_report=1
+          ret=$?
+
+          if [ $ret -ne 0 ]; then
+            cd "$GITHUB_WORKSPACE"
+            # Check both the workspace and the code analysis directory just in case
+
+            for file in "$GITHUB_WORKSPACE"/code-analysis-report*.zip; do
+              if [[ -f "$file" ]]; then
+                # Write the absolute path directly to attachments.txt
+                echo "$file" >> "$GITHUB_WORKSPACE/attachments.txt"
+              fi
+            done
+
+            MISRA_STATUS="$GITHUB_WORKSPACE/output/cppcheck-misra.log"
+            if [[ -f "$MISRA_STATUS" ]]; then
+              echo "$MISRA_STATUS" >> "$GITHUB_WORKSPACE/attachments.txt"
             fi
-          done
-          
-          if [[ $found_report -eq 1 ]]; then
-            exit 1
+
+          else
+
+            echo "🎉 Code analysis script succeeded!"
+
           fi
+
+          exit $ret
 
       - name: Send mail
         if: failure()
