@@ -30,20 +30,22 @@ jobs:
           ret=$?
 
           if [ $ret -ne 0 ]; then
+
+            STR_ATTACHMENT=""
             cd "$GITHUB_WORKSPACE"
-            # Check both the workspace and the code analysis directory just in case
 
             for file in "$GITHUB_WORKSPACE"/code-analysis-report*.zip; do
               if [[ -f "$file" ]]; then
-                # Write the absolute path directly to attachments.txt
-                echo "$file" >> "$GITHUB_WORKSPACE/attachments.txt"
+                STR_ATTACHMENT="$file"
               fi
             done
 
             MISRA_STATUS="$GITHUB_WORKSPACE/output/cppcheck-misra.log"
             if [[ -f "$MISRA_STATUS" ]]; then
-              echo "$MISRA_STATUS" >> "$GITHUB_WORKSPACE/attachments.txt"
+              STR_ATTACHMENT="$STR_ATTACHMENT,$MISRA_STATUS"
             fi
+
+            echo $STR_ATTACHMENT >> "$GITHUB_WORKSPACE/attachments.txt"
 
           else
 
