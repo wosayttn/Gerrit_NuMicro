@@ -10,6 +10,14 @@
         }
     },
     "MS20": {
+        "M2354": {
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5"
+            ]
+        },
         "M460": {
             "Workflow": [
                 "NuEclipse",
