@@ -24,4 +24,7 @@ GITHUB_REPO="wosayttn/Gerrit_NuMicro"
 SRC_GIT_BASE="http://wclin@10.1.8.206/p"
 DST_REPO_URL="https://${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git"
 
+# Define workflow set
+WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5" "CodeAnalysis")
+
 export GITHUB_TOKEN=${GITHUB_TOKEN}

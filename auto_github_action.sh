@@ -72,7 +72,7 @@ for dept in $DEPTS; do
     
     # BSP.workflow is exist or not. if not, remove "${GITHUB_DIR}/.github/workflows/xxx.yml"
     workflows=$(jq -r --arg d "$dept" --arg b "$bsp" '.[$d][$b].Workflow[]?' "${PATH_SCRIPT}/$JSON_FILE")
-    for wf in "NuEclipse" "VSCode" "IAR" "MDK5"; do
+    for wf in "${WORKFLOWS[@]}"; do
         if ! echo "$workflows" | grep -qx "$wf"; then
             rm -f "${GITHUB_DIR}/.github/workflows/${wf}.yml"
         fi

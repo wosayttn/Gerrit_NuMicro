@@ -15,7 +15,8 @@
                 "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+		"CodeAnalysis"
             ]
         },
         "M460": {
@@ -40,7 +41,8 @@
                 "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+                "CodeAnalysis"
             ]
         },
         "M2003": {
@@ -89,7 +91,8 @@
                 "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+                "CodeAnalysis"
             ]
         },
         "M253": {
@@ -97,7 +100,8 @@
                 "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+                "CodeAnalysis"
             ]
         },
         "M55M1": {
@@ -105,7 +109,8 @@
                 "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+                "CodeAnalysis"
             ]
         },
         "M5531": {
@@ -113,14 +118,16 @@
                 "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+                "CodeAnalysis"
             ]
         },
         "M3351": {
             "Workflow": [
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+                "CodeAnalysis"
             ]
         }
     }
