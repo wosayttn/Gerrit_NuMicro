@@ -15,17 +15,9 @@ URL_PREFIX="https://github.com/wosayttn/Gerrit_NuMicro/actions/workflows"
 
 # Table Header
 {
-  printf "| BSP "
-  for wf in "${WORKFLOWS[@]}"; do
-      printf "|%s" "$wf"
-  done
-  printf "|\n"
+  printf "| BSP | WORKFLOWS |\n"
 
-  printf "|-----"
-  for _ in "${WORKFLOWS[@]}"; do
-      printf "|-----------"
-  done
-  printf "|\n"
+  printf "|-----|-----------|\n"
 
 } >> "$README_FILE"
 
@@ -37,17 +29,15 @@ for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
       branch="${dept}_${bsp}"
 
       COMMIT_BADGE="![](https://img.shields.io/github/last-commit/${GITHUB_REPO}/${branch}?label=Last%20Commit&style=flat-square)"
-      printf "| **%s**<br>%s " "$branch" "$COMMIT_BADGE" >> "$README_FILE"
+      printf "| **%s**<br>%s | " "$branch" "$COMMIT_BADGE" >> "$README_FILE"
 
       workflows=$(jq -r --arg d "$dept" --arg b "$bsp" '.[$d][$b].Workflow[]?' "$JSON_FILE")
 
       for wf in "${WORKFLOWS[@]}"; do
           if echo "$workflows" | grep -qx "$wf"; then
-              printf "| <br>[![](%s)](%s) " \
+              printf " [![](%s)](%s)  " \
                 "$URL_PREFIX/${wf}.yml/badge.svg?branch=$branch" \
                 "$URL_PREFIX/${wf}.yml?query=branch:$branch" >> "$README_FILE"
-          else
-              printf "| N/A " >> "$README_FILE"
           fi
       done
 
