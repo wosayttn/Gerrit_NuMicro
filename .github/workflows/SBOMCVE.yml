@@ -1,0 +1,63 @@
+name: SBOM and CVE Scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  security_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # =========================
+      # 1. Install tools
+      # =========================
+      - name: Install Syft
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
+
+      - name: Install Grype
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh
+
+      # =========================
+      # 2. Generate SBOM (single source of truth)
+      # =========================
+      - name: Generate SBOM (CycloneDX JSON)
+        run: |
+          ./syft dir:. -o cyclonedx-json > sbom.json
+
+      # =========================
+      # 3. CVE Scan
+      # =========================
+      - name: Run CVE scan
+        run: |
+          ./grype sbom:sbom.json -o json > cve-report.json
+
+      # =========================
+      # 4. Policy Gate (Critical fail)
+      # =========================
+      - name: Fail on Critical CVE
+        run: |
+          CRITICAL=$(cat cve-report.json | grep -i "Critical" || true)
+          if [ ! -z "$CRITICAL" ]; then
+            echo "Critical CVE found!"
+            exit 1
+          fi
+
+      # =========================
+      # 5. Upload artifacts
+      # =========================
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.json
+
+      - name: Upload CVE report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cve-report
+          path: cve-report.json
