@@ -27,14 +27,14 @@ jobs:
       # =========================
       - name: Generate SBOM (CycloneDX JSON)
         run: |
-          ./syft dir:. -o cyclonedx-json > sbom.json
+          ./bin/syft dir:. -o cyclonedx-json > sbom.json
 
       # =========================
       # 3. CVE Scan
       # =========================
       - name: Run CVE scan
         run: |
-          ./grype sbom:sbom.json -o json > cve-report.json
+          ./bin/grype sbom:sbom.json -o json > cve-report.json
 
       # =========================
       # 4. Policy Gate (Critical fail)
