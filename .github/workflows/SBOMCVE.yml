@@ -1,6 +1,7 @@
 name: SBOM and CVE Scan
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -17,6 +18,7 @@ jobs:
       - name: Install Syft
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
+          ./bin/syft version
 
       - name: Install Grype
         run: |
@@ -27,24 +29,29 @@ jobs:
       # =========================
       - name: Generate SBOM (CycloneDX JSON)
         run: |
-          ./bin/syft dir:. -o cyclonedx-json > sbom.json
+          ./bin/syft dir:${GITHUB_WORKSPACE} \
+          --source-name "NuMicro-${GITHUB_REF_NAME}-BSP" \
+          --source-version "${GITHUB_SHA}" \
+          -o cyclonedx-json > sbom.json
 
       # =========================
       # 3. CVE Scan
       # =========================
       - name: Run CVE scan
         run: |
-          ./bin/grype sbom:sbom.json -o json > cve-report.json
-
+          ./bin/grype \
+          sbom:sbom.json -o json > cve-report.json
+  
       # =========================
       # 4. Policy Gate (Critical fail)
       # =========================
       - name: Fail on Critical CVE
         run: |
+          cat cve-report.json
           CRITICAL=$(cat cve-report.json | grep -i "Critical" || true)
           if [ ! -z "$CRITICAL" ]; then
             echo "Critical CVE found!"
-            # exit 1
+            #exit 1
           fi
 
       # =========================
