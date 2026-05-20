@@ -24,16 +24,17 @@ jobs:
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh
 
-      # =========================
+      # ==========================================
       # 2. Generate SBOM (single source of truth)
-      # =========================
+      # ==========================================
       - name: Generate SBOM (CycloneDX JSON)
         run: |
           ./bin/syft dir:${GITHUB_WORKSPACE} \
-          --source-name "NuMicro-${GITHUB_REF_NAME}-BSP" \
-          --source-version "${GITHUB_SHA}" \
-          -o cyclonedx-json > sbom.json
-
+            --override-default-catalogers file-metadata \
+            --source-name "NuMicro-${GITHUB_REF_NAME}-BSP" \
+            --source-version "${GITHUB_SHA}" \
+            -o cyclonedx-json=sbom.json
+    
       # =========================
       # 3. CVE Scan
       # =========================
