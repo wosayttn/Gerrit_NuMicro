@@ -40,7 +40,7 @@ jobs:
               fi
             done
 
-            MISRA_STATUS="$GITHUB_WORKSPACE/output/cppcheck-misra.log"
+            MISRA_STATUS="$GITHUB_WORKSPACE/output/code-analysis-summary.html"
             if [[ -f "$MISRA_STATUS" ]]; then
               STR_ATTACHMENT="$STR_ATTACHMENT,$MISRA_STATUS"
             fi
