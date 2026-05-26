@@ -17,6 +17,7 @@ jobs:
         shell: bash
         run: |
           MISSUDAD_IAR="$GITHUB_WORKSPACE/.github/MissUDad/IAR"
+          export PATH="/c/Program Files/Python313:/c/Program Files/Python313/Scripts:$PATH"
 
           set +e
           cd $MISSUDAD_IAR
