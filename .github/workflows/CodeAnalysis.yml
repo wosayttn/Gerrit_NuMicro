@@ -7,9 +7,16 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
   CodeAnalysis:
     runs-on: self-hosted
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -41,11 +48,49 @@ jobs:
             done
 
             MISRA_STATUS="$GITHUB_WORKSPACE/output/code-analysis-summary.html"
+            BRANCH_NAME="${GITHUB_REF_NAME//\//-}"
+            RENAMED_SUMMARY="$GITHUB_WORKSPACE/output/code-analysis-summary-${BRANCH_NAME}.html"
             if [[ -f "$MISRA_STATUS" ]]; then
-              STR_ATTACHMENT="$STR_ATTACHMENT,$MISRA_STATUS"
+              cp "$MISRA_STATUS" "$RENAMED_SUMMARY"
+              STR_ATTACHMENT="$STR_ATTACHMENT,$RENAMED_SUMMARY"
             fi
 
             echo $STR_ATTACHMENT >> "$GITHUB_WORKSPACE/attachments.txt"
+
+            # Prepare GitHub Pages deployment
+            PAGES_DIR="$GITHUB_WORKSPACE/pages"
+            mkdir -p "$PAGES_DIR"
+
+            # Fetch existing pages content from gh-pages branch
+            git fetch origin gh-pages:gh-pages 2>/dev/null && \
+              git checkout gh-pages -- . 2>/dev/null && \
+              cp -af *.html "$PAGES_DIR/" 2>/dev/null && \
+              cp -af index.html "$PAGES_DIR/" 2>/dev/null; \
+              git checkout - 2>/dev/null || true
+
+            # Copy new summary into pages
+            if [[ -f "$RENAMED_SUMMARY" ]]; then
+              cp "$RENAMED_SUMMARY" "$PAGES_DIR/"
+            fi
+
+            # Generate index.html with links to all branch summaries
+            cat > "$PAGES_DIR/index.html" <<'HEADER'
+            <!DOCTYPE html>
+            <html><head><meta charset="utf-8"><title>Code Analysis Reports</title>
+            <style>body{font-family:sans-serif;margin:2em;}a{display:block;margin:0.5em 0;}</style>
+            </head><body><h1>Code Analysis Reports</h1>
+            HEADER
+
+            for f in "$PAGES_DIR"/code-analysis-summary-*.html; do
+              if [[ -f "$f" ]]; then
+                fname=$(basename "$f")
+                branch_label="${fname#code-analysis-summary-}"
+                branch_label="${branch_label%.html}"
+                echo "<a href=\"$fname\">$branch_label</a>" >> "$PAGES_DIR/index.html"
+              fi
+            done
+
+            echo "</body></html>" >> "$PAGES_DIR/index.html"
 
           else
 
@@ -54,6 +99,30 @@ jobs:
           fi
 
           exit $ret
+
+      - name: Persist pages to gh-pages branch
+        if: failure()
+        shell: bash
+        run: |
+          cd "$GITHUB_WORKSPACE/pages"
+          git init
+          git checkout -b gh-pages
+          git add -A
+          git -c user.name="github-actions" -c user.email="actions@github.com" commit -m "Update code analysis reports"
+          git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload GitHub Pages artifact
+        if: failure()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages
+
+      - name: Deploy to GitHub Pages
+        if: failure()
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Send mail
         if: failure()
