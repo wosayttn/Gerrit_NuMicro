@@ -46,6 +46,14 @@ for dept in $(jq -r 'keys[]' "$JSON_FILE"); do
 
 done
 
+# Table Header
+{
+  printf "## Github Pages\n"
+
+  printf "Code Analysis Reports ([https://wosayttn.github.io/Gerrit_NuMicro/](https://wosayttn.github.io/Gerrit_NuMicro/))\n"
+
+} >> "$README_FILE"
+
 # Fetch runners JSON from GitHub
 RUNNERS_JSON=$(gh api -H "Accept: application/vnd.github+json" /repos/$GITHUB_REPO/actions/runners)
 

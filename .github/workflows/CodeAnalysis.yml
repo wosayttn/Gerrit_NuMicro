@@ -8,15 +8,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   CodeAnalysis:
     runs-on: self-hosted
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -74,12 +70,10 @@ jobs:
             fi
 
             # Generate index.html with links to all branch summaries
-            cat > "$PAGES_DIR/index.html" <<'HEADER'
-            <!DOCTYPE html>
-            <html><head><meta charset="utf-8"><title>Code Analysis Reports</title>
-            <style>body{font-family:sans-serif;margin:2em;}a{display:block;margin:0.5em 0;}</style>
-            </head><body><h1>Code Analysis Reports</h1>
-            HEADER
+            echo '<!DOCTYPE html>' > "$PAGES_DIR/index.html"
+            echo '<html><head><meta charset="utf-8"><title>Code Analysis Reports</title>' >> "$PAGES_DIR/index.html"
+            echo '<style>body{font-family:sans-serif;margin:2em;}a{display:block;margin:0.5em 0;}</style>' >> "$PAGES_DIR/index.html"
+            echo '</head><body><h1>Code Analysis Reports</h1>' >> "$PAGES_DIR/index.html"
 
             for f in "$PAGES_DIR"/code-analysis-summary-*.html; do
               if [[ -f "$f" ]]; then
@@ -112,17 +106,6 @@ jobs:
           git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload GitHub Pages artifact
-        if: failure()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: pages
-
-      - name: Deploy to GitHub Pages
-        if: failure()
-        id: deployment
-        uses: actions/deploy-pages@v4
 
       - name: Send mail
         if: failure()
