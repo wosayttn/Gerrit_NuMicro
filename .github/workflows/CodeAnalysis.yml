@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
+
 jobs:
   CodeAnalysis:
     runs-on: self-hosted
@@ -58,11 +62,12 @@ jobs:
             mkdir -p "$PAGES_DIR"
 
             # Fetch existing pages content from gh-pages branch
-            git fetch origin gh-pages:gh-pages 2>/dev/null && \
-              git checkout gh-pages -- . 2>/dev/null && \
-              cp -af *.html "$PAGES_DIR/" 2>/dev/null && \
-              cp -af index.html "$PAGES_DIR/" 2>/dev/null; \
-              git checkout - 2>/dev/null || true
+            if git fetch origin gh-pages 2>/dev/null; then
+              git show origin/gh-pages:index.html > "$PAGES_DIR/index.html" 2>/dev/null || true
+              for f in $(git ls-tree --name-only origin/gh-pages | grep '\.html$'); do
+                git show "origin/gh-pages:$f" > "$PAGES_DIR/$f" 2>/dev/null || true
+              done
+            fi
 
             # Copy new summary into pages
             if [[ -f "$RENAMED_SUMMARY" ]]; then
@@ -96,16 +101,11 @@ jobs:
 
       - name: Persist pages to gh-pages branch
         if: failure()
-        shell: bash
-        run: |
-          cd "$GITHUB_WORKSPACE/pages"
-          git init
-          git checkout -b gh-pages
-          git add -A
-          git -c user.name="github-actions" -c user.email="actions@github.com" commit -m "Update code analysis reports"
-          git push --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git" gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./pages
+          keep_files: true
 
       - name: Send mail
         if: failure()
