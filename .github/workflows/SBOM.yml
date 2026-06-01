@@ -1,0 +1,28 @@
+name: SBOM Generation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate_sbom:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          # Scans the current directory
+          path: .
+          # Format can be: spdx-json, cyclonedx-json, cyclonedx-xml, spdx
+          format: cyclonedx-xml
+          # Name of the output file
+          output-file: numicro-bsp.sbom.cyclonedx.xml
+
+      - name: Upload SBOM as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: numicro-bsp.sbom-artifact
+          path: numicro-bsp.sbom.cyclonedx.xml

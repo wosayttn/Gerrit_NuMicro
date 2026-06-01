@@ -1,0 +1,68 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.40.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: nn cc
+vv
+User-based license: Hardware Success Kit (Early Access)
+Valid until: Aug 1 2026. Cached until: May 4 2026
+ 
+Tool Versions:
+Toolchain:       Hardware Success Kit (Early Access)  Version: 5.40.0.3
+Toolchain Path:  C:\Keil_v540\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.22
+Assembler:       Armasm.exe V6.22
+Linker/Locator:  ArmLink.exe V6.22
+Library Manager: ArmAr.exe V6.22
+Hex Converter:   FromElf.exe V6.22
+CPU DLL:         
+Dialog DLL:      
+Target DLL:      Nu_Link.dll V3.22
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\hcrdgit4\M2003J\bsp_tmp - Copy\SampleCode\ISP\ISP_RS485\Keil\ISP_RS485.uvprojx
+Project File Date:  04/27/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.22', folder: 'C:\Keil_v540\ARM\ARMCLANG\Bin'
+Rebuild target 'ISP_RS485'
+assembling startup_M2003J_isp.s...
+creating preprocessor file for targetdev.c...
+creating preprocessor file for isp_user.c...
+creating preprocessor file for fmc_user.c...
+creating preprocessor file for system_M2003J.c...
+compiling fmc_user.c...
+compiling system_M2003J.c...
+compiling targetdev.c...
+compiling isp_user.c...
+creating preprocessor file for main.c...
+creating preprocessor file for uart_transfer.c...
+creating preprocessor file for clk.c...
+compiling uart_transfer.c...
+compiling main.c...
+compiling clk.c...
+linking...
+Program Size: Code=2756 RO-data=444 RW-data=12 ZI-data=1704  
+After Build - User command #1: fromelf --bin ".\obj\ISP_RS485.axf" --output ".\obj\ISP_RS485.bin"
+After Build - User command #2: fromelf --text -c ".\obj\ISP_RS485.axf" --output ".\obj\ISP_RS485.txt"
+".\obj\ISP_RS485.axf" - 0 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Nuvoton
+                https://github.com/OpenNuvoton/cmsis-packs/raw/master/Nuvoton_DFP/Nuvoton.NuMicroM23_DFP.1.0.6.pack
+                Nuvoton::NuMicroM23_DFP@1.0.6
+                Nuvoton ARM Cortex-M23 NuMicro Family Device Support
+
+<h2>Collection of Component include folders:</h2>
+  C:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:04
+</pre>
+</body>
+</html>
