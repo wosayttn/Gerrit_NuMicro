@@ -226,7 +226,7 @@
     render(filtered);
   }
 
-  fetch('reports.json')
+  fetch('reports.json?t=' + Date.now())
     .then(function(res) { return res.json(); })
     .then(function(data) {
       items = data || [];
