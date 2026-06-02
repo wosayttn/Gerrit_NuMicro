@@ -1,7 +1,12 @@
 [
-  {"branch":"MS20_M2354","file":"code-analysis-summary-MS20_M2354.html"},
-  {"branch":"MS40_M2L31","file":"code-analysis-summary-MS40_M2L31.html"},
-  {"branch":"MS70_M3351","file":"code-analysis-summary-MS70_M3351.html"},
-  {"branch":"MS70_M5531","file":"code-analysis-summary-MS70_M5531.html"},
+  {"branch":"MS20_M2354","file":"code-analysis-summary-MS20_M2354.html"}
+,
+  {"branch":"MS40_M2L31","file":"code-analysis-summary-MS40_M2L31.html"}
+,
+  {"branch":"MS70_M251","file":"code-analysis-summary-MS70_M251.html"}
+,
+  {"branch":"MS70_M5531","file":"code-analysis-summary-MS70_M5531.html"}
+,
   {"branch":"MS70_M55M1","file":"code-analysis-summary-MS70_M55M1.html"}
+
 ]
