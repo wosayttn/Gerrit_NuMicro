@@ -50,7 +50,7 @@ done
 {
   printf "## Github Pages\n"
 
-  printf "Code Analysis Reports ([https://wosayttn.github.io/Gerrit_NuMicro/codeanalysis/](https://wosayttn.github.io/Gerrit_NuMicro/codeanalysis/))\n"
+  printf " [Code Analysis Reports](https://wosayttn.github.io/Gerrit_NuMicro/codeanalysis/)\n"
 
 } >> "$README_FILE"
 
