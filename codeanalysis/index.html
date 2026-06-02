@@ -1,37 +1,253 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Code Analysis Reports</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Analysis Reports - NuMicro BSP</title>
 <style>
-  body { font-family: sans-serif; margin: 2em; }
-  .report-list a { display: block; margin: 0.5em 0; padding: 0.5em; text-decoration: none; color: #0366d6; border-radius: 4px; }
-  .report-list a:hover { background: #f0f0f0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #e0e0e0;
+    padding: 2rem;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+  header p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+  }
+  .search-box {
+    margin-bottom: 1.5rem;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-box input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  }
+  .search-box input::placeholder { color: #64748b; }
+  .stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .stat-card {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #3b82f6;
+  }
+  .stat-card .label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.25rem;
+  }
+  .report-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .report-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: all 0.2s ease;
+  }
+  .report-item:hover {
+    background: rgba(59,130,246,0.1);
+    border-color: #3b82f6;
+    transform: translateX(4px);
+  }
+  .report-item .branch-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .report-item .dept-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-right: 0.75rem;
+  }
+  .dept-ms10 { background: #7c3aed22; color: #a78bfa; border: 1px solid #7c3aed44; }
+  .dept-ms20 { background: #2563eb22; color: #60a5fa; border: 1px solid #2563eb44; }
+  .dept-ms40 { background: #05966922; color: #34d399; border: 1px solid #05966944; }
+  .dept-ms70 { background: #d9770622; color: #fb923c; border: 1px solid #d9770644; }
+  .report-item .arrow {
+    color: #64748b;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+  }
+  .report-item:hover .arrow { transform: translateX(4px); color: #3b82f6; }
+  .loading {
+    text-align: center;
+    padding: 3rem;
+    color: #64748b;
+  }
+  .empty {
+    text-align: center;
+    padding: 3rem;
+    color: #64748b;
+  }
+  .hidden { display: none; }
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e293b;
+    color: #475569;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1rem; }
+    header h1 { font-size: 1.5rem; }
+    .stats { flex-direction: column; }
+  }
 </style>
 </head>
 <body>
-<h1>Code Analysis Reports</h1>
-<div id="reports" class="report-list"><p>Loading...</p></div>
+<div class="container">
+  <header>
+    <h1>Code Analysis Reports</h1>
+    <p>NuMicro BSP — Static analysis results by branch</p>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Filter by branch name...">
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat-card">
+      <div class="number" id="total-count">-</div>
+      <div class="label">Total Reports</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" id="dept-count">-</div>
+      <div class="label">Departments</div>
+    </div>
+  </div>
+
+  <div id="reports" class="report-list">
+    <div class="loading">Loading reports...</div>
+  </div>
+
+  <footer>Powered by GitHub Actions &amp; GitHub Pages</footer>
+</div>
+
 <script>
-fetch('reports.json')
-  .then(function(res) { return res.json(); })
-  .then(function(data) {
-    var container = document.getElementById('reports');
+(function() {
+  var container = document.getElementById('reports');
+  var searchInput = document.getElementById('search');
+  var items = [];
+
+  function getDeptClass(branch) {
+    if (branch.indexOf('MS10') === 0) return 'dept-ms10';
+    if (branch.indexOf('MS20') === 0) return 'dept-ms20';
+    if (branch.indexOf('MS40') === 0) return 'dept-ms40';
+    if (branch.indexOf('MS70') === 0) return 'dept-ms70';
+    return '';
+  }
+
+  function getDeptLabel(branch) {
+    var m = branch.match(/^(MS\d+)/);
+    return m ? m[1] : '';
+  }
+
+  function render(data) {
+    container.innerHTML = '';
     if (!data || data.length === 0) {
-      container.innerHTML = '<p>No reports available.</p>';
+      container.innerHTML = '<div class="empty">No reports available.</div>';
       return;
     }
-    container.innerHTML = '';
     data.forEach(function(item) {
       var a = document.createElement('a');
+      a.className = 'report-item';
       a.href = item.file;
-      a.textContent = item.branch;
+      var dept = getDeptLabel(item.branch);
+      var deptClass = getDeptClass(item.branch);
+      a.innerHTML =
+        '<div>' +
+          (dept ? '<span class="dept-badge ' + deptClass + '">' + dept + '</span>' : '') +
+          '<span class="branch-name">' + item.branch + '</span>' +
+        '</div>' +
+        '<span class="arrow">→</span>';
       container.appendChild(a);
     });
-  })
-  .catch(function() {
-    document.getElementById('reports').innerHTML = '<p>Failed to load reports.</p>';
+  }
+
+  function filterAndRender(query) {
+    var q = query.toLowerCase();
+    var filtered = items.filter(function(item) {
+      return item.branch.toLowerCase().indexOf(q) !== -1;
+    });
+    render(filtered);
+  }
+
+  fetch('reports.json')
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      items = data || [];
+      items.sort(function(a, b) { return a.branch.localeCompare(b.branch); });
+      document.getElementById('total-count').textContent = items.length;
+      var depts = {};
+      items.forEach(function(item) {
+        var d = getDeptLabel(item.branch);
+        if (d) depts[d] = true;
+      });
+      document.getElementById('dept-count').textContent = Object.keys(depts).length;
+      render(items);
+    })
+    .catch(function() {
+      container.innerHTML = '<div class="empty">Failed to load reports.</div>';
+    });
+
+  searchInput.addEventListener('input', function() {
+    filterAndRender(this.value);
   });
+})();
 </script>
 </body>
 </html>
