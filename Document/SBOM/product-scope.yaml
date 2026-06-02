@@ -1,0 +1,14 @@
+sbomType: Product SBOM
+include:
+  - path: Library/CMSIS
+  - path: Library/Device
+  - path: Library/NuMaker
+  - path: Library/PowerDeliveryLib
+  - path: Library/StdDriver
+  - path: Library/TKLib
+  - path: Library/UsbHostLib
+exclude:
+  - path: Document/
+  - path: SampleCode/
+  - path: ThirdParty/
+  - path: Tool/
