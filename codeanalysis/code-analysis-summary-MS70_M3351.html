@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cppcheck Summary</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: Segoe UI, Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(31, 41, 55, 0.08);
+            overflow: hidden;
+        }
+        .header {
+            padding: 18px 22px;
+            background: #0f172a;
+            color: #f8fafc;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .content {
+            padding: 20px;
+            display: grid;
+            gap: 20px;
+        }
+        .stage-section {
+            border: 1px solid #d0d7de;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        .stage-title {
+            margin: 0;
+            padding: 14px 18px;
+            background: #e2e8f0;
+            color: #0f172a;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .stage-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .stage-panel {
+            border-top: 1px solid #d0d7de;
+            padding: 16px 18px;
+            min-height: auto;
+            background: #ffffff;
+        }
+        .scope-panel {
+            min-height: auto;
+        }
+        .panel-title {
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .subsection-title {
+            margin: 14px 0 8px 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        .summary-line {
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.55;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .summary-blank {
+            height: 0.8em;
+        }
+        .scope-list {
+            margin: 0;
+            padding-left: 22px;
+            line-height: 1.6;
+        }
+        .scope-list li {
+            margin: 2px 0;
+        }
+        @media (max-width: 900px) {
+            .stage-grid {
+                grid-template-columns: 1fr;
+            }
+            .stage-panel {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Summary</div>
+        <div class="content"><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
+<div class="subsection-title">Overview</div>
+<div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
+<div class="summary-line">Total MISRA-C violations: 0</div>
+<div class="summary-line">Unique MISRA-C rules: 0</div>
+<div class="summary-line">Total CppCheck violations: 0</div>
+<div class="summary-line">Unique CppCheck issue IDs: 0</div>
+<div class="summary-line">MISRA-C configuration issues: 0</div>
+<div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
+<div class="summary-line">Return code: 0</div>
+<div class="summary-blank"></div>
+<div class="summary-line">No violations found in the XML report.</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="summary-line">No violations found in the XML report.</div></section></div></section><section class="stage-section"><h2 class="stage-title">Stage2</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/Commu</li><li>Library/CryptoAccelerator</li><li>Library/Device</li><li>Library/LlsiYcableLib</li><li>Library/Storage</li><li>Library/UsbHostLib</li></ul><div class="summary-blank"></div>
+<div class="subsection-title">Overview</div>
+<div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage2.txt</div>
+<div class="summary-line">Total MISRA-C violations: 30</div>
+<div class="summary-line">Unique MISRA-C rules: 7</div>
+<div class="summary-line">Total CppCheck violations: 1</div>
+<div class="summary-line">Unique CppCheck issue IDs: 1</div>
+<div class="summary-line">MISRA-C configuration issues: 0</div>
+<div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
+<div class="summary-line">Return code: 1</div>
+<div class="summary-blank"></div>
+<div class="subsection-title">CppCheck Violations by file name</div>
+<div class="summary-line">- Gerrit_NuMicro\Library\Device\Nuvoton\M3351\Source\startup_M3351.c</div>
+<div class="summary-line">  Violations: 1</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - unknownMacro: There is an unknown macro here somewhere. Configuration is required. If __VECTOR_TABLE_ATTRIBUTE is a macro then please configure it.</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="subsection-title">MISRA-C Violations by file name</div>
+<div class="summary-line">- gcm_alt.c</div>
+<div class="summary-line">  Violations: 22</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Path: Gerrit_NuMicro\Library\CryptoAccelerator\gcm_alt.c</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-7.3: 5</div>
+<div class="summary-line">    - misra-c2012-15.6: 17</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- trng_api.c</div>
+<div class="summary-line">  Violations: 7</div>
+<div class="summary-line">  Unique rules: 5</div>
+<div class="summary-line">  Path: Gerrit_NuMicro\Library\CryptoAccelerator\trng_api.c</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-10.4: 1</div>
+<div class="summary-line">    - misra-c2012-11.3: 1</div>
+<div class="summary-line">    - misra-c2012-15.6: 3</div>
+<div class="summary-line">    - misra-c2012-17.7: 1</div>
+<div class="summary-line">    - misra-c2012-20.7: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- system_M3351.c</div>
+<div class="summary-line">  Violations: 1</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Path: Gerrit_NuMicro\Library\Device\Nuvoton\M3351\Source\system_M3351.c</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-5.5: 1</div>
+<div class="summary-blank"></div>
+<div class="subsection-title">Triggered MISRA-C rules</div>
+<div class="summary-line">- misra-c2012-5.5</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Identifiers shall be distinct from macro names</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-7.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 5</div>
+<div class="summary-line">  Message: The lowercase character &#x27;l&#x27; shall not be used in a literal suffix.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Both operands of an operator in which the usual arithmetic conversions are performed shall have the same essential type category</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-11.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: A cast shall not be performed between a pointer to object type and a pointer to a different object type</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-15.6</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 20</div>
+<div class="summary-line">  Message: The body of an iteration-statement or a selection-statement shall be a compound-statement</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-17.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: The value returned by a function having non-void return type shall be used</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-20.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Expressions resulting from the expansion of macro parameters shall be enclosed in parentheses</div></section></div></section></div>
+    </div>
+</body>
+</html>
