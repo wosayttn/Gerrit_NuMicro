@@ -1,6 +1,37 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>Code Analysis Reports</title>
-<style>body{font-family:sans-serif;margin:2em;}a{display:block;margin:0.5em 0;}</style>
-</head><body><h1>Code Analysis Reports</h1>
-<a href="code-analysis-summary-MS70_M55M1.html">MS70_M55M1</a>
-</body></html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Code Analysis Reports</title>
+<style>
+  body { font-family: sans-serif; margin: 2em; }
+  .report-list a { display: block; margin: 0.5em 0; padding: 0.5em; text-decoration: none; color: #0366d6; border-radius: 4px; }
+  .report-list a:hover { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<h1>Code Analysis Reports</h1>
+<div id="reports" class="report-list"><p>Loading...</p></div>
+<script>
+fetch('reports.json')
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    var container = document.getElementById('reports');
+    if (!data || data.length === 0) {
+      container.innerHTML = '<p>No reports available.</p>';
+      return;
+    }
+    container.innerHTML = '';
+    data.forEach(function(item) {
+      var a = document.createElement('a');
+      a.href = item.file;
+      a.textContent = item.branch;
+      container.appendChild(a);
+    });
+  })
+  .catch(function() {
+    document.getElementById('reports').innerHTML = '<p>Failed to load reports.</p>';
+  });
+</script>
+</body>
+</html>
