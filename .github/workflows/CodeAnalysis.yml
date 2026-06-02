@@ -63,9 +63,9 @@ jobs:
 
             # Fetch existing pages content from gh-pages branch
             if git fetch origin gh-pages 2>/dev/null; then
-              git show origin/gh-pages:codeanalysis/index.html > "$PAGES_DIR/index.html" 2>/dev/null || true
-              for f in $(git ls-tree --name-only origin/gh-pages -- codeanalysis/ | grep '\.html$'); do
-                git show "origin/gh-pages:codeanalysis/$f" > "$PAGES_DIR/$f" 2>/dev/null || true
+              for f in $(git ls-tree --name-only origin/gh-pages -- codeanalysis/ | grep -v '^codeanalysis/index\.html$'); do
+                fname=$(basename "$f")
+                git show "origin/gh-pages:$f" > "$PAGES_DIR/$fname" 2>/dev/null || true
               done
             fi
 
@@ -74,22 +74,24 @@ jobs:
               cp "$RENAMED_SUMMARY" "$PAGES_DIR/"
             fi
 
-            # Generate index.html with links to all branch summaries
-            echo '<!DOCTYPE html>' > "$PAGES_DIR/index.html"
-            echo '<html><head><meta charset="utf-8"><title>Code Analysis Reports</title>' >> "$PAGES_DIR/index.html"
-            echo '<style>body{font-family:sans-serif;margin:2em;}a{display:block;margin:0.5em 0;}</style>' >> "$PAGES_DIR/index.html"
-            echo '</head><body><h1>Code Analysis Reports</h1>' >> "$PAGES_DIR/index.html"
-
+            # Generate reports.json manifest
+            echo '[' > "$PAGES_DIR/reports.json"
+            first=true
             for f in "$PAGES_DIR"/code-analysis-summary-*.html; do
               if [[ -f "$f" ]]; then
                 fname=$(basename "$f")
                 branch_label="${fname#code-analysis-summary-}"
                 branch_label="${branch_label%.html}"
-                echo "<a href=\"$fname\">$branch_label</a>" >> "$PAGES_DIR/index.html"
+                if [ "$first" = true ]; then
+                  first=false
+                else
+                  echo ',' >> "$PAGES_DIR/reports.json"
+                fi
+                echo "  {\"branch\":\"$branch_label\",\"file\":\"$fname\"}" >> "$PAGES_DIR/reports.json"
               fi
             done
-
-            echo "</body></html>" >> "$PAGES_DIR/index.html"
+            echo '' >> "$PAGES_DIR/reports.json"
+            echo ']' >> "$PAGES_DIR/reports.json"
 
           else
 
