@@ -1,14 +1,4 @@
 {
-    "MS10": {
-        "M480": {
-            "Workflow": [
-                "NuEclipse",
-                "VSCode",
-                "IAR",
-                "MDK5"
-            ]
-        }
-    },
     "MS20": {
         "M2354": {
             "Workflow": [
@@ -78,14 +68,6 @@
         }
     },
     "MS70": {
-        "NUC121": {
-            "Workflow": [
-                "NuEclipse",
-                "VSCode",
-                "IAR",
-                "MDK5"
-            ]
-        },
         "M251": {
             "Workflow": [
                 "NuEclipse",

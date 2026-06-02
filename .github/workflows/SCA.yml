@@ -1,7 +1,7 @@
-name: SBOM and CVE Scan
+name: SBOM & CVE Scan with Syft & Grype
 
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
@@ -15,36 +15,24 @@ jobs:
       # =========================
       # 1. Install tools
       # =========================
-      - name: Install Syft
+      - name: Install Syft & Grype
         run: |
+          mkdir -p /opt
+          cd /opt
           curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
-          ./bin/syft version
-
-      - name: Install Grype
-        run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh
+          /opt/bin/syft version
+          /opt/bin/grype version
 
       # ==========================================
-      # 2. Generate SBOM (single source of truth)
+      # 2. Run SBOM & SCA Generation Script
       # ==========================================
-      - name: Generate SBOM (CycloneDX JSON)
+      - name: Generate SBOM, CVE Scan, and SCA Reports
         run: |
-          ./bin/syft dir:${GITHUB_WORKSPACE} \
-            --override-default-catalogers file-metadata \
-            --source-name "NuMicro-${GITHUB_REF_NAME}-BSP" \
-            --source-version "${GITHUB_SHA}" \
-            -o cyclonedx-json=sbom.json
+          python3 .github/MissUDad/Misc/GenSBOM.py
     
       # =========================
-      # 3. CVE Scan
-      # =========================
-      - name: Run CVE scan
-        run: |
-          ./bin/grype \
-          sbom:sbom.json -o json > cve-report.json
-  
-      # =========================
-      # 4. Policy Gate (Critical fail)
+      # 3. Policy Gate (Critical fail)
       # =========================
       - name: Fail on Critical CVE
         run: |
@@ -56,16 +44,10 @@ jobs:
           fi
 
       # =========================
-      # 5. Upload artifacts
+      # 4. Upload artifacts
       # =========================
-      - name: Upload SBOM
+      - name: Upload SCA Reports Bundle
         uses: actions/upload-artifact@v4
         with:
-          name: sbom
-          path: sbom.json
-
-      - name: Upload CVE report
-        uses: actions/upload-artifact@v4
-        with:
-          name: cve-report
-          path: cve-report.json
+          name: sca-reports
+          path: sca-reports.zip
