@@ -37,7 +37,10 @@ jobs:
           arm-none-eabi-gcc --version
           aarch64-none-elf-gcc --version
 
-          mapfile -t solutions < <(find ./SampleCode -type f -name .cproject -exec dirname {} \;)
+          mapfile -t solutions < <(
+            find . -type f -path '*/SampleCode/.cproject' -exec dirname {} \;
+          )
+
           declare -a attachments=()
 
           set +e
