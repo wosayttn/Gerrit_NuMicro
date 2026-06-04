@@ -107,10 +107,10 @@
         <div class="content"><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
 <div class="subsection-title">Overview</div>
 <div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
-<div class="summary-line">Total MISRA-C violations: 637</div>
+<div class="summary-line">Total MISRA-C violations: 627</div>
 <div class="summary-line">Unique MISRA-C rules: 34</div>
-<div class="summary-line">Total CppCheck violations: 90</div>
-<div class="summary-line">Unique CppCheck issue IDs: 10</div>
+<div class="summary-line">Total CppCheck violations: 87</div>
+<div class="summary-line">Unique CppCheck issue IDs: 9</div>
 <div class="summary-line">MISRA-C configuration issues: 6</div>
 <div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
 <div class="summary-line">Return code: 1</div>
@@ -120,7 +120,7 @@
 <div class="summary-line">  Violations: 21</div>
 <div class="summary-line">  Unique rules: 6</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;dmic&#x27; can be declared as pointer to const</div>
 <div class="summary-line">    - constVariable: Variable &#x27;s_au32RsaBufSizeTbl&#x27; can be declared as const array</div>
 <div class="summary-line">    - constVariablePointer: Variable &#x27;p&#x27; can be declared as pointer to const</div>
@@ -198,7 +198,7 @@
 <div class="summary-line">  Violations: 2</div>
 <div class="summary-line">  Unique rules: 2</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
 <div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u8Addr==0u&#x27; is always true</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lptmr.c</div>
@@ -232,25 +232,7 @@
 <div class="summary-line">  Violations: 1</div>
 <div class="summary-line">  Unique rules: 1</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u8Addr==0u&#x27; is always true</div>
-<div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\usbd.h</div>
-<div class="summary-line">  Violations: 1</div>
-<div class="summary-line">  Unique rules: 1</div>
-<div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
-<div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lpadc.c</div>
-<div class="summary-line">  Violations: 1</div>
-<div class="summary-line">  Unique rules: 1</div>
-<div class="summary-line">  Messages:</div>
-<div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
-<div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\usbd.c</div>
-<div class="summary-line">  Violations: 1</div>
-<div class="summary-line">  Unique rules: 1</div>
-<div class="summary-line">  Messages:</div>
-<div class="summary-line">    - variableScope: The scope of the variable &#x27;u32NearestCNR&#x27; can be reduced.</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="subsection-title">Configuration issues</div>
+<div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u8Addr==0u&#x27; is always true</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="subsection-title">Configuration issues</div>
 <div class="summary-line">- Because of missing configuration, misra checking is incomplete. There can be false negatives! Variable &#x27;_LLIO_STDERR&#x27; is unknown</div>
 <div class="summary-line">  Severity: error</div>
 <div class="summary-line">  Count: 1</div>
@@ -468,12 +450,6 @@
 <div class="summary-line">  Triggered items:</div>
 <div class="summary-line">    - misra-c2012-17.3: 4</div>
 <div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\acmp.c</div>
-<div class="summary-line">  Violations: 4</div>
-<div class="summary-line">  Unique rules: 1</div>
-<div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-10.4: 4</div>
-<div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\kpi.h</div>
 <div class="summary-line">  Violations: 3</div>
 <div class="summary-line">  Unique rules: 1</div>
@@ -486,13 +462,6 @@
 <div class="summary-line">  Triggered items:</div>
 <div class="summary-line">    - misra-c2012-11.9: 1</div>
 <div class="summary-line">    - misra-c2012-12.1: 2</div>
-<div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lpuart.c</div>
-<div class="summary-line">  Violations: 3</div>
-<div class="summary-line">  Unique rules: 2</div>
-<div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-7.3: 2</div>
-<div class="summary-line">    - misra-c2012-12.3: 1</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\pdma.c</div>
 <div class="summary-line">  Violations: 3</div>
@@ -519,13 +488,6 @@
 <div class="summary-line">  Unique rules: 1</div>
 <div class="summary-line">  Triggered items:</div>
 <div class="summary-line">    - misra-c2012-5.9: 2</div>
-<div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\hsusbd.c</div>
-<div class="summary-line">  Violations: 2</div>
-<div class="summary-line">  Unique rules: 2</div>
-<div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-8.4: 1</div>
-<div class="summary-line">    - misra-c2012-11.3: 1</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\i3c.c</div>
 <div class="summary-line">  Violations: 2</div>
@@ -576,23 +538,17 @@
 <div class="summary-line">  Triggered items:</div>
 <div class="summary-line">    - misra-c2012-17.3: 1</div>
 <div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\usbd.h</div>
-<div class="summary-line">  Violations: 1</div>
-<div class="summary-line">  Unique rules: 1</div>
-<div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-17.3: 1</div>
-<div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\ebi.c</div>
 <div class="summary-line">  Violations: 1</div>
 <div class="summary-line">  Unique rules: 1</div>
 <div class="summary-line">  Triggered items:</div>
 <div class="summary-line">    - misra-c2012-12.2: 1</div>
 <div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lpadc.c</div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\hsusbd.c</div>
 <div class="summary-line">  Violations: 1</div>
 <div class="summary-line">  Unique rules: 1</div>
 <div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-17.7: 1</div>
+<div class="summary-line">    - misra-c2012-11.3: 1</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lpgpio.c</div>
 <div class="summary-line">  Violations: 1</div>
@@ -635,7 +591,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-7.3</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 3</div>
+<div class="summary-line">  Count: 1</div>
 <div class="summary-line">  Message: The lowercase character &#x27;l&#x27; shall not be used in a literal suffix.</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-7.4</div>
@@ -650,7 +606,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-8.4</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 23</div>
+<div class="summary-line">  Count: 22</div>
 <div class="summary-line">  Message: A compatible declaration shall be visible when an object or function with external linkage is defined</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-8.9</div>
@@ -670,7 +626,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-10.4</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 141</div>
+<div class="summary-line">  Count: 137</div>
 <div class="summary-line">  Message: Both operands of an operator in which the usual arithmetic conversions are performed shall have the same essential type category</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-10.8</div>
@@ -705,7 +661,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-12.3</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 81</div>
+<div class="summary-line">  Count: 80</div>
 <div class="summary-line">  Message: The comma operator should not be used</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-13.3</div>
@@ -740,12 +696,12 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-17.3</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 29</div>
+<div class="summary-line">  Count: 28</div>
 <div class="summary-line">  Message: A function shall not be declared implicitly</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-17.7</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 22</div>
+<div class="summary-line">  Count: 21</div>
 <div class="summary-line">  Message: The value returned by a function having non-void return type shall be used</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-17.8</div>
