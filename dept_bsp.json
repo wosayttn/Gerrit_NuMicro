@@ -35,13 +35,6 @@
                 "CodeAnalysis"
             ]
         },
-        "M2003SERIES": {
-            "Workflow": [
-                "VSCode",
-                "IAR",
-                "MDK5"
-            ]
-        },
         "M2U51": {
             "Workflow": [
                 "NuEclipse",
