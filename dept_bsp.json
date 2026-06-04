@@ -35,14 +35,7 @@
                 "CodeAnalysis"
             ]
         },
-        "M2003Series": {
-            "Workflow": [
-                "VSCode",
-                "IAR",
-                "MDK5"
-            ]
-        },
-        "M2003J": {
+        "M2003SERIES": {
             "Workflow": [
                 "VSCode",
                 "IAR",
