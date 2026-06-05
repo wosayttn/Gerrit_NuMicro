@@ -24,7 +24,7 @@ if __name__ == "__main__":
     
     PATH_ARM_CMSIS_SOLUTION_VSCODE_TEMPLATE=os.path.join(root, PATH_ARM_CMSIS_SOLUTION_VSCODE_TEMPLATE)
 
-    for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
+    for dirPath, dirNames, fileNames in missudad.walk_proj_folders():
 
         for file in fnmatch.filter(fileNames, 'vcpkg-configuration.json'):
 

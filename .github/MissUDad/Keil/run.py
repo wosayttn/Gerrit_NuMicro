@@ -26,7 +26,7 @@ if __name__ == "__main__":
     # Replace 'COMx' with the actual serial port on your system, e.g., 'COM1' or '/dev/ttyUSB0'
     serial_port = serial.Serial(COMX, 115200, timeout=1)
 
-    for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
+    for dirPath, dirNames, fileNames in missudad.walk_proj_folders():
         for file in fnmatch.filter(fileNames, '*.uvprojx'):
             runit = 0
             for ip in RUN_LIST:

@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     prj_counter=0
 
-    for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
+    for dirPath, dirNames, fileNames in missudad.walk_proj_folders():
 
         for file in fnmatch.filter(fileNames, '*.uvprojx'):
 

@@ -2,6 +2,7 @@ import os
 import sys
 import shutil
 import time
+import glob
 
 # Define prefix string of IP name you preferred.
 # EX: IP_LIST=[ 'UART', 'SPI', 'CLK', 'SYS' ]
@@ -18,7 +19,20 @@ COMX='COM4'
 RUNTIME=20
 
 # Define searching root directory
-PROJ_FOLDER_NAME='../../../SampleCode'
+PROJ_FOLDER_NAME='../../../**/SampleCode'
+
+def walk_proj_folders(pattern=None):
+    """
+    Walk project folders supporting glob patterns (e.g. '../../../**/SampleCode').
+    Yields (dirPath, dirNames, fileNames) like os.walk.
+    """
+    if pattern is None:
+        pattern = PROJ_FOLDER_NAME
+    matched_dirs = sorted(set(glob.glob(pattern, recursive=True)))
+    for d in matched_dirs:
+        if os.path.isdir(d):
+            for item in os.walk(d):
+                yield item
 
 '''
 Define your NuEclipse/GDB/OpenOCD installation path.

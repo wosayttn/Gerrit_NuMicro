@@ -70,7 +70,7 @@ if __name__ == "__main__":
     root = os.getcwd()
     os.chdir(root)
 
-    for dirPath, dirNames, fileNames in os.walk(PROJ_FOLDER_NAME):
+    for dirPath, dirNames, fileNames in missudad.walk_proj_folders():
 
         for file in fnmatch.filter(fileNames, '*.ewp'):
 
