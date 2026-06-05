@@ -26,7 +26,10 @@ jobs:
         run: |
           MISSUDAD_IAR="$GITHUB_WORKSPACE/.github/MissUDad/IAR"
           MISSUDAD_IAR_EWT="$MISSUDAD_IAR/c-stat.ewt"
-          mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
+
+          mapfile -t solutions < <(
+            find . -type f -path '*/SampleCode/*.ewp' \
+          )
           declare -a attachments=()
 
           set +e
@@ -69,5 +72,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: IAR-CSTAT-Report-${{ github.ref_name }}
-          path: SampleCode/**/C-STAT/*.html
+          path: '**/SampleCode/**/C-STAT/*.html'
           if-no-files-found: warn # recommended for timeouts

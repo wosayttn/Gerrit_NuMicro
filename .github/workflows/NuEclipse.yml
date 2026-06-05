@@ -106,7 +106,12 @@ jobs:
       - name: Collect artifacts with directory structure
         run: |
           mkdir -p artifacts
-          find SampleCode -type f -name "*.hex" -exec cp --parents {} artifacts/ \;
+          shopt -s globstar nullglob
+          for dir in **/SampleCode; do
+            if [ -d "$dir" ]; then
+              find "$dir" -type f -name "*.hex" -exec cp --parents {} artifacts/ \;
+            fi
+          done
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
