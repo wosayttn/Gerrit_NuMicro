@@ -32,11 +32,9 @@
         "M2003Series": {
             "GerritRepoName": "M2003Series.git",
             "Workflow": [
-                "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5",
-                "CodeAnalysis"
+                "MDK5"
             ]
         },
         "M2L31": {
