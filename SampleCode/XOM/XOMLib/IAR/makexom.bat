@@ -1,0 +1,1 @@
+"C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\XOM\XOMLib\IAR\..\xomconv.exe" "C:\MCU_MS20\MAG071_M3331\m3331bsp\SampleCode\XOM\XOMLib\IAR\XOMLib.ewp"  ..\xomapi.h ..\lib\xomlib "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4-EWARM-8.42.1.23679-BETA" 

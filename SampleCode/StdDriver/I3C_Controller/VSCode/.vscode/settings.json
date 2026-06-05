@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\git\\M3331_0801\\SampleCode\\StdDriver\\I3C_Controller\\VSCode\\out\\I3C_Controller\\ARMCLANG\\debug"
+    ]
+}
