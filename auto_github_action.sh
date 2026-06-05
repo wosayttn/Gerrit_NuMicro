@@ -35,7 +35,8 @@ for dept in $DEPTS; do
     echo "======================================"
     echo "🔄 Processing $bsp BSP..."
 
-    SRC_REPO_URL="${SRC_GIT_BASE}/${bsp}/bsp.git"
+    GERRIT_REPO_NAME=$(jq -r --arg d "$dept" --arg b "$bsp" '.[$d][$b].GerritRepoName' "$JSON_FILE")
+    SRC_REPO_URL="${SRC_GIT_BASE}/${GERRIT_REPO_NAME}"
     GERRIT_DIR="${PATH_SCRIPT}/GERRIT/${dept}_${bsp}"
     GITHUB_DIR="${PATH_SCRIPT}/GITHUB/${dept}_${bsp}"
 

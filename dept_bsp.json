@@ -1,15 +1,17 @@
 {
     "MS20": {
         "M2354": {
+            "GerritRepoName": "M2354/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
                 "IAR",
                 "MDK5",
-		"CodeAnalysis"
+                "CodeAnalysis"
             ]
         },
         "M460": {
+            "GerritRepoName": "M460/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -18,6 +20,7 @@
             ]
         },
         "M3331": {
+            "GerritRepoName": "M3331/bsp.git", 
             "Workflow": [
                 "VSCode",
                 "IAR",
@@ -26,7 +29,18 @@
         }
     },
     "MS40": {
+        "M2003Series": {
+            "GerritRepoName": "M2003Series.git",
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5",
+                "CodeAnalysis"
+            ]
+        },
         "M2L31": {
+            "GerritRepoName": "M2L31/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -36,6 +50,7 @@
             ]
         },
         "M2U51": {
+            "GerritRepoName": "M2U51/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -44,6 +59,7 @@
             ]
         },
         "M031": {
+            "GerritRepoName": "M031/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -54,6 +70,7 @@
     },
     "MS70": {
         "M251": {
+            "GerritRepoName": "M251/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -63,6 +80,7 @@
             ]
         },
         "M253": {
+            "GerritRepoName": "M253/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -72,6 +90,7 @@
             ]
         },
         "M55M1": {
+            "GerritRepoName": "M55M1/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -81,6 +100,7 @@
             ]
         },
         "M5531": {
+            "GerritRepoName": "M5531/bsp.git",
             "Workflow": [
                 "NuEclipse",
                 "VSCode",
@@ -90,6 +110,7 @@
             ]
         },
         "M3351": {
+            "GerritRepoName": "M3351/bsp.git",
             "Workflow": [
                 "VSCode",
                 "IAR",
