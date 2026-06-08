@@ -1,0 +1,304 @@
+Dependencies for Project 'ISP_RS485', Target 'ISP_RS485': (DO NOT MODIFY !)
+CompilerVersion: 6220000::V6.22::ARMCLANG
+F (..\..\..\..\Library\Device\Nuvoton\M2003J\Source\system_M2003J.c)(0x69D75B5F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O2 -ffunction-sections -I ../../../../Library/Device/Nuvoton/M2003J/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/CMSIS/Core/Include -I ../-IC:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include-IC:/Keil_v540/ARM/CMSIS/Include-D__UVISION_VERSION="540"-o ./obj/system_m2003j.o -MMD)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\NuMicro.h)(0x69D75BB3)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\M2003J.h)(0x69D75BA5)
+I (..\..\..\..\Library\CMSIS\Core\Include\core_cm23.h)(0x69D4C30E)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\system_M2003J.h)(0x69D75C4F)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\adc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\bpwm_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\clk_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\crc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\fmc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\dfmc_reg.h)(0x69D769A0)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\gpio_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\i2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\pdma_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\rtc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\sys_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\timer_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uuart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\ui2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uspi_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wwdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\adc.h)(0x69D75DC2)
+I (..\..\..\..\Library\StdDriver\inc\bpwm.h)(0x69D75DD4)
+I (..\..\..\..\Library\StdDriver\inc\clk.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\crc.h)(0x69D75DEC)
+I (..\..\..\..\Library\StdDriver\inc\fmc.h)(0x69D75E09)
+I (..\..\..\..\Library\StdDriver\inc\dfmc.h)(0x69D75DFA)
+I (..\..\..\..\Library\StdDriver\inc\gpio.h)(0x69D75E1A)
+I (..\..\..\..\Library\StdDriver\inc\i2c.h)(0x69D75E28)
+I (..\..\..\..\Library\StdDriver\inc\pdma.h)(0x69D75E35)
+I (..\..\..\..\Library\StdDriver\inc\rtc.h)(0x69D75E49)
+I (..\..\..\..\Library\StdDriver\inc\sys.h)(0x69D75E58)
+I (..\..\..\..\Library\StdDriver\inc\timer.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\uart.h)(0x69D75E86)
+I (..\..\..\..\Library\StdDriver\inc\usci_i2c.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_spi.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_uart.h)(0x69D75EA5)
+I (..\..\..\..\Library\StdDriver\inc\wdt.h)(0x69D75EB2)
+I (..\..\..\..\Library\StdDriver\inc\wwdt.h)(0x69D75EC2)
+F (..\startup_M2003J_isp.s)(0x69D874CE)(--cpu=Cortex-M23 -g --pd "__MICROLIB SETA 1" --diag_suppress=A1950W-IC:\Keil_v540\ARM\Packs\Nuvoton\NuMicroM23_DFP\1.0.6\Device\M2003\Include-IC:\Keil_v540\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 540"--list .\lst\startup_m2003j_isp.lst--xref -o .\obj\startup_m2003j_isp.o--depend .\obj\startup_m2003j_isp.d)
+F (..\fmc_user.c)(0x69D874D7)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O2 -ffunction-sections -I ../../../../Library/Device/Nuvoton/M2003J/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/CMSIS/Core/Include -I ../-IC:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include-IC:/Keil_v540/ARM/CMSIS/Include-D__UVISION_VERSION="540"-o ./obj/fmc_user.o -MMD)
+I (..\fmc_user.h)(0x69D874D3)
+I (..\targetdev.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\NuMicro.h)(0x69D75BB3)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\M2003J.h)(0x69D75BA5)
+I (..\..\..\..\Library\CMSIS\Core\Include\core_cm23.h)(0x69D4C30E)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\system_M2003J.h)(0x69D75C4F)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\adc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\bpwm_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\clk_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\crc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\fmc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\dfmc_reg.h)(0x69D769A0)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\gpio_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\i2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\pdma_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\rtc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\sys_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\timer_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uuart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\ui2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uspi_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wwdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\adc.h)(0x69D75DC2)
+I (..\..\..\..\Library\StdDriver\inc\bpwm.h)(0x69D75DD4)
+I (..\..\..\..\Library\StdDriver\inc\clk.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\crc.h)(0x69D75DEC)
+I (..\..\..\..\Library\StdDriver\inc\fmc.h)(0x69D75E09)
+I (..\..\..\..\Library\StdDriver\inc\dfmc.h)(0x69D75DFA)
+I (..\..\..\..\Library\StdDriver\inc\gpio.h)(0x69D75E1A)
+I (..\..\..\..\Library\StdDriver\inc\i2c.h)(0x69D75E28)
+I (..\..\..\..\Library\StdDriver\inc\pdma.h)(0x69D75E35)
+I (..\..\..\..\Library\StdDriver\inc\rtc.h)(0x69D75E49)
+I (..\..\..\..\Library\StdDriver\inc\sys.h)(0x69D75E58)
+I (..\..\..\..\Library\StdDriver\inc\timer.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\uart.h)(0x69D75E86)
+I (..\..\..\..\Library\StdDriver\inc\usci_i2c.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_spi.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_uart.h)(0x69D75EA5)
+I (..\..\..\..\Library\StdDriver\inc\wdt.h)(0x69D75EB2)
+I (..\..\..\..\Library\StdDriver\inc\wwdt.h)(0x69D75EC2)
+I (..\isp_user.h)(0x69D74DDE)
+F (..\isp_user.c)(0x69D74DDE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O2 -ffunction-sections -I ../../../../Library/Device/Nuvoton/M2003J/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/CMSIS/Core/Include -I ../-IC:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include-IC:/Keil_v540/ARM/CMSIS/Include-D__UVISION_VERSION="540"-o ./obj/isp_user.o -MMD)
+I (..\isp_user.h)(0x69D74DDE)
+I (..\fmc_user.h)(0x69D874D3)
+I (..\targetdev.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\NuMicro.h)(0x69D75BB3)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\M2003J.h)(0x69D75BA5)
+I (..\..\..\..\Library\CMSIS\Core\Include\core_cm23.h)(0x69D4C30E)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\system_M2003J.h)(0x69D75C4F)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\adc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\bpwm_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\clk_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\crc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\fmc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\dfmc_reg.h)(0x69D769A0)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\gpio_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\i2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\pdma_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\rtc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\sys_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\timer_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uuart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\ui2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uspi_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wwdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\adc.h)(0x69D75DC2)
+I (..\..\..\..\Library\StdDriver\inc\bpwm.h)(0x69D75DD4)
+I (..\..\..\..\Library\StdDriver\inc\clk.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\crc.h)(0x69D75DEC)
+I (..\..\..\..\Library\StdDriver\inc\fmc.h)(0x69D75E09)
+I (..\..\..\..\Library\StdDriver\inc\dfmc.h)(0x69D75DFA)
+I (..\..\..\..\Library\StdDriver\inc\gpio.h)(0x69D75E1A)
+I (..\..\..\..\Library\StdDriver\inc\i2c.h)(0x69D75E28)
+I (..\..\..\..\Library\StdDriver\inc\pdma.h)(0x69D75E35)
+I (..\..\..\..\Library\StdDriver\inc\rtc.h)(0x69D75E49)
+I (..\..\..\..\Library\StdDriver\inc\sys.h)(0x69D75E58)
+I (..\..\..\..\Library\StdDriver\inc\timer.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\uart.h)(0x69D75E86)
+I (..\..\..\..\Library\StdDriver\inc\usci_i2c.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_spi.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_uart.h)(0x69D75EA5)
+I (..\..\..\..\Library\StdDriver\inc\wdt.h)(0x69D75EB2)
+I (..\..\..\..\Library\StdDriver\inc\wwdt.h)(0x69D75EC2)
+F (..\targetdev.c)(0x69D74DDE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O2 -ffunction-sections -I ../../../../Library/Device/Nuvoton/M2003J/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/CMSIS/Core/Include -I ../-IC:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include-IC:/Keil_v540/ARM/CMSIS/Include-D__UVISION_VERSION="540"-o ./obj/targetdev.o -MMD)
+I (..\targetdev.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\NuMicro.h)(0x69D75BB3)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\M2003J.h)(0x69D75BA5)
+I (..\..\..\..\Library\CMSIS\Core\Include\core_cm23.h)(0x69D4C30E)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\system_M2003J.h)(0x69D75C4F)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\adc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\bpwm_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\clk_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\crc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\fmc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\dfmc_reg.h)(0x69D769A0)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\gpio_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\i2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\pdma_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\rtc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\sys_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\timer_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uuart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\ui2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uspi_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wwdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\adc.h)(0x69D75DC2)
+I (..\..\..\..\Library\StdDriver\inc\bpwm.h)(0x69D75DD4)
+I (..\..\..\..\Library\StdDriver\inc\clk.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\crc.h)(0x69D75DEC)
+I (..\..\..\..\Library\StdDriver\inc\fmc.h)(0x69D75E09)
+I (..\..\..\..\Library\StdDriver\inc\dfmc.h)(0x69D75DFA)
+I (..\..\..\..\Library\StdDriver\inc\gpio.h)(0x69D75E1A)
+I (..\..\..\..\Library\StdDriver\inc\i2c.h)(0x69D75E28)
+I (..\..\..\..\Library\StdDriver\inc\pdma.h)(0x69D75E35)
+I (..\..\..\..\Library\StdDriver\inc\rtc.h)(0x69D75E49)
+I (..\..\..\..\Library\StdDriver\inc\sys.h)(0x69D75E58)
+I (..\..\..\..\Library\StdDriver\inc\timer.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\uart.h)(0x69D75E86)
+I (..\..\..\..\Library\StdDriver\inc\usci_i2c.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_spi.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_uart.h)(0x69D75EA5)
+I (..\..\..\..\Library\StdDriver\inc\wdt.h)(0x69D75EB2)
+I (..\..\..\..\Library\StdDriver\inc\wwdt.h)(0x69D75EC2)
+I (..\isp_user.h)(0x69D74DDE)
+I (..\fmc_user.h)(0x69D874D3)
+F (..\main.c)(0x69D74DDE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O2 -ffunction-sections -I ../../../../Library/Device/Nuvoton/M2003J/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/CMSIS/Core/Include -I ../-IC:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include-IC:/Keil_v540/ARM/CMSIS/Include-D__UVISION_VERSION="540"-o ./obj/main.o -MMD)
+I (..\targetdev.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\NuMicro.h)(0x69D75BB3)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\M2003J.h)(0x69D75BA5)
+I (..\..\..\..\Library\CMSIS\Core\Include\core_cm23.h)(0x69D4C30E)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\system_M2003J.h)(0x69D75C4F)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\adc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\bpwm_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\clk_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\crc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\fmc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\dfmc_reg.h)(0x69D769A0)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\gpio_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\i2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\pdma_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\rtc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\sys_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\timer_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uuart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\ui2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uspi_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wwdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\adc.h)(0x69D75DC2)
+I (..\..\..\..\Library\StdDriver\inc\bpwm.h)(0x69D75DD4)
+I (..\..\..\..\Library\StdDriver\inc\clk.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\crc.h)(0x69D75DEC)
+I (..\..\..\..\Library\StdDriver\inc\fmc.h)(0x69D75E09)
+I (..\..\..\..\Library\StdDriver\inc\dfmc.h)(0x69D75DFA)
+I (..\..\..\..\Library\StdDriver\inc\gpio.h)(0x69D75E1A)
+I (..\..\..\..\Library\StdDriver\inc\i2c.h)(0x69D75E28)
+I (..\..\..\..\Library\StdDriver\inc\pdma.h)(0x69D75E35)
+I (..\..\..\..\Library\StdDriver\inc\rtc.h)(0x69D75E49)
+I (..\..\..\..\Library\StdDriver\inc\sys.h)(0x69D75E58)
+I (..\..\..\..\Library\StdDriver\inc\timer.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\uart.h)(0x69D75E86)
+I (..\..\..\..\Library\StdDriver\inc\usci_i2c.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_spi.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_uart.h)(0x69D75EA5)
+I (..\..\..\..\Library\StdDriver\inc\wdt.h)(0x69D75EB2)
+I (..\..\..\..\Library\StdDriver\inc\wwdt.h)(0x69D75EC2)
+I (..\isp_user.h)(0x69D74DDE)
+I (..\fmc_user.h)(0x69D874D3)
+I (..\uart_transfer.h)(0x69D74DDE)
+F (..\uart_transfer.c)(0x69D74DDE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O2 -ffunction-sections -I ../../../../Library/Device/Nuvoton/M2003J/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/CMSIS/Core/Include -I ../-IC:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include-IC:/Keil_v540/ARM/CMSIS/Include-D__UVISION_VERSION="540"-o ./obj/uart_transfer.o -MMD)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\NuMicro.h)(0x69D75BB3)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\M2003J.h)(0x69D75BA5)
+I (..\..\..\..\Library\CMSIS\Core\Include\core_cm23.h)(0x69D4C30E)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\system_M2003J.h)(0x69D75C4F)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\adc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\bpwm_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\clk_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\crc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\fmc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\dfmc_reg.h)(0x69D769A0)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\gpio_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\i2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\pdma_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\rtc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\sys_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\timer_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uuart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\ui2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uspi_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wwdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\adc.h)(0x69D75DC2)
+I (..\..\..\..\Library\StdDriver\inc\bpwm.h)(0x69D75DD4)
+I (..\..\..\..\Library\StdDriver\inc\clk.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\crc.h)(0x69D75DEC)
+I (..\..\..\..\Library\StdDriver\inc\fmc.h)(0x69D75E09)
+I (..\..\..\..\Library\StdDriver\inc\dfmc.h)(0x69D75DFA)
+I (..\..\..\..\Library\StdDriver\inc\gpio.h)(0x69D75E1A)
+I (..\..\..\..\Library\StdDriver\inc\i2c.h)(0x69D75E28)
+I (..\..\..\..\Library\StdDriver\inc\pdma.h)(0x69D75E35)
+I (..\..\..\..\Library\StdDriver\inc\rtc.h)(0x69D75E49)
+I (..\..\..\..\Library\StdDriver\inc\sys.h)(0x69D75E58)
+I (..\..\..\..\Library\StdDriver\inc\timer.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\uart.h)(0x69D75E86)
+I (..\..\..\..\Library\StdDriver\inc\usci_i2c.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_spi.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_uart.h)(0x69D75EA5)
+I (..\..\..\..\Library\StdDriver\inc\wdt.h)(0x69D75EB2)
+I (..\..\..\..\Library\StdDriver\inc\wwdt.h)(0x69D75EC2)
+I (..\uart_transfer.h)(0x69D74DDE)
+F (..\..\..\..\Library\StdDriver\src\clk.c)(0x69D75CC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O2 -ffunction-sections -I ../../../../Library/Device/Nuvoton/M2003J/Include -I ../../../../Library/StdDriver/inc -I ../../../../Library/CMSIS/Core/Include -I ../-IC:/Keil_v540/ARM/Packs/Nuvoton/NuMicroM23_DFP/1.0.6/Device/M2003/Include-IC:/Keil_v540/ARM/CMSIS/Include-D__UVISION_VERSION="540"-o ./obj/clk.o -MMD)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\NuMicro.h)(0x69D75BB3)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\M2003J.h)(0x69D75BA5)
+I (..\..\..\..\Library\CMSIS\Core\Include\core_cm23.h)(0x69D4C30E)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\system_M2003J.h)(0x69D75C4F)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\adc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\bpwm_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\clk_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\crc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\fmc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\dfmc_reg.h)(0x69D769A0)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\gpio_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\i2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\pdma_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\rtc_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\sys_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\timer_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uuart_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\ui2c_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\uspi_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\Device\Nuvoton\M2003J\Include\wwdt_reg.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\adc.h)(0x69D75DC2)
+I (..\..\..\..\Library\StdDriver\inc\bpwm.h)(0x69D75DD4)
+I (..\..\..\..\Library\StdDriver\inc\clk.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\crc.h)(0x69D75DEC)
+I (..\..\..\..\Library\StdDriver\inc\fmc.h)(0x69D75E09)
+I (..\..\..\..\Library\StdDriver\inc\dfmc.h)(0x69D75DFA)
+I (..\..\..\..\Library\StdDriver\inc\gpio.h)(0x69D75E1A)
+I (..\..\..\..\Library\StdDriver\inc\i2c.h)(0x69D75E28)
+I (..\..\..\..\Library\StdDriver\inc\pdma.h)(0x69D75E35)
+I (..\..\..\..\Library\StdDriver\inc\rtc.h)(0x69D75E49)
+I (..\..\..\..\Library\StdDriver\inc\sys.h)(0x69D75E58)
+I (..\..\..\..\Library\StdDriver\inc\timer.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\uart.h)(0x69D75E86)
+I (..\..\..\..\Library\StdDriver\inc\usci_i2c.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_spi.h)(0x69D74DDE)
+I (..\..\..\..\Library\StdDriver\inc\usci_uart.h)(0x69D75EA5)
+I (..\..\..\..\Library\StdDriver\inc\wdt.h)(0x69D75EB2)
+I (..\..\..\..\Library\StdDriver\inc\wwdt.h)(0x69D75EC2)
