@@ -30,15 +30,11 @@ jobs:
           echo "Building $REPO_ROOT"
 
           set +e
-          shopt -s globstar nullglob
-          check_folders=("$REPO_ROOT"/**/SampleCode)
-          for check_folder_path in "${check_folders[@]}"; do
-            if [ -d "$check_folder_path" ]; then
-              python3 $PRJCHK_SCRIPT "$check_folder_path" >> PrjChk.log
-              retc=$?
-              if [ $retc -ne 0 ]; then break; fi
-            fi
-          done
+          while IFS= read -r check_folder_path; do
+            python3 $PRJCHK_SCRIPT "$check_folder_path" >> PrjChk.log
+            retc=$?
+            if [ $retc -ne 0 ]; then break; fi
+          done < <(find "$REPO_ROOT" -type d -name "SampleCode")
           retc=$?
           if [ $retc -ne 0 ]; then
             echo "❌ validation failed."

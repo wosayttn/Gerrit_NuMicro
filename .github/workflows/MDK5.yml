@@ -54,12 +54,9 @@ jobs:
         shell: bash
         run: |
           mkdir -p artifacts
-          shopt -s globstar nullglob
-          for dir in **/SampleCode; do
-            if [ -d "$dir" ]; then
-              find "$dir" -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
-            fi
-          done
+          find . -type d -name "SampleCode" -exec sh -c '
+            find "$1" -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+          ' _ {} \;
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
