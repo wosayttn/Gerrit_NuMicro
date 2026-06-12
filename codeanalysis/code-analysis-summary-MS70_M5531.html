@@ -91,6 +91,82 @@
         .scope-list li {
             margin: 2px 0;
         }
+        .graph-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+        .graph-stage-name {
+            font-weight: 600;
+            min-width: 80px;
+            font-size: 14px;
+        }
+        .graph-bar-track {
+            flex: 1;
+            height: 22px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .graph-bar {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        .graph-bar.status-pass {
+            width: 100%;
+            background: linear-gradient(90deg, #86efac, #22c55e);
+        }
+        .graph-bar.status-fail {
+            width: 100%;
+            background: linear-gradient(90deg, #fca5a5, #ef4444);
+        }
+        .graph-bar.status-skipped {
+            width: 30%;
+            background: linear-gradient(90deg, #e5e7eb, #9ca3af);
+        }
+        .graph-icon {
+            font-size: 18px;
+            min-width: 22px;
+            text-align: center;
+        }
+        .graph-icon.status-pass {
+            color: #16a34a;
+        }
+        .graph-icon.status-fail {
+            color: #dc2626;
+        }
+        .graph-icon.status-skipped {
+            color: #9ca3af;
+        }
+        .graph-label {
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 130px;
+        }
+        .graph-label.status-pass {
+            color: #166534;
+        }
+        .graph-label.status-fail {
+            color: #991b1b;
+        }
+        .graph-label.status-skipped {
+            color: #6b7280;
+        }
+        .status-pass {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .status-skipped {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
         @media (max-width: 900px) {
             .stage-grid {
                 grid-template-columns: 1fr;
@@ -104,14 +180,29 @@
 <body>
     <div class="container">
         <div class="header">Summary</div>
-        <div class="content"><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
+        <div class="content"><section class="stage-section"><h2 class="stage-title">Graph</h2><div class="stage-grid"><section class="stage-panel"><div class="graph-row"><span class="graph-stage-name">Stage1</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div><div class="graph-row"><span class="graph-stage-name">Stage2</span><div class="graph-bar-track"><div class="graph-bar status-skipped"></div></div><span class="graph-icon status-skipped">&#x25CB;</span><span class="graph-label status-skipped">Not Executed</span></div></section></div></section><section class="stage-section"><h2 class="stage-title">Violations File Scope</h2><div class="stage-grid"><section class="stage-panel scope-panel"><ul class="scope-list"><li>Gerrit_NuMicro\Library\Device\Nuvoton\M5531\Include\M5531.h</li><li>Gerrit_NuMicro\Library\Device\Nuvoton\M5531\Source\ARM\retarget_ARMCC.c</li><li>Gerrit_NuMicro\Library\Device\Nuvoton\M5531\Source\IAR\retarget_ICC.c</li><li>Gerrit_NuMicro\Library\StdDriver\inc\canfd.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\dac.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\hsusbd.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\lpuart.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\sys.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\uart.h</li><li>Gerrit_NuMicro\Library\StdDriver\src\crypto.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\ebi.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\hsusbd.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\pmc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\retarget.c</li></ul></section></div></section><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
 <div class="subsection-title">Overview</div>
 <div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
-<div class="summary-line">Total MISRA-C violations: 160</div>
-<div class="summary-line">Unique MISRA-C rules: 23</div>
-<div class="summary-line">Total CppCheck violations: 1</div>
-<div class="summary-line">Unique CppCheck issue IDs: 1</div>
+<div class="summary-line">Total MISRA-C violations: 108</div>
+<div class="summary-line">Unique MISRA-C rules: 22</div>
+<div class="summary-line">Total CppCheck violations: 2</div>
+<div class="summary-line">Unique CppCheck issue IDs: 2</div>
 <div class="summary-line">MISRA-C configuration issues: 6</div>
+<div class="summary-line">Violations File: 14</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M5531\Include\M5531.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M5531\Source\ARM\retarget_ARMCC.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M5531\Source\IAR\retarget_ICC.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\canfd.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\dac.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\hsusbd.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\lpuart.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\sys.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\uart.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\crypto.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\ebi.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\hsusbd.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\pmc.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\retarget.c</div>
 <div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
 <div class="summary-line">Return code: 1</div>
 <div class="summary-blank"></div>
@@ -120,7 +211,13 @@
 <div class="summary-line">  Violations: 1</div>
 <div class="summary-line">  Unique rules: 1</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;c&lt;0&#x27; is always false</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="subsection-title">Configuration issues</div>
+<div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;c&lt;0&#x27; is always false</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\crypto.c</div>
+<div class="summary-line">  Violations: 1</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;psRSA_Buf&#x27; can be declared as pointer to const</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="subsection-title">Configuration issues</div>
 <div class="summary-line">- Because of missing configuration, misra checking is incomplete. There can be false negatives! Variable &#x27;_LLIO_STDERR&#x27; is unknown</div>
 <div class="summary-line">  Severity: error</div>
 <div class="summary-line">  Count: 1</div>
@@ -153,15 +250,6 @@
 <div class="summary-blank"></div>
 <div class="summary-blank"></div>
 <div class="subsection-title">MISRA-C Violations by file name</div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\crypto.c</div>
-<div class="summary-line">  Violations: 59</div>
-<div class="summary-line">  Unique rules: 4</div>
-<div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-8.9: 1</div>
-<div class="summary-line">    - misra-c2012-10.4: 4</div>
-<div class="summary-line">    - misra-c2012-11.5: 44</div>
-<div class="summary-line">    - misra-c2012-11.9: 10</div>
-<div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\retarget.c</div>
 <div class="summary-line">  Violations: 39</div>
 <div class="summary-line">  Unique rules: 5</div>
@@ -198,6 +286,13 @@
 <div class="summary-line">    - misra-c2012-17.8: 4</div>
 <div class="summary-line">    - misra-c2012-21.2: 1</div>
 <div class="summary-line">    - misra-c2012-21.6: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\crypto.c</div>
+<div class="summary-line">  Violations: 7</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-8.9: 1</div>
+<div class="summary-line">    - misra-c2012-11.9: 6</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\Device\Nuvoton\M5531\Include\M5531.h</div>
 <div class="summary-line">  Violations: 4</div>
@@ -282,7 +377,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-10.4</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 25</div>
+<div class="summary-line">  Count: 21</div>
 <div class="summary-line">  Message: Both operands of an operator in which the usual arithmetic conversions are performed shall have the same essential type category</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-11.3</div>
@@ -290,14 +385,9 @@
 <div class="summary-line">  Count: 1</div>
 <div class="summary-line">  Message: A cast shall not be performed between a pointer to object type and a pointer to a different object type</div>
 <div class="summary-blank"></div>
-<div class="summary-line">- misra-c2012-11.5</div>
-<div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 44</div>
-<div class="summary-line">  Message: A conversion should not be performed from pointer to void into pointer to object</div>
-<div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-11.9</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 12</div>
+<div class="summary-line">  Count: 8</div>
 <div class="summary-line">  Message: The macro NULL shall be the only permitted form of integer null pointer constant</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-12.1</div>
