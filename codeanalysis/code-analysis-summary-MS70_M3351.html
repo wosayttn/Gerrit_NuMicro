@@ -91,6 +91,82 @@
         .scope-list li {
             margin: 2px 0;
         }
+        .graph-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+        .graph-stage-name {
+            font-weight: 600;
+            min-width: 80px;
+            font-size: 14px;
+        }
+        .graph-bar-track {
+            flex: 1;
+            height: 22px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .graph-bar {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        .graph-bar.status-pass {
+            width: 100%;
+            background: linear-gradient(90deg, #86efac, #22c55e);
+        }
+        .graph-bar.status-fail {
+            width: 100%;
+            background: linear-gradient(90deg, #fca5a5, #ef4444);
+        }
+        .graph-bar.status-skipped {
+            width: 30%;
+            background: linear-gradient(90deg, #e5e7eb, #9ca3af);
+        }
+        .graph-icon {
+            font-size: 18px;
+            min-width: 22px;
+            text-align: center;
+        }
+        .graph-icon.status-pass {
+            color: #16a34a;
+        }
+        .graph-icon.status-fail {
+            color: #dc2626;
+        }
+        .graph-icon.status-skipped {
+            color: #9ca3af;
+        }
+        .graph-label {
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 130px;
+        }
+        .graph-label.status-pass {
+            color: #166534;
+        }
+        .graph-label.status-fail {
+            color: #991b1b;
+        }
+        .graph-label.status-skipped {
+            color: #6b7280;
+        }
+        .status-pass {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .status-skipped {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
         @media (max-width: 900px) {
             .stage-grid {
                 grid-template-columns: 1fr;
@@ -104,7 +180,7 @@
 <body>
     <div class="container">
         <div class="header">Summary</div>
-        <div class="content"><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
+        <div class="content"><section class="stage-section"><h2 class="stage-title">Graph</h2><div class="stage-grid"><section class="stage-panel"><div class="graph-row"><span class="graph-stage-name">Stage1</span><div class="graph-bar-track"><div class="graph-bar status-pass"></div></div><span class="graph-icon status-pass">&#x2714;</span><span class="graph-label status-pass">Pass</span></div><div class="graph-row"><span class="graph-stage-name">Stage2</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div></section></div></section><section class="stage-section"><h2 class="stage-title">Violations File Scope</h2><div class="stage-grid"><section class="stage-panel scope-panel"><ul class="scope-list"><li>Gerrit_NuMicro\Library\CryptoAccelerator\gcm_alt.c</li><li>Gerrit_NuMicro\Library\CryptoAccelerator\trng_api.c</li><li>Gerrit_NuMicro\Library\Device\Nuvoton\M3351\Source\startup_M3351.c</li><li>Gerrit_NuMicro\Library\Device\Nuvoton\M3351\Source\system_M3351.c</li></ul></section></div></section><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
 <div class="subsection-title">Overview</div>
 <div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
 <div class="summary-line">Total MISRA-C violations: 0</div>
@@ -112,6 +188,7 @@
 <div class="summary-line">Total CppCheck violations: 0</div>
 <div class="summary-line">Unique CppCheck issue IDs: 0</div>
 <div class="summary-line">MISRA-C configuration issues: 0</div>
+<div class="summary-line">Violations File: 0</div>
 <div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
 <div class="summary-line">Return code: 0</div>
 <div class="summary-blank"></div>
@@ -123,6 +200,11 @@
 <div class="summary-line">Total CppCheck violations: 1</div>
 <div class="summary-line">Unique CppCheck issue IDs: 1</div>
 <div class="summary-line">MISRA-C configuration issues: 0</div>
+<div class="summary-line">Violations File: 4</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\CryptoAccelerator\gcm_alt.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\CryptoAccelerator\trng_api.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M3351\Source\startup_M3351.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M3351\Source\system_M3351.c</div>
 <div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
 <div class="summary-line">Return code: 1</div>
 <div class="summary-blank"></div>
