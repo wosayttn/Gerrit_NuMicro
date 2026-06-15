@@ -1,0 +1,125 @@
+name: CodeAnalysis
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: code-analysis-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  CodeAnalysis:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Code analysis
+        shell: bash
+        run: |
+          CODE_ANALYSIS="D:/code-analysis"
+
+          set +e -x
+
+          cd "$CODE_ANALYSIS"
+
+          git pull
+
+          pip install -r requirements.txt
+
+          python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
+          ret=$?
+
+          if [ $ret -ne 0 ]; then
+
+            STR_ATTACHMENT=""
+            cd "$GITHUB_WORKSPACE"
+
+            for file in "$GITHUB_WORKSPACE"/code-analysis-report*.zip; do
+              if [[ -f "$file" ]]; then
+                STR_ATTACHMENT="$file"
+              fi
+            done
+
+            MISRA_STATUS="$GITHUB_WORKSPACE/output/code-analysis-summary.html"
+            BRANCH_NAME="${GITHUB_REF_NAME//\//-}"
+            RENAMED_SUMMARY="$GITHUB_WORKSPACE/output/code-analysis-summary-${BRANCH_NAME}.html"
+            if [[ -f "$MISRA_STATUS" ]]; then
+              cp "$MISRA_STATUS" "$RENAMED_SUMMARY"
+              STR_ATTACHMENT="$STR_ATTACHMENT,$RENAMED_SUMMARY"
+            fi
+
+            echo $STR_ATTACHMENT >> "$GITHUB_WORKSPACE/attachments.txt"
+
+            # Prepare GitHub Pages deployment
+            PAGES_DIR="$GITHUB_WORKSPACE/pages"
+            mkdir -p "$PAGES_DIR"
+
+            # Fetch existing pages content from gh-pages branch
+            if git fetch origin gh-pages 2>/dev/null; then
+              for f in $(git ls-tree --name-only origin/gh-pages -- codeanalysis/ | grep -v '^codeanalysis/index\.html$'); do
+                fname=$(basename "$f")
+                git show "origin/gh-pages:$f" > "$PAGES_DIR/$fname" 2>/dev/null || true
+              done
+            fi
+
+            # Copy new summary into pages
+            if [[ -f "$RENAMED_SUMMARY" ]]; then
+              cp "$RENAMED_SUMMARY" "$PAGES_DIR/"
+            fi
+
+            # Generate reports.json manifest
+            echo '[' > "$PAGES_DIR/reports.json"
+            first=true
+            for f in "$PAGES_DIR"/code-analysis-summary-*.html; do
+              if [[ -f "$f" ]]; then
+                fname=$(basename "$f")
+                branch_label="${fname#code-analysis-summary-}"
+                branch_label="${branch_label%.html}"
+                if [ "$first" = true ]; then
+                  first=false
+                else
+                  echo ',' >> "$PAGES_DIR/reports.json"
+                fi
+                echo "  {\"branch\":\"$branch_label\",\"file\":\"$fname\"}" >> "$PAGES_DIR/reports.json"
+              fi
+            done
+            echo '' >> "$PAGES_DIR/reports.json"
+            echo ']' >> "$PAGES_DIR/reports.json"
+
+          else
+
+            echo "🎉 Code analysis script succeeded!"
+
+          fi
+
+          exit $ret
+
+      - name: Persist pages to gh-pages branch
+        if: failure()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./pages
+          destination_dir: codeanalysis
+          keep_files: true
+
+      - name: Send mail
+        if: failure()
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
+
