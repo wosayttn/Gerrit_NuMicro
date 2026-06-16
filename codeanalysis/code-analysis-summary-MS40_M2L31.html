@@ -91,6 +91,82 @@
         .scope-list li {
             margin: 2px 0;
         }
+        .graph-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+        .graph-stage-name {
+            font-weight: 600;
+            min-width: 80px;
+            font-size: 14px;
+        }
+        .graph-bar-track {
+            flex: 1;
+            height: 22px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .graph-bar {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        .graph-bar.status-pass {
+            width: 100%;
+            background: linear-gradient(90deg, #86efac, #22c55e);
+        }
+        .graph-bar.status-fail {
+            width: 100%;
+            background: linear-gradient(90deg, #fca5a5, #ef4444);
+        }
+        .graph-bar.status-skipped {
+            width: 30%;
+            background: linear-gradient(90deg, #e5e7eb, #9ca3af);
+        }
+        .graph-icon {
+            font-size: 18px;
+            min-width: 22px;
+            text-align: center;
+        }
+        .graph-icon.status-pass {
+            color: #16a34a;
+        }
+        .graph-icon.status-fail {
+            color: #dc2626;
+        }
+        .graph-icon.status-skipped {
+            color: #9ca3af;
+        }
+        .graph-label {
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 130px;
+        }
+        .graph-label.status-pass {
+            color: #166534;
+        }
+        .graph-label.status-fail {
+            color: #991b1b;
+        }
+        .graph-label.status-skipped {
+            color: #6b7280;
+        }
+        .status-pass {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .status-skipped {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
         @media (max-width: 900px) {
             .stage-grid {
                 grid-template-columns: 1fr;
@@ -104,7 +180,7 @@
 <body>
     <div class="container">
         <div class="header">Summary</div>
-        <div class="content"><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
+        <div class="content"><section class="stage-section"><h2 class="stage-title">Graph</h2><div class="stage-grid"><section class="stage-panel"><div class="graph-row"><span class="graph-stage-name">Stage1</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div><div class="graph-row"><span class="graph-stage-name">Stage2</span><div class="graph-bar-track"><div class="graph-bar status-skipped"></div></div><span class="graph-icon status-skipped">&#x25CB;</span><span class="graph-label status-skipped">Not Executed</span></div></section></div></section><section class="stage-section"><h2 class="stage-title">Violations File Scope</h2><div class="stage-grid"><section class="stage-panel scope-panel"><ul class="scope-list"><li>Gerrit_NuMicro\Library\Device\Nuvoton\M2L31\Include\M2L31.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\acmp.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\canfd.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\clk.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\eadc.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\i2c.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\lpi2c.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\lppdma.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\lptmr.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\lptmr_pwm.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\lpuart.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\opa.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\pdma.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\pwm.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\rmc.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\timer.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\timer_pwm.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\tk.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\ttmr.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\usbd.h</li><li>Gerrit_NuMicro\Library\StdDriver\src\acmp.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\canfd.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\clk.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\crc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\crypto.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\dac.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\eadc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\ebi.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\epwm.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\eqei.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\gpio.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\i2c.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lpadc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lpgpio.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lpi2c.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lppdma.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lpspi.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lptmr.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lptmr_pwm.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lpuart.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\pdma.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\pwm.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\qspi.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\retarget.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\rmc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\rng.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\rtc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\spi.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\sys.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\timer.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\timer_pwm.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\tk.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\trng.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\ttmr.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\uart.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\usbd.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\usci_i2c.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\usci_spi.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\usci_uart.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\utcpd.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\wdt.c</li></ul></section></div></section><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
 <div class="subsection-title">Overview</div>
 <div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
 <div class="summary-line">Total MISRA-C violations: 2174</div>
@@ -112,6 +188,68 @@
 <div class="summary-line">Total CppCheck violations: 331</div>
 <div class="summary-line">Unique CppCheck issue IDs: 18</div>
 <div class="summary-line">MISRA-C configuration issues: 0</div>
+<div class="summary-line">Violations File: 61</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M2L31\Include\M2L31.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\acmp.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\canfd.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\clk.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\eadc.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\i2c.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\lpi2c.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\lppdma.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\lptmr.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\lptmr_pwm.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\lpuart.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\opa.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\pdma.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\pwm.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\rmc.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\timer.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\timer_pwm.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\tk.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\ttmr.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\usbd.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\acmp.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\canfd.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\clk.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\crc.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\crypto.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\dac.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\eadc.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\ebi.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\epwm.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\eqei.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\gpio.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\i2c.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lpadc.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lpgpio.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lpi2c.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lppdma.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lpspi.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lptmr.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lptmr_pwm.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lpuart.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\pdma.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\pwm.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\qspi.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\retarget.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\rmc.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\rng.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\rtc.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\spi.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\sys.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\timer.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\timer_pwm.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\tk.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\trng.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\ttmr.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\uart.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\usbd.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\usci_i2c.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\usci_spi.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\usci_uart.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\utcpd.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\wdt.c</div>
 <div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
 <div class="summary-line">Return code: 1</div>
 <div class="summary-blank"></div>
@@ -149,7 +287,7 @@
 <div class="summary-line">  Unique rules: 5</div>
 <div class="summary-line">  Messages:</div>
 <div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;lptmr&#x27; can be declared as pointer to const</div>
 <div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u8Addr==0u&#x27; is always true</div>
 <div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
@@ -159,7 +297,7 @@
 <div class="summary-line">  Unique rules: 5</div>
 <div class="summary-line">  Messages:</div>
 <div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;lptmr&#x27; can be declared as pointer to const</div>
 <div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u8Addr==0u&#x27; is always true</div>
 <div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
@@ -168,7 +306,7 @@
 <div class="summary-line">  Violations: 19</div>
 <div class="summary-line">  Unique rules: 5</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;lptmr&#x27; can be declared as pointer to const</div>
 <div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
 <div class="summary-line">    - variableScope: The scope of the variable &#x27;u32CfgAddr&#x27; can be reduced.</div>
@@ -194,7 +332,7 @@
 <div class="summary-line">  Violations: 12</div>
 <div class="summary-line">  Unique rules: 5</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;lptmr&#x27; can be declared as pointer to const</div>
 <div class="summary-line">    - constVariable: Variable &#x27;au32WcntTbl&#x27; can be declared as const array</div>
 <div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
@@ -204,7 +342,7 @@
 <div class="summary-line">  Violations: 12</div>
 <div class="summary-line">  Unique rules: 4</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - funcArgNamesDifferent: Function &#x27;OPA_Calibration&#x27; argument 4 names different: declaration &#x27;u32LevelSel&#x27; definition &#x27;u32RefVol&#x27;.</div>
 <div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
 <div class="summary-line">    - variableScope: The scope of the variable &#x27;u32CfgAddr&#x27; can be reduced.</div>
@@ -240,7 +378,7 @@
 <div class="summary-line">  Violations: 9</div>
 <div class="summary-line">  Unique rules: 4</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;lptmr&#x27; can be declared as pointer to const</div>
 <div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
 <div class="summary-line">    - variableScope: The scope of the variable &#x27;u32CfgAddr&#x27; can be reduced.</div>
@@ -250,7 +388,7 @@
 <div class="summary-line">  Unique rules: 5</div>
 <div class="summary-line">  Messages:</div>
 <div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;lptmr&#x27; can be declared as pointer to const</div>
 <div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u8Addr==0u&#x27; is always true</div>
 <div class="summary-line">    - unusedStructMember: struct member &#x27;__FILE::handle&#x27; is never used.</div>
@@ -273,7 +411,7 @@
 <div class="summary-line">  Violations: 6</div>
 <div class="summary-line">  Unique rules: 2</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - variableScope: The scope of the variable &#x27;u32CfgAddr&#x27; can be reduced.</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\rtc.c</div>
@@ -306,7 +444,7 @@
 <div class="summary-line">  Violations: 3</div>
 <div class="summary-line">  Unique rules: 2</div>
 <div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constParameter: Parameter &#x27;au32Keys&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;src&#x27; can be declared as const array</div>
 <div class="summary-line">    - constVariable: Variable &#x27;au32WcntTbl&#x27; can be declared as const array</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lptmr.c</div>
