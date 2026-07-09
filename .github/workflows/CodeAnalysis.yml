@@ -102,7 +102,6 @@ jobs:
           exit $ret
 
       - name: Persist pages to gh-pages branch
-        if: failure()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
