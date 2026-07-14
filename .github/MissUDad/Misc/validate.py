@@ -377,13 +377,50 @@ def iar_project(file_path):
     return errors
 
 
+def c_header_guard(file_path):
+
+    errors = []
+
+    if not os.path.exists(file_path):
+        errors.append(f"Error: File not found -> {file_path}")
+        return errors
+
+    try:
+        with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+            content = f.read()
+    except Exception as e:
+        errors.append(f"Error: Failed to read file -> {file_path}: {e}")
+        return errors
+
+    # Strip C/C++ comments to avoid false positives
+    stripped = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+    stripped = re.sub(r'//[^\n]*', '', stripped)
+
+    # Check for #pragma once
+    if re.search(r'^\s*#\s*pragma\s+once\b', stripped, re.MULTILINE):
+        return errors
+
+    # Check for traditional #ifndef / #define header guard
+    m_ifndef = re.search(r'^\s*#\s*ifndef\s+(\w+)', stripped, re.MULTILINE)
+    if m_ifndef:
+        guard_macro = m_ifndef.group(1)
+        # Verify matching #define follows
+        m_define = re.search(r'^\s*#\s*define\s+' + re.escape(guard_macro) + r'\b', stripped, re.MULTILINE)
+        if m_define:
+            return errors
+
+    errors.append(f"Missing header guard (#ifndef/#define or #pragma once) in {file_path}")
+    return errors
+
+
 VALIDATION_FUNCTIONS = {
     '*.cbuild.yml': vcpkg_cbuild,
     'vcpkg-configuration.json': vcpkg_configuration,
     '*.uvproj*': keil_uvprojx,
     '*.csolution': vscode_csolution,
     '.project': nueclipse_project,
-    '*.eww' : iar_project
+    '*.eww' : iar_project,
+    '*.h': c_header_guard
 }
 
 def validate_project_file(file_abs_path, update_function):
