@@ -218,11 +218,11 @@
 <div class="summary-line">  Message: The macro NULL shall be the only permitted form of integer null pointer constant</div></section></div></section><section class="stage-section"><h2 class="stage-title">Stage2</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/Commu</li><li>Library/CryptoAccelerator</li><li>Library/Device</li><li>Library/JpegAcceleratorLib</li><li>Library/PowerDeliveryLib</li><li>Library/SmartcardLib</li><li>Library/Storage</li><li>Library/UsbHostLib</li></ul><div class="summary-blank"></div>
 <div class="subsection-title">Overview</div>
 <div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage2.txt</div>
-<div class="summary-line">Total MISRA-C violations: 612</div>
+<div class="summary-line">Total MISRA-C violations: 587</div>
 <div class="summary-line">Unique MISRA-C rules: 35</div>
-<div class="summary-line">Total CppCheck violations: 18</div>
+<div class="summary-line">Total CppCheck violations: 14</div>
 <div class="summary-line">Unique CppCheck issue IDs: 7</div>
-<div class="summary-line">MISRA-C configuration issues: 16</div>
+<div class="summary-line">MISRA-C configuration issues: 15</div>
 <div class="summary-line">Violations File: 17</div>
 <div class="summary-line">  - Gerrit_NuMicro\Library\Commu\xmodem.c</div>
 <div class="summary-line">  - Gerrit_NuMicro\Library\CryptoAccelerator\aes_alt.c</div>
@@ -250,12 +250,6 @@
 <div class="summary-line">  Unique rules: 1</div>
 <div class="summary-line">  Messages:</div>
 <div class="summary-line">    - constParameterPointer: Parameter &#x27;ctx&#x27; can be declared as pointer to const</div>
-<div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\Storage\diskio_SDH.c</div>
-<div class="summary-line">  Violations: 4</div>
-<div class="summary-line">  Unique rules: 1</div>
-<div class="summary-line">  Messages:</div>
-<div class="summary-line">    - constVariablePointer: Variable &#x27;pUART&#x27; can be declared as pointer to const</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\Commu\xmodem.c</div>
 <div class="summary-line">  Violations: 3</div>
@@ -305,11 +299,6 @@
 <div class="summary-line">  Severity: error</div>
 <div class="summary-line">  Count: 1</div>
 <div class="summary-line">  File: Gerrit_NuMicro\Library\CryptoAccelerator\ccm_alt.c</div>
-<div class="summary-blank"></div>
-<div class="summary-line">- Because of missing configuration, misra checking is incomplete. There can be false negatives! Variable &#x27;CTRL_SYNC&#x27; is unknown</div>
-<div class="summary-line">  Severity: error</div>
-<div class="summary-line">  Count: 1</div>
-<div class="summary-line">  File: Gerrit_NuMicro\Library\Storage\diskio_SDH.c</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Because of missing configuration, misra checking is incomplete. There can be false negatives! Variable &#x27;INTSTS&#x27; is unknown</div>
 <div class="summary-line">  Severity: error</div>
@@ -414,16 +403,6 @@
 <div class="summary-line">    - misra-c2012-17.8: 3</div>
 <div class="summary-line">    - misra-c2012-18.4: 1</div>
 <div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\Storage\diskio_SDH.c</div>
-<div class="summary-line">  Violations: 35</div>
-<div class="summary-line">  Unique rules: 5</div>
-<div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-8.4: 5</div>
-<div class="summary-line">    - misra-c2012-8.6: 5</div>
-<div class="summary-line">    - misra-c2012-10.4: 1</div>
-<div class="summary-line">    - misra-c2012-11.9: 9</div>
-<div class="summary-line">    - misra-c2012-15.6: 15</div>
-<div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\CryptoAccelerator\gcm_alt.c</div>
 <div class="summary-line">  Violations: 22</div>
 <div class="summary-line">  Unique rules: 2</div>
@@ -468,6 +447,13 @@
 <div class="summary-line">    - misra-c2012-15.6: 1</div>
 <div class="summary-line">    - misra-c2012-17.3: 3</div>
 <div class="summary-line">    - misra-c2012-20.9: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\Storage\diskio_SDH.c</div>
+<div class="summary-line">  Violations: 10</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-8.4: 5</div>
+<div class="summary-line">    - misra-c2012-8.6: 5</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\CryptoAccelerator\sha256_alt.c</div>
 <div class="summary-line">  Violations: 8</div>
@@ -574,7 +560,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-10.4</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 58</div>
+<div class="summary-line">  Count: 57</div>
 <div class="summary-line">  Message: Both operands of an operator in which the usual arithmetic conversions are performed shall have the same essential type category</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-11.1</div>
@@ -589,7 +575,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-11.9</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 10</div>
+<div class="summary-line">  Count: 1</div>
 <div class="summary-line">  Message: The macro NULL shall be the only permitted form of integer null pointer constant</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-12.1</div>
@@ -639,7 +625,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-15.6</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 312</div>
+<div class="summary-line">  Count: 297</div>
 <div class="summary-line">  Message: The body of an iteration-statement or a selection-statement shall be a compound-statement</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-16.3</div>
