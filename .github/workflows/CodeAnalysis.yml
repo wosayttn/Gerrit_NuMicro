@@ -125,4 +125,3 @@ jobs:
           default-mail-to: ${{ secrets.MAIL_TO }}
           workflow-name: ${{ github.workflow }}
           ref-name: ${{ github.ref_name }}
-
