@@ -36,6 +36,14 @@ jobs:
           python code-analysis.py $GITHUB_WORKSPACE > /dev/null 2>&1
           ret=$?
 
+          # Rename summary HTML (exists on both success and failure)
+          MISRA_STATUS="$GITHUB_WORKSPACE/output/code-analysis-summary.html"
+          BRANCH_NAME="${GITHUB_REF_NAME//\//-}"
+          RENAMED_SUMMARY="$GITHUB_WORKSPACE/output/code-analysis-summary-${BRANCH_NAME}.html"
+          if [[ -f "$MISRA_STATUS" ]]; then
+            cp "$MISRA_STATUS" "$RENAMED_SUMMARY"
+          fi
+
           if [ $ret -ne 0 ]; then
 
             STR_ATTACHMENT=""
@@ -47,11 +55,7 @@ jobs:
               fi
             done
 
-            MISRA_STATUS="$GITHUB_WORKSPACE/output/code-analysis-summary.html"
-            BRANCH_NAME="${GITHUB_REF_NAME//\//-}"
-            RENAMED_SUMMARY="$GITHUB_WORKSPACE/output/code-analysis-summary-${BRANCH_NAME}.html"
-            if [[ -f "$MISRA_STATUS" ]]; then
-              cp "$MISRA_STATUS" "$RENAMED_SUMMARY"
+            if [[ -f "$RENAMED_SUMMARY" ]]; then
               STR_ATTACHMENT="$STR_ATTACHMENT,$RENAMED_SUMMARY"
             fi
 
