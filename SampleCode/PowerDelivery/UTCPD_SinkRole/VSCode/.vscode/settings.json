@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Project\\M2L31_Git_0601\\M2L31\\bsp\\SampleCode\\PowerDelivery\\UTCPD_SinkRole\\VSCode\\out\\UTCPD_SinkRole\\ARMCLANG\\Release"
+    ]
+}

@@ -1,0 +1,639 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d24ca5ba-52f9-4f89-96c2-3fb1881f62f4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-06-15T15:55:39+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.43.0"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "04ed2dbaee1fb902",
+      "type": "library",
+      "name": "MCU Driver",
+      "version": "V3.02.000-97-ge21ed08d",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:third-party-components",
+          "value": "none identified in product scope based on the defined Product SBOM scope policy"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/NuMaker"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/PowerDeliveryLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/TKLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Document/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "SampleCode/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "ThirdParty/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Tool/"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-device",
+      "name": "m2l31 Device",
+      "version": "V3.02.000-97-ge21ed08d",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-numaker",
+      "name": "m2l31 NuMaker",
+      "version": "V3.02.000-97-ge21ed08d",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/NuMaker",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/NuMaker"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-powerdeliverylib",
+      "name": "m2l31 PowerDeliveryLib",
+      "version": "V3.02.000-97-ge21ed08d",
+      "licenses": [
+        {
+          "license": {
+            "name": "Nuvoton Proprietary"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/PowerDeliveryLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/PowerDeliveryLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:static-lib:0:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP.a"
+        },
+        {
+          "name": "bsp:static-lib:0:sha256",
+          "value": "920a4cca0fca5f400ce3af1f544846c1d5354d208afb2ac44b0dccf820662c80"
+        },
+        {
+          "name": "bsp:static-lib:1:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP.lib"
+        },
+        {
+          "name": "bsp:static-lib:1:sha256",
+          "value": "36f3b81c91ca4864e582f1b0bf8b8f486138cef2f76b18230cb0d5e3feed04a0"
+        },
+        {
+          "name": "bsp:static-lib:2:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP_Keil.lib"
+        },
+        {
+          "name": "bsp:static-lib:2:sha256",
+          "value": "6853024a7e86fc7f3facaf09fd154cb2080093a60031191732751f3db0295d07"
+        },
+        {
+          "name": "bsp:static-lib:3:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK.a"
+        },
+        {
+          "name": "bsp:static-lib:3:sha256",
+          "value": "21bf4077b8a23e3a7464659dc50a6ea637e641fdd5311c3b3b338ae95adadec7"
+        },
+        {
+          "name": "bsp:static-lib:4:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK.lib"
+        },
+        {
+          "name": "bsp:static-lib:4:sha256",
+          "value": "dfd40ffbe2471bf099a326b0ca0ef3903742636709de605076be26f7c4de8962"
+        },
+        {
+          "name": "bsp:static-lib:5:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK_Keil.lib"
+        },
+        {
+          "name": "bsp:static-lib:5:sha256",
+          "value": "5e6d2c837a55cee92e89339c5eb834f7424450e02ec1d3a789a3c08745c52ef2"
+        },
+        {
+          "name": "bsp:static-lib:6:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC.a"
+        },
+        {
+          "name": "bsp:static-lib:6:sha256",
+          "value": "fe193334299ba19715c827331ccaa16cc2424bafc9a8737e96c899044fac0e59"
+        },
+        {
+          "name": "bsp:static-lib:7:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC.lib"
+        },
+        {
+          "name": "bsp:static-lib:7:sha256",
+          "value": "ccd90c459e2b8068239ccabd6a9fd0950f336013ae8062687dc0195238f8a49b"
+        },
+        {
+          "name": "bsp:static-lib:8:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC_Keil.lib"
+        },
+        {
+          "name": "bsp:static-lib:8:sha256",
+          "value": "5da72a96c470e0b894ed0d44596d409b9cedbc6938193538a8bf9bb0dfe6fbcc"
+        },
+        {
+          "name": "bsp:static-lib:9:path",
+          "value": "Library/PowerDeliveryLib/libPD_DRP.a"
+        },
+        {
+          "name": "bsp:static-lib:9:sha256",
+          "value": "d78ed6fc98ea1bb8fb421a8dd362fefbff2a1d26475aafe71856ace42626a262"
+        },
+        {
+          "name": "bsp:static-lib:10:path",
+          "value": "Library/PowerDeliveryLib/libPD_SNK.a"
+        },
+        {
+          "name": "bsp:static-lib:10:sha256",
+          "value": "9048c5ee1fbf9cda5f7f64c766900befb9c82bbb12c9673a8e38e1aed547e569"
+        },
+        {
+          "name": "bsp:static-lib:11:path",
+          "value": "Library/PowerDeliveryLib/libPD_SRC.a"
+        },
+        {
+          "name": "bsp:static-lib:11:sha256",
+          "value": "ac38ec67bc586f446391cda644026eaa9b61690ccb2ae4c641c3afd301560451"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-stddriver",
+      "name": "m2l31 StdDriver",
+      "version": "V3.02.000-97-ge21ed08d",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-tklib",
+      "name": "m2l31 TKLib",
+      "version": "V3.02.000-97-ge21ed08d",
+      "licenses": [
+        {
+          "license": {
+            "name": "Nuvoton Proprietary"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/TKLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/TKLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:static-lib:0:path",
+          "value": "Library/TKLib/TKLib_Calibration.a"
+        },
+        {
+          "name": "bsp:static-lib:0:sha256",
+          "value": "63ed11f6d94f0dbd24627a224214cfa74e6f17ee24b1ca899ddaa627784a3be7"
+        },
+        {
+          "name": "bsp:static-lib:1:path",
+          "value": "Library/TKLib/TKLib_Calibration.lib"
+        },
+        {
+          "name": "bsp:static-lib:1:sha256",
+          "value": "b04e0c22dcd2694be9f4b669b96e553dba57cc6c9df68ec075dc25e08e733f3e"
+        },
+        {
+          "name": "bsp:static-lib:2:path",
+          "value": "Library/TKLib/TKLib_FreeRun.a"
+        },
+        {
+          "name": "bsp:static-lib:2:sha256",
+          "value": "fce33feca396d9ead1387b047e76d367b4b58daffedee4572e39877cb6e4ca24"
+        },
+        {
+          "name": "bsp:static-lib:3:path",
+          "value": "Library/TKLib/TKLib_FreeRun.lib"
+        },
+        {
+          "name": "bsp:static-lib:3:sha256",
+          "value": "dbc83b2207dbaacfc5357a0876aa8633922d7827ac764dab4f9d2f9a48546c88"
+        },
+        {
+          "name": "bsp:static-lib:4:path",
+          "value": "Library/TKLib/TKLib_MassProduction.a"
+        },
+        {
+          "name": "bsp:static-lib:4:sha256",
+          "value": "5a05825f9849cbab4424872b5b7e41f04e625d92509e6d957dbdf89ef83bad47"
+        },
+        {
+          "name": "bsp:static-lib:5:path",
+          "value": "Library/TKLib/TKLib_MassProduction.lib"
+        },
+        {
+          "name": "bsp:static-lib:5:sha256",
+          "value": "2bbdd627d007f333c43cf01fd4263c540b0f038be2efb1d9d76a8d59cf66c99f"
+        },
+        {
+          "name": "bsp:static-lib:6:path",
+          "value": "Library/TKLib/TK_Calibration.a"
+        },
+        {
+          "name": "bsp:static-lib:6:sha256",
+          "value": "d44a024b36aaedfe5ce3d264ae41d12a92d74ce2c8b9b0f106571f189501e8b7"
+        },
+        {
+          "name": "bsp:static-lib:7:path",
+          "value": "Library/TKLib/TK_FreeRun.a"
+        },
+        {
+          "name": "bsp:static-lib:7:sha256",
+          "value": "73c9c5d90c76c3d2998e0c5f556d0c208a6a1b586283f7d389fb8f3a64953f1b"
+        },
+        {
+          "name": "bsp:static-lib:8:path",
+          "value": "Library/TKLib/libTKLib_Calibration.a"
+        },
+        {
+          "name": "bsp:static-lib:8:sha256",
+          "value": "60e92ff1e6611981239cda2c0ec50da4d578503c55e9d8e18c6b70305a44a29e"
+        },
+        {
+          "name": "bsp:static-lib:9:path",
+          "value": "Library/TKLib/libTKLib_FreeRun.a"
+        },
+        {
+          "name": "bsp:static-lib:9:sha256",
+          "value": "715ba4a180cf8882f161e3b7b06e9388e00a05f0eb71fa03345a20600d04d892"
+        },
+        {
+          "name": "bsp:static-lib:10:path",
+          "value": "Library/TKLib/libTKLib_MassProduction.a"
+        },
+        {
+          "name": "bsp:static-lib:10:sha256",
+          "value": "9d1f0749c26b52ea3f582b1f0ee4c6d9bea3207be087cb20bc514370ab384c41"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-usbhostlib",
+      "name": "m2l31 UsbHostLib",
+      "version": "V3.02.000-97-ge21ed08d",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/UsbHostLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@6.1.0?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "6.1.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "purl": "pkg:generic/cmsis@6.1.0",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core, CMSIS-Driver, CMSIS-RTOS2 API headers, templates, and documentation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "cmsis_core_version",
+          "value": "6.1"
+        },
+        {
+          "name": "cmsis_rtos2_api_version",
+          "value": "2.3.0"
+        },
+        {
+          "name": "cmsis_driver_common_api_version",
+          "value": "2.0"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/cmsis/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "04ed2dbaee1fb902",
+      "dependsOn": [
+        "m2l31bsp:product-component:library-device",
+        "m2l31bsp:product-component:library-numaker",
+        "m2l31bsp:product-component:library-powerdeliverylib",
+        "m2l31bsp:product-component:library-stddriver",
+        "m2l31bsp:product-component:library-tklib",
+        "m2l31bsp:product-component:library-usbhostlib"
+      ]
+    }
+  ]
+}
