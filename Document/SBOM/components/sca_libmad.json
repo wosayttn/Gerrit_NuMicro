@@ -1,0 +1,64 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/libmad@0.15.1-beta?source=vendored&path=ThirdParty/LibMAD",
+      "name": "libmad",
+      "version": "0.15.1-beta",
+      "scope": "required",
+      "author": "Underbit Technologies, Inc.",
+      "purl": "pkg:generic/libmad@0.15.1-beta",
+      "cpe": "cpe:2.3:a:underbit:libmad:0.15.1b:*:*:*:*:*:*:*",
+      "description": "libmad MPEG audio decoder library vendored in ThirdParty/LibMAD, including decoder source files, public/internal headers, fixed-point tables, and local CMake build metadata.",
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/LibMAD"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "libmad_version_macro",
+          "value": "0.15.1 (beta)"
+        },
+        {
+          "name": "libmad_included_top_level_paths",
+          "value": "inc; src"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "libmad MPEG audio decoder library (Underbit Technologies)"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/sca_libmad.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/LibMAD"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "ThirdParty/LibMAD/inc/version.h; ThirdParty/LibMAD/src/version.c"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "ThirdParty/LibMAD/inc/mad.h; ThirdParty/LibMAD/inc/version.h; ThirdParty/LibMAD/src/version.c"
+        }
+      ]
+    }
+  ]
+}

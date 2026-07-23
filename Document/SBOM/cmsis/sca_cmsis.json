@@ -1,0 +1,59 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@5.1.1?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "5.1.1",
+      "scope": "required",
+      "author": "Arm Limited",
+      "purl": "pkg:generic/cmsis@5.1.1",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core(M), CMSIS-Core(A), CMSIS-DSP Library, CMSIS-Driver, CMSIS-RTOS and CMSIS-RTOS2 API headers, CMSIS-DAP firmware sources, SVD files, Pack metadata/examples, templates, libraries, and documentation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "cmsis_included_top_level_paths",
+          "value": "Core; Core_A; DAP; Documentation; Driver; DSP_Lib; Include; Lib; Pack; RTOS; RTOS2; SVD"
+        },
+        {
+          "name": "cmsis_package_version",
+          "value": "5.1.1"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/cmsis/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Documentation/General/html/index.html; Library/CMSIS/Documentation/General/html/cm_revisionHistory.html"
+        }
+      ]
+    }
+  ]
+}
