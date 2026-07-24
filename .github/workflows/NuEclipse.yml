@@ -38,8 +38,14 @@ jobs:
           aarch64-none-elf-gcc --version
 
           mapfile -t solutions < <(
-            find . -type f -path '*/SampleCode/.cproject' -exec dirname {} \;
+            find . -type f -path '*/SampleCode/*/.cproject' -exec dirname {} \;
           )
+
+          if [[ ${#solutions[@]} -eq 0 ]]; then
+            echo "❌ No .cproject projects found under SampleCode!"
+          fi
+
+          echo "📋 Found ${#solutions[@]} .cproject project(s)"
 
           declare -a attachments=()
 

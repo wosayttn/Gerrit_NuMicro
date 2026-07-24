@@ -42,6 +42,13 @@ jobs:
             -not -path '*/_CMSIS-Pack/*'
           )
 
+          if [[ ${#solutions[@]} -eq 0 ]]; then
+            echo "❌ No .csolution.yml projects found under SampleCode!"
+            exit 1
+          fi
+
+          echo "📋 Found ${#solutions[@]} .csolution.yml project(s)"
+
           declare -a attachments=()
 
           set +e
