@@ -23,7 +23,7 @@ jobs:
       - name: Code analysis
         shell: bash
         run: |
-          CODE_ANALYSIS="D:/code-analysis"
+          CODE_ANALYSIS="D:/code-analysis/CPPCHECK_MISRA"
 
           set +e -x
 
