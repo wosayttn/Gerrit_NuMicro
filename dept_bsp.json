@@ -115,6 +115,16 @@
                 "MDK5",
                 "CodeAnalysis"
             ]
+        },
+        "NUC121": {
+            "GerritRepoName": "NUC121/bsp.git",
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5",
+                "CodeAnalysis"
+            ]
         }
     }
 }
