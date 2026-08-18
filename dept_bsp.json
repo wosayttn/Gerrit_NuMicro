@@ -64,6 +64,16 @@
                 "IAR",
                 "MDK5"
             ]
+        },
+        "M471": {
+            "GerritRepoName": "M471/bsp.git",
+            "Workflow": [
+                "NuEclipse",
+                "VSCode",
+                "IAR",
+                "MDK5",
+                "CodeAnalysis"
+            ]
         }
     },
     "MS70": {
