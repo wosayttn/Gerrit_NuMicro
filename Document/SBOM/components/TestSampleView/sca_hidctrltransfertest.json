@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "pkg:generic/hidctrltransfertest@1.0.0.1?path=Tool/HIDCtrlTransferTest",
+      "name": "HIDCtrlTransferTest",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "author": "Nuvoton Technology Corporation",
+      "purl": "pkg:generic/hidctrltransfertest@1.0.0.1",
+      "description": "Host-side HID control transfer testing utility.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Tool/HIDCtrlTransferTest"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_binary"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Nuvoton Technology Corporation"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_hidctrltransfertest.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Tool/HIDCtrlTransferTest"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Tool/HIDCtrlTransferTest/HIDCtrlTransferTest/HIDCtrlTransferTest.rc"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Tool/HIDCtrlTransferTest/LICENSE.md"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        }
+      ]
+    }
+  ]
+}

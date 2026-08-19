@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "pkg:generic/hidtransfertest@unknown?path=Tool/HIDTransferTest",
+      "name": "HIDTransferTest",
+      "version": "UNKNOWN",
+      "scope": "required",
+      "author": "Nuvoton Technology Corporation",
+      "purl": "pkg:generic/hidtransfertest",
+      "description": "Host-side HID transfer testing utility.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Tool/HIDTransferTest"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_binary"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Nuvoton Technology Corporation"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_hidtransfertest.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Tool/HIDTransferTest"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "HIDTransferTest.exe (no version resource found)"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Tool/HIDTransferTest/LICENSE.md"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        }
+      ]
+    }
+  ]
+}
