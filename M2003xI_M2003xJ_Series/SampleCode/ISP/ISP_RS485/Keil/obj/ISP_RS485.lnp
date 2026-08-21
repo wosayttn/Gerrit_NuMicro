@@ -1,0 +1,13 @@
+--cpu=Cortex-M23
+".\obj\system_m2003j.o"
+".\obj\startup_m2003j_isp.o"
+".\obj\fmc_user.o"
+".\obj\isp_user.o"
+".\obj\targetdev.o"
+".\obj\main.o"
+".\obj\uart_transfer.o"
+".\obj\clk.o"
+--library_type=microlib --ro-base 0x0F100000 --entry 0x0F100000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict
+--map --first='startup_M2003J_isp.o(RESET)' --datacompressor=off --info=inline --entry Reset_Handler --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\lst\ISP_RS485.map" -o .\obj\ISP_RS485.axf

@@ -1,0 +1,321 @@
+###############################################################################
+#
+# IAR ELF Linker V8.32.1.169/W32 for ARM                  09/Nov/2025  05:30:36
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Exe\BackupApp.out
+#    Map file     =  
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\List\BackupApp.map
+#    Command line =  
+#        -f C:\Users\SPCheng0\AppData\Local\Temp\EW9144.tmp
+#        (C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\clk.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\fmc.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\main.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\retarget.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\startup_KM1M2.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\sys.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\system_KM1M2.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\uart.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\wdt.o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj\xmodem.o
+#        --redirect _Printf=_PrintfTiny --redirect _Scanf=_ScanfSmall
+#        --no_out_extension -o
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Exe\BackupApp.out
+#        --map
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\List\BackupApp.map
+#        --config
+#        C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\BackupApp.icf
+#        --semihosting --entry Reset_Handler --inline --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x8000 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x0] |
+                [from 0x8000 to 0xffff] { ro };
+define block CSTACK with size = 2K, alignment = 8 { };
+define block PROC_STACK_S with size = 0M, alignment = 8 { };
+define block MAIN_STACK_NS with size = 0M, alignment = 8 { };
+define block PROC_STACK_NS with size = 0M, alignment = 8 { };
+define block HEAP with size = 0M, alignment = 8 { };
+"P3":  place in [from 0x0 to 0x0] |
+                [from 0x2000'0000 to 0x2004'ffff] {
+          rw, block CSTACK, block PROC_STACK_S, block MAIN_STACK_NS,
+          block PROC_STACK_NS, block HEAP };
+initialize by copy { rw };
+
+No sections matched the following patterns:
+
+  ro section application_specific_ro  in "P2|P4"
+  rw section application_specific_rw  in "P2|P4"
+
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                       0x140
+  .intvec            ro code       0x8000   0x140  startup_KM1M2.o [1]
+                                 - 0x8140   0x140
+
+"P1":                                      0x1090
+  .text              ro code       0x8140   0x3d4  clk.o [1]
+  .text              ro code       0x8514    0x9c  system_KM1M2.o [1]
+  .text              ro code       0x85b0   0x290  main.o [1]
+  .text              ro code       0x8840    0x28  printf.o [2]
+  .text              ro code       0x8868    0x10  fmc.o [1]
+  .text              ro code       0x8878   0x178  uart.o [1]
+  .text              ro code       0x89f0    0x38  wdt.o [1]
+  .text              ro code       0x8a28   0x186  xprintftiny.o [2]
+  .text              ro code       0x8bae     0x2  startup_KM1M2.o [1]
+  .text              ro code       0x8bb0    0x34  ABImemcpy.o [3]
+  .text              ro code       0x8be4    0xae  I32DivModFast.o [3]
+  .text              ro code       0x8c94     0xe  strlen.o [3]
+  .text              ro code       0x8ca4   0x188  retarget.o [1]
+  .rodata            const         0x8e2c    0xf4  retarget.o [1]
+  .rodata            const         0x8f20    0x50  main.o [1]
+  .text              ro code       0x8f70    0x40  startup_KM1M2.o [1]
+  .text              ro code       0x8fb0    0x3c  zero_init3.o [3]
+  .text              ro code       0x8fec    0x38  retarget.o [1]
+  .text              ro code       0x9024    0x30  copy_init3.o [3]
+  .text              ro code       0x9054    0x28  data_init.o [3]
+  .rodata            const         0x907c    0x24  retarget.o [1]
+  .iar.init_table    const         0x90a0    0x24  - Linker created -
+  .text              ro code       0x90c4    0x1e  cmain.o [3]
+  .text              ro code       0x90e2     0x8  exit.o [2]
+  .text              ro code       0x90ec     0xa  cexit.o [3]
+  .text              ro code       0x90f8    0x14  exit.o [4]
+  .text              ro code       0x910c    0x16  xprout.o [2]
+  .text              ro code       0x9124    0x10  putchar.o [2]
+  .text              ro code       0x9134    0x14  startup_KM1M2.o [1]
+  .text              ro code       0x9148    0x10  startup_KM1M2.o [1]
+  .text              ro code       0x9158     0xc  cstartup_M.o [3]
+  .text              ro code       0x9164     0x4  startup_KM1M2.o [1]
+  .text              ro code       0x9168     0x4  startup_KM1M2.o [1]
+  .text              ro code       0x916c     0x4  startup_KM1M2.o [1]
+  .text              ro code       0x9170     0x4  startup_KM1M2.o [1]
+  .text              ro code       0x9174     0x4  startup_KM1M2.o [1]
+  .text              ro code       0x9178     0x4  startup_KM1M2.o [1]
+  .text              ro code       0x917c     0x4  startup_KM1M2.o [1]
+  .rodata            const         0x9180     0x0  zero_init3.o [3]
+  .rodata            const         0x9180     0x0  copy_init3.o [3]
+  Initializer bytes  const         0x9180    0x50  <for P3 s0>
+                                 - 0x91d0  0x1090
+
+"P3", part 1 of 3:                           0x50
+  P3 s0                       0x2000'0000    0x50  <Init block>
+    .data            inited   0x2000'0000    0x48  xfiles.o [2]
+    .data            inited   0x2000'0048     0x8  system_KM1M2.o [1]
+                            - 0x2000'0050    0x50
+
+"P3", part 2 of 3:                           0x5c
+  .bss               zero     0x2000'0050    0x50  xfiles.o [2]
+  .bss               zero     0x2000'00a0     0x8  main.o [1]
+  .bss               zero     0x2000'00a8     0x4  clk.o [1]
+                            - 0x2000'00ac    0x5c
+
+"P3", part 3 of 3:                          0x800
+  CSTACK                      0x2000'00b0   0x800  <Block>
+    CSTACK           uninit   0x2000'00b0   0x800  <Block tail>
+                            - 0x2000'08b0   0x800
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+          0x0          0x0       0x1
+       0x91d0       0xffff    0x6e30
+  0x2000'00ac  0x2000'00af       0x4
+  0x2000'08b0  0x2004'ffff  0x4'f750
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x5c:
+          0x2000'0050  0x5c
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x50:
+               0x9180  0x50
+    1 destination range, total size 0x50:
+          0x2000'0000  0x50
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module           ro code  ro data  rw data
+    ------           -------  -------  -------
+command line/config:
+    ------------------------------------------
+    Total:
+
+C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj: [1]
+    clk.o                980                 4
+    fmc.o                 16
+    main.o               656       80        8
+    retarget.o           448      280
+    startup_KM1M2.o      450
+    system_KM1M2.o       156        8        8
+    uart.o               376
+    wdt.o                 56
+    ------------------------------------------
+    Total:             3 138      368       20
+
+dl6M_tlf.a: [2]
+    exit.o                 8
+    printf.o              40
+    putchar.o             16
+    xfiles.o                       72      152
+    xprintftiny.o        390
+    xprout.o              22
+    ------------------------------------------
+    Total:               476       72      152
+
+rt6M_tl.a: [3]
+    ABImemcpy.o           52
+    I32DivModFast.o      174
+    cexit.o               10
+    cmain.o               30
+    copy_init3.o          48
+    cstartup_M.o          12
+    data_init.o           40
+    strlen.o              14
+    zero_init3.o          60
+    ------------------------------------------
+    Total:               440
+
+shb_l.a: [4]
+    exit.o                20
+    ------------------------------------------
+    Total:                20
+
+    Gaps                  10
+    Linker created                 36    2 048
+----------------------------------------------
+    Grand Total:       4 084      476    2 220
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base        0x90a0          --   Gb  - Linker created -
+.iar.init_table$$Limit       0x90c4          --   Gb  - Linker created -
+?main                        0x90c5         Code  Gb  cmain.o [3]
+CLK_EnableModuleClock        0x82fb   0x26  Code  Gb  clk.o [1]
+CLK_EnablePLL                0x8331   0xc4  Code  Gb  clk.o [1]
+CLK_EnableXtalRC             0x82f1    0xa  Code  Gb  clk.o [1]
+CLK_GetModuleClockDivider
+                             0x84a1   0x2c  Code  Gb  clk.o [1]
+CLK_GetModuleClockSource
+                             0x8471   0x2a  Code  Gb  clk.o [1]
+CLK_GetPCLK0Freq             0x8175   0x16  Code  Gb  clk.o [1]
+CLK_GetPCLK1Freq             0x818b   0x18  Code  Gb  clk.o [1]
+CLK_GetPLLClockFreq          0x8441   0x2a  Code  Gb  clk.o [1]
+CLK_PowerDown                0x8141   0x34  Code  Gb  clk.o [1]
+CLK_SetCoreClock             0x81a3   0x36  Code  Gb  clk.o [1]
+CLK_SetHCLK                  0x81d9   0x7c  Code  Gb  clk.o [1]
+CLK_SetModuleClock           0x8255   0x9c  Code  Gb  clk.o [1]
+CLK_SysTickDelay             0x85c7   0x30  Code  Lc  main.o [1]
+CLK_WaitClockReady           0x8401   0x30  Code  Gb  clk.o [1]
+CSTACK$$Base            0x2000'00b0          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'08b0          --   Gb  - Linker created -
+CyclesPerUs             0x2000'004c    0x4  Data  Gb  system_KM1M2.o [1]
+FMC_GetVECMAP                0x85f7    0xa  Code  Lc  main.o [1]
+FMC_Open                     0x8869    0xc  Code  Gb  fmc.o [1]
+FuncCrc32                    0x862b   0x1a  Code  Gb  main.o [1]
+ProcessHardFault             0x8ca5  0x188  Code  Wk  retarget.o [1]
+Region$$Table$$Base          0x90a0          --   Gb  - Linker created -
+Region$$Table$$Limit         0x90c4          --   Gb  - Linker created -
+Reset_Handler                0x8f71         Code  Wk  startup_KM1M2.o [1]
+SH_Return                    0x8fed    0x4  Code  Gb  retarget.o [1]
+SYS_Init                     0x8661   0x4a  Code  Gb  main.o [1]
+SYS_UnlockReg                0x8601   0x1e  Code  Lc  main.o [1]
+SelfTest                     0x86ad    0xe  Code  Gb  main.o [1]
+SendChar                     0x9013    0x2  Code  Gb  retarget.o [1]
+SendChar_ToUART              0x8ff1   0x22  Code  Lc  retarget.o [1]
+SystemCoreClock         0x2000'0048    0x4  Data  Gb  system_KM1M2.o [1]
+SystemCoreClockUpdate        0x8515   0x3a  Code  Gb  system_KM1M2.o [1]
+SystemInit                   0x8561    0x2  Code  Gb  system_KM1M2.o [1]
+UART_Open                    0x8879  0x122  Code  Gb  uart.o [1]
+Uart0DefaultMPF              0x8585   0x2c  Code  Wk  system_KM1M2.o [1]
+WDT_EnableInt                0x861f    0xc  Code  Lc  main.o [1]
+WDT_IRQHandler               0x8645   0x1c  Code  Gb  main.o [1]
+WDT_Open                     0x89f1   0x38  Code  Gb  wdt.o [1]
+_PrintfTiny                  0x8a43  0x16c  Code  Gb  xprintftiny.o [2]
+_Prout                       0x910d   0x16  Code  Gb  xprout.o [2]
+__NVIC_EnableIRQ             0x85b1   0x16  Code  Lc  main.o [1]
+__Vectors                    0x8000          --   Gb  startup_KM1M2.o [1]
+__Vectors_End                0x8140         Data  Gb  startup_KM1M2.o [1]
+__Vectors_Size {Abs}          0x140          --   Gb  startup_KM1M2.o [1]
+__aeabi_memcpy4              0x8bb1         Code  Gb  ABImemcpy.o [3]
+__aeabi_memcpy8              0x8bb1         Code  Gb  ABImemcpy.o [3]
+__aeabi_uidiv                0x8be5         Code  Gb  I32DivModFast.o [3]
+__aeabi_uidivmod             0x8be5         Code  Gb  I32DivModFast.o [3]
+__cmain                      0x90c5         Code  Gb  cmain.o [3]
+__exit                       0x90f9   0x14  Code  Gb  exit.o [4]
+__iar_Stdout            0x2000'0000   0x48  Data  Gb  xfiles.o [2]
+__iar_copy_init3             0x9025   0x30  Code  Gb  copy_init3.o [3]
+__iar_data_init3             0x9055   0x28  Code  Gb  data_init.o [3]
+__iar_program_start          0x9159         Code  Gb  cstartup_M.o [3]
+__iar_zero_init3             0x8fb1   0x3c  Code  Gb  zero_init3.o [3]
+__vector_table               0x8000         Data  Gb  startup_KM1M2.o [1]
+_call_main                   0x90d1         Code  Gb  cmain.o [3]
+_exit                        0x90ed         Code  Gb  cexit.o [3]
+_main                        0x90df         Code  Gb  cmain.o [3]
+exit                         0x90e3    0x8  Code  Gb  exit.o [2]
+fputc                        0x9019    0xc  Code  Gb  retarget.o [1]
+g_CLK_i32ErrCode        0x2000'00a8    0x4  Data  Gb  clk.o [1]
+gau32ClkSrcTbl               0x8564   0x20  Data  Gb  system_KM1M2.o [1]
+main                         0x86bd   0xc8  Code  Gb  main.o [1]
+obuf                    0x2000'0050   0x50  Data  Lc  xfiles.o [2]
+out                          0x8a29   0x1a  Code  Lc  xprintftiny.o [2]
+printf                       0x8841   0x28  Code  Gb  printf.o [2]
+putchar                      0x9125   0x10  Code  Gb  putchar.o [2]
+s_u32ExecBank           0x2000'00a0    0x4  Data  Lc  main.o [1]
+s_u32GetSum             0x2000'00a4    0x4  Data  Lc  main.o [1]
+strlen                       0x8c95         Code  Gb  strlen.o [3]
+
+
+[1] = C:\SPCheng\SVN\KAG076_KM1M2\BSP\SampleCode\StdDriver\FMC_FwUpdateApplication\BackupApp\IAR\Release\Obj
+[2] = dl6M_tlf.a
+[3] = rt6M_tl.a
+[4] = shb_l.a
+
+  4 084 bytes of readonly  code memory
+    476 bytes of readonly  data memory
+  2 220 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
