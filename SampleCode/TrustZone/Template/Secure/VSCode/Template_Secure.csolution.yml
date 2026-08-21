@@ -1,0 +1,28 @@
+solution:
+  created-by: uv2csolution@1.5.0
+  created-for: CMSIS-Toolbox@2.4.0
+  select-compiler:
+    - compiler: AC6@>=5.19.0
+    - compiler: GCC@>=10.3.1
+  build-types:
+    - type: Release # build-type name, used in context with: .Release
+      optimize: debug # balanced optimization (size, speed, balanced, none, debug)
+      debug: on # generate debug info. for the release build (Set off to disable)
+  target-types:
+    - type: ARMCLANG
+      compiler: AC6
+      device: Nuvoton::M3334KIGAE
+      target-set:
+        - set:
+          images:
+            - project-context: Template_Secure.Release
+          debugger:
+            name: Nu-Link@pyOCD
+            port: 3333
+            protocol: swd
+            clock: 10000000
+    - type: GNUC
+      compiler: GCC
+      device: Nuvoton::M3334KIGAE
+  projects:
+    - project: Template_Secure.cproject.yml
