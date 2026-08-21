@@ -1,0 +1,943 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:55231cbe-1a80-4406-8522-1165f1f677d0",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-07-24T17:51:32+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.49.0"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "c78be8ed1456b430",
+      "type": "library",
+      "name": "MCU Driver",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:third-party-components",
+          "value": "none identified in product scope based on the defined Product SBOM scope policy"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Commu"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CryptoAccelerator"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/JpegAcceleratorLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/PowerDeliveryLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/SmartcardLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Storage"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Document/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "SampleCode/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "ThirdParty/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Tool/"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-commu",
+      "name": " Commu",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Commu",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Commu"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-cryptoaccelerator",
+      "name": " CryptoAccelerator",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/CryptoAccelerator",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CryptoAccelerator"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-device",
+      "name": " Device",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-jpegacceleratorlib",
+      "name": " JpegAcceleratorLib",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "name": "Nuvoton Proprietary"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/JpegAcceleratorLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/JpegAcceleratorLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/JpegAcceleratorLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:static-lib:0:path",
+          "value": "Library/JpegAcceleratorLib/JpegAcceleratorLib.a"
+        },
+        {
+          "name": "bsp:static-lib:0:sha256",
+          "value": "1aff8a9f1d2558073e24be09ed79e773bbe49e7c4b1ee2cc2cb6afb2c85cb743"
+        },
+        {
+          "name": "bsp:static-lib:1:path",
+          "value": "Library/JpegAcceleratorLib/JpegAcceleratorLib_Keil.lib"
+        },
+        {
+          "name": "bsp:static-lib:1:sha256",
+          "value": "02bac6217e12c62329f70c57be36bf61334a336fcc5970f3a176357048526d1c"
+        },
+        {
+          "name": "bsp:static-lib:2:path",
+          "value": "Library/JpegAcceleratorLib/libJpegAccelerator.a"
+        },
+        {
+          "name": "bsp:static-lib:2:sha256",
+          "value": "f1aa205501274d4cc16493d780a670899a100c8303ba98761125d74adc9d4144"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-powerdeliverylib",
+      "name": " PowerDeliveryLib",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "name": "Nuvoton Proprietary"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/PowerDeliveryLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/PowerDeliveryLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:static-lib:0:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP.a"
+        },
+        {
+          "name": "bsp:static-lib:0:sha256",
+          "value": "70cdfe7cb889aae7cc3d47362eecdcf4c52afa7f347ce3e982b644ada1fde1b6"
+        },
+        {
+          "name": "bsp:static-lib:1:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP.lib"
+        },
+        {
+          "name": "bsp:static-lib:1:sha256",
+          "value": "f62408ab7cd1c84c0d3b02439df2b93bf092cc6e66c60923888d90022d8e87f7"
+        },
+        {
+          "name": "bsp:static-lib:2:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK.a"
+        },
+        {
+          "name": "bsp:static-lib:2:sha256",
+          "value": "c3914d97fa4d56adf2fa3a480fc20811b86bc2606e2c0200721989e61176f7bc"
+        },
+        {
+          "name": "bsp:static-lib:3:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK.lib"
+        },
+        {
+          "name": "bsp:static-lib:3:sha256",
+          "value": "9c67b19c5359556f9b53f32c9d8763ae379516d1ebc75f7408cf3cfcf963964d"
+        },
+        {
+          "name": "bsp:static-lib:4:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC.a"
+        },
+        {
+          "name": "bsp:static-lib:4:sha256",
+          "value": "05ca85f653d90fda9ff65e849e27e5b9238a7c6698c137d0a9b23bde34d77b18"
+        },
+        {
+          "name": "bsp:static-lib:5:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC.lib"
+        },
+        {
+          "name": "bsp:static-lib:5:sha256",
+          "value": "5b790c439e38b0855864d57c5076a28172259e2a04e55af6dcfe5fcb0ea79930"
+        },
+        {
+          "name": "bsp:static-lib:6:path",
+          "value": "Library/PowerDeliveryLib/libPD_DRP.a"
+        },
+        {
+          "name": "bsp:static-lib:6:sha256",
+          "value": "0e8670d12c4dc70aa9cc14cad04446decf9254d43bdc4b506ca35602086bdb2b"
+        },
+        {
+          "name": "bsp:static-lib:7:path",
+          "value": "Library/PowerDeliveryLib/libPD_SNK.a"
+        },
+        {
+          "name": "bsp:static-lib:7:sha256",
+          "value": "8209aa22b41343f04c923894f8df8fb12731c093a5ba4fb9525c3de72456f8ed"
+        },
+        {
+          "name": "bsp:static-lib:8:path",
+          "value": "Library/PowerDeliveryLib/libPD_SRC.a"
+        },
+        {
+          "name": "bsp:static-lib:8:sha256",
+          "value": "aa6e68e136e5c7a6d16c4e9ecb601e4c1e1d9bc89db49882470ad02246226f21"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-smartcardlib",
+      "name": " SmartcardLib",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "name": "Nuvoton Proprietary"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/SmartcardLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/SmartcardLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/SmartcardLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:static-lib:0:path",
+          "value": "Library/SmartcardLib/SmartCardLib.a"
+        },
+        {
+          "name": "bsp:static-lib:0:sha256",
+          "value": "4754626256529e69d71ecdf04406e3b03d48f3a65df46a5f57a7bdaf3a6e0b88"
+        },
+        {
+          "name": "bsp:static-lib:1:path",
+          "value": "Library/SmartcardLib/SmartCardLib.lib"
+        },
+        {
+          "name": "bsp:static-lib:1:sha256",
+          "value": "b11e5d7bb0fd1cbfd5201a2d058920e2c514c1ab7647ab9ddcfbe08b3a68911e"
+        },
+        {
+          "name": "bsp:static-lib:2:path",
+          "value": "Library/SmartcardLib/libSmartCardLib.a"
+        },
+        {
+          "name": "bsp:static-lib:2:sha256",
+          "value": "27f67b4a2940102251910003b068b449ab1547af2aae3af8ae11eeb721523198"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-stddriver",
+      "name": " StdDriver",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-storage",
+      "name": " Storage",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Storage",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Storage"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-usbhostlib",
+      "name": " UsbHostLib",
+      "version": "V3.01.005a",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/UsbHostLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:github/arm-software/CMSIS-Compiler@2.2.0?source=vendored&path=Library/CMSIS/Compiler",
+      "name": "CMSIS-Compiler",
+      "version": "2.2.0",
+      "scope": "optional",
+      "author": "Arm Limited",
+      "purl": "pkg:github/arm-software/CMSIS-Compiler@2.2.0",
+      "description": "Arm CMSIS-Compiler software components vendored in Library/CMSIS/Compiler for standard I/O, file-operation, and RTOS interface retargeting.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS/Compiler"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "bsp:upstream-repository",
+          "value": "https://github.com/ARM-software/CMSIS-Compiler"
+        },
+        {
+          "name": "bsp:upstream-tag",
+          "value": "v2.2.0"
+        },
+        {
+          "name": "bsp:upstream-commit",
+          "value": "218fffe5bcd4da3594d411437b1b773f52f6ca36"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS-Compiler"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/cmsis/sca_cmsis-compiler.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS/Compiler"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Compiler/ARM.CMSIS-Compiler.pdsc"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/Compiler/LICENSE; Library/CMSIS/Compiler/README.md"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:github/arm-software/CMSIS-DSP@1.16.2?source=vendored&path=Library/CMSIS/DSP",
+      "name": "CMSIS-DSP",
+      "version": "1.16.2",
+      "scope": "optional",
+      "author": "Arm Limited",
+      "purl": "pkg:github/arm-software/CMSIS-DSP@1.16.2",
+      "description": "Arm CMSIS-DSP source subset vendored in Library/CMSIS/DSP, including DSP function headers and source files, private implementation headers, and ComputeLibrary-derived support files.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS/DSP"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source_subset"
+        },
+        {
+          "name": "bsp:included-paths",
+          "value": "Library/CMSIS/DSP/Include; Library/CMSIS/DSP/Source; Library/CMSIS/DSP/ComputeLibrary; Library/CMSIS/DSP/dsppp; Library/CMSIS/DSP/PrivateInclude"
+        },
+        {
+          "name": "bsp:upstream-repository",
+          "value": "https://github.com/ARM-software/CMSIS-DSP"
+        },
+        {
+          "name": "bsp:upstream-tag",
+          "value": "v1.16.2"
+        },
+        {
+          "name": "bsp:upstream-commit",
+          "value": "d5717e454fec0337bef114a21f1d2d01d74f2701"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS-DSP"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/cmsis/sca_cmsis-dsp.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS/DSP"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/DSP/Include/arm_math.h (Apache-2.0); Library/CMSIS/DSP/ComputeLibrary/README.md and Library/CMSIS/DSP/ComputeLibrary/Include/NEMath.h (MIT)"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:github/arm-software/CMSIS-NN@6.0.0?source=vendored&path=Library/CMSIS/NN",
+      "name": "CMSIS-NN",
+      "version": "6.0.0",
+      "scope": "optional",
+      "author": "Arm Limited",
+      "purl": "pkg:github/arm-software/CMSIS-NN@6.0.0",
+      "description": "Arm CMSIS-NN source subset vendored in Library/CMSIS/NN, providing optimized neural-network kernels and support functions for Cortex-M processors.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS/NN"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source_subset"
+        },
+        {
+          "name": "bsp:included-paths",
+          "value": "Library/CMSIS/NN/Include; Library/CMSIS/NN/Source"
+        },
+        {
+          "name": "bsp:upstream-repository",
+          "value": "https://github.com/ARM-software/CMSIS-NN"
+        },
+        {
+          "name": "bsp:upstream-tag",
+          "value": "v6.0.0"
+        },
+        {
+          "name": "bsp:upstream-commit",
+          "value": "69823017d0973440e311dcf900b2162b17609fb0"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS-NN"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/cmsis/sca_cmsis-nn.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS/NN"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/NN/Include/arm_nnfunctions.h"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:github/ARM-software/CMSIS_6@6.3.0?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "6.3.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "purl": "pkg:github/ARM-software/CMSIS_6@6.3.0",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core, CMSIS-Driver, CMSIS-RTOS2 API headers, and Documentation/index.html.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source_subset"
+        },
+        {
+          "name": "cmsis_core_version",
+          "value": "6.2.0"
+        },
+        {
+          "name": "cmsis_rtos2_api_version",
+          "value": "2.3.0"
+        },
+        {
+          "name": "cmsis_driver_common_api_version",
+          "value": "2.0"
+        },
+        {
+          "name": "bsp:included-paths",
+          "value": "Library/CMSIS/Core; Library/CMSIS/Driver; Library/CMSIS/RTOS2; Library/CMSIS/Documentation/index.html"
+        },
+        {
+          "name": "bsp:upstream-repository",
+          "value": "https://github.com/ARM-software/CMSIS_6"
+        },
+        {
+          "name": "bsp:upstream-tag",
+          "value": "v6.3.0"
+        },
+        {
+          "name": "bsp:upstream-commit",
+          "value": "45dab712ad84f8cbbf2b7bfc089c19088507df6f"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/cmsis/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "c78be8ed1456b430",
+      "dependsOn": [
+        "bsp:product-component:library-commu",
+        "bsp:product-component:library-cryptoaccelerator",
+        "bsp:product-component:library-device",
+        "bsp:product-component:library-jpegacceleratorlib",
+        "bsp:product-component:library-powerdeliverylib",
+        "bsp:product-component:library-smartcardlib",
+        "bsp:product-component:library-stddriver",
+        "bsp:product-component:library-storage",
+        "bsp:product-component:library-usbhostlib"
+      ]
+    }
+  ]
+}
