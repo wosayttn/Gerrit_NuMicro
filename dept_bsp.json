@@ -53,7 +53,8 @@
                 "NuEclipse",
                 "VSCode",
                 "IAR",
-                "MDK5"
+                "MDK5",
+                "CodeAnalysis"
             ]
         },
         "M031": {
