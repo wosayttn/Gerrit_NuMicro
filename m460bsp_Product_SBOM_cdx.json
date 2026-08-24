@@ -1,0 +1,573 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:67251c26-bfa4-4008-a01e-09936703374f",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-08-24T13:26:01+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.45.1"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "242d9232a926e853",
+      "type": "library",
+      "name": "MCU Driver",
+      "version": "v3.00.005-22-g7afff5b8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mcu-driver@v3.00.005-22-g7afff5b8",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:third-party-components",
+          "value": "none identified in product scope based on the defined Product SBOM scope policy"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CryptoAccelerator"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/NuMaker"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/SmartcardLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Document/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "SampleCode/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "ThirdParty/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Utilities/"
+        }
+      ]
+    },
+    "supplier": {
+      "name": "Nuvoton Technology Corp.",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
+    },
+    "authors": [
+      {
+        "name": "Nuvoton Technology Corp."
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "m460bsp:product-component:library-cryptoaccelerator",
+      "name": "m460 CryptoAccelerator",
+      "version": "v3.00.005-22-g7afff5b8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-cryptoaccelerator@v3.00.005-22-g7afff5b8",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "84a81e5ca2e2d595ae71deea0de794c6e768fe7c056c85c0957bf58b534406af"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/CryptoAccelerator",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CryptoAccelerator"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m460bsp:product-component:library-device",
+      "name": "m460 Device",
+      "version": "v3.00.005-22-g7afff5b8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-device@v3.00.005-22-g7afff5b8",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "34ae7e5b1f6a46956b23ea010e767d80c771753eff4ffa3397cf30fefb06e5b5"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m460bsp:product-component:library-numaker",
+      "name": "m460 NuMaker",
+      "version": "v3.00.005-22-g7afff5b8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-numaker@v3.00.005-22-g7afff5b8",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "02b00e88e3ea033f9b39fd4fa45a728bcabfe7319a0dc7580a930110d0e90496"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/NuMaker",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/NuMaker"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m460bsp:product-component:library-smartcardlib",
+      "name": "m460 SmartcardLib",
+      "version": "v3.00.005-22-g7afff5b8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-smartcardlib@v3.00.005-22-g7afff5b8",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2559cfee57711ca735314e2d0b1603d0374a20b9f66ff0c7794f59acb731e525"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LicenseRef-Nuvoton-Proprietary"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/SmartcardLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/SmartcardLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/SmartcardLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:static-lib:0:path",
+          "value": "Library/SmartcardLib/libsmartcard.a"
+        },
+        {
+          "name": "bsp:static-lib:0:sha256",
+          "value": "4cfe22412d6a3935cd2988c5f8326bfeaeee4d7a10315b049be3223b1ac6759b"
+        },
+        {
+          "name": "bsp:static-lib:1:path",
+          "value": "Library/SmartcardLib/SmartCardLib_IAR.a"
+        },
+        {
+          "name": "bsp:static-lib:1:sha256",
+          "value": "12d45784fafe253d796bd2da67b5fabc287d187be5dff0c0bd18e958e4756faf"
+        },
+        {
+          "name": "bsp:static-lib:2:path",
+          "value": "Library/SmartcardLib/SmartCardLib_Keil.lib"
+        },
+        {
+          "name": "bsp:static-lib:2:sha256",
+          "value": "6c67caa3813a1db9d3b676c1edfa33c527218e6b4b527ea9ce8ebf378e738b04"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m460bsp:product-component:library-stddriver",
+      "name": "m460 StdDriver",
+      "version": "v3.00.005-22-g7afff5b8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-stddriver@v3.00.005-22-g7afff5b8",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "23db750e90cb520f63c87ad040e7237cd8c320f77cf65a10c08c6adadf4c3efc"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m460bsp:product-component:library-usbhostlib",
+      "name": "m460 UsbHostLib",
+      "version": "v3.00.005-22-g7afff5b8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-usbhostlib@v3.00.005-22-g7afff5b8",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a11f62aa3e010cb9c9ff7d54e437f531dc1b9fb3083273813758e68b57423c7e"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/UsbHostLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@5.1.1?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "5.1.1",
+      "scope": "required",
+      "author": "Arm Limited",
+      "purl": "pkg:generic/cmsis@5.1.1",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core(M), CMSIS-Core(A), CMSIS-DSP Library, CMSIS-Driver, CMSIS-RTOS and CMSIS-RTOS2 API headers, CMSIS-DAP firmware sources, SVD files, Pack metadata/examples, templates, libraries, and documentation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "cmsis_included_top_level_paths",
+          "value": "Core; Core_A; DAP; Documentation; Driver; DSP_Lib; Include; Lib; Pack; RTOS; RTOS2; SVD"
+        },
+        {
+          "name": "cmsis_package_version",
+          "value": "5.1.1"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/cmsis/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Documentation/General/html/index.html; Library/CMSIS/Documentation/General/html/cm_revisionHistory.html"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "faf8d95b5fd4d6153b747aa31b857dbfe25a5133c034611e617dbcfcb0d90a0b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "242d9232a926e853",
+      "dependsOn": [
+        "m460bsp:product-component:library-cryptoaccelerator",
+        "m460bsp:product-component:library-device",
+        "m460bsp:product-component:library-numaker",
+        "m460bsp:product-component:library-smartcardlib",
+        "m460bsp:product-component:library-stddriver",
+        "m460bsp:product-component:library-usbhostlib"
+      ]
+    }
+  ]
+}
