@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cppcheck Summary</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: Segoe UI, Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(31, 41, 55, 0.08);
+            overflow: hidden;
+        }
+        .header {
+            padding: 18px 22px;
+            background: #0f172a;
+            color: #f8fafc;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .content {
+            padding: 20px;
+            display: grid;
+            gap: 20px;
+        }
+        .stage-section {
+            border: 1px solid #d0d7de;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        .stage-title {
+            margin: 0;
+            padding: 14px 18px;
+            background: #e2e8f0;
+            color: #0f172a;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .stage-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .stage-panel {
+            border-top: 1px solid #d0d7de;
+            padding: 16px 18px;
+            min-height: auto;
+            background: #ffffff;
+        }
+        .scope-panel {
+            min-height: auto;
+        }
+        .panel-title {
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .subsection-title {
+            margin: 14px 0 8px 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        .summary-line {
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.55;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .summary-blank {
+            height: 0.8em;
+        }
+        .scope-list {
+            margin: 0;
+            padding-left: 22px;
+            line-height: 1.6;
+        }
+        .scope-list li {
+            margin: 2px 0;
+        }
+        .graph-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+        .graph-stage-name {
+            font-weight: 600;
+            min-width: 80px;
+            font-size: 14px;
+        }
+        .graph-bar-track {
+            flex: 1;
+            height: 22px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .graph-bar {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        .graph-bar.status-pass {
+            width: 100%;
+            background: linear-gradient(90deg, #86efac, #22c55e);
+        }
+        .graph-bar.status-fail {
+            width: 100%;
+            background: linear-gradient(90deg, #fca5a5, #ef4444);
+        }
+        .graph-bar.status-skipped {
+            width: 30%;
+            background: linear-gradient(90deg, #e5e7eb, #9ca3af);
+        }
+        .graph-icon {
+            font-size: 18px;
+            min-width: 22px;
+            text-align: center;
+        }
+        .graph-icon.status-pass {
+            color: #16a34a;
+        }
+        .graph-icon.status-fail {
+            color: #dc2626;
+        }
+        .graph-icon.status-skipped {
+            color: #9ca3af;
+        }
+        .graph-label {
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 130px;
+        }
+        .graph-label.status-pass {
+            color: #166534;
+        }
+        .graph-label.status-fail {
+            color: #991b1b;
+        }
+        .graph-label.status-skipped {
+            color: #6b7280;
+        }
+        .status-pass {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .status-skipped {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+        @media (max-width: 900px) {
+            .stage-grid {
+                grid-template-columns: 1fr;
+            }
+            .stage-panel {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Summary</div>
+        <div class="content"><section class="stage-section"><h2 class="stage-title">Graph</h2><div class="stage-grid"><section class="stage-panel"><div class="graph-row"><span class="graph-stage-name">Stage1</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div><div class="graph-row"><span class="graph-stage-name">Stage2</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div></section></div></section><section class="stage-section"><h2 class="stage-title">Violations File Scope</h2><div class="stage-grid"><section class="stage-panel scope-panel"><ul class="scope-list"><li>Gerrit_NuMicro\Library\Device\Nuvoton\M2U51\Source\ARM\startup_M2U51.c</li><li>Gerrit_NuMicro\Library\Device\Nuvoton\M2U51\Source\system_M2U51.c</li><li>Gerrit_NuMicro\Library\LCDLib\Include\lcdzone.h</li><li>Gerrit_NuMicro\Library\LCDLib\Source\lcdlib.c</li><li>Gerrit_NuMicro\Library\StdDriver\inc\clk.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\pwm.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\timer.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\timer_pwm.h</li><li>Gerrit_NuMicro\Library\StdDriver\src\acmp.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\adc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\bpwm.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\clk.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\gpio.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\lcd.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\pwm.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\retarget.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\spi.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\sys.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\timer.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\timer_pwm.c</li></ul></section></div></section><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
+<div class="subsection-title">Overview</div>
+<div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
+<div class="summary-line">Total MISRA-C violations: 263</div>
+<div class="summary-line">Unique MISRA-C rules: 26</div>
+<div class="summary-line">Total CppCheck violations: 80</div>
+<div class="summary-line">Unique CppCheck issue IDs: 12</div>
+<div class="summary-line">MISRA-C configuration issues: 0</div>
+<div class="summary-line">Violations File: 16</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\clk.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\pwm.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\timer.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\timer_pwm.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\acmp.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\adc.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\bpwm.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\clk.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\gpio.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\lcd.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\pwm.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\retarget.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\spi.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\sys.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\timer.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\timer_pwm.c</div>
+<div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
+<div class="summary-line">Return code: 1</div>
+<div class="summary-blank"></div>
+<div class="subsection-title">CppCheck Violations by file name</div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\clk.c</div>
+<div class="summary-line">  Violations: 24</div>
+<div class="summary-line">  Unique rules: 4</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
+<div class="summary-line">    - constVariable: Variable &#x27;u32SelTbl&#x27; can be declared as const array</div>
+<div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
+<div class="summary-line">    - variableScope: The scope of the variable &#x27;u32Delay&#x27; can be reduced.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\pwm.c</div>
+<div class="summary-line">  Violations: 12</div>
+<div class="summary-line">  Unique rules: 4</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-line">    - integerOverflowCond: Either the condition &#x27;u16Prescale==0x1000&#x27; is redundant or there is signed integer overflow for expression &#x27;1000000*u16Prescale&#x27;.</div>
+<div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u32Src==0U&#x27; is always false</div>
+<div class="summary-line">    - zerodivcond: Either the condition &#x27;i&gt;0x10000&#x27; is redundant or there is division by zero at line 141.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\spi.c</div>
+<div class="summary-line">  Violations: 11</div>
+<div class="summary-line">  Unique rules: 4</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
+<div class="summary-line">    - variableScope: The scope of the variable &#x27;u32Delay&#x27; can be reduced.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\bpwm.c</div>
+<div class="summary-line">  Violations: 9</div>
+<div class="summary-line">  Unique rules: 3</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u32Src==0U&#x27; is always false</div>
+<div class="summary-line">    - redundantAssignment: Variable &#x27;u32Delay&#x27; is assigned an expression that holds the same value.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\retarget.c</div>
+<div class="summary-line">  Violations: 8</div>
+<div class="summary-line">  Unique rules: 5</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
+<div class="summary-line">    - constParameter: Parameter &#x27;stack&#x27; can be declared as const array</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-line">    - knownConditionTrueFalse: Condition &#x27;u32Src==0U&#x27; is always false</div>
+<div class="summary-line">    - unusedStructMember: struct member &#x27;__FILE::handle&#x27; is never used.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\timer.h</div>
+<div class="summary-line">  Violations: 6</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - clarifyCalculation: Clarify calculation precedence for &#x27;&amp;&#x27; and &#x27;?&#x27;.</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\acmp.c</div>
+<div class="summary-line">  Violations: 3</div>
+<div class="summary-line">  Unique rules: 3</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - redundantAssignment: Variable &#x27;u32Delay&#x27; is assigned an expression that holds the same value.</div>
+<div class="summary-line">    - unreadVariable: Variable &#x27;u32Delay&#x27; is assigned a value that is never used.</div>
+<div class="summary-line">    - variableScope: The scope of the variable &#x27;u32Delay&#x27; can be reduced.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lcd.c</div>
+<div class="summary-line">  Violations: 2</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-line">    - variableScope: The scope of the variable &#x27;u32Delay&#x27; can be reduced.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\timer.c</div>
+<div class="summary-line">  Violations: 2</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-line">    - variableScope: The scope of the variable &#x27;u32Delay&#x27; can be reduced.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\timer_pwm.h</div>
+<div class="summary-line">  Violations: 1</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\adc.c</div>
+<div class="summary-line">  Violations: 1</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - badBitmaskCheck: Operator &#x27;|&#x27; with one operand equal to zero is redundant.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\timer_pwm.c</div>
+<div class="summary-line">  Violations: 1</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="subsection-title">MISRA-C Violations by file name</div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\pwm.c</div>
+<div class="summary-line">  Violations: 73</div>
+<div class="summary-line">  Unique rules: 11</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-2.2: 2</div>
+<div class="summary-line">    - misra-c2012-2.7: 3</div>
+<div class="summary-line">    - misra-c2012-10.1: 6</div>
+<div class="summary-line">    - misra-c2012-10.3: 3</div>
+<div class="summary-line">    - misra-c2012-10.4: 31</div>
+<div class="summary-line">    - misra-c2012-10.7: 3</div>
+<div class="summary-line">    - misra-c2012-12.3: 3</div>
+<div class="summary-line">    - misra-c2012-13.3: 3</div>
+<div class="summary-line">    - misra-c2012-15.4: 1</div>
+<div class="summary-line">    - misra-c2012-15.6: 3</div>
+<div class="summary-line">    - misra-c2012-18.4: 15</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\lcd.c</div>
+<div class="summary-line">  Violations: 41</div>
+<div class="summary-line">  Unique rules: 8</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-3.1: 1</div>
+<div class="summary-line">    - misra-c2012-7.3: 5</div>
+<div class="summary-line">    - misra-c2012-10.1: 2</div>
+<div class="summary-line">    - misra-c2012-10.4: 20</div>
+<div class="summary-line">    - misra-c2012-12.3: 4</div>
+<div class="summary-line">    - misra-c2012-15.6: 6</div>
+<div class="summary-line">    - misra-c2012-15.7: 1</div>
+<div class="summary-line">    - misra-c2012-17.7: 2</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\retarget.c</div>
+<div class="summary-line">  Violations: 35</div>
+<div class="summary-line">  Unique rules: 10</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-2.7: 7</div>
+<div class="summary-line">    - misra-c2012-8.2: 1</div>
+<div class="summary-line">    - misra-c2012-8.4: 2</div>
+<div class="summary-line">    - misra-c2012-8.9: 1</div>
+<div class="summary-line">    - misra-c2012-10.4: 2</div>
+<div class="summary-line">    - misra-c2012-15.6: 16</div>
+<div class="summary-line">    - misra-c2012-17.7: 1</div>
+<div class="summary-line">    - misra-c2012-20.1: 1</div>
+<div class="summary-line">    - misra-c2012-21.2: 3</div>
+<div class="summary-line">    - misra-c2012-21.6: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\bpwm.c</div>
+<div class="summary-line">  Violations: 25</div>
+<div class="summary-line">  Unique rules: 3</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-2.7: 18</div>
+<div class="summary-line">    - misra-c2012-12.1: 4</div>
+<div class="summary-line">    - misra-c2012-12.3: 3</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\timer.c</div>
+<div class="summary-line">  Violations: 17</div>
+<div class="summary-line">  Unique rules: 5</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-2.7: 2</div>
+<div class="summary-line">    - misra-c2012-10.4: 3</div>
+<div class="summary-line">    - misra-c2012-12.3: 6</div>
+<div class="summary-line">    - misra-c2012-15.6: 2</div>
+<div class="summary-line">    - misra-c2012-17.8: 4</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\clk.c</div>
+<div class="summary-line">  Violations: 15</div>
+<div class="summary-line">  Unique rules: 7</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-2.7: 1</div>
+<div class="summary-line">    - misra-c2012-10.1: 1</div>
+<div class="summary-line">    - misra-c2012-10.4: 3</div>
+<div class="summary-line">    - misra-c2012-12.3: 3</div>
+<div class="summary-line">    - misra-c2012-15.6: 2</div>
+<div class="summary-line">    - misra-c2012-16.4: 1</div>
+<div class="summary-line">    - misra-c2012-17.7: 4</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\gpio.c</div>
+<div class="summary-line">  Violations: 14</div>
+<div class="summary-line">  Unique rules: 3</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-7.3: 12</div>
+<div class="summary-line">    - misra-c2012-10.4: 1</div>
+<div class="summary-line">    - misra-c2012-15.6: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\spi.c</div>
+<div class="summary-line">  Violations: 13</div>
+<div class="summary-line">  Unique rules: 4</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-12.1: 2</div>
+<div class="summary-line">    - misra-c2012-12.3: 7</div>
+<div class="summary-line">    - misra-c2012-15.6: 3</div>
+<div class="summary-line">    - misra-c2012-17.8: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\clk.h</div>
+<div class="summary-line">  Violations: 7</div>
+<div class="summary-line">  Unique rules: 3</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-10.4: 4</div>
+<div class="summary-line">    - misra-c2012-17.8: 2</div>
+<div class="summary-line">    - misra-c2012-20.7: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\pwm.h</div>
+<div class="summary-line">  Violations: 6</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-17.3: 6</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\sys.c</div>
+<div class="summary-line">  Violations: 5</div>
+<div class="summary-line">  Unique rules: 4</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-10.4: 2</div>
+<div class="summary-line">    - misra-c2012-12.3: 1</div>
+<div class="summary-line">    - misra-c2012-15.6: 1</div>
+<div class="summary-line">    - misra-c2012-15.7: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\acmp.c</div>
+<div class="summary-line">  Violations: 4</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-10.4: 4</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\adc.c</div>
+<div class="summary-line">  Violations: 4</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-2.7: 4</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\timer_pwm.c</div>
+<div class="summary-line">  Violations: 4</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-12.3: 3</div>
+<div class="summary-line">    - misra-c2012-15.6: 1</div>
+<div class="summary-blank"></div>
+<div class="subsection-title">Triggered MISRA-C rules</div>
+<div class="summary-line">- misra-c2012-2.2</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 2</div>
+<div class="summary-line">  Message: There shall be no dead code</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-2.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 35</div>
+<div class="summary-line">  Message: There should be no unused parameters in functions</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-3.1</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: The character sequences /* and // shall not be used within a comment</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-7.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 17</div>
+<div class="summary-line">  Message: The lowercase character &#x27;l&#x27; shall not be used in a literal suffix.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-8.2</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Function types shall be in prototype form with named parameters</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-8.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 2</div>
+<div class="summary-line">  Message: A compatible declaration shall be visible when an object or function with external linkage is defined</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-8.9</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: An object should be defined at block scope if its identifier only appears in a single function</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.1</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 9</div>
+<div class="summary-line">  Message: Operands shall not be of an inappropriate essential type</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 3</div>
+<div class="summary-line">  Message: The value of an expression shall not be assigned to an object with a narrower essential type or of a different essential type category</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 70</div>
+<div class="summary-line">  Message: Both operands of an operator in which the usual arithmetic conversions are performed shall have the same essential type category</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 3</div>
+<div class="summary-line">  Message: If a composite expression is used as one operand of an operator in which the usual arithmetic conversions are performed then the other operand shall not have wider essential type</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-12.1</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 6</div>
+<div class="summary-line">  Message: The precedence of operators within expressions should be made explicit</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-12.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 30</div>
+<div class="summary-line">  Message: The comma operator should not be used</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-13.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 3</div>
+<div class="summary-line">  Message: A full expression containing an increment (++) or decrement (--) operator should have no other potential side effects other than that caused by the increment or decrement operator</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-15.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: There should be no more than one break or goto statement used to terminate any iteration statement</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-15.6</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 35</div>
+<div class="summary-line">  Message: The body of an iteration-statement or a selection-statement shall be a compound-statement</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-15.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 2</div>
+<div class="summary-line">  Message: All if ... else if constructs shall be terminated with an else statement</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-16.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Every switch statement shall have a default label</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-17.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 6</div>
+<div class="summary-line">  Message: A function shall not be declared implicitly</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-17.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 7</div>
+<div class="summary-line">  Message: The value returned by a function having non-void return type shall be used</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-17.8</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 7</div>
+<div class="summary-line">  Message: A function parameter should not be modified</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-18.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 15</div>
+<div class="summary-line">  Message: The +, -, += and -= operators should not be applied to an expression of pointer type</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-20.1</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: #include directives should only be preceded by preprocessor directives or comments</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-20.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Expressions resulting from the expansion of macro parameters shall be enclosed in parentheses</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-21.2</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 3</div>
+<div class="summary-line">  Message: A reserved identifier or macro name shall not be declared</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-21.6</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: The Standard Library input/output functions shall not be used</div></section></div></section><section class="stage-section"><h2 class="stage-title">Stage2</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/Device</li><li>Library/LCDLib</li></ul><div class="summary-blank"></div>
+<div class="subsection-title">Overview</div>
+<div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage2.txt</div>
+<div class="summary-line">Total MISRA-C violations: 114</div>
+<div class="summary-line">Unique MISRA-C rules: 15</div>
+<div class="summary-line">Total CppCheck violations: 13</div>
+<div class="summary-line">Unique CppCheck issue IDs: 3</div>
+<div class="summary-line">MISRA-C configuration issues: 0</div>
+<div class="summary-line">Violations File: 8</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M2U51\Source\ARM\startup_M2U51.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\Device\Nuvoton\M2U51\Source\system_M2U51.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\LCDLib\Include\lcdzone.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\LCDLib\Source\lcdlib.c</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\clk.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\pwm.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\timer.h</div>
+<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\timer_pwm.h</div>
+<div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
+<div class="summary-line">Return code: 1</div>
+<div class="summary-blank"></div>
+<div class="subsection-title">CppCheck Violations by file name</div>
+<div class="summary-line">- Gerrit_NuMicro\Library\LCDLib\Source\lcdlib.c</div>
+<div class="summary-line">  Violations: 6</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-line">    - variableScope: The scope of the variable &#x27;com&#x27; can be reduced.</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\timer.h</div>
+<div class="summary-line">  Violations: 6</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - clarifyCalculation: Clarify calculation precedence for &#x27;&amp;&#x27; and &#x27;?&#x27;.</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\timer_pwm.h</div>
+<div class="summary-line">  Violations: 1</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Messages:</div>
+<div class="summary-line">    - constParameterPointer: Parameter &#x27;timer&#x27; can be declared as pointer to const</div></section><section class="stage-panel"><h3 class="panel-title">MISRA-C Add-on</h3><div class="subsection-title">MISRA-C Violations by file name</div>
+<div class="summary-line">- Gerrit_NuMicro\Library\LCDLib\Source\lcdlib.c</div>
+<div class="summary-line">  Violations: 83</div>
+<div class="summary-line">  Unique rules: 10</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-2.2: 3</div>
+<div class="summary-line">    - misra-c2012-10.1: 3</div>
+<div class="summary-line">    - misra-c2012-10.2: 1</div>
+<div class="summary-line">    - misra-c2012-10.3: 1</div>
+<div class="summary-line">    - misra-c2012-10.4: 39</div>
+<div class="summary-line">    - misra-c2012-10.6: 1</div>
+<div class="summary-line">    - misra-c2012-12.3: 7</div>
+<div class="summary-line">    - misra-c2012-15.6: 3</div>
+<div class="summary-line">    - misra-c2012-17.8: 2</div>
+<div class="summary-line">    - misra-c2012-18.4: 23</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\LCDLib\Include\lcdzone.h</div>
+<div class="summary-line">  Violations: 13</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-11.8: 12</div>
+<div class="summary-line">    - misra-c2012-20.9: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\clk.h</div>
+<div class="summary-line">  Violations: 7</div>
+<div class="summary-line">  Unique rules: 3</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-10.4: 4</div>
+<div class="summary-line">    - misra-c2012-17.8: 2</div>
+<div class="summary-line">    - misra-c2012-20.7: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\pwm.h</div>
+<div class="summary-line">  Violations: 6</div>
+<div class="summary-line">  Unique rules: 1</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-17.3: 6</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\Device\Nuvoton\M2U51\Source\system_M2U51.c</div>
+<div class="summary-line">  Violations: 3</div>
+<div class="summary-line">  Unique rules: 3</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-8.4: 1</div>
+<div class="summary-line">    - misra-c2012-12.3: 1</div>
+<div class="summary-line">    - misra-c2012-15.6: 1</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- Gerrit_NuMicro\Library\Device\Nuvoton\M2U51\Source\ARM\startup_M2U51.c</div>
+<div class="summary-line">  Violations: 2</div>
+<div class="summary-line">  Unique rules: 2</div>
+<div class="summary-line">  Triggered items:</div>
+<div class="summary-line">    - misra-c2012-8.4: 1</div>
+<div class="summary-line">    - misra-c2012-15.6: 1</div>
+<div class="summary-blank"></div>
+<div class="subsection-title">Triggered MISRA-C rules</div>
+<div class="summary-line">- misra-c2012-2.2</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 3</div>
+<div class="summary-line">  Message: There shall be no dead code</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-8.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 2</div>
+<div class="summary-line">  Message: A compatible declaration shall be visible when an object or function with external linkage is defined</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.1</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 3</div>
+<div class="summary-line">  Message: Operands shall not be of an inappropriate essential type</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.2</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Expressions of essentially character type shall not be used inappropriately in addition and subtraction operations</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: The value of an expression shall not be assigned to an object with a narrower essential type or of a different essential type category</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 43</div>
+<div class="summary-line">  Message: Both operands of an operator in which the usual arithmetic conversions are performed shall have the same essential type category</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-10.6</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: The value of a composite expression shall not be assigned to an object with wider essential type</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-11.8</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 12</div>
+<div class="summary-line">  Message: A cast shall not remove any const or volatile qualification from the type pointed to by a pointer</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-12.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 8</div>
+<div class="summary-line">  Message: The comma operator should not be used</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-15.6</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 5</div>
+<div class="summary-line">  Message: The body of an iteration-statement or a selection-statement shall be a compound-statement</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-17.3</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 6</div>
+<div class="summary-line">  Message: A function shall not be declared implicitly</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-17.8</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 4</div>
+<div class="summary-line">  Message: A function parameter should not be modified</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-18.4</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 23</div>
+<div class="summary-line">  Message: The +, -, += and -= operators should not be applied to an expression of pointer type</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-20.7</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: Expressions resulting from the expansion of macro parameters shall be enclosed in parentheses</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-20.9</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: All identifiers used in the controlling expression of #if or #elif preprocessing directives shall be #define&#x27;d before evaluation</div></section></div></section></div>
+    </div>
+</body>
+</html>
