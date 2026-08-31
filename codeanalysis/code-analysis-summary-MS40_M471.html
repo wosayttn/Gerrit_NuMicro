@@ -183,8 +183,8 @@
         <div class="content"><section class="stage-section"><h2 class="stage-title">Graph</h2><div class="stage-grid"><section class="stage-panel"><div class="graph-row"><span class="graph-stage-name">Stage1</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div><div class="graph-row"><span class="graph-stage-name">Stage2</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div></section></div></section><section class="stage-section"><h2 class="stage-title">Violations File Scope</h2><div class="stage-grid"><section class="stage-panel scope-panel"><ul class="scope-list"><li>Gerrit_NuMicro\Library\Device\Nuvoton\M471\Include\M471.h</li><li>Gerrit_NuMicro\Library\Device\Nuvoton\M471\Source\ARM\startup_M471.c</li><li>Gerrit_NuMicro\Library\Device\Nuvoton\M471\Source\system_M471.c</li><li>Gerrit_NuMicro\Library\StdDriver\inc\acmp.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\clk.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\eadc.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\i2c.h</li><li>Gerrit_NuMicro\Library\StdDriver\inc\timer.h</li><li>Gerrit_NuMicro\Library\StdDriver\src\acmp.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\clk.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\eadc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\gpio.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\i2c.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\pdma.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\prng.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\retarget.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\sys.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\timer.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\uart.c</li></ul></section></div></section><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
 <div class="subsection-title">Overview</div>
 <div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
-<div class="summary-line">Total MISRA-C violations: 472</div>
-<div class="summary-line">Unique MISRA-C rules: 23</div>
+<div class="summary-line">Total MISRA-C violations: 473</div>
+<div class="summary-line">Unique MISRA-C rules: 24</div>
 <div class="summary-line">Total CppCheck violations: 62</div>
 <div class="summary-line">Unique CppCheck issue IDs: 14</div>
 <div class="summary-line">MISRA-C configuration issues: 0</div>
@@ -289,8 +289,8 @@
 <div class="summary-line">    - misra-c2012-15.7: 1</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\retarget.c</div>
-<div class="summary-line">  Violations: 104</div>
-<div class="summary-line">  Unique rules: 13</div>
+<div class="summary-line">  Violations: 105</div>
+<div class="summary-line">  Unique rules: 14</div>
 <div class="summary-line">  Triggered items:</div>
 <div class="summary-line">    - misra-c2012-2.7: 3</div>
 <div class="summary-line">    - misra-c2012-7.3: 1</div>
@@ -303,6 +303,7 @@
 <div class="summary-line">    - misra-c2012-15.6: 26</div>
 <div class="summary-line">    - misra-c2012-17.7: 13</div>
 <div class="summary-line">    - misra-c2012-17.8: 4</div>
+<div class="summary-line">    - misra-c2012-20.1: 1</div>
 <div class="summary-line">    - misra-c2012-21.2: 3</div>
 <div class="summary-line">    - misra-c2012-21.6: 13</div>
 <div class="summary-blank"></div>
@@ -515,6 +516,11 @@
 <div class="summary-line">  Severity: style</div>
 <div class="summary-line">  Count: 14</div>
 <div class="summary-line">  Message: A function parameter should not be modified</div>
+<div class="summary-blank"></div>
+<div class="summary-line">- misra-c2012-20.1</div>
+<div class="summary-line">  Severity: style</div>
+<div class="summary-line">  Count: 1</div>
+<div class="summary-line">  Message: #include directives should only be preceded by preprocessor directives or comments</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-20.5</div>
 <div class="summary-line">  Severity: style</div>
