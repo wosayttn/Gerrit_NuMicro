@@ -1,22 +1,142 @@
 [
-  {"branch":"MS20_M2354","file":"code-analysis-summary-MS20_M2354.html"}
-,
-  {"branch":"MS40_M2L31","file":"code-analysis-summary-MS40_M2L31.html"}
-,
-  {"branch":"MS40_M2U51","file":"code-analysis-summary-MS40_M2U51.html"}
-,
-  {"branch":"MS40_M471","file":"code-analysis-summary-MS40_M471.html"}
-,
-  {"branch":"MS70_M251","file":"code-analysis-summary-MS70_M251.html"}
-,
-  {"branch":"MS70_M253","file":"code-analysis-summary-MS70_M253.html"}
-,
-  {"branch":"MS70_M3351","file":"code-analysis-summary-MS70_M3351.html"}
-,
-  {"branch":"MS70_M5531","file":"code-analysis-summary-MS70_M5531.html"}
-,
-  {"branch":"MS70_M55M1","file":"code-analysis-summary-MS70_M55M1.html"}
-,
-  {"branch":"MS70_NUC121","file":"code-analysis-summary-MS70_NUC121.html"}
-
+  {
+    "branch": "MS20_M2354",
+    "file": "code-analysis-summary-MS20_M2354.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS40_M2L31",
+    "file": "code-analysis-summary-MS40_M2L31.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS40_M2U51",
+    "file": "code-analysis-summary-MS40_M2U51.html",
+    "stage1": {
+      "status": "Fail",
+      "misra": 49,
+      "cppcheck": 28
+    },
+    "stage2": {
+      "status": "Fail",
+      "misra": 7,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS40_M471",
+    "file": "code-analysis-summary-MS40_M471.html",
+    "stage1": {
+      "status": "Fail",
+      "misra": 473,
+      "cppcheck": 62
+    },
+    "stage2": {
+      "status": "Fail",
+      "misra": 31,
+      "cppcheck": 11
+    }
+  },
+  {
+    "branch": "MS70_M251",
+    "file": "code-analysis-summary-MS70_M251.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS70_M253",
+    "file": "code-analysis-summary-MS70_M253.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS70_M3351",
+    "file": "code-analysis-summary-MS70_M3351.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS70_M5531",
+    "file": "code-analysis-summary-MS70_M5531.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS70_M55M1",
+    "file": "code-analysis-summary-MS70_M55M1.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  },
+  {
+    "branch": "MS70_NUC121",
+    "file": "code-analysis-summary-MS70_NUC121.html",
+    "stage1": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    },
+    "stage2": {
+      "status": "Pass",
+      "misra": 0,
+      "cppcheck": 0
+    }
+  }
 ]

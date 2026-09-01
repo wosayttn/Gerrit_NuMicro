@@ -13,14 +13,8 @@
     color: #e0e0e0;
     padding: 2rem;
   }
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
+  .container { max-width: 980px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2.5rem; }
   header h1 {
     font-size: 2rem;
     font-weight: 700;
@@ -28,13 +22,8 @@
     margin-bottom: 0.5rem;
     letter-spacing: -0.5px;
   }
-  header p {
-    color: #94a3b8;
-    font-size: 0.95rem;
-  }
-  .search-box {
-    margin-bottom: 1.5rem;
-  }
+  header p { color: #94a3b8; font-size: 0.95rem; }
+  .search-box { margin-bottom: 1.5rem; }
   .search-box input {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -51,24 +40,18 @@
     box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
   }
   .search-box input::placeholder { color: #64748b; }
-  .stats {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
+  .stats { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
   .stat-card {
     flex: 1;
+    min-width: 140px;
     background: rgba(255,255,255,0.05);
     border: 1px solid #334155;
     border-radius: 10px;
     padding: 1rem 1.25rem;
     text-align: center;
   }
-  .stat-card .number {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #3b82f6;
-  }
+  .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #3b82f6; }
+  .stat-card .number.fail { color: #f87171; }
   .stat-card .label {
     font-size: 0.8rem;
     color: #94a3b8;
@@ -76,15 +59,12 @@
     letter-spacing: 0.5px;
     margin-top: 0.25rem;
   }
-  .report-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  .report-list { display: flex; flex-direction: column; gap: 0.5rem; }
   .report-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     padding: 1rem 1.25rem;
     background: rgba(255,255,255,0.04);
     border: 1px solid #334155;
@@ -98,10 +78,8 @@
     border-color: #3b82f6;
     transform: translateX(4px);
   }
-  .report-item .branch-name {
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
+  .report-main { min-width: 0; }
+  .report-item .branch-name { font-weight: 600; font-size: 0.95rem; }
   .report-item .dept-badge {
     display: inline-block;
     padding: 0.2rem 0.6rem;
@@ -116,22 +94,54 @@
   .dept-ms20 { background: #2563eb22; color: #60a5fa; border: 1px solid #2563eb44; }
   .dept-ms40 { background: #05966922; color: #34d399; border: 1px solid #05966944; }
   .dept-ms70 { background: #d9770622; color: #fb923c; border: 1px solid #d9770644; }
+  .stage-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    flex: 1;
+  }
+  .stage-card {
+    min-width: 160px;
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: rgba(15, 23, 42, 0.45);
+  }
+  .stage-card .stage-name {
+    font-size: 0.68rem;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 0.2rem;
+  }
+  .stage-card .stage-status {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .stage-card .stage-metrics {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+  }
+  .status-pass { color: #34d399; }
+  .status-fail { color: #f87171; }
+  .status-skipped, .status-na { color: #94a3b8; }
+  .stage-card.status-fail {
+    border-color: #ef444466;
+    background: rgba(239, 68, 68, 0.08);
+  }
+  .stage-card.status-pass {
+    border-color: #10b98144;
+  }
   .report-item .arrow {
     color: #64748b;
     font-size: 1.2rem;
     transition: transform 0.2s;
+    flex-shrink: 0;
   }
   .report-item:hover .arrow { transform: translateX(4px); color: #3b82f6; }
-  .loading {
-    text-align: center;
-    padding: 3rem;
-    color: #64748b;
-  }
-  .empty {
-    text-align: center;
-    padding: 3rem;
-    color: #64748b;
-  }
+  .loading, .empty { text-align: center; padding: 3rem; color: #64748b; }
   .hidden { display: none; }
   footer {
     text-align: center;
@@ -141,10 +151,12 @@
     color: #475569;
     font-size: 0.8rem;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     body { padding: 1rem; }
     header h1 { font-size: 1.5rem; }
     .stats { flex-direction: column; }
+    .report-item { flex-wrap: wrap; }
+    .stage-info { width: 100%; justify-content: flex-start; }
   }
 </style>
 </head>
@@ -156,7 +168,7 @@
   </header>
 
   <div class="search-box">
-    <input type="text" id="search" placeholder="Filter by branch name...">
+    <input type="text" id="search" placeholder="Filter by branch, department, or stage status...">
   </div>
 
   <div class="stats" id="stats">
@@ -167,6 +179,14 @@
     <div class="stat-card">
       <div class="number" id="dept-count">-</div>
       <div class="label">Departments</div>
+    </div>
+    <div class="stat-card">
+      <div class="number fail" id="stage1-fail-count">-</div>
+      <div class="label">Stage 1 Fail</div>
+    </div>
+    <div class="stat-card">
+      <div class="number fail" id="stage2-fail-count">-</div>
+      <div class="label">Stage 2 Fail</div>
     </div>
   </div>
 
@@ -196,6 +216,33 @@
     return m ? m[1] : '';
   }
 
+  function stageOf(item, key) {
+    return item[key] || { status: 'N/A', misra: null, cppcheck: null };
+  }
+
+  function statusClass(status) {
+    var s = (status || 'N/A').toLowerCase();
+    if (s === 'pass') return 'status-pass';
+    if (s === 'fail') return 'status-fail';
+    if (s === 'skipped') return 'status-skipped';
+    return 'status-na';
+  }
+
+  function metricText(stage) {
+    var misra = (stage.misra === null || stage.misra === undefined) ? '-' : stage.misra;
+    var cppcheck = (stage.cppcheck === null || stage.cppcheck === undefined) ? '-' : stage.cppcheck;
+    return 'MISRA ' + misra + ' · CppCheck ' + cppcheck;
+  }
+
+  function stageCard(label, stage) {
+    var cls = statusClass(stage.status);
+    return '<div class="stage-card ' + cls + '">' +
+      '<div class="stage-name">' + label + '</div>' +
+      '<div class="stage-status ' + cls + '">' + (stage.status || 'N/A') + '</div>' +
+      '<div class="stage-metrics">' + metricText(stage) + '</div>' +
+    '</div>';
+  }
+
   function render(data) {
     container.innerHTML = '';
     if (!data || data.length === 0) {
@@ -208,22 +255,45 @@
       a.href = item.file;
       var dept = getDeptLabel(item.branch);
       var deptClass = getDeptClass(item.branch);
+      var s1 = stageOf(item, 'stage1');
+      var s2 = stageOf(item, 'stage2');
       a.innerHTML =
-        '<div>' +
+        '<div class="report-main">' +
           (dept ? '<span class="dept-badge ' + deptClass + '">' + dept + '</span>' : '') +
           '<span class="branch-name">' + item.branch + '</span>' +
+        '</div>' +
+        '<div class="stage-info">' +
+          stageCard('Stage 1', s1) +
+          stageCard('Stage 2', s2) +
         '</div>' +
         '<span class="arrow">→</span>';
       container.appendChild(a);
     });
   }
 
+  function matchesQuery(item, q) {
+    if (!q) return true;
+    var s1 = stageOf(item, 'stage1');
+    var s2 = stageOf(item, 'stage2');
+    var hay = [
+      item.branch,
+      getDeptLabel(item.branch),
+      'stage1 ' + (s1.status || ''),
+      'stage2 ' + (s2.status || ''),
+      'stage 1 ' + (s1.status || ''),
+      'stage 2 ' + (s2.status || '')
+    ].join(' ').toLowerCase();
+    return hay.indexOf(q) !== -1;
+  }
+
   function filterAndRender(query) {
-    var q = query.toLowerCase();
-    var filtered = items.filter(function(item) {
-      return item.branch.toLowerCase().indexOf(q) !== -1;
-    });
-    render(filtered);
+    render(items.filter(function(item) { return matchesQuery(item, query.toLowerCase()); }));
+  }
+
+  function countFails(key) {
+    return items.filter(function(item) {
+      return (stageOf(item, key).status || '').toLowerCase() === 'fail';
+    }).length;
   }
 
   fetch('reports.json?t=' + Date.now())
@@ -238,6 +308,8 @@
         if (d) depts[d] = true;
       });
       document.getElementById('dept-count').textContent = Object.keys(depts).length;
+      document.getElementById('stage1-fail-count').textContent = countFails('stage1');
+      document.getElementById('stage2-fail-count').textContent = countFails('stage2');
       render(items);
     })
     .catch(function() {
