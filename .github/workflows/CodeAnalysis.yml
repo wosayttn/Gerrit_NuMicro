@@ -87,24 +87,8 @@ jobs:
             cp "$RENAMED_SUMMARY" "$PAGES_DIR/"
           fi
 
-          # Generate reports.json manifest
-          echo '[' > "$PAGES_DIR/reports.json"
-          first=true
-          for f in "$PAGES_DIR"/code-analysis-summary-*.html; do
-            if [[ -f "$f" ]]; then
-              fname=$(basename "$f")
-              branch_label="${fname#code-analysis-summary-}"
-              branch_label="${branch_label%.html}"
-              if [ "$first" = true ]; then
-                first=false
-              else
-                echo ',' >> "$PAGES_DIR/reports.json"
-              fi
-              echo "  {\"branch\":\"$branch_label\",\"file\":\"$fname\"}" >> "$PAGES_DIR/reports.json"
-            fi
-          done
-          echo '' >> "$PAGES_DIR/reports.json"
-          echo ']' >> "$PAGES_DIR/reports.json"
+          # Generate reports.json and index.html with Stage 1 / Stage 2 info
+          python "$GITHUB_WORKSPACE/.github/scripts/generate_codeanalysis_index.py" "$PAGES_DIR"
 
           exit $ret
 
