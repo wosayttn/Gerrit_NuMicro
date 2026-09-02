@@ -46,12 +46,12 @@
     "file": "code-analysis-summary-MS40_M471.html",
     "stage1": {
       "status": "Fail",
-      "misra": 368,
-      "cppcheck": 55
+      "misra": 190,
+      "cppcheck": 25
     },
     "stage2": {
       "status": "Fail",
-      "misra": 21,
+      "misra": 20,
       "cppcheck": 11
     }
   },
