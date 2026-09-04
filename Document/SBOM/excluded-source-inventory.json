@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+  "scope": "Distributed optional GCC syscall/semihosting templates excluded from the M2U51 Device content aggregate",
+  "files": [
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/GCC/_syscalls.c",
+      "sha256": "f2a6dff29c7eeb015068e34b4498b99a154a86d67adb2f9cf1ed935d2fd3cd7e",
+      "distributed": true,
+      "representedInProductAggregate": false,
+      "licenseStatus": "legal-review-required",
+      "notice": "File notices reference µOS++ III and GPL-derived newlib portions; exact upstream version, GPL version, exception, and authoritative redistribution terms are not established."
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/GCC/semihosting.h",
+      "sha256": "5d5aa6773af98cff582cb3d30757d3fc56a6a668c662394b6bdacb0a24310bfe",
+      "distributed": true,
+      "representedInProductAggregate": false,
+      "licenseStatus": "legal-review-required",
+      "notice": "Used by the excluded _syscalls.c template; authoritative upstream and applicable redistribution terms are not established."
+    }
+  ],
+  "releaseDecision": "BLOCKED pending authoritative OSS/Legal classification; no license or exception is inferred"
+}
