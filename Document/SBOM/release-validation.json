@@ -1,0 +1,34 @@
+{
+  "artifactMode": "durable-sbom-source",
+  "releaseReady": false,
+  "requiredArtifacts": [
+    "m2l31bsp_Product_SBOM_cdx.json",
+    "m2l31bsp_TestSample_SBOM_cdx.json",
+    "m2l31bsp_SBOM_Manifest.json",
+    "Document/SBOM/evidence/provenance.json",
+    "Document/SBOM/evidence/checks-performed.json",
+    "Document/SBOM/evidence/known-unknowns.json",
+    "Document/SBOM/evidence/binary-license-database.json",
+    "Document/SBOM/evidence/scan-evidence.json",
+    "Document/SBOM/config/remediation-config.json",
+    "Document/SBOM/config/grype-config.yaml"
+  ],
+  "binaryDatabase": {
+    "required": true,
+    "path": "Document/SBOM/evidence/binary-license-database.json"
+  },
+  "checksPerformed": [
+    "dependency-reachability",
+    "purl-collision",
+    "tracked-artifact-closure",
+    "canonical-aggregate",
+    "cpe-authority",
+    "vulnerability-disposition",
+    "legal-closure"
+  ],
+  "knownUnknowns": [
+    "CAT/INF authoritative license decisions are unresolved.",
+    "PSIRT/VEX disposition is pending for scanner range matches."
+  ],
+  "status": "validated-with-release-blockers"
+}

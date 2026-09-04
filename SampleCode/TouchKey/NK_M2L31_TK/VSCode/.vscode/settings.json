@@ -1,0 +1,7 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Project\\M2L31_Git_0508\\M2L31\\bsp\\SampleCode\\TouchKey\\NK_M2L31_TK\\VSCode\\out\\NK_M2L31_TK\\GNUC\\FreeRun"
+    ],
+    "cmake.sourceDirectory": "C:/Project/M2L31/M2L31/bsp/SampleCode/TouchKey/NK_M2L31_TK/VSCode/tmp/NK_M2L31_TK.Calibration+GNUC"
+}

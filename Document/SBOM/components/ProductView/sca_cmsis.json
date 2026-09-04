@@ -1,0 +1,131 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@6.1.0?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "6.1.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "purl": "pkg:generic/cmsis@6.1.0",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core, CMSIS-Driver, CMSIS-RTOS2 API headers, templates, and documentation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "cmsis_core_version",
+          "value": "6.1"
+        },
+        {
+          "name": "cmsis_rtos2_api_version",
+          "value": "2.3.0"
+        },
+        {
+          "name": "cmsis_driver_common_api_version",
+          "value": "2.0"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+        },
+        {
+          "name": "bsp:hash-role",
+          "value": "tracked-scope-aggregate"
+        },
+        {
+          "name": "bsp:aggregate-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:aggregate-path-base",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:aggregate-file-count",
+          "value": "2189"
+        },
+        {
+          "name": "bsp:version-anchor-path",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h"
+        },
+        {
+          "name": "bsp:version-anchor-sha256",
+          "value": "3b9195c5373a2a4dbfd968b083b3d7f5f446f9ec2e126f75928ac1ff4356b91e"
+        },
+        {
+          "name": "bsp:inventory",
+          "value": "Document/SBOM/inventory/cmsis.json"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "2189"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06d9b96d14d417f5932cc119038907fd99cd18723be6d4e7bf601a7e458801b2"
+        }
+      ]
+    }
+  ],
+  "sourceIdentity": {
+    "versionAnchor": {
+      "path": "Library/CMSIS/Core/Include/cmsis_version.h",
+      "sha256": "3b9195c5373a2a4dbfd968b083b3d7f5f446f9ec2e126f75928ac1ff4356b91e",
+      "role": "version-anchor"
+    },
+    "aggregate": {
+      "algorithm": "sha256-path-nul-content-nul-v1",
+      "pathBase": "Library/CMSIS",
+      "fileCount": 2189,
+      "sha256": "06d9b96d14d417f5932cc119038907fd99cd18723be6d4e7bf601a7e458801b2"
+    },
+    "repositoryRelativeComparisonSha256": "01c7415548d4eef868cdd29431df23f69d1f56d01782d0c5beda351dd7778734",
+    "inventory": "Document/SBOM/inventory/cmsis.json"
+  }
+}

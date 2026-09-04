@@ -1,0 +1,117 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/fatfs@R0.12?source=vendored&path=ThirdParty/FatFs",
+      "name": "FatFs",
+      "version": "R0.12",
+      "scope": "required",
+      "author": "ChaN",
+      "supplier": {
+        "name": "ChaN"
+      },
+      "purl": "pkg:generic/fatfs@R0.12",
+      "description": "FatFs - Generic FAT file system module for embedded systems (ANSI C/C89), integrated as vendored source code.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-FatFs-R0.12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/FatFs"
+        },
+        {
+          "name": "fatfs_revision_id",
+          "value": "88100"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "FatFs (ChaN) - Generic FAT file system module"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_fatfs.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/FatFs"
+        },
+        {
+          "name": "bsp:hash-role",
+          "value": "tracked-scope-aggregate"
+        },
+        {
+          "name": "bsp:aggregate-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:aggregate-path-base",
+          "value": "ThirdParty/FatFs"
+        },
+        {
+          "name": "bsp:aggregate-file-count",
+          "value": "139"
+        },
+        {
+          "name": "bsp:version-anchor-path",
+          "value": "ThirdParty/FatFs/src/ff.c"
+        },
+        {
+          "name": "bsp:version-anchor-sha256",
+          "value": "37dacb04a194b8552072f87b95b159d80df2fe60e0196d88d8fd18cb8afae129"
+        },
+        {
+          "name": "bsp:inventory",
+          "value": "Document/SBOM/inventory/fatfs.json"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "139"
+        },
+        {
+          "name": "bsp:path",
+          "value": "ThirdParty/FatFs"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b3b2af6b0bbc4218fdb004f96fdd079d720704765b218a62008601283741a644"
+        }
+      ]
+    }
+  ],
+  "sourceIdentity": {
+    "versionAnchor": {
+      "path": "ThirdParty/FatFs/src/ff.c",
+      "sha256": "37dacb04a194b8552072f87b95b159d80df2fe60e0196d88d8fd18cb8afae129",
+      "role": "version-anchor"
+    },
+    "aggregate": {
+      "algorithm": "sha256-path-nul-content-nul-v1",
+      "pathBase": "ThirdParty/FatFs",
+      "fileCount": 139,
+      "sha256": "b3b2af6b0bbc4218fdb004f96fdd079d720704765b218a62008601283741a644"
+    },
+    "repositoryRelativeComparisonSha256": "3393b8ed4f9728b38e9e773f86fc8893876294eb698aa41f6d3ea8e746ea7b27",
+    "inventory": "Document/SBOM/inventory/fatfs.json"
+  }
+}

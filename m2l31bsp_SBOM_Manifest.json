@@ -1,0 +1,29 @@
+{
+  "manifestFormat": "M2L31 durable SBOM source",
+  "manifestVersion": 2,
+  "createdAt": "2026-09-02T12:53:41+08:00",
+  "baselineCommit": "7d75be4053bb0365b838f165216fb42328a69ae2",
+  "lifecycleCommit": null,
+  "releaseIdentity": null,
+  "distributionIdentity": null,
+  "sboms": [
+    {
+      "view": "Product",
+      "path": "m2l31bsp_Product_SBOM_cdx.json",
+      "sha256": "c7491c5f522e5d6d8160241176529f9fe640568610b05d153a53921f54f9ae8c"
+    },
+    {
+      "view": "TestSample",
+      "path": "m2l31bsp_TestSample_SBOM_cdx.json",
+      "sha256": "8cbaa8337be089254ec128948f24636d595138dada733b3883ea0ba9a4b7f595"
+    }
+  ],
+  "checksPerformed": "Document/SBOM/evidence/checks-performed.json",
+  "knownUnknowns": "Document/SBOM/evidence/known-unknowns.json",
+  "security": {
+    "assessment": "not_assessed",
+    "approval": "pending",
+    "vex": "not_published",
+    "applicable": null
+  }
+}
