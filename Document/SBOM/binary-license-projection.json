@@ -1,0 +1,41 @@
+{
+  "format": "mcu-bsp-binary-license-projection",
+  "version": 1,
+  "candidateBaselineCommit": "badf61f833eb8c37c1a87445db2722c0abec604c",
+  "sourceDatabase": {
+    "path": "Document/SBOM/binary-license-database.json",
+    "sha256": "6879671f2d56c2200a3740b414fa181d60bc42ab01cd96f8b312ff21b8995b4a"
+  },
+  "matchingPolicy": {
+    "algorithm": "SHA-256",
+    "filenameOnly": false,
+    "failClosed": true
+  },
+  "applicable": [
+    {
+      "path": "SampleCode/XOM/XOMLib/lua5.1.dll",
+      "sha256": "26384c6ee7d50863e3fb65fdc1bad452d9311f34d782390401de9bb130eecc4a",
+      "componentBomRef": "m471bsp:binary:lua-runtime:26384c6e",
+      "license": "MIT",
+      "evidence": "Document/SBOM/license-evidence/samplecode-xom-xomlib-lua5.1-dll.md",
+      "status": "identified"
+    },
+    {
+      "path": "SampleCode/XOM/XOMLib/XOMAddr.exe",
+      "sha256": "10d3cf6d50b65b6adc13efd4c782ec7b09fd5894381e437c63517ccf7d7dfb6a",
+      "componentBomRef": "m471bsp:binary:xomaddr:10d3cf6d",
+      "license": "LicenseRef-Nuvoton-Software-License-Agreement",
+      "evidence": "Document/SBOM/license-evidence/samplecode-xom-xomlib-xomaddr-exe.md",
+      "evidenceSha256": "1cf3c4a3cba8a59a64c35c8a4f505d4c4412e735bb8bb179c79ed4aa1529fc88",
+      "licenseDefinition": "Document/SBOM/license-definitions.json#LicenseRef-Nuvoton-Software-License-Agreement",
+      "licenseDefinitionSha256": "c27f981e5ff741ee4d9baa09cb41eed1e2f88fc08baedbfba39c8107444035fc",
+      "formalSource": "SVN r43 bsp/m471/V3.03.000-21-ga1b76a29/Nuvoton Software License Agreement.md",
+      "formalSourceSha256": "8c61cd7eb3a4bd8693bb3678c57c9568d328ad661dc5f4682fcf306644dcf9fe",
+      "agreementPackagedInGit": false,
+      "distributionBlockerId": "BLK-LEGAL-NUVOTON-AGREEMENT-GIT-DISTRIBUTION",
+      "status": "identified-from-formal-SVN-evidence"
+    }
+  ],
+  "blocked": [],
+  "excludedDatabaseEntries": 35
+}

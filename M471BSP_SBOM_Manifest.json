@@ -1,0 +1,338 @@
+{
+  "manifestFormat": "MCU-BSP-SBOM-Current-Candidate",
+  "manifestVersion": "2.0",
+  "createdAt": "2026-09-02T04:19:13Z",
+  "bsp": {
+    "name": "M471BSP",
+    "version": "V3.03.000-22-gbadf61f8",
+    "releaseIdentifierSource": "git describe --tags --always --long --abbrev=8 --dirty",
+    "gitDescribe": "V3.03.000-22-gbadf61f8",
+    "gitCommit": "badf61f833eb8c37c1a87445db2722c0abec604c",
+    "sourceTreeState": "clean",
+    "scanSourceCommit": "84b9da1dae9fc61df3e1b59c352c2e9887a13bcb",
+    "generationCommit": null,
+    "releaseCommit": "a1b76a29ddd3b05862c9318e3b8bf0dfef9f0632",
+    "distributionCommit": "badf61f833eb8c37c1a87445db2722c0abec604c"
+  },
+  "generationTools": [
+    {
+      "name": "SBOM Generator",
+      "version": "current-candidate-1.0.0"
+    },
+    {
+      "name": "Syft",
+      "version": "1.45.1"
+    },
+    {
+      "name": "CycloneDX CLI",
+      "version": "0.32.0+0ed788d25c13cef9e9a3029603f6b708e3279390"
+    },
+    {
+      "name": "grype",
+      "version": "0.117.0"
+    },
+    {
+      "name": "sbom-checker",
+      "version": "1.0.0"
+    }
+  ],
+  "candidate": {
+    "name": "M471BSP",
+    "baselineCommit": "badf61f833eb8c37c1a87445db2722c0abec604c",
+    "generationCommit": null,
+    "treeStateAtGeneration": "dirty-by-generated-candidate",
+    "releaseEligible": false
+  },
+  "lifecycle": {
+    "scanSource": {
+      "commit": "84b9da1dae9fc61df3e1b59c352c2e9887a13bcb",
+      "role": "historical source tree used by the original scan"
+    },
+    "releaseSource": {
+      "commit": "a1b76a29ddd3b05862c9318e3b8bf0dfef9f0632",
+      "releaseIdentifier": "V3.03.000-21-ga1b76a29",
+      "formalSvnRevision": 43,
+      "formalSvnPath": "bsp/m471/V3.03.000-21-ga1b76a29",
+      "role": "formal r43 release source"
+    },
+    "distribution": {
+      "commit": "badf61f833eb8c37c1a87445db2722c0abec604c",
+      "gitDescribe": "V3.03.000-22-gbadf61f8",
+      "role": "current candidate distribution baseline"
+    },
+    "generation": {
+      "commit": null,
+      "role": "uncommitted isolated-worktree current candidate"
+    }
+  },
+  "generation": {
+    "generatorName": "M471 SBOM generator",
+    "generatorVersion": "current-candidate-1.0.0",
+    "generatorDistributedWithBsp": false,
+    "hashRecipe": "sha256-path-nul-content-nul-v1",
+    "machineGenerated": true
+  },
+  "sboms": [
+    {
+      "fileName": "M471BSP_Product_SBOM_cdx.json",
+      "sbomType": "Product SBOM",
+      "componentSummary": {
+        "componentCount": 9,
+        "componentCountByType": {
+          "data": 3,
+          "library": 6
+        },
+        "applicationNames": [],
+        "fileComponentCount": 0,
+        "fileComponentWithHashCount": 0
+      },
+      "hash": {
+        "algorithm": "SHA-256",
+        "value": "074e368aac67c05a9ad9a55956e9786b187b837e999b0585d2f7cea990aae066"
+      },
+      "sha256": "074e368aac67c05a9ad9a55956e9786b187b837e999b0585d2f7cea990aae066"
+    },
+    {
+      "fileName": "M471BSP_TestSample_SBOM_cdx.json",
+      "sbomType": "Test Sample SBOM",
+      "componentSummary": {
+        "componentCount": 15,
+        "componentCountByType": {
+          "application": 1,
+          "data": 1,
+          "firmware": 8,
+          "library": 5
+        },
+        "applicationNames": [
+          "XOMAddr"
+        ],
+        "fileComponentCount": 0,
+        "fileComponentWithHashCount": 0
+      },
+      "hash": {
+        "algorithm": "SHA-256",
+        "value": "624c5157ce98ed7126f3b4be449f74607853e780a4bd4383153a60b797eabfc6"
+      },
+      "sha256": "624c5157ce98ed7126f3b4be449f74607853e780a4bd4383153a60b797eabfc6"
+    }
+  ],
+  "evidence": {
+    "aggregateInventory": {
+      "path": "Document/SBOM/aggregate-inventory.json",
+      "sha256": "dbbc5a606a4a35c93619adadbc36bda8afe5db18d8d51c49153219e4615a440f"
+    },
+    "binaryLicenseProjection": {
+      "path": "Document/SBOM/binary-license-projection.json",
+      "sha256": "aa403d0a7760ac20d8911a2d77bda40f6206d8295d88c3311d0c54aa3a4cbd91"
+    },
+    "nuvotonLicenseEvidence": {
+      "path": "Document/SBOM/license-evidence/samplecode-xom-xomlib-xomaddr-exe.md",
+      "sha256": "1cf3c4a3cba8a59a64c35c8a4f505d4c4412e735bb8bb179c79ed4aa1529fc88",
+      "formalSource": "SVN r43 bsp/m471/V3.03.000-21-ga1b76a29/Nuvoton Software License Agreement.md",
+      "formalSourceSha256": "8c61cd7eb3a4bd8693bb3678c57c9568d328ad661dc5f4682fcf306644dcf9fe",
+      "agreementPackagedInGit": false,
+      "blockerId": "BLK-LEGAL-NUVOTON-AGREEMENT-GIT-DISTRIBUTION"
+    },
+    "licenseDefinitions": {
+      "path": "Document/SBOM/license-definitions.json",
+      "sha256": "c27f981e5ff741ee4d9baa09cb41eed1e2f88fc08baedbfba39c8107444035fc"
+    },
+    "binaryArtifactLicenseEvidence": {
+      "path": "Document/SBOM/license-evidence/binary-artifact-license-evidence.md",
+      "sha256": "a08590d41426671baffe8a07fe4bdad2764220ed3a80eef67e3ed45087ee978e"
+    },
+    "vulnerabilityScan": {
+      "path": "Document/SBOM/vulnerability-scan-metadata.json",
+      "sha256": "497de5ed2b5330aead1248ed8efd2f4d9b32daf70f185d17958d4e1fec811b6e"
+    }
+  },
+  "knownUnknowns": [
+    {
+      "id": "BLK-LEGAL-NEWLIB-SYSCALLS",
+      "category": "legal",
+      "findingIds": [
+        "MS00-001"
+      ],
+      "paths": [
+        "Library/Device/Nuvoton/M471/Source/GCC/_syscalls.c"
+      ],
+      "sha256": "edc22f74a2789ebe7cf4c7cbe01572a6fa0fec7bd428b4b74aed01af6b97386d",
+      "artifacts": [
+        {
+          "path": "Library/Device/Nuvoton/M471/Source/GCC/_syscalls.c",
+          "sha256": "edc22f74a2789ebe7cf4c7cbe01572a6fa0fec7bd428b4b74aed01af6b97386d"
+        }
+      ],
+      "decisionRequired": "Legal must identify the exact upstream newlib/uOS++ source revision and complete applicable GPL/license terms for this file.",
+      "owner": "Legal"
+    },
+    {
+      "id": "BLK-LEGAL-FREERTOS-7-EXCEPTION",
+      "category": "legal",
+      "findingIds": [
+        "MS00-001"
+      ],
+      "paths": [
+        "SampleCode/FreeRTOS/Blinky/ParTest.c"
+      ],
+      "sha256": "1a6960c2ed6a8f8913b3ba6aa6d1da5bf4b4a7d028d58566dc3b6880f502ec15",
+      "artifacts": [
+        {
+          "path": "SampleCode/FreeRTOS/Blinky/ParTest.c",
+          "sha256": "1a6960c2ed6a8f8913b3ba6aa6d1da5bf4b4a7d028d58566dc3b6880f502ec15"
+        }
+      ],
+      "decisionRequired": "Legal must supply or approve the exact FreeRTOS V7.4.0 GPLv2 exception text applicable to this file and its distribution obligations.",
+      "owner": "Legal"
+    },
+    {
+      "id": "BLK-UPSTREAM-FREERTOS-IDENTITY",
+      "category": "external-upstream-identity",
+      "findingIds": [
+        "MS00-003",
+        "MS00-005",
+        "MS00-012"
+      ],
+      "paths": [
+        "ThirdParty/FreeRTOS/Source/include/FreeRTOS.h",
+        "ThirdParty/FreeRTOS/Source/include/task.h"
+      ],
+      "sha256": "00cce836e0542796f088b93fc6f7113da3335141bc59071ecb63d8f2f8f2757c",
+      "artifacts": [
+        {
+          "path": "ThirdParty/FreeRTOS",
+          "sha256": "cc6dadc5fae4b34b21fd987a66c6224fd0699246fe3ce3c9329969fa3ac05577"
+        },
+        {
+          "path": "ThirdParty/FreeRTOS/Source/include/FreeRTOS.h",
+          "sha256": "495982c81fadf4e44fbca427bb402484a15c751fdebb82eb2ff42def91ff80fb"
+        },
+        {
+          "path": "ThirdParty/FreeRTOS/Source/include/task.h",
+          "sha256": "cf5a7906b055d0c3717fa240f5136baf165ae00ec22b7a56fcabed4f5e1bf856"
+        }
+      ],
+      "decisionRequired": "An authoritative upstream mapping must identify the immutable vendored snapshot despite 123 V10.0.0 markers and task.h V9.0.0 macros, then approve PURL/CPE identifiers.",
+      "owner": "Upstream maintainer / Product Security"
+    },
+    {
+      "id": "BLK-UPSTREAM-CPE-IDENTITY",
+      "category": "external-upstream-identity",
+      "findingIds": [
+        "MS00-003",
+        "MS00-012"
+      ],
+      "paths": [
+        "Library/CMSIS",
+        "Library/CMSIS/DSP",
+        "SampleCode/XOM/XOMLib/lua5.1.dll",
+        "ThirdParty/FreeRTOS"
+      ],
+      "sha256": "ec562730a4dbdf35b04ce9d5f950959bb452d07eded307855750445511fdd444",
+      "artifacts": [
+        {
+          "path": "Library/CMSIS",
+          "sha256": "d06c7081a5770656544807f0a446f018a58a319e2c5f4e9be3002e2f6e156269"
+        },
+        {
+          "path": "Library/CMSIS/DSP",
+          "sha256": "7f7a6ee57bd2f809c4d925ca21a8ad0774232832b9478ad43a1e51471a04bd03"
+        },
+        {
+          "path": "SampleCode/XOM/XOMLib/lua5.1.dll",
+          "sha256": "26384c6ee7d50863e3fb65fdc1bad452d9311f34d782390401de9bb130eecc4a"
+        },
+        {
+          "path": "ThirdParty/FreeRTOS",
+          "sha256": "cc6dadc5fae4b34b21fd987a66c6224fd0699246fe3ce3c9329969fa3ac05577"
+        }
+      ],
+      "decisionRequired": "Product Security must bind authoritative NVD/CPE identities to the exact vendored snapshots; generated candidate CPEs are not accepted as identity.",
+      "owner": "Product Security / upstream authority"
+    },
+    {
+      "id": "BLK-PSIRT-VEX-ASSESSMENT",
+      "category": "psirt",
+      "findingIds": [
+        "MS00-015"
+      ],
+      "paths": [
+        "M471BSP_Product_SBOM_cdx.json",
+        "M471BSP_TestSample_SBOM_cdx.json"
+      ],
+      "sha256": "480f393930d599ef0f0614ced17047c52b81228f9119d5a3ede2d3389fe905e1",
+      "artifacts": [
+        {
+          "path": "M471BSP_Product_SBOM_cdx.json",
+          "sha256": "074e368aac67c05a9ad9a55956e9786b187b837e999b0585d2f7cea990aae066"
+        },
+        {
+          "path": "M471BSP_TestSample_SBOM_cdx.json",
+          "sha256": "624c5157ce98ed7126f3b4be449f74607853e780a4bd4383153a60b797eabfc6"
+        }
+      ],
+      "decisionRequired": "PSIRT must complete vulnerability applicability assessment and issue approved VEX; no not-affected/applicable=false claim is authorized.",
+      "owner": "PSIRT"
+    },
+    {
+      "id": "BLK-LEGAL-APACHE-DISTRIBUTION-FILES",
+      "category": "legal",
+      "findingIds": [
+        "MS00-018"
+      ],
+      "paths": [
+        "repository-root/LICENSE",
+        "repository-root/NOTICE"
+      ],
+      "sha256": "1be96886e512f9bf4a3be6929eeead9026d56251babfb9aa04bf8af284f78b48",
+      "artifacts": [
+        {
+          "path": "git-tree:badf61f833eb8c37c1a87445db2722c0abec604c",
+          "sha256": "1be96886e512f9bf4a3be6929eeead9026d56251babfb9aa04bf8af284f78b48"
+        }
+      ],
+      "missingPaths": [
+        "LICENSE",
+        "NOTICE"
+      ],
+      "decisionRequired": "Legal/release owner must provide authoritative repository-level Apache LICENSE/NOTICE files or explicitly approve the existing file-level notices as sufficient.",
+      "owner": "Legal / release owner"
+    },
+    {
+      "id": "BLK-LEGAL-NUVOTON-AGREEMENT-GIT-DISTRIBUTION",
+      "category": "legal",
+      "findingIds": [
+        "MS00-009"
+      ],
+      "paths": [
+        "Document/SBOM/license-evidence/samplecode-xom-xomlib-xomaddr-exe.md",
+        "SVN r43:bsp/m471/V3.03.000-21-ga1b76a29/Nuvoton Software License Agreement.md"
+      ],
+      "sha256": "8c61cd7eb3a4bd8693bb3678c57c9568d328ad661dc5f4682fcf306644dcf9fe",
+      "artifacts": [
+        {
+          "path": "Document/SBOM/license-evidence/samplecode-xom-xomlib-xomaddr-exe.md",
+          "sha256": "1cf3c4a3cba8a59a64c35c8a4f505d4c4412e735bb8bb179c79ed4aa1529fc88"
+        },
+        {
+          "path": "SVN r43:bsp/m471/V3.03.000-21-ga1b76a29/Nuvoton Software License Agreement.md",
+          "sha256": "8c61cd7eb3a4bd8693bb3678c57c9568d328ad661dc5f4682fcf306644dcf9fe"
+        }
+      ],
+      "decisionRequired": "Legal must approve redistribution of the formal Nuvoton Software License Agreement text in Git before the agreement may be packaged with the BSP.",
+      "owner": "Legal / release owner"
+    }
+  ],
+  "toolchainInventory": {
+    "classification": "configuration-only; tools are not distributed components",
+    "configurationOccurrences": 127,
+    "rootRequirements": {
+      "arm:compilers/arm/armclang": "^6.19.0",
+      "arm:compilers/arm/arm-none-eabi-gcc": "14.3.1",
+      "arm:tools/kitware/cmake": "3.31.5",
+      "arm:tools/ninja-build/ninja": "1.12.0",
+      "arm:tools/open-cmsis-pack/cmsis-toolbox": "2.9.0"
+    },
+    "knownUnknown": "No compiler/tool binary is distributed, and no build provenance binds checked-in binaries to a compiler version."
+  }
+}

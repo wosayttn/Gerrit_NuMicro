@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/freertos-kernel@10.0.0?path=ThirdParty%2FFreeRTOS&source=vendored",
+      "name": "FreeRTOS-Kernel",
+      "version": "10.0.0",
+      "scope": "required",
+      "author": "FreeRTOS project",
+      "supplier": {
+        "name": "Amazon.com, Inc. or its affiliates"
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:generic/freertos-kernel@10.0.0",
+      "description": "Vendored FreeRTOS source used by M471 sample projects. Distributed file headers identify 10.0.0, while task.h retains conflicting 9.0.0 version macros.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cc6dadc5fae4b34b21fd987a66c6224fd0699246fe3ce3c9329969fa3ac05577"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/FreeRTOS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_freertos.md"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/FreeRTOS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "ThirdParty/FreeRTOS/Source/include/FreeRTOS.h; ThirdParty/FreeRTOS/Source/include/task.h"
+        },
+        {
+          "name": "bsp:version-evidence-status",
+          "value": "conflicting-local-markers-disclosed"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "ThirdParty/FreeRTOS/License/license.txt"
+        },
+        {
+          "name": "bsp:upstream-traceability",
+          "value": "exact-upstream-tag-and-commit-not-confirmed"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "136"
+        }
+      ]
+    }
+  ]
+}
