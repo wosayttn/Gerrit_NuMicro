@@ -1,0 +1,15 @@
+sbomType: Product SBOM
+include:
+  - path: Library/CMSIS
+  - path: Library/Commu
+  - path: Library/CryptoAccelerator
+  - path: Library/Device
+  - path: Library/LlsiYcableLib
+  - path: Library/StdDriver
+  - path: Library/Storage
+  - path: Library/UsbHostLib
+exclude:
+  - path: Document/
+  - path: SampleCode/
+  - path: ThirdParty/
+  - path: Tool/
