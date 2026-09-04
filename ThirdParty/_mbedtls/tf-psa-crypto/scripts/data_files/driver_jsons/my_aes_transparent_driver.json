@@ -1,0 +1,26 @@
+{
+    "_comment": "Minimal transparent AES driver JSON template",
+    "prefix": "my_aes",
+    "type": "transparent",
+    "mbedtls/h_condition": "defined(MBEDTLS_PSA_MY_AES_DRIVER_ENABLED)",
+    "headers": ["../drivers/my-aes/my_aes_driver_entrypoints.h"],
+    "capabilities": [
+        {
+            "_comment": "Cipher capability (transparent)",
+            "mbedtls/c_condition": "defined(MBEDTLS_PSA_MY_AES_DRIVER_ENABLED)",
+            "entry_points": [
+                "cipher_encrypt",
+                "cipher_decrypt",
+                "cipher_encrypt_setup",
+                "cipher_decrypt_setup",
+                "cipher_set_iv",
+                "cipher_update",
+                "cipher_finish",
+                "cipher_abort",
+                "init",
+                "free"
+            ],
+            "fallback": true
+        }
+    ]
+}
