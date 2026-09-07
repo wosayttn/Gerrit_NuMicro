@@ -73,9 +73,9 @@
     "branch": "MS70_M253",
     "file": "code-analysis-summary-MS70_M253.html",
     "stage1": {
-      "status": "Pass",
-      "misra": 0,
-      "cppcheck": 0
+      "status": "Fail",
+      "misra": 1,
+      "cppcheck": 1
     },
     "stage2": {
       "status": "Pass",
