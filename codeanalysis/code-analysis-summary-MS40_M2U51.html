@@ -180,20 +180,19 @@
 <body>
     <div class="container">
         <div class="header">Summary</div>
-        <div class="content"><section class="stage-section"><h2 class="stage-title">Graph</h2><div class="stage-grid"><section class="stage-panel"><div class="graph-row"><span class="graph-stage-name">Stage1</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div><div class="graph-row"><span class="graph-stage-name">Stage2</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div></section></div></section><section class="stage-section"><h2 class="stage-title">Violations File Scope</h2><div class="stage-grid"><section class="stage-panel scope-panel"><ul class="scope-list"><li>Gerrit_NuMicro\Library\StdDriver\inc\clk.h</li><li>Gerrit_NuMicro\Library\StdDriver\src\acmp.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\adc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\clk.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\gpio.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\sys.c</li></ul></section></div></section><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
+        <div class="content"><section class="stage-section"><h2 class="stage-title">Graph</h2><div class="stage-grid"><section class="stage-panel"><div class="graph-row"><span class="graph-stage-name">Stage1</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div><div class="graph-row"><span class="graph-stage-name">Stage2</span><div class="graph-bar-track"><div class="graph-bar status-fail"></div></div><span class="graph-icon status-fail">&#x2716;</span><span class="graph-label status-fail">Violations Found</span></div></section></div></section><section class="stage-section"><h2 class="stage-title">Violations File Scope</h2><div class="stage-grid"><section class="stage-panel scope-panel"><ul class="scope-list"><li>Gerrit_NuMicro\Library\StdDriver\inc\clk.h</li><li>Gerrit_NuMicro\Library\StdDriver\src\acmp.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\adc.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\clk.c</li><li>Gerrit_NuMicro\Library\StdDriver\src\sys.c</li></ul></section></div></section><section class="stage-section"><h2 class="stage-title">Stage1</h2><div class="stage-grid"><section class="stage-panel scope-panel"><h3 class="panel-title">Scope</h3><ul class="scope-list"><li>Library/StdDriver</li></ul><div class="summary-blank"></div>
 <div class="subsection-title">Overview</div>
 <div class="summary-line">Report source: Gerrit_NuMicro\output\cppcheck-report-stage1.txt</div>
-<div class="summary-line">Total MISRA-C violations: 49</div>
-<div class="summary-line">Unique MISRA-C rules: 11</div>
+<div class="summary-line">Total MISRA-C violations: 35</div>
+<div class="summary-line">Unique MISRA-C rules: 10</div>
 <div class="summary-line">Total CppCheck violations: 28</div>
 <div class="summary-line">Unique CppCheck issue IDs: 5</div>
 <div class="summary-line">MISRA-C configuration issues: 0</div>
-<div class="summary-line">Violations File: 6</div>
+<div class="summary-line">Violations File: 5</div>
 <div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\inc\clk.h</div>
 <div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\acmp.c</div>
 <div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\adc.c</div>
 <div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\clk.c</div>
-<div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\gpio.c</div>
 <div class="summary-line">  - Gerrit_NuMicro\Library\StdDriver\src\sys.c</div>
 <div class="summary-blank"></div></section><section class="stage-panel"><h3 class="panel-title">CppCheck</h3><div class="summary-line">Status: Executed</div>
 <div class="summary-line">Return code: 1</div>
@@ -233,14 +232,6 @@
 <div class="summary-line">    - misra-c2012-16.4: 1</div>
 <div class="summary-line">    - misra-c2012-17.7: 4</div>
 <div class="summary-blank"></div>
-<div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\src\gpio.c</div>
-<div class="summary-line">  Violations: 14</div>
-<div class="summary-line">  Unique rules: 3</div>
-<div class="summary-line">  Triggered items:</div>
-<div class="summary-line">    - misra-c2012-7.3: 12</div>
-<div class="summary-line">    - misra-c2012-10.4: 1</div>
-<div class="summary-line">    - misra-c2012-15.6: 1</div>
-<div class="summary-blank"></div>
 <div class="summary-line">- Gerrit_NuMicro\Library\StdDriver\inc\clk.h</div>
 <div class="summary-line">  Violations: 7</div>
 <div class="summary-line">  Unique rules: 3</div>
@@ -276,11 +267,6 @@
 <div class="summary-line">  Count: 5</div>
 <div class="summary-line">  Message: There should be no unused parameters in functions</div>
 <div class="summary-blank"></div>
-<div class="summary-line">- misra-c2012-7.3</div>
-<div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 12</div>
-<div class="summary-line">  Message: The lowercase character &#x27;l&#x27; shall not be used in a literal suffix.</div>
-<div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-10.1</div>
 <div class="summary-line">  Severity: style</div>
 <div class="summary-line">  Count: 1</div>
@@ -288,7 +274,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-10.4</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 14</div>
+<div class="summary-line">  Count: 13</div>
 <div class="summary-line">  Message: Both operands of an operator in which the usual arithmetic conversions are performed shall have the same essential type category</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-12.3</div>
@@ -298,7 +284,7 @@
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-15.6</div>
 <div class="summary-line">  Severity: style</div>
-<div class="summary-line">  Count: 4</div>
+<div class="summary-line">  Count: 3</div>
 <div class="summary-line">  Message: The body of an iteration-statement or a selection-statement shall be a compound-statement</div>
 <div class="summary-blank"></div>
 <div class="summary-line">- misra-c2012-15.7</div>
