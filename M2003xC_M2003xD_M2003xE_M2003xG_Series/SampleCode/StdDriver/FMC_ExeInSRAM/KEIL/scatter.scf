@@ -1,0 +1,31 @@
+
+
+FLASH 0x00000000 0x00002000
+{
+    FLASH +0
+    {
+         startup_M2003_user.o(RESET, +First)
+         startup_M2003_user.o
+         system_M2003.o
+         anon$$obj.o
+         init.o
+         entry*.o
+         handlers.o
+    }
+
+	SRAM1 0x20000000 0x00000AB0
+    {  
+        * (+RO)
+    }
+
+    SRAM2 0x20000AB0 0x00000400
+    {
+        * (+RW)
+    
+    }
+
+    ZI +0
+    {
+        * (+ZI)
+    }
+}
