@@ -1,0 +1,5 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Users\\CCWang20\\Desktop\\Workspaces\\Git\\M3351\\SampleCode\\NuMaker-M3351\\MP3_Player\\VSCode\\out\\MP3_Player\\ARMCLANG\\Release"
+    ]
+}
