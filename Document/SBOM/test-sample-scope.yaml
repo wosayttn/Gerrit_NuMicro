@@ -1,0 +1,9 @@
+sbomType: Test Sample SBOM
+sourceCommit: 00b0843b3254c1c09961d0fc5d4b1b266a547ae8
+include:
+  - path: SampleCode/
+  - path: ThirdParty/
+exclude:
+  - path: Document/
+  - path: Library/
+referenceResolution: every path and referenced evidence artifact must resolve; unresolved references fail

@@ -1,0 +1,260 @@
+{
+    "manifestFormat":  "MCU-BSP-SBOM-Manifest",
+    "manifestVersion":  "1.0",
+    "serialNumber":  "urn:uuid:e21a2028-26d2-428a-bfb0-c0e598802eeb",
+    "createdAt":  "2026-09-02T06:24:24.141846Z",
+    "bsp":  {
+                "name":  "M2U51BSP",
+                "version":  "00b0843b",
+                "releaseIdentifierSource":  "git describe --tags --always --long --abbrev=8 --dirty",
+                "gitDescribe":  "00b0843b",
+                "gitCommit":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+                "sourceTreeState":  "clean",
+                "scanSourceCommit":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+                "generationCommit":  "abfceb90e21a8e33b20cebf063a1035fa5e81b5c",
+                "releaseCommit":  null,
+                "distributionCommit":  null,
+                "repositoryArtifactState":  "current source-review artifacts; release and distribution are not asserted"
+            },
+    "generationTools":  [
+                            {
+                                "name":  "SBOM Generator",
+                                "version":  "0.2.0"
+                            },
+                            {
+                                "name":  "Syft",
+                                "version":  "1.45.1"
+                            },
+                            {
+                                "name":  "CycloneDX CLI",
+                                "version":  "0.32.0+0ed788d25c13cef9e9a3029603f6b708e3279390"
+                            },
+                            {
+                                "name":  "grype",
+                                "version":  "grype 0.117.0"
+                            },
+                            {
+                                "name":  "sbom-checker",
+                                "version":  "1.0.0"
+                            }
+                        ],
+    "sbomPackage":  {
+                        "name":  "MCU BSP SBOM Package",
+                        "format":  "CycloneDX",
+                        "formatVersion":  "1.6",
+                        "contains":  [
+                                         "Product SBOM",
+                                         "Test Sample SBOM"
+                                     ]
+                    },
+    "sboms":  [
+                  {
+                      "fileName":  "M2U51BSP_Product_SBOM_cdx.json",
+                      "sbomType":  "Product SBOM",
+                      "bomFormat":  "CycloneDX",
+                      "specVersion":  "1.6",
+                      "serialNumber":  "urn:uuid:44728e85-2b4a-44d8-ad75-bffc2acc7c38",
+                      "sbomVersion":  1,
+                      "generatedTimestamp":  "2026-09-02T00:46:11+08:00",
+                      "metadataComponent":  {
+                                                "bomRef":  "bda88ea2260d8f50",
+                                                "type":  "library",
+                                                "name":  "MCU Driver",
+                                                "version":  "V3.00.000-14-g00b0843b",
+                                                "properties":  [
+                                                                   {
+                                                                       "name":  "bsp:sbom-category",
+                                                                       "value":  "product"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:scope",
+                                                                       "value":  "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:scope-policy-file",
+                                                                       "value":  "product-scope.yaml"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:runtime-scope",
+                                                                       "value":  "true"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:included-in-product-firmware",
+                                                                       "value":  "true"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:third-party-components",
+                                                                       "value":  "Third-party component status is represented by component-level bsp:component-origin properties and manual SCA evidence."
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-include-path",
+                                                                       "value":  "Library/CMSIS"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-include-path",
+                                                                       "value":  "Library/Device"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-include-path",
+                                                                       "value":  "Library/LCDLib"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-include-path",
+                                                                       "value":  "Library/StdDriver"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-exclude-path",
+                                                                       "value":  "Document/"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-exclude-path",
+                                                                       "value":  "SampleCode/"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-exclude-path",
+                                                                       "value":  "Library/CMSIS/Documentation/"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-exclude-path",
+                                                                       "value":  "Library/CMSIS/Core/Test/"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-exclude-path",
+                                                                       "value":  "Library/Device/Nuvoton/M2U51/Source/GCC/_syscalls.c"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:product-scope-exclude-path",
+                                                                       "value":  "Library/Device/Nuvoton/M2U51/Source/GCC/semihosting.h"
+                                                                   }
+                                                               ]
+                                            },
+                      "scope":  "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software.",
+                      "isProductRuntimeScope":  true,
+                      "componentSummary":  {
+                                               "componentCount":  5,
+                                               "componentCountByType":  {
+                                                                            "library":  5
+                                                                        },
+                                               "applicationNames":  [
+
+                                                                    ],
+                                               "fileComponentCount":  0,
+                                               "fileComponentWithHashCount":  0
+                                           },
+                      "hash":  {
+                                   "algorithm":  "SHA-256",
+                                   "value":  "80019cd3c28c7f2c84a90729aa1e9d6dc8c6f2836f85e55957369251e2619b20"
+                               }
+                  },
+                  {
+                      "fileName":  "M2U51BSP_TestSample_SBOM_cdx.json",
+                      "sbomType":  "Test Sample SBOM",
+                      "bomFormat":  "CycloneDX",
+                      "specVersion":  "1.6",
+                      "serialNumber":  "urn:uuid:ea161d71-2879-4f73-8175-f146774ed547",
+                      "sbomVersion":  1,
+                      "generatedTimestamp":  "2026-09-02T00:46:16+08:00",
+                      "metadataComponent":  {
+                                                "bomRef":  "f9e4fc231382e2af",
+                                                "type":  "application",
+                                                "name":  "MCU Test Sample",
+                                                "version":  "V3.00.000-14-g00b0843b",
+                                                "properties":  [
+                                                                   {
+                                                                       "name":  "bsp:sbom-category",
+                                                                       "value":  "test-sample"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:scope",
+                                                                       "value":  "Components used only for examples, demonstrations, validation, host-side utilities, or testing; not included in product runtime unless explicitly integrated by the user."
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:scope-policy-file",
+                                                                       "value":  "test-sample-scope.yaml"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:runtime-scope",
+                                                                       "value":  "false"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:included-in-product-firmware",
+                                                                       "value":  "false"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:test-sample-scope-include-path",
+                                                                       "value":  "SampleCode/"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:test-sample-scope-include-path",
+                                                                       "value":  "ThirdParty/"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:test-sample-scope-exclude-path",
+                                                                       "value":  "Document/"
+                                                                   },
+                                                                   {
+                                                                       "name":  "bsp:test-sample-scope-exclude-path",
+                                                                       "value":  "Library/"
+                                                                   }
+                                                               ]
+                                            },
+                      "scope":  "Components used only for examples, demonstrations, validation, host-side utilities, or testing; not included in product runtime unless explicitly integrated by the user.",
+                      "isProductRuntimeScope":  false,
+                      "componentSummary":  {
+                                               "componentCount":  5,
+                                               "componentCountByType":  {
+                                                                            "application":  1,
+                                                                            "firmware":  3,
+                                                                            "library":  1
+                                                                        },
+                                               "applicationNames":  [
+                                                                        "M2U51 SampleCode"
+                                                                    ],
+                                               "fileComponentCount":  0,
+                                               "fileComponentWithHashCount":  0
+                                           },
+                      "hash":  {
+                                   "algorithm":  "SHA-256",
+                                   "value":  "51dee40de5b33c55b17398856b61e190590b3147408c3f5a88773caaed14b6f6"
+                               },
+                      "relationshipToProductSbom":  {
+                                                        "usesProductComponents":  true,
+                                                        "productSbomFile":  "M2U51BSP_Product_SBOM_cdx.json",
+                                                        "description":  "Test sample firmware may be built using MCU Driver components described in the Product SBOM. These product components are not duplicated in the Test Sample SBOM."
+                                                    }
+                  }
+              ],
+    "scopeRule":  {
+                      "productSbom":  "Use as the primary SBOM for product vulnerability assessment and CRA product component transparency.",
+                      "testSampleSbom":  "Use only when sample, demo, validation, or test-only components are reused, executed, distributed, or integrated by the customer.",
+                      "separationRationale":  "Product and Test Sample SBOMs are kept separate to avoid treating test/sample utilities as product runtime dependencies."
+                  },
+    "customerGuidance":  [
+                             "Use the Product SBOM as the primary input for product vulnerability assessment.",
+                             "Review the Test Sample SBOM only when the corresponding sample/demo/test components are used or redistributed.",
+                             "Components in the Test Sample SBOM are not considered product firmware/runtime dependencies unless explicitly integrated by the user."
+                         ],
+    "notes":  [
+                  "These are repository current source-review artifacts, not a formal release or distribution package.",
+                  "Product zero matches remain identity-limited and do not assert a clean security assessment.",
+                  "Five FreeRTOS scanner range matches remain not_assessed/pending without VEX or approval.",
+                  "PSIRT, OSS/Legal, and reproducible FMC build/link/runtime decisions remain fail-closed release blockers."
+              ],
+    "lifecycle":  {
+                      "state":  "current-source-review",
+                      "scanSourceCommit":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+                      "generationCommit":  "abfceb90e21a8e33b20cebf063a1035fa5e81b5c",
+                      "releaseCommit":  null,
+                      "distributionCommit":  null,
+                      "formalR48SourceUnchanged":  true
+                  },
+    "artifactDistribution":  {
+                                 "scanSourceCommit":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+                                 "generationCommit":  "abfceb90e21a8e33b20cebf063a1035fa5e81b5c",
+                                 "futureReleaseCommit":  null,
+                                 "futureDistributionCommit":  null,
+                                 "formalReleaseId":  "V3.00.000-14-g00b0843b",
+                                 "formalSvnRevision":  48,
+                                 "policy":  "Repository current/source-review artifacts only; release and distribution commits remain null."
+                             }
+}

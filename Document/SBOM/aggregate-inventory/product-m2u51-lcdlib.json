@@ -1,0 +1,21 @@
+{
+  "recipe": "sha256-path-nul-content-nul-v1",
+  "pathBase": "Library/LCDLib",
+  "sourceCommit": "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+  "fileCount": 3,
+  "aggregateSha256": "66178b33a73ec0975f221098c0e9edc277cbf1394798c0fa73f872f9188de165",
+  "files": [
+    {
+      "path": "Library/LCDLib/Include/lcdlib.h",
+      "sha256": "9e17956a428c920a62e93386cdc0f5fa0b855e4081f0f4dc697aeaf90fb0fa2e"
+    },
+    {
+      "path": "Library/LCDLib/Include/lcdzone.h",
+      "sha256": "350c493dafd7c851a83d106a4851c235e6481d9d490e701d653881d41effc3d7"
+    },
+    {
+      "path": "Library/LCDLib/Source/lcdlib.c",
+      "sha256": "781aa785d78d4a8734f0a505c58a306c6f96b3d2b2d5cf8555de4a8f524fe49f"
+    }
+  ]
+}

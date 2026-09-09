@@ -1,0 +1,565 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:44728e85-2b4a-44d8-ad75-bffc2acc7c38",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-02T00:46:11+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.45.1"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "bda88ea2260d8f50",
+      "type": "library",
+      "name": "MCU Driver",
+      "version": "V3.00.000-14-g00b0843b",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mcu-driver@V3.00.000-14-g00b0843b",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "Document/SBOM/product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:third-party-components",
+          "value": "Third-party component status is represented by component-level bsp:component-origin properties and manual SCA evidence."
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/LCDLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Document/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "SampleCode/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Library/CMSIS/Documentation/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Library/CMSIS/Core/Test/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Library/Device/Nuvoton/M2U51/Source/GCC/_syscalls.c"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Library/Device/Nuvoton/M2U51/Source/GCC/semihosting.h"
+        }
+      ]
+    },
+    "supplier": {
+      "name": "Nuvoton Technology Corp.",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
+    },
+    "authors": [
+      {
+        "name": "Nuvoton Technology Corp."
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "m2u51bsp:product-component:library-device",
+      "name": "M2U51 Device",
+      "version": "V3.00.000-14-g00b0843b",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-device@V3.00.000-14-g00b0843b",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ed3d1c9782f8a26ab8e5b6975b5e982cc036a668670079e9724cad7c34b9c372"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "Document/SBOM/product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-path-base",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "35"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory/product-m2u51-device.json"
+        },
+        {
+          "name": "bsp:hash-purpose",
+          "value": "content-identity"
+        },
+        {
+          "name": "bsp:identity-authority",
+          "value": "repository-relative path, source commit, exact inventory, and SHA-256"
+        },
+        {
+          "name": "bsp:source-commit",
+          "value": "00b0843b3254c1c09961d0fc5d4b1b266a547ae8"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file-inventory"
+        },
+        {
+          "name": "bsp:excluded-source-inventory",
+          "value": "Document/SBOM/excluded-source-inventory.json"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2u51bsp:product-component:library-lcdlib",
+      "name": "M2U51 LCDLib",
+      "version": "V3.00.000-14-g00b0843b",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-lcdlib@V3.00.000-14-g00b0843b",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "66178b33a73ec0975f221098c0e9edc277cbf1394798c0fa73f872f9188de165"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/LCDLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "Document/SBOM/product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/LCDLib"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-path-base",
+          "value": "Library/LCDLib"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "3"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory/product-m2u51-lcdlib.json"
+        },
+        {
+          "name": "bsp:hash-purpose",
+          "value": "content-identity"
+        },
+        {
+          "name": "bsp:identity-authority",
+          "value": "repository-relative path, source commit, exact inventory, and SHA-256"
+        },
+        {
+          "name": "bsp:source-commit",
+          "value": "00b0843b3254c1c09961d0fc5d4b1b266a547ae8"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2u51bsp:product-component:library-stddriver",
+      "name": "M2U51 StdDriver",
+      "version": "V3.00.000-14-g00b0843b",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-stddriver@V3.00.000-14-g00b0843b",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3cb7d013c29273114db6510c14367368f510a19ae9d4a1cce8135a135301bdff"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "Document/SBOM/product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-path-base",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "47"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory/product-m2u51-stddriver.json"
+        },
+        {
+          "name": "bsp:hash-purpose",
+          "value": "content-identity"
+        },
+        {
+          "name": "bsp:identity-authority",
+          "value": "repository-relative path, source commit, exact inventory, and SHA-256"
+        },
+        {
+          "name": "bsp:source-commit",
+          "value": "00b0843b3254c1c09961d0fc5d4b1b266a547ae8"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis-dsp@1.10.0",
+      "group": "Arm",
+      "name": "CMSIS-DSP",
+      "version": "1.10.0",
+      "scope": "optional",
+      "author": "Arm Limited",
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:generic/cmsis-dsp@1.10.0",
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS/DSP"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source_subset"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:included-paths",
+          "value": "Library/CMSIS/DSP/Include; Library/CMSIS/DSP/PrivateInclude; Library/CMSIS/DSP/Source"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/DSP/Include/arm_math.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/DSP/Include/arm_math.h"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis-dsp.md"
+        },
+        {
+          "name": "bsp:repository-import-commit",
+          "value": "0c04521352c26bcf9352ee78292be0dfb6f346cf"
+        },
+        {
+          "name": "bsp:upstream-traceability",
+          "value": "exact-upstream-tag-and-commit-not-confirmed"
+        },
+        {
+          "name": "bsp:hash-purpose",
+          "value": "version-anchor"
+        },
+        {
+          "name": "bsp:version-anchor-source",
+          "value": "Library/CMSIS/DSP/Include/arm_math.h"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7f7a6ee57bd2f809c4d925ca21a8ad0774232832b9478ad43a1e51471a04bd03"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@6.1.0",
+      "group": "Arm",
+      "name": "CMSIS",
+      "version": "6.1.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:generic/cmsis@6.1.0",
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source_subset"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:included-paths",
+          "value": "Library/CMSIS/Core; Library/CMSIS/Driver; Library/CMSIS/RTOS2"
+        },
+        {
+          "name": "bsp:excluded-independent-paths",
+          "value": "Library/CMSIS/DSP"
+        },
+        {
+          "name": "bsp:cmsis-core-version",
+          "value": "6.1.0"
+        },
+        {
+          "name": "bsp:cmsis-rtos2-api-version",
+          "value": "2.3.0"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis.md"
+        },
+        {
+          "name": "bsp:upstream-traceability",
+          "value": "exact-upstream-tag-and-commit-not-confirmed"
+        },
+        {
+          "name": "bsp:hash-purpose",
+          "value": "version-anchor"
+        },
+        {
+          "name": "bsp:version-anchor-source",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "65e0bc843cd9a72f84c8ee3447882c949f27ba505d4e39558c5e287cd1d92d5d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "bda88ea2260d8f50",
+      "dependsOn": [
+        "m2u51bsp:product-component:library-device",
+        "m2u51bsp:product-component:library-lcdlib",
+        "m2u51bsp:product-component:library-stddriver",
+        "pkg:generic/cmsis-dsp@1.10.0",
+        "pkg:generic/cmsis@6.1.0"
+      ]
+    },
+    {
+      "ref": "m2u51bsp:product-component:library-device",
+      "dependsOn": []
+    },
+    {
+      "ref": "m2u51bsp:product-component:library-lcdlib",
+      "dependsOn": []
+    },
+    {
+      "ref": "m2u51bsp:product-component:library-stddriver",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/cmsis-dsp@1.10.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/cmsis@6.1.0",
+      "dependsOn": []
+    }
+  ]
+}

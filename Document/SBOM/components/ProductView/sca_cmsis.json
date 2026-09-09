@@ -1,0 +1,84 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@6.1.0",
+      "group": "Arm",
+      "name": "CMSIS",
+      "version": "6.1.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:generic/cmsis@6.1.0",
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source_subset"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:included-paths",
+          "value": "Library/CMSIS/Core; Library/CMSIS/Driver; Library/CMSIS/RTOS2"
+        },
+        {
+          "name": "bsp:excluded-independent-paths",
+          "value": "Library/CMSIS/DSP"
+        },
+        {
+          "name": "bsp:cmsis-core-version",
+          "value": "6.1.0"
+        },
+        {
+          "name": "bsp:cmsis-rtos2-api-version",
+          "value": "2.3.0"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis.md"
+        },
+        {
+          "name": "bsp:upstream-traceability",
+          "value": "exact-upstream-tag-and-commit-not-confirmed"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "152"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "65e0bc843cd9a72f84c8ee3447882c949f27ba505d4e39558c5e287cd1d92d5d"
+        }
+      ]
+    }
+  ]
+}
