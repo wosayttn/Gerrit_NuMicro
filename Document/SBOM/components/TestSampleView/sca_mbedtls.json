@@ -1,0 +1,68 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/mbedtls@3.1.0?source=vendored&path=ThirdParty/mbedtls-3.1.0",
+      "name": "Mbed TLS",
+      "version": "3.1.0",
+      "scope": "required",
+      "author": "Mbed TLS Contributors",
+      "purl": "pkg:generic/mbedtls@3.1.0",
+      "cpe": "cpe:2.3:a:arm:mbed_tls:3.1.0:*:*:*:*:*:*:*",
+      "description": "Mbed TLS cryptographic and TLS library vendored in ThirdParty/mbedtls-3.1.0, including core library sources, public headers, configurations, documentation, programs, tests, scripts, build metadata, and bundled third-party code.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/mbedtls-3.1.0"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "mbedtls_version",
+          "value": "3.1.0"
+        },
+        {
+          "name": "mbedtls_version_number",
+          "value": "0x03010000"
+        },
+        {
+          "name": "mbedtls_included_top_level_paths",
+          "value": ".github; 3rdparty; ChangeLog.d; cmake; configs; docs; doxygen; include; library; programs; scripts; tests; visualc"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Mbed TLS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/sca_mbedtls.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/mbedtls-3.1.0"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "ThirdParty/mbedtls-3.1.0/include/mbedtls/build_info.h; ThirdParty/mbedtls-3.1.0/ChangeLog; ThirdParty/mbedtls-3.1.0/CMakeLists.txt"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "ThirdParty/mbedtls-3.1.0/LICENSE; ThirdParty/mbedtls-3.1.0/README.md; ThirdParty/mbedtls-3.1.0/include/mbedtls/version.h"
+        }
+      ]
+    }
+  ]
+}

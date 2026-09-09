@@ -1,0 +1,11 @@
+[1] ../../../SampleCode\NuMaker-M55M1\LwIP_httpd_netconn\VSCode has error or warning.
+[2] ../../../SampleCode\NuMaker-M55M1\LwIP_httpd_socket\VSCode has error or warning.
+[3] ../../../SampleCode\NuMaker-M55M1\LwIP_MQTT\VSCode has error or warning.
+[4] ../../../SampleCode\NuMaker-M55M1\LwIP_SSL_Client\VSCode has error or warning.
+[5] ../../../SampleCode\NuMaker-M55M1\LwIP_SSL_Server\VSCode has error or warning.
+[6] ../../../SampleCode\NuMaker-M55M1\LwIP_TCP_EchoClient\VSCode has error or warning.
+[7] ../../../SampleCode\NuMaker-M55M1\LwIP_TCP_EchoServer\VSCode has error or warning.
+[8] ../../../SampleCode\NuMaker-M55M1\LwIP_tftp_client\VSCode has error or warning.
+[9] ../../../SampleCode\NuMaker-M55M1\LwIP_tftp_server\VSCode has error or warning.
+[10] ../../../SampleCode\NuMaker-M55M1\LwIP_UDP_EchoClient\VSCode has error or warning.
+[11] ../../../SampleCode\NuMaker-M55M1\LwIP_UDP_EchoServer\VSCode has error or warning.
