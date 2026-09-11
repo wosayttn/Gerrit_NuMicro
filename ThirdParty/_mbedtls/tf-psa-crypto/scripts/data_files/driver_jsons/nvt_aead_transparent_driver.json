@@ -1,0 +1,29 @@
+{
+    "_comment": "Nuvoton transparent AEAD driver JSON",
+    "prefix": "nvt_aead",
+    "type": "transparent",
+    "mbedtls/h_condition": "defined(MBEDTLS_PSA_NVT_AEAD_DRIVER_ENABLED)",
+    "headers": ["../drivers/nvt-drivers/nvt_aead_driver_entrypoints.h"],
+    "capabilities": [
+        {
+            "_comment": "AEAD capability (transparent)",
+            "mbedtls/c_condition": "defined(MBEDTLS_PSA_NVT_AEAD_DRIVER_ENABLED)",
+            "entry_points": [
+                "aead_encrypt",
+                "aead_decrypt",
+                "aead_encrypt_setup",
+                "aead_decrypt_setup",
+                "aead_set_nonce",
+                "aead_set_lengths",
+                "aead_update_ad",
+                "aead_update",
+                "aead_finish",
+                "aead_verify",
+                "aead_abort",
+                "init",
+                "free"
+            ],
+            "fallback": true
+        }
+    ]
+}
