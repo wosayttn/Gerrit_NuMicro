@@ -1,0 +1,14 @@
+{
+  "baselineCommit": "7d75be4053bb0365b838f165216fb42328a69ae2",
+  "generatedAt": "2026-09-02T12:53:41+08:00",
+  "lifecycleCommit": null,
+  "releaseIdentity": null,
+  "distributionIdentity": null,
+  "freeRtosCpe": "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*",
+  "freeRtosCpeApprovalEvidence": {
+    "formalEvidence": "M2U51BSP/V3.00.000-12-g2d7239bf/Document/SBOM/components/TestSampleView/sca_freertos.json",
+    "formalEvidenceSha256": "c34bdf0b5413c57cfb65d2f9f0b8a077489b1ba296a8af4615a6ad928db563c2",
+    "formalAggregateSha256": "8b5255922f674077cbb1ea038fc5fd78adb40b013e5dbdd8a9531758c8d42113",
+    "bindingRule": "canonical CPE is adopted only because the complete 144-file sha256-path-nul-content-nul-v1 aggregate is byte-identical; this is component identity evidence, not M2L31 vulnerability approval"
+  }
+}
