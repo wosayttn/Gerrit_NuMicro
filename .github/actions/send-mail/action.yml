@@ -1,0 +1,104 @@
+name: "Send email"
+description: "Prepare failed log list and send email notification"
+
+inputs:
+  mail-connection:
+    required: true
+  mail-to-ms10:
+    required: true
+  mail-to-ms20:
+    required: true
+  mail-to-ms40:
+    required: true
+  mail-to-ms70:
+    required: true
+  default-mail-to:
+    required: true
+  ref-name:
+    required: true
+  workflow-name:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Set recipient
+      id: recipient
+      shell: bash
+      run: |
+        if [[ "${{ inputs.ref-name }}" == MS10* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms10 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS20* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms20 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS40* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms40 }}" >> "$GITHUB_OUTPUT"
+        elif [[ "${{ inputs.ref-name }}" == MS70* ]]; then
+          echo "mail_to=${{ inputs.mail-to-ms70 }}" >> "$GITHUB_OUTPUT"
+        else
+          echo "mail_to=${{ inputs.default-mail-to }}" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Prepare attachments
+      id: prepare_logs
+      shell: bash
+      run: |
+        if [[ -f attachments.txt ]]; then
+          logs=$(cat attachments.txt)
+          echo "logs=$logs" >> "$GITHUB_OUTPUT"
+
+          numbered_logs=""
+          IFS=',' read -ra logs <<< "$(cat attachments.txt)"
+          i=1
+          for log in "${logs[@]}"; do
+
+            # Normalize paths          
+            log="${log//\\//}"
+
+            # Append to numbered list (for summary)            
+            numbered_logs+="[$i] $log\n"
+
+            echo "📂 Attachment: $log"
+            if [[ -f "$log" ]]; then
+              # Detect file type (text or binary)
+              if file "$log" | grep -qE 'text|UTF-8|ASCII|log'; then
+                echo "📄 Content:"
+                cat "$log"
+                echo "🔚 End of $log"
+              else
+                echo "📦 Skipped (not a text file)"
+              fi
+            else
+              echo "❌ Not found"
+            fi
+            echo
+
+            ((i++))
+          done
+
+          # Output metadata back to GITHUB_OUTPUT          
+          echo -e "msglogs<<EOF\n$numbered_logs\nEOF" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v5
+      with:
+        connection_url: ${{ inputs.mail-connection }}
+        subject: "[Github Action] | [${{ inputs.ref-name }}] | [${{ inputs.workflow-name }}] Job"
+        to: ${{ steps.recipient.outputs.mail_to }}
+        from: Github Action Workflow <wosayttn@gmail.com>
+        attachments: ${{ steps.prepare_logs.outputs.logs }}
+        html_body: |
+          <html>
+          <body style="font-family: Arial, sans-serif; font-size: 14px;">
+
+            <p>Hello,</p>
+
+            <p>Please find the attached log files for details.</p>
+            <pre style="background:#f6f8fa;padding:10px;border-radius:4px;">${{ steps.prepare_logs.outputs.msglogs }}</pre>
+            <br>
+
+            <p><strong>Thanks for your efforts!! </strong></p>
+            <p><a href="https://github.com/wosayttn/Gerrit_NuMicro">Github Actions for NuMicro</a></p>
+
+          </body>
+          </html>
