@@ -115,13 +115,13 @@
     "branch": "MS70_M55M1",
     "file": "code-analysis-summary-MS70_M55M1.html",
     "stage1": {
-      "status": "Fail",
-      "misra": 3,
+      "status": "Pass",
+      "misra": 0,
       "cppcheck": 0
     },
     "stage2": {
-      "status": "Fail",
-      "misra": 3,
+      "status": "Pass",
+      "misra": 0,
       "cppcheck": 0
     }
   },
