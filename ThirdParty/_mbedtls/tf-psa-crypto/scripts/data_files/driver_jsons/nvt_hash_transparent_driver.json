@@ -1,0 +1,24 @@
+{
+    "_comment": "Nuvoton transparent hash driver JSON",
+    "prefix": "nvt_hash",
+    "type": "transparent",
+    "mbedtls/h_condition": "defined(MBEDTLS_PSA_NVT_HASH_DRIVER_ENABLED)",
+    "headers": ["../drivers/nvt-drivers/nvt_hash_driver_entrypoints.h"],
+    "capabilities": [
+        {
+            "_comment": "Hash capability (transparent)",
+            "mbedtls/c_condition": "defined(MBEDTLS_PSA_NVT_HASH_DRIVER_ENABLED)",
+            "entry_points": [
+                "hash_compute",
+                "hash_setup",
+                "hash_clone",
+                "hash_update",
+                "hash_finish",
+                "hash_abort",
+                "init",
+                "free"
+            ],
+            "fallback": true
+        }
+    ]
+}

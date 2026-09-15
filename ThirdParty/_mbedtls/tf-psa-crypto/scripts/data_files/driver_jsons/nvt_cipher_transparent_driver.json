@@ -1,0 +1,26 @@
+{
+    "_comment": "Nuvoton transparent cipher driver JSON",
+    "prefix": "nvt_cipher",
+    "type": "transparent",
+    "mbedtls/h_condition": "defined(MBEDTLS_PSA_NVT_CIPHER_DRIVER_ENABLED)",
+    "headers": ["../drivers/nvt-drivers/nvt_cipher_driver_entrypoints.h"],
+    "capabilities": [
+        {
+            "_comment": "Cipher capability (transparent)",
+            "mbedtls/c_condition": "defined(MBEDTLS_PSA_NVT_CIPHER_DRIVER_ENABLED)",
+            "entry_points": [
+                "cipher_encrypt",
+                "cipher_decrypt",
+                "cipher_encrypt_setup",
+                "cipher_decrypt_setup",
+                "cipher_set_iv",
+                "cipher_update",
+                "cipher_finish",
+                "cipher_abort",
+                "init",
+                "free"
+            ],
+            "fallback": true
+        }
+    ]
+}
