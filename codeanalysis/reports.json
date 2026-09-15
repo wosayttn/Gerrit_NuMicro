@@ -102,12 +102,12 @@
     "file": "code-analysis-summary-MS70_M5531.html",
     "stage1": {
       "status": "Fail",
-      "misra": 5,
+      "misra": 2,
       "cppcheck": 0
     },
     "stage2": {
-      "status": "Fail",
-      "misra": 3,
+      "status": "Pass",
+      "misra": 0,
       "cppcheck": 0
     }
   },
