@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Project\\M2L31_Git_0515\\M2L31\\bsp\\SampleCode\\PowerDelivery\\UTCPD_DualRole\\VSCode\\out\\UTCPD_DualRole\\ARMCLANG\\Release"
+    ]
+}

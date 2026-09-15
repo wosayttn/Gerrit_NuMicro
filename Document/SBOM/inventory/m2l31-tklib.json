@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "scope": "m2l31-tklib",
+  "pathBase": "Library/TKLib",
+  "hashAlgorithm": "sha256-path-nul-content-nul-v1",
+  "aggregateSha256": "b9c2663d277ae53a52b3ad74550c20c3c4195801e5fe5a5c24c1e62a39a017ae",
+  "repositoryRelativeComparisonSha256": "b29b5860a00797635a46775f405c699450e59f6a2e0be9748b3e5c8720ce07ac",
+  "fileCount": 13,
+  "versionAnchor": {
+    "path": "Library/TKLib/Include/tklib.h",
+    "sha256": "5dd2f9e46dbf7b831e408d5c9522cc7af8cff584e4c410929d53ef12d85eb266",
+    "role": "version-anchor"
+  },
+  "files": [
+    {
+      "path": "Library/TKLib/Include/tklib.h",
+      "size": 8150,
+      "sha256": "5dd2f9e46dbf7b831e408d5c9522cc7af8cff584e4c410929d53ef12d85eb266",
+      "gitBlobSha1": "cdf9771b2a8b645ab3ba7025a6d09a8d1b3b0f5a"
+    },
+    {
+      "path": "Library/TKLib/libTKLib_Calibration.a",
+      "size": 5718370,
+      "sha256": "40afcf05bdeebe76dbd17075a5ce806b22a7dbf0f24e2280ba7241a690183d03",
+      "gitBlobSha1": "d5f14344036493e3a1ce5b122a18fe18f04ddeec"
+    },
+    {
+      "path": "Library/TKLib/libTKLib_FreeRun.a",
+      "size": 6817614,
+      "sha256": "04b7e71d37238c321ba5f566e27ba84d7926ff94f5dea3d8b059618e650101db",
+      "gitBlobSha1": "642976774613e51b440e0549b5367ec2966490b1"
+    },
+    {
+      "path": "Library/TKLib/libTKLib_MassProduction.a",
+      "size": 7938144,
+      "sha256": "1d294386e4515167cbf934aedb8c9a6e69cd9a71d133af0fa72bd789bccd2f5f",
+      "gitBlobSha1": "ccc0814a8f6662c33dedec976fb8ad4ec229f767"
+    },
+    {
+      "path": "Library/TKLib/LICENSE.md",
+      "size": 5909,
+      "sha256": "ee61ebfcdb1c0f17b01f83d7e928711840b62cd58172276cb1a873ea2a13664d",
+      "gitBlobSha1": "762316f5383e3d3cdc26823dea2b4bcc88aa36e9"
+    },
+    {
+      "path": "Library/TKLib/TK_Calibration.a",
+      "size": 176320,
+      "sha256": "d44a024b36aaedfe5ce3d264ae41d12a92d74ce2c8b9b0f106571f189501e8b7",
+      "gitBlobSha1": "f20810ff2a079775c720dd452a7e9c4d17edcfc5"
+    },
+    {
+      "path": "Library/TKLib/TK_FreeRun.a",
+      "size": 172270,
+      "sha256": "73c9c5d90c76c3d2998e0c5f556d0c208a6a1b586283f7d389fb8f3a64953f1b",
+      "gitBlobSha1": "7b2b8ac50488ebac5d6f1e48ce053bf8ad9b710e"
+    },
+    {
+      "path": "Library/TKLib/TKLib_Calibration.a",
+      "size": 178016,
+      "sha256": "5b77ad7adc4d76069cbda4974f703d69586dd5e782414c18f0c596cd2fe67d3f",
+      "gitBlobSha1": "d71b3a6ada29cbe5a5e13c1363ff9870013f07b0"
+    },
+    {
+      "path": "Library/TKLib/TKLib_Calibration.lib",
+      "size": 117528,
+      "sha256": "f7949a1b1985338147c03f9db2a8c28a498bf35bbb311c05ce0f18262004fc2d",
+      "gitBlobSha1": "cf40d9f3ca5aea1318fa58ea61c81b99f7ae3147"
+    },
+    {
+      "path": "Library/TKLib/TKLib_FreeRun.a",
+      "size": 178014,
+      "sha256": "1d95139ec15732f2f6f118f586a7f2abad0be07bb954d58ecc429500864943f7",
+      "gitBlobSha1": "d1925537f57d3baf230d60ace38ecb2334cb8c42"
+    },
+    {
+      "path": "Library/TKLib/TKLib_FreeRun.lib",
+      "size": 117524,
+      "sha256": "0407c0a21b534a0f4fbd8433e35c075989a766ea3d43a3f5368f183b036010fd",
+      "gitBlobSha1": "789900aa9a454681af54d7336b9f61a0147a1b08"
+    },
+    {
+      "path": "Library/TKLib/TKLib_MassProduction.a",
+      "size": 178116,
+      "sha256": "e8135c3661092371b9284d02c7432c66ba1e57e48f7439f4ddc65a8e1f0ddf4c",
+      "gitBlobSha1": "ab82ff28591542a0516a6afd16740d2a9ff34df2"
+    },
+    {
+      "path": "Library/TKLib/TKLib_MassProduction.lib",
+      "size": 134354,
+      "sha256": "2711d543924420b6967ed7d3a1defa57aebe9772ac8eba010e50b82db928b507",
+      "gitBlobSha1": "2fd9a20447d4dd011480d474c1813b2b7887bfd0"
+    }
+  ]
+}
