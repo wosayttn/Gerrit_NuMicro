@@ -1,0 +1,3 @@
+# Third-party Python packages used by top-level AutoAppendPR scripts
+requests
+ruamel.yaml
