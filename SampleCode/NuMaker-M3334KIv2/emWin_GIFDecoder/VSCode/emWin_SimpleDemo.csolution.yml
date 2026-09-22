@@ -1,0 +1,19 @@
+solution:
+  created-by: uv2csolution@1.6.0
+  created-for: CMSIS-Toolbox@2.7.0
+  compiler: AC6
+  target-types:
+    - type: Release
+      device: M3334KIGAE
+      optimize: speed
+      debug: on
+      define:
+        - NDEBUG
+    - type: Debug
+      device: M3334KIGAE
+      optimize: none
+      debug: on
+      define:
+        - DEBUG
+  projects:
+    - project: emWin_SimpleDemo.cproject.yml

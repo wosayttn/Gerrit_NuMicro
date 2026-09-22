@@ -1,0 +1,7 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\MCU_MS20\\MAG071_M3331\\m3331bsp\\SampleCode\\FreeRTOS\\TicklessIdle\\VSCode\\out\\TicklessIdle\\ARMCLANG\\debug"
+    ],
+    "debug.showInStatusBar": "never"
+}
