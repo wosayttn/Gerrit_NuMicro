@@ -22,8 +22,8 @@
       "cppcheck": 0
     },
     "stage2": {
-      "status": "Pass",
-      "misra": 0,
+      "status": "Fail",
+      "misra": 4,
       "cppcheck": 0
     }
   },
