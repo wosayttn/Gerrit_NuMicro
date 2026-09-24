@@ -1,0 +1,450 @@
+{
+  "components": [
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-dual-bank-new-firmware@repository-build",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC Dual-Bank Update Firmware",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-dual-bank-new-firmware@repository-build",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fd5aab425ec0a011c07e24da48e9d03969c3554038f9da3e2b4309aa29ec41f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_DualBankFwUpdate"
+        },
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/RMC_DualBankFwUpdate/NewFirmwareSample.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "10540"
+        },
+        {
+          "name": "toolchain",
+          "value": "repository-distributed sample payload"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_DualBankFwUpdate/App/main.c; SampleCode/StdDriver/RMC_DualBankFwUpdate/App/IAR/App.ewp; SampleCode/StdDriver/RMC_DualBankFwUpdate/App/KEIL/App.uvprojx; SampleCode/StdDriver/RMC_DualBankFwUpdate/App/VSCode/App.cproject.yml"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-update-new-app@repository-build",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC Update Application Firmware",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-update-new-app@repository-build",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9c9e05d69f7285821d2933693e8fb1311709fa95d37a55fd8295aa0138d118b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_FwUpdateApplication"
+        },
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/RMC_FwUpdateApplication/NewApp.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "8560"
+        },
+        {
+          "name": "toolchain",
+          "value": "repository-distributed sample payload"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_FwUpdateApplication/App/main.c; SampleCode/StdDriver/RMC_FwUpdateApplication/App/IAR/App.ewp; SampleCode/StdDriver/RMC_FwUpdateApplication/App/KEIL/App.uvprojx; SampleCode/StdDriver/RMC_FwUpdateApplication/App/VSCode/App.cproject.yml"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@gcc-eclipse",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - GCC Eclipse",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@gcc-eclipse",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3760d4f404b95d3586086637825cbcab586670a8af1ea9b131258695eb02cd38"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/RMC_IAP/GCC/LDROM_iap/LDROM_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "6560"
+        },
+        {
+          "name": "toolchain",
+          "value": "GCC Eclipse"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/GCC/LDROM_iap/.cproject; SampleCode/StdDriver/RMC_IAP/GCC/ap_image.S"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@iar",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - IAR",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@iar",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea786e858d3e7e15e8235484316f3b98dc8d35072767e5b056d6156dca5c3d3a"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/RMC_IAP/IAR/Release/Exe/rmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "3791"
+        },
+        {
+          "name": "toolchain",
+          "value": "IAR"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/IAR/rmc_ld_iap.ewp; SampleCode/StdDriver/RMC_IAP/IAR/rmc_ap_main.ewp"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@keil",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - Keil",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@keil",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2b125703cc1236c42f6470a4abe0e0a8833b918decf4a4f4d653625040cd55d0"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/RMC_IAP/KEIL/Obj/rmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "3132"
+        },
+        {
+          "name": "toolchain",
+          "value": "Keil"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/KEIL/rmc_ld_iap.uvprojx; SampleCode/StdDriver/RMC_IAP/KEIL/ap_image.s"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@vscode-gcc",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - VSCode GCC",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@vscode-gcc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "51aeb754c157f956b9c26e1c29e650d4cd91d271c55d832649fde803fe34c0f7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/RMC_IAP/VSCode/bin/rmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "5220"
+        },
+        {
+          "name": "toolchain",
+          "value": "GCC through VSCode CMSIS project"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/VSCode/RMC_IAP_LDROM/RMC_IAP_LDROM.cproject.yml; SampleCode/StdDriver/RMC_IAP/VSCode/RMC_IAP_APROM/ap_image.s; SampleCode/StdDriver/RMC_IAP/VSCode/RMC_IAP_APROM/ap_image_gcc.S"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/microsoft-windows-sdk-hid-import-library@repository-copy",
+      "group": "Microsoft",
+      "name": "Microsoft Windows HID Import Library",
+      "version": "repository-copy",
+      "scope": "required",
+      "author": "Microsoft Corporation",
+      "supplier": {
+        "name": "Microsoft Corporation"
+      },
+      "purl": "pkg:generic/microsoft-windows-sdk-hid-import-library@repository-copy",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "22bcccaed9b092f4ab2aa12e1471959ed1847296f350bb6d7390b0718fdb5ca4"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Microsoft-Windows-SDK"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Tool/HIDTransferTest/HIDTransferTest"
+        },
+        {
+          "name": "artifact_path",
+          "value": "Tool/HIDTransferTest/HIDTransferTest/hid.lib"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "12384"
+        },
+        {
+          "name": "integration",
+          "value": "host-build import library"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "vendor-license"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "Tool/HIDTransferTest/HIDTransferTest/HIDTransferTest.vcxproj"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        }
+      ]
+    }
+  ]
+}
