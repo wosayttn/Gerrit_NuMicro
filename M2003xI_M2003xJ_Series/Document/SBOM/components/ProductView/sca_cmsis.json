@@ -1,0 +1,270 @@
+{
+    "schema_version":  "1.0",
+    "evidence_type":  "sca-component-evidence",
+    "view":  "ProductView",
+    "component":  {
+                      "type":  "library",
+                      "group":  "Arm",
+                      "name":  "CMSIS",
+                      "version":  "6.1.0",
+                      "supplier":  "Organization: Arm Limited",
+                      "licenses":  [
+                                       {
+                                           "expression":  "Apache-2.0"
+                                       }
+                                   ],
+                      "purl":  "pkg:github/ARM-software/CMSIS_6@6.1.0",
+                      "bom_ref":  "pkg:github/ARM-software/CMSIS_6@6.1.0?download_url=local-vendored-copy#Library/CMSIS"
+                  },
+    "source":  {
+                   "root":  "Library/CMSIS",
+                   "integration":  "vendored-source",
+                   "included_paths":  [
+                                          "Library/CMSIS/Core/Include",
+                                          "Library/CMSIS/Driver",
+                                          "Library/CMSIS/RTOS2"
+                                      ],
+                   "excluded_paths":  [
+                                          "Library/CMSIS/Core/Test",
+                                          "Library/CMSIS/Documentation"
+                                      ]
+               },
+    "versions":  {
+                     "cmsis_component":  "6.1.0",
+                     "cmsis_core_m":  "6.1.0",
+                     "cmsis_rtos2_api":  "2.3.0",
+                     "cmsis_driver_release":  "2.10.0",
+                     "cmsis_driver_common":  "2.0"
+                 },
+    "driver_interface_apis":  [
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_CAN.h",
+                                      "macro":  "ARM_CAN_API_VERSION",
+                                      "version":  "1.3"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_ETH_MAC.h",
+                                      "macro":  "ARM_ETH_MAC_API_VERSION",
+                                      "version":  "2.2"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_ETH_PHY.h",
+                                      "macro":  "ARM_ETH_PHY_API_VERSION",
+                                      "version":  "2.2"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_Flash.h",
+                                      "macro":  "ARM_FLASH_API_VERSION",
+                                      "version":  "2.3"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_I2C.h",
+                                      "macro":  "ARM_I2C_API_VERSION",
+                                      "version":  "2.4"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_MCI.h",
+                                      "macro":  "ARM_MCI_API_VERSION",
+                                      "version":  "2.4"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_NAND.h",
+                                      "macro":  "ARM_NAND_API_VERSION",
+                                      "version":  "2.4"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_SAI.h",
+                                      "macro":  "ARM_SAI_API_VERSION",
+                                      "version":  "1.2"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_SPI.h",
+                                      "macro":  "ARM_SPI_API_VERSION",
+                                      "version":  "2.3"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_Storage.h",
+                                      "macro":  "ARM_STORAGE_API_VERSION",
+                                      "version":  "1.2"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_USART.h",
+                                      "macro":  "ARM_USART_API_VERSION",
+                                      "version":  "2.4"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_USBD.h",
+                                      "macro":  "ARM_USBD_API_VERSION",
+                                      "version":  "2.3"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_USBH.h",
+                                      "macro":  "ARM_USBH_API_VERSION",
+                                      "version":  "2.4"
+                                  },
+                                  {
+                                      "header":  "Library/CMSIS/Driver/Include/Driver_WiFi.h",
+                                      "macro":  "ARM_WIFI_API_VERSION",
+                                      "version":  "1.1"
+                                  }
+                              ],
+    "version_evidence":  [
+                             {
+                                 "path":  "Library/CMSIS/Core/Include/cmsis_version.h",
+                                 "evidence":  "__CM_CMSIS_VERSION_MAIN=6; __CM_CMSIS_VERSION_SUB=1",
+                                 "resolved_version":  "6.1.0"
+                             },
+                             {
+                                 "path":  "Library/CMSIS/RTOS2/Include/cmsis_os2.h",
+                                 "evidence":  "Revision V2.3.0; current history entry 2.3.0",
+                                 "resolved_version":  "2.3.0"
+                             },
+                             {
+                                 "path":  "Library/CMSIS/Driver/Include/Driver_Common.h",
+                                 "evidence":  "Revision V2.0; current history entry 2.0",
+                                 "resolved_version":  "2.0"
+                             },
+                             {
+                                 "path":  "Library/CMSIS/Documentation/html/General/revision_history.html",
+                                 "evidence":  "CMSIS 6.1.0 includes CMSIS-Driver 2.10.0",
+                                 "resolved_version":  "2.10.0"
+                             }
+                         ],
+    "license_evidence":  [
+                             {
+                                 "path":  "Library/CMSIS/Core/Include/cmsis_version.h",
+                                 "length":  1936,
+                                 "sha256":  "3B9195C5373A2A4DBFD968B083B3D7F5F446F9EC2E126F75928AC1FF4356B91E",
+                                 "license":  "Apache-2.0",
+                                 "spdx_occurrence_count":  1
+                             },
+                             {
+                                 "path":  "Library/CMSIS/Driver/Include/Driver_Common.h",
+                                 "length":  2248,
+                                 "sha256":  "EB32E5589B32A3160941C60B638A474C0AE23F9C63EB04143AA31908A4A70A4B",
+                                 "license":  "Apache-2.0",
+                                 "spdx_occurrence_count":  1
+                             },
+                             {
+                                 "path":  "Library/CMSIS/RTOS2/Include/cmsis_os2.h",
+                                 "length":  42623,
+                                 "sha256":  "0DE5E6FF219EE13BCD1B1CA2B6446D68CB56B6A11E16494E9577BB2FFDD52A70",
+                                 "license":  "Apache-2.0",
+                                 "spdx_occurrence_count":  1
+                             }
+                         ],
+    "properties":  [
+                       {
+                           "name":  "bsp:component-origin",
+                           "value":  "third-party"
+                       },
+                       {
+                           "name":  "bsp:component-source",
+                           "value":  "vendored"
+                       },
+                       {
+                           "name":  "bsp:integration",
+                           "value":  "source"
+                       },
+                       {
+                           "name":  "bsp:cmsis-core-version",
+                           "value":  "6.1.0"
+                       },
+                       {
+                           "name":  "bsp:cmsis-rtos2-api-version",
+                           "value":  "2.3.0"
+                       },
+                       {
+                           "name":  "bsp:cmsis-driver-release",
+                           "value":  "2.10.0"
+                       },
+                       {
+                           "name":  "bsp:cmsis-driver-common-version",
+                           "value":  "2.0"
+                       },
+                       {
+                           "name":  "bsp:cmsis-driver-interface-api-versions",
+                           "value":  "ARM_CAN_API_VERSION=1.3; ARM_ETH_MAC_API_VERSION=2.2; ARM_ETH_PHY_API_VERSION=2.2; ARM_FLASH_API_VERSION=2.3; ARM_I2C_API_VERSION=2.4; ARM_MCI_API_VERSION=2.4; ARM_NAND_API_VERSION=2.4; ARM_SAI_API_VERSION=1.2; ARM_SPI_API_VERSION=2.3; ARM_STORAGE_API_VERSION=1.2; ARM_USART_API_VERSION=2.4; ARM_USBD_API_VERSION=2.3; ARM_USBH_API_VERSION=2.4; ARM_WIFI_API_VERSION=1.1"
+                       },
+                       {
+                           "name":  "bsp:included-paths",
+                           "value":  "Library/CMSIS/Core/Include; Library/CMSIS/Driver; Library/CMSIS/RTOS2"
+                       },
+                       {
+                           "name":  "bsp:excluded-paths",
+                           "value":  "Library/CMSIS/Core/Test; Library/CMSIS/Documentation"
+                       }
+                   ],
+    "review":  {
+                   "conclusion":  "CMSIS is a third-party vendored source component used by the Product View.",
+                   "component_version":  "6.1.0",
+                   "license_conclusion":  "Apache-2.0",
+                   "test_and_documentation_excluded_from_product":  true
+               },
+    "components":  [
+                       {
+                           "type":  "library",
+                           "group":  "Arm",
+                           "name":  "CMSIS",
+                           "version":  "6.1.0",
+                           "supplier":  {
+                                            "name":  "Arm Limited"
+                                        },
+                           "licenses":  [
+                                            {
+                                                "expression":  "Apache-2.0"
+                                            }
+                                        ],
+                           "purl":  "pkg:github/ARM-software/CMSIS_6@6.1.0",
+                           "bom-ref":  "pkg:github/ARM-software/CMSIS_6@6.1.0?source=vendored\u0026path=Library/CMSIS",
+                           "properties":  [
+                                              {
+                                                  "name":  "bsp:component-origin",
+                                                  "value":  "third-party"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-source",
+                                                  "value":  "vendored"
+                                              },
+                                              {
+                                                  "name":  "bsp:integration",
+                                                  "value":  "source"
+                                              },
+                                              {
+                                                  "name":  "bsp:cmsis-core-version",
+                                                  "value":  "6.1.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:cmsis-rtos2-api-version",
+                                                  "value":  "2.3.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:cmsis-driver-release",
+                                                  "value":  "2.10.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:cmsis-driver-common-version",
+                                                  "value":  "2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:cmsis-driver-interface-api-versions",
+                                                  "value":  "ARM_CAN_API_VERSION=1.3; ARM_ETH_MAC_API_VERSION=2.2; ARM_ETH_PHY_API_VERSION=2.2; ARM_FLASH_API_VERSION=2.3; ARM_I2C_API_VERSION=2.4; ARM_MCI_API_VERSION=2.4; ARM_NAND_API_VERSION=2.4; ARM_SAI_API_VERSION=1.2; ARM_SPI_API_VERSION=2.3; ARM_STORAGE_API_VERSION=1.2; ARM_USART_API_VERSION=2.4; ARM_USBD_API_VERSION=2.3; ARM_USBH_API_VERSION=2.4; ARM_WIFI_API_VERSION=1.1"
+                                              },
+                                              {
+                                                  "name":  "bsp:included-paths",
+                                                  "value":  "Library/CMSIS/Core/Include; Library/CMSIS/Driver; Library/CMSIS/RTOS2"
+                                              },
+                                              {
+                                                  "name":  "bsp:excluded-paths",
+                                                  "value":  "Library/CMSIS/Core/Test; Library/CMSIS/Documentation"
+                                              }
+                                          ],
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "3b9195c5373a2a4dbfd968b083b3d7f5f446f9ec2e126f75928ac1ff4356b91e"
+                                          }
+                                      ]
+                       }
+                   ]
+}
