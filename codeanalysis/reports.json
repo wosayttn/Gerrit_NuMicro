@@ -32,8 +32,8 @@
     "file": "code-analysis-summary-MS40_M2U51.html",
     "stage1": {
       "status": "Fail",
-      "misra": 38,
-      "cppcheck": 28
+      "misra": 35,
+      "cppcheck": 0
     },
     "stage2": {
       "status": "Fail",
