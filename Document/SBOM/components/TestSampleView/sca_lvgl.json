@@ -1,0 +1,64 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/lvgl@9.4.0?source=vendored&path=ThirdParty/lvgl",
+      "name": "LVGL",
+      "version": "9.4.0",
+      "scope": "required",
+      "author": "LVGL Kft",
+      "manufacturer": {
+        "name": "LVGL Kft"
+      },
+      "supplier": {
+        "name": "LVGL Kft"
+      },
+      "purl": "pkg:generic/lvgl@9.4.0",
+      "cpe": "cpe:2.3:a:lvgl:lvgl:9.4.0:*:*:*:*:*:*:*",
+      "description": "LVGL (Light and Versatile Graphics Library) vendored in ThirdParty/lvgl.",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/lvgl/lvgl"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/lvgl"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "LVGL graphics library"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_lvgl.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/lvgl"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "ThirdParty/lvgl/lv_version.h (LVGL_VERSION 9.4.0); ThirdParty/lvgl/LICENCE.txt (MIT licence, Copyright (c) 2025 LVGL Kft)"
+        }
+      ]
+    }
+  ]
+}

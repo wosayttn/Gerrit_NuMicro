@@ -1,0 +1,71 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@6.1.0?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "6.1.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "manufacturer": {
+        "name": "Arm Limited"
+      },
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "purl": "pkg:generic/cmsis@6.1.0",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core(M) 6.1.0 headers, CMSIS-Driver API headers, CMSIS-RTOS2 API headers and CMSIS-Core validation sources.",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ARM-software/CMSIS_6"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "cmsis_included_top_level_paths",
+          "value": "Core; CoreValidation; Documentation; Driver; Include; RTOS2"
+        },
+        {
+          "name": "cmsis_core_m_version",
+          "value": "6.1.0"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h (__CM_CMSIS_VERSION_MAIN 6, __CM_CMSIS_VERSION_SUB 1)"
+        }
+      ]
+    }
+  ]
+}
