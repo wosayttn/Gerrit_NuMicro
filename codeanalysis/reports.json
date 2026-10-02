@@ -31,13 +31,13 @@
     "branch": "MS40_M2U51",
     "file": "code-analysis-summary-MS40_M2U51.html",
     "stage1": {
-      "status": "Fail",
-      "misra": 35,
+      "status": "Pass",
+      "misra": 0,
       "cppcheck": 0
     },
     "stage2": {
-      "status": "Fail",
-      "misra": 10,
+      "status": "Pass",
+      "misra": 0,
       "cppcheck": 0
     }
   },
