@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "executionMode": "offline-existing-database-no-download",
+  "commandPolicy": {
+    "GRYPE_DB_AUTO_UPDATE": "false",
+    "GRYPE_CHECK_FOR_APP_UPDATE": "false",
+    "add-cpes-if-none": false
+  },
+  "configuration": {
+    "path": "Document/SBOM/config/grype-config.yaml",
+    "sha256": "33cfacb2222fbd1c8ca5b4042256961537a2c762def19ae22b8708b7d7db87c8"
+  },
+  "database": {
+    "schemaVersion": "v6.1.9",
+    "built": "2026-08-31T06:37:31Z",
+    "valid": true,
+    "source": "https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.9_2026-08-31T00:36:25Z_1788158251.tar.zst?checksum=sha256%3A70e70f6232f41281063bd2a0a20600758ae12d6e60ba571b16070f950e2f99d3",
+    "localPath": "<local-grype-cache>/db/6/vulnerability.db",
+    "sha256": "de9658d5fbee65261a773c9d0ac26fdcadbea9bdeb6126e01eb354a7a9123aa1"
+  },
+  "reports": [
+    {
+      "view": "Product",
+      "scannedInputSnapshot": {
+        "path": "m2l31bsp_Product_SBOM_cdx.json",
+        "sha256": "059732014e6577d695bbf1ca3a024a54dc6a2b710b4c648d008f055477b1614f",
+        "externalFormalEvidenceLocator": {
+          "repository": "M2L31BSP",
+          "gerritChange": 16822,
+          "patchSet": 1,
+          "commit": "d0023c13352da0a8f440c9307b23934272ed171f",
+          "path": "m2l31bsp_Product_SBOM_cdx.json",
+          "gitBlobSha1": "60e0ac63270ddf8b035e6412265f16ddaa7e4c78"
+        }
+      },
+      "currentDurableSbom": {
+        "path": "m2l31bsp_Product_SBOM_cdx.json",
+        "sha256": "c7491c5f522e5d6d8160241176529f9fe640568610b05d153a53921f54f9ae8c",
+        "differenceFromScannedInput": "Only evidence/config references and pipeline-retention metadata changed; the scanned component graph and identifiers are unchanged."
+      },
+      "rawReport": {
+        "repositoryPresence": "external-only",
+        "sha256": "2e0f79aebf962d11b83104f37b9d1cdd4260c7f69fe9d12f2a78524735459394",
+        "externalFormalEvidenceLocator": {
+          "repository": "M2L31BSP",
+          "gerritChange": 16822,
+          "patchSet": 1,
+          "commit": "d0023c13352da0a8f440c9307b23934272ed171f",
+          "gitBlobSha1": "31fd324a063e2188423b055f5214b9fb007f961a"
+        },
+        "retentionRequirement": "This immutable Patch Set 1 object is external review evidence, not a BSP release artifact. The evidence owner must preserve it in the formal SBOM evidence archive before release."
+      },
+      "exitCode": 0,
+      "scanner": {
+        "name": "grype",
+        "version": "0.117.0",
+        "addCpesIfNone": false
+      },
+      "matchCount": 0,
+      "matches": []
+    },
+    {
+      "view": "TestSample",
+      "scannedInputSnapshot": {
+        "path": "m2l31bsp_TestSample_SBOM_cdx.json",
+        "sha256": "f62a3c893f7b5b1e8fd4a6084a162cbc43df18c670ecbab043c278ada06f03fc",
+        "externalFormalEvidenceLocator": {
+          "repository": "M2L31BSP",
+          "gerritChange": 16822,
+          "patchSet": 1,
+          "commit": "d0023c13352da0a8f440c9307b23934272ed171f",
+          "path": "m2l31bsp_TestSample_SBOM_cdx.json",
+          "gitBlobSha1": "8e5604f2206e9d9c1bef53eb484c6dae81d3b744"
+        }
+      },
+      "currentDurableSbom": {
+        "path": "m2l31bsp_TestSample_SBOM_cdx.json",
+        "sha256": "8cbaa8337be089254ec128948f24636d595138dada733b3883ea0ba9a4b7f595",
+        "differenceFromScannedInput": "Only evidence/config references and pipeline-retention metadata changed; the scanned component graph and identifiers are unchanged."
+      },
+      "rawReport": {
+        "repositoryPresence": "external-only",
+        "sha256": "e6067f152b353877cde1c4476bcab39f1b127dd5f1f09e093b42daad434f4efb",
+        "externalFormalEvidenceLocator": {
+          "repository": "M2L31BSP",
+          "gerritChange": 16822,
+          "patchSet": 1,
+          "commit": "d0023c13352da0a8f440c9307b23934272ed171f",
+          "gitBlobSha1": "0200e717ff0971f274b8fe12ec2c42486b16be51"
+        },
+        "retentionRequirement": "This immutable Patch Set 1 object is external review evidence, not a BSP release artifact. The evidence owner must preserve it in the formal SBOM evidence archive before release."
+      },
+      "exitCode": 0,
+      "scanner": {
+        "name": "grype",
+        "version": "0.117.0",
+        "addCpesIfNone": false
+      },
+      "matchCount": 5,
+      "matches": [
+        {
+          "id": "CVE-2024-28115",
+          "severity": "High",
+          "advisory": {
+            "namespace": "nvd:cpe",
+            "source": "https://nvd.nist.gov/vuln/detail/CVE-2024-28115"
+          },
+          "artifact": {
+            "name": "FreeRTOS-Kernel",
+            "version": "10.5.1",
+            "cpes": [
+              "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*"
+            ]
+          },
+          "matchType": [
+            "cpe-match"
+          ],
+          "matcher": "stock-matcher",
+          "matchedCpes": [
+            "cpe:2.3:o:amazon:freertos:*:*:*:*:*:*:*:*"
+          ],
+          "versionConstraints": [
+            "< 10.6.2 (unknown)"
+          ],
+          "suggestedFixVersions": [
+            "10.6.2"
+          ],
+          "fixState": "fixed",
+          "classification": "scanner-range-match",
+          "affectedness": "not_assessed",
+          "vex": "not_published"
+        },
+        {
+          "id": "CVE-2026-77234",
+          "severity": "Critical",
+          "advisory": {
+            "namespace": "nvd:cpe",
+            "source": "https://nvd.nist.gov/vuln/detail/CVE-2026-77234"
+          },
+          "artifact": {
+            "name": "FreeRTOS-Kernel",
+            "version": "10.5.1",
+            "cpes": [
+              "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*"
+            ]
+          },
+          "matchType": [
+            "cpe-match"
+          ],
+          "matcher": "stock-matcher",
+          "matchedCpes": [
+            "cpe:2.3:o:amazon:freertos:*:*:*:*:*:*:*:*"
+          ],
+          "versionConstraints": [
+            ">= 7.0.0, < 11.3.1 (unknown)"
+          ],
+          "suggestedFixVersions": [
+            "11.3.1"
+          ],
+          "fixState": "fixed",
+          "classification": "scanner-range-match",
+          "affectedness": "not_assessed",
+          "vex": "not_published"
+        },
+        {
+          "id": "CVE-2026-77237",
+          "severity": "High",
+          "advisory": {
+            "namespace": "nvd:cpe",
+            "source": "https://nvd.nist.gov/vuln/detail/CVE-2026-77237"
+          },
+          "artifact": {
+            "name": "FreeRTOS-Kernel",
+            "version": "10.5.1",
+            "cpes": [
+              "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*"
+            ]
+          },
+          "matchType": [
+            "cpe-match"
+          ],
+          "matcher": "stock-matcher",
+          "matchedCpes": [
+            "cpe:2.3:o:amazon:freertos:*:*:*:*:*:*:*:*"
+          ],
+          "versionConstraints": [
+            ">= 7.4.0, < 11.3.1 (unknown)"
+          ],
+          "suggestedFixVersions": [
+            "11.3.1"
+          ],
+          "fixState": "fixed",
+          "classification": "scanner-range-match",
+          "affectedness": "not_assessed",
+          "vex": "not_published"
+        },
+        {
+          "id": "CVE-2026-77236",
+          "severity": "High",
+          "advisory": {
+            "namespace": "nvd:cpe",
+            "source": "https://nvd.nist.gov/vuln/detail/CVE-2026-77236"
+          },
+          "artifact": {
+            "name": "FreeRTOS-Kernel",
+            "version": "10.5.1",
+            "cpes": [
+              "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*"
+            ]
+          },
+          "matchType": [
+            "cpe-match"
+          ],
+          "matcher": "stock-matcher",
+          "matchedCpes": [
+            "cpe:2.3:o:amazon:freertos:*:*:*:*:*:*:*:*"
+          ],
+          "versionConstraints": [
+            ">= 10.2.0, < 11.3.1 (unknown)"
+          ],
+          "suggestedFixVersions": [
+            "11.3.1"
+          ],
+          "fixState": "fixed",
+          "classification": "scanner-range-match",
+          "affectedness": "not_assessed",
+          "vex": "not_published"
+        },
+        {
+          "id": "CVE-2026-77235",
+          "severity": "High",
+          "advisory": {
+            "namespace": "nvd:cpe",
+            "source": "https://nvd.nist.gov/vuln/detail/CVE-2026-77235"
+          },
+          "artifact": {
+            "name": "FreeRTOS-Kernel",
+            "version": "10.5.1",
+            "cpes": [
+              "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*"
+            ]
+          },
+          "matchType": [
+            "cpe-match"
+          ],
+          "matcher": "stock-matcher",
+          "matchedCpes": [
+            "cpe:2.3:o:amazon:freertos:*:*:*:*:*:*:*:*"
+          ],
+          "versionConstraints": [
+            ">= 10.2.0, < 11.3.1 (unknown)"
+          ],
+          "suggestedFixVersions": [
+            "11.3.1"
+          ],
+          "fixState": "fixed",
+          "classification": "scanner-range-match",
+          "affectedness": "not_assessed",
+          "vex": "not_published"
+        }
+      ]
+    }
+  ],
+  "disposition": {
+    "state": "not_assessed",
+    "approval": "pending",
+    "vex": "not_published",
+    "statement": "Matches are scanner range matches only and are not affectedness determinations."
+  }
+}

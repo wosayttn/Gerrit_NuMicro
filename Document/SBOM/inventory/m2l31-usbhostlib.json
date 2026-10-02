@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "scope": "m2l31-usbhostlib",
+  "pathBase": "Library/UsbHostLib",
+  "hashAlgorithm": "sha256-path-nul-content-nul-v1",
+  "aggregateSha256": "1dc4c3c2a8ee1dda76f5da588abdfac8371950e095ea79b902e3a43fe89a30be",
+  "repositoryRelativeComparisonSha256": "4cbe195219d38052ad311bb85d2720c543ddc64850dc402847671621c780487c",
+  "fileCount": 25,
+  "versionAnchor": {
+    "path": "Library/UsbHostLib/inc/config.h",
+    "sha256": "d3ed1af7f97a24798e081d46cf6fd5b4e2f5883f832eaee16063e1542d58a39c",
+    "role": "version-anchor"
+  },
+  "files": [
+    {
+      "path": "Library/UsbHostLib/inc/config.h",
+      "size": 4749,
+      "sha256": "d3ed1af7f97a24798e081d46cf6fd5b4e2f5883f832eaee16063e1542d58a39c",
+      "gitBlobSha1": "9962e7565e6a5acbff38b0c7aec61784c472d3ab"
+    },
+    {
+      "path": "Library/UsbHostLib/inc/hub.h",
+      "size": 6019,
+      "sha256": "4296c18f3382499046bcb63cd4bb30db0b5340acbf7a010c91523cd867752ffa",
+      "gitBlobSha1": "d2dd84d3baa84ae7ec019326b97e852bcf6eecab"
+    },
+    {
+      "path": "Library/UsbHostLib/inc/ohci.h",
+      "size": 7276,
+      "sha256": "21635717582962172019cb771e040aa53bca558f958fc7cd4b580d4c63d2ba2f",
+      "gitBlobSha1": "3d080213fe897fb6673a6fae3cd8fab9a42b71ba"
+    },
+    {
+      "path": "Library/UsbHostLib/inc/usb.h",
+      "size": 22614,
+      "sha256": "b52d2137702f71f046b53e9361b2d65b1663917c35960012f2d4dd2b75490f3e",
+      "gitBlobSha1": "f75691e2f067970682194d942d46a2b6bd9c9a6a"
+    },
+    {
+      "path": "Library/UsbHostLib/inc/usbh_cdc.h",
+      "size": 8895,
+      "sha256": "1c0ededfcdcc512aedf8e9b0b68788b67f2e3fb894b1a89b67c8dd266645e79d",
+      "gitBlobSha1": "e99488098ff6385d7fe5b02ffbe43f52daebdf91"
+    },
+    {
+      "path": "Library/UsbHostLib/inc/usbh_hid.h",
+      "size": 15441,
+      "sha256": "0f7ea04b5475da1ab0fb0f9d562264be12637dc592611df445a5e258c7f157ea",
+      "gitBlobSha1": "92ea939782fe59cf18c163d3c6f5ff4a554906b7"
+    },
+    {
+      "path": "Library/UsbHostLib/inc/usbh_lib.h",
+      "size": 14708,
+      "sha256": "c798e9ac538edd1a783f151f8d805907bb9bebdc8ffd3617b66c4b5938c0ed29",
+      "gitBlobSha1": "593a8e5b6f57f4b36c93521b98312e2a272adf54"
+    },
+    {
+      "path": "Library/UsbHostLib/inc/usbh_uac.h",
+      "size": 7643,
+      "sha256": "cd106a086290eaa450cb4085b9613612ee259a37dd45730f17705b50f5e7f71e",
+      "gitBlobSha1": "0cb972b740dfdcb8cb86aea9845be2654d8f31fb"
+    },
+    {
+      "path": "Library/UsbHostLib/src_cdc/cdc_core.c",
+      "size": 13745,
+      "sha256": "24cfa6dc2ce9b05c23975bb68173d4abe928032f716dc22aa0d04a5efc60dd71",
+      "gitBlobSha1": "9feb06950fdd9562ae36decf265dde0e965760e7"
+    },
+    {
+      "path": "Library/UsbHostLib/src_cdc/cdc_driver.c",
+      "size": 8860,
+      "sha256": "d8779a18cd709418d646154466b24caede70bf8152c1bb1bf0b330a1b179ecfb",
+      "gitBlobSha1": "0922d14c6b188af7e617208deb4087ac0135a5b8"
+    },
+    {
+      "path": "Library/UsbHostLib/src_cdc/cdc_parser.c",
+      "size": 7912,
+      "sha256": "ee90dece41a19dd2a8395814ceb458951341770d90f5cb9d75ac02d711d8da2a",
+      "gitBlobSha1": "4923cf7cfad5e62c6fb93c4e4a6a5fdda656937a"
+    },
+    {
+      "path": "Library/UsbHostLib/src_core/hub.c",
+      "size": 24494,
+      "sha256": "c817326de04ed6e786840789e5b804eb5e842faf44f6025f4d14f41d0116c5fd",
+      "gitBlobSha1": "d9acf9af9e781ddcd9eb8db5e072e2c3c2adddd1"
+    },
+    {
+      "path": "Library/UsbHostLib/src_core/mem_alloc.c",
+      "size": 13140,
+      "sha256": "bfb1fe9fc687e94bd6a025efc5df6e126667a2decba0cb2e5ec9cee5ea9a9eec",
+      "gitBlobSha1": "403f1efc89d9ac7515d810c75749916cff3f488f"
+    },
+    {
+      "path": "Library/UsbHostLib/src_core/ohci.c",
+      "size": 45794,
+      "sha256": "13451ad2132c11920c9672e67e54d4f0c8b83be7b2bf5754fa3d1fa209a551c4",
+      "gitBlobSha1": "77dee3f2864f3bffa6f1d3f03030dce670c4b762"
+    },
+    {
+      "path": "Library/UsbHostLib/src_core/usb_core.c",
+      "size": 51255,
+      "sha256": "dd6f865a8959a0751f74944dff2c9937b5cabcf4fe89e6061034a291bf215a8a",
+      "gitBlobSha1": "2b2b1292cec09d88e931af2a9edff411bdc5a4d1"
+    },
+    {
+      "path": "Library/UsbHostLib/src_hid/hid_core.c",
+      "size": 26073,
+      "sha256": "fc436b3eccdab432e24957a4cd1ccc86b0cbb159ac996ae184368d95cd25950d",
+      "gitBlobSha1": "fc46ad252dd1ba0a13ac1fdd070f849d1fe98204"
+    },
+    {
+      "path": "Library/UsbHostLib/src_hid/hid_driver.c",
+      "size": 7019,
+      "sha256": "f00a4a3a2aa1aa6ee36cc2ae368b85cb69952b686eab5286aa90f1f9580a47bb",
+      "gitBlobSha1": "3035f71096cb30be64c0b6167657dc96fd33e6d1"
+    },
+    {
+      "path": "Library/UsbHostLib/src_hid/hid_parser.c",
+      "size": 32612,
+      "sha256": "5a28468bec874baeb34dbbc73314ceeef6f63ce8e2d79949e4aa745f14af8828",
+      "gitBlobSha1": "3f8654e88ed196092f396c5448f14377e47d9cb3"
+    },
+    {
+      "path": "Library/UsbHostLib/src_msc/msc.h",
+      "size": 4991,
+      "sha256": "54a14f04e2d8713454ca5965ada6d5f0af25377a7e604050bfd956aa31a3d2b4",
+      "gitBlobSha1": "ced40f3fe92e7b3dd76bbb807448b5109bef0c5a"
+    },
+    {
+      "path": "Library/UsbHostLib/src_msc/msc_driver.c",
+      "size": 19587,
+      "sha256": "8e8209817e3ff92103f932691fa6c134844eaa3b75fad68595fe8bf639e5268a",
+      "gitBlobSha1": "e113fd02e2ca342e586ec54779b2de6f7ae36824"
+    },
+    {
+      "path": "Library/UsbHostLib/src_msc/msc_xfer.c",
+      "size": 3387,
+      "sha256": "439510abb59f19a2e6143317087f4fcef4c929c25bb8d7ef51d7ffcd47709940",
+      "gitBlobSha1": "ec05f49074402e1a3f6888b6951ddd1f0a92cbe0"
+    },
+    {
+      "path": "Library/UsbHostLib/src_uac/uac.h",
+      "size": 24316,
+      "sha256": "948a166ace7e77cbf089e89eaf8da505704b377809196d1b5e69f1de64c79a19",
+      "gitBlobSha1": "18830b20f2d372349cbb769888c8383a18d47edd"
+    },
+    {
+      "path": "Library/UsbHostLib/src_uac/uac_core.c",
+      "size": 40047,
+      "sha256": "e9d48f8ecca911a653590229f02110e3fe91fbf9943db25e6caea40f8cfb5844",
+      "gitBlobSha1": "b4ee1473842de37e8b9393623b97c7fb2dc65a73"
+    },
+    {
+      "path": "Library/UsbHostLib/src_uac/uac_driver.c",
+      "size": 8985,
+      "sha256": "2cf5bfb37c7c95ac6147dd474ca08de397eca5bbdb5cb2fc3389cd5405a90011",
+      "gitBlobSha1": "aa6313106c9a6f7ecff4cf7de76291118dcb913d"
+    },
+    {
+      "path": "Library/UsbHostLib/src_uac/uac_parser.c",
+      "size": 30710,
+      "sha256": "555e833227ae875d756ee5158beaa915713dedda3724ee884182dbf682b98b57",
+      "gitBlobSha1": "0b80fa216345433b584b87f32b084f7e1d61f3d8"
+    }
+  ]
+}

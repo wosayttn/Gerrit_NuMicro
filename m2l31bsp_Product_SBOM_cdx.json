@@ -1,0 +1,2456 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:1a2aae7c-d835-4628-aaf7-ac1ac805ebc4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-02T12:53:41+08:00",
+    "supplier": {
+      "name": "Nuvoton Technology Corp."
+    },
+    "authors": [
+      {
+        "name": "Nuvoton SBOM remediation pipeline"
+      }
+    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "Python Software Foundation",
+          "name": "Python",
+          "version": "3.13.15"
+        },
+        {
+          "type": "application",
+          "author": "Nuvoton SBOM remediation",
+          "name": "M2L31 SBOM remediation generator",
+          "version": "1.0.0",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "57c3afdc693950e29887133b37818c4060ba81ccf899be410bcd40deb1cceca0"
+            }
+          ],
+          "properties": [
+            {
+              "name": "bsp:config",
+              "value": "Document/SBOM/config/remediation-config.json"
+            },
+            {
+              "name": "bsp:repository-presence",
+              "value": "external-only pipeline tool"
+            }
+          ]
+        },
+        {
+          "type": "application",
+          "name": "git",
+          "version": "2.53.0.windows.4"
+        },
+        {
+          "type": "application",
+          "author": "Anchore",
+          "name": "grype",
+          "version": "0.117.0",
+          "properties": [
+            {
+              "name": "bsp:config",
+              "value": "Document/SBOM/config/grype-config.yaml"
+            },
+            {
+              "name": "bsp:config-sha256",
+              "value": "33cfacb2222fbd1c8ca5b4042256961537a2c762def19ae22b8708b7d7db87c8"
+            },
+            {
+              "name": "bsp:scan-evidence",
+              "value": "Document/SBOM/evidence/scan-evidence.json"
+            },
+            {
+              "name": "bsp:database-schema",
+              "value": "v6.1.9"
+            },
+            {
+              "name": "bsp:database-built",
+              "value": "2026-08-31T06:37:31Z"
+            },
+            {
+              "name": "bsp:database-sha256",
+              "value": "de9658d5fbee65261a773c9d0ac26fdcadbea9bdeb6126e01eb354a7a9123aa1"
+            },
+            {
+              "name": "bsp:add-cpes-if-none",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "type": "application",
+          "name": "CycloneDX CLI",
+          "version": "0.32.0+0ed788d25c13cef9e9a3029603f6b708e3279390",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b1c00dbb40e628ec8c1252771871341ac4d4aaf032f832d83bd22cb2b1d258ae"
+            }
+          ]
+        },
+        {
+          "type": "application",
+          "name": "sbom-checker",
+          "version": "1.0.0",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d27b5a94002202884d8529106ee2a6f3c34707295e429a5137ef71f21d3c5edd"
+            }
+          ],
+          "properties": [
+            {
+              "name": "bsp:level",
+              "value": "strict"
+            }
+          ]
+        }
+      ]
+    },
+    "component": {
+      "type": "library",
+      "bom-ref": "pkg:generic/nuvoton/m2l31bsp-product@7d75be4053bb0365b838f165216fb42328a69ae2",
+      "group": "Nuvoton",
+      "name": "M2L31 BSP Product",
+      "version": "candidate-7d75be4053bb",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-product@7d75be4053bb0365b838f165216fb42328a69ae2",
+      "properties": [
+        {
+          "name": "bsp:scan-source",
+          "value": "Git worktree at fixed baseline"
+        },
+        {
+          "name": "bsp:generation-provenance",
+          "value": "7d75be4053bb0365b838f165216fb42328a69ae2"
+        },
+        {
+          "name": "bsp:release-provenance",
+          "value": "not-assigned"
+        },
+        {
+          "name": "bsp:distribution-provenance",
+          "value": "not-assigned"
+        },
+        {
+          "name": "bsp:lifecycle-commit",
+          "value": "null"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-device",
+      "name": "M2L31 Device",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-device@V3.02.000-133-g4c8bdbfc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d20344d184712e80406cde6d56127318bc3b1739d82ffc794c26cc977dabebce"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "59"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-numaker",
+      "name": "M2L31 NuMaker",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-numaker@V3.02.000-133-g4c8bdbfc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "75df62789c61c0573d119ac09ac7a96640e3508eae8377dfb542a82295c511c6"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/NuMaker",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/NuMaker"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-powerdeliverylib",
+      "name": "M2L31 PowerDeliveryLib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-powerdeliverylib@V3.02.000-133-g4c8bdbfc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c3f3bfed439cfbaa10be30688b99b51b6885306e4d5cbf6d210403902f7c04dc"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/PowerDeliveryLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/PowerDeliveryLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "50"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-stddriver",
+      "name": "M2L31 StdDriver",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-stddriver@V3.02.000-133-g4c8bdbfc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "afb5ec59037615892ba29707409e05632bbd2ca25b089716a4acff646f26e523"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "87"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-tklib",
+      "name": "M2L31 TKLib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-tklib@V3.02.000-133-g4c8bdbfc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b9c2663d277ae53a52b3ad74550c20c3c4195801e5fe5a5c24c1e62a39a017ae"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/TKLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:license-file",
+          "value": "Library/TKLib/LICENSE.md"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m2l31bsp:product-component:library-usbhostlib",
+      "name": "M2L31 UsbHostLib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-usbhostlib@V3.02.000-133-g4c8bdbfc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1dc4c3c2a8ee1dda76f5da588abdfac8371950e095ea79b902e3a43fe89a30be"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/UsbHostLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@6.1.0?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "6.1.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "purl": "pkg:generic/cmsis@6.1.0",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core, CMSIS-Driver, CMSIS-RTOS2 API headers, templates, and documentation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "cmsis_core_version",
+          "value": "6.1"
+        },
+        {
+          "name": "cmsis_rtos2_api_version",
+          "value": "2.3.0"
+        },
+        {
+          "name": "cmsis_driver_common_api_version",
+          "value": "2.0"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+        },
+        {
+          "name": "bsp:hash-role",
+          "value": "tracked-scope-aggregate"
+        },
+        {
+          "name": "bsp:aggregate-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:aggregate-path-base",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:aggregate-file-count",
+          "value": "2189"
+        },
+        {
+          "name": "bsp:version-anchor-path",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h"
+        },
+        {
+          "name": "bsp:version-anchor-sha256",
+          "value": "3b9195c5373a2a4dbfd968b083b3d7f5f446f9ec2e126f75928ac1ff4356b91e"
+        },
+        {
+          "name": "bsp:inventory",
+          "value": "Document/SBOM/inventory/cmsis.json"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "2189"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06d9b96d14d417f5932cc119038907fd99cd18723be6d4e7bf601a7e458801b2"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:08e3f8e7095e5b3740a68a41812a02e7770889504ede6ac519561159aab80547:e3a28dd0e35e4029",
+      "name": "Library/PowerDeliveryLib/libPD_DRP.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FlibPD_DRP.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "08e3f8e7095e5b3740a68a41812a02e7770889504ede6ac519561159aab80547"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "242760"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "f3ce0d9291eacc13541059bb3684ef6d128923a6"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/libPD_DRP.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/libPD_DRP.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:1ab013beae051c4827d26c38ad92a1cd5f46e7b023ab090f086610b4c66529de:d079490d3460d92b",
+      "name": "Library/PowerDeliveryLib/libPD_SNK.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FlibPD_SNK.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ab013beae051c4827d26c38ad92a1cd5f46e7b023ab090f086610b4c66529de"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "210152"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "271466402e85fe036a34ee8f7be882329c8d1ca4"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/libPD_SNK.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/libPD_SNK.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:e5215a5e559f1b1acea9979956f44e3894f9bfd00ac2273c88caff2ccfd1c3c7:69c64297ce48d3e1",
+      "name": "Library/PowerDeliveryLib/libPD_SRC.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FlibPD_SRC.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e5215a5e559f1b1acea9979956f44e3894f9bfd00ac2273c88caff2ccfd1c3c7"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "211320"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "f63b33f7b17e6e203170aed141ca1231d49db388"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/libPD_SRC.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/libPD_SRC.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:a65f15f8cbfe86e9f8b0b95023ad9406369c3ccf135aa3b8ac91599136cb1327:dc5b9d716c59d2cd",
+      "name": "Library/PowerDeliveryLib/PD_DRP.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_DRP.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a65f15f8cbfe86e9f8b0b95023ad9406369c3ccf135aa3b8ac91599136cb1327"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "1755728"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "c0cb6dc626d672354fb9c96cbf480db9f5e135d4"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_DRP.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:5e4e0e7f96b7934c26b4996c931a84d2ec550fa40c8faac2b10a442fc53f1c22:21079b787b3813dc",
+      "name": "Library/PowerDeliveryLib/PD_DRP.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_DRP.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5e4e0e7f96b7934c26b4996c931a84d2ec550fa40c8faac2b10a442fc53f1c22"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "369664"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "20f295aa54e68935c7b0515e5d47b643afae281f"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_DRP.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:5c6a48c271e8de69957645002cd1ab69fe7bd5c11a736607f566cb5a0b61990c:5fb4d2f640520b87",
+      "name": "Library/PowerDeliveryLib/PD_DRP_Keil.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_DRP_Keil.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5c6a48c271e8de69957645002cd1ab69fe7bd5c11a736607f566cb5a0b61990c"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "369664"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "40e3c342452c073c10a5a7cb432e6ec73f9e8f90"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_DRP_Keil.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_DRP_Keil.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:511c13eb5146e25c327e028cbdcf7d3bffe0d227c8deff8fe947f40e26fbb03b:4d314aac6575b51e",
+      "name": "Library/PowerDeliveryLib/PD_SNK.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_SNK.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "511c13eb5146e25c327e028cbdcf7d3bffe0d227c8deff8fe947f40e26fbb03b"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "1731552"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "32c1ad2e89e1c229d7d275e17033e3bd2369518c"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_SNK.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:a78ed9a791872fdfad76bb85377cf90fc1d20101a3b7200b6d19d29076510260:38b2251b5f9157cf",
+      "name": "Library/PowerDeliveryLib/PD_SNK.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_SNK.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a78ed9a791872fdfad76bb85377cf90fc1d20101a3b7200b6d19d29076510260"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "334988"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "d77fce98990be3e5664e3ec5b8cd1b8ffaf62d15"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_SNK.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:4a07fc96801a0806a5bcf1b7b5c0f93ecfee617e22be956f42be329939120d87:61a3ed2eb2ebf65c",
+      "name": "Library/PowerDeliveryLib/PD_SNK_Keil.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_SNK_Keil.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4a07fc96801a0806a5bcf1b7b5c0f93ecfee617e22be956f42be329939120d87"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "334988"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "0cc97d08ba0c04f50fe4e2a41ab1551d89481ef5"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_SNK_Keil.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_SNK_Keil.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:590db5f524547bbf46c385b889283af0be32ecf243adf429e317c3c63f39c7f0:89fe1ecdff6726da",
+      "name": "Library/PowerDeliveryLib/PD_SRC.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_SRC.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "590db5f524547bbf46c385b889283af0be32ecf243adf429e317c3c63f39c7f0"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "1734826"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "7638c1bb1561ff2554d2355f4871f85134693820"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_SRC.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:015f6941147e737df926fd9871ac21c407b1fe33a5dce8cc6f6d014f1d16fee8:555134074445bcb7",
+      "name": "Library/PowerDeliveryLib/PD_SRC.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_SRC.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "015f6941147e737df926fd9871ac21c407b1fe33a5dce8cc6f6d014f1d16fee8"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "337476"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "767ad3745d9355c5451775511995827261021a4d"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_SRC.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:a15f3661e19db449bdbe0e3901724dba83db1e840a0e28fafaa36665695fc5c0:b608e38ac3058b51",
+      "name": "Library/PowerDeliveryLib/PD_SRC_Keil.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FPowerDeliveryLib%2FPD_SRC_Keil.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a15f3661e19db449bdbe0e3901724dba83db1e840a0e28fafaa36665695fc5c0"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "337476"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "9f24eb83894c1ef0e2a570066cfa9aeadcfca93a"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/PowerDeliveryLib/PD_SRC_Keil.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/PowerDeliveryLib/PD_SRC_Keil.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:40afcf05bdeebe76dbd17075a5ce806b22a7dbf0f24e2280ba7241a690183d03:da8fafff79c3da90",
+      "name": "Library/TKLib/libTKLib_Calibration.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FlibTKLib_Calibration.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "40afcf05bdeebe76dbd17075a5ce806b22a7dbf0f24e2280ba7241a690183d03"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "5718370"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "d5f14344036493e3a1ce5b122a18fe18f04ddeec"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/libTKLib_Calibration.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/libTKLib_Calibration.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:04b7e71d37238c321ba5f566e27ba84d7926ff94f5dea3d8b059618e650101db:ecd57b8f72a2a58f",
+      "name": "Library/TKLib/libTKLib_FreeRun.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FlibTKLib_FreeRun.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "04b7e71d37238c321ba5f566e27ba84d7926ff94f5dea3d8b059618e650101db"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "6817614"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "642976774613e51b440e0549b5367ec2966490b1"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/libTKLib_FreeRun.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/libTKLib_FreeRun.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:1d294386e4515167cbf934aedb8c9a6e69cd9a71d133af0fa72bd789bccd2f5f:5126e3ffcd792611",
+      "name": "Library/TKLib/libTKLib_MassProduction.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FlibTKLib_MassProduction.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1d294386e4515167cbf934aedb8c9a6e69cd9a71d133af0fa72bd789bccd2f5f"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "7938144"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "ccc0814a8f6662c33dedec976fb8ad4ec229f767"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/libTKLib_MassProduction.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/libTKLib_MassProduction.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:d44a024b36aaedfe5ce3d264ae41d12a92d74ce2c8b9b0f106571f189501e8b7:db5dc71301e78fc4",
+      "name": "Library/TKLib/TK_Calibration.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTK_Calibration.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d44a024b36aaedfe5ce3d264ae41d12a92d74ce2c8b9b0f106571f189501e8b7"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "176320"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "f20810ff2a079775c720dd452a7e9c4d17edcfc5"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TK_Calibration.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TK_Calibration.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:73c9c5d90c76c3d2998e0c5f556d0c208a6a1b586283f7d389fb8f3a64953f1b:035057d86dd341bd",
+      "name": "Library/TKLib/TK_FreeRun.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTK_FreeRun.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "73c9c5d90c76c3d2998e0c5f556d0c208a6a1b586283f7d389fb8f3a64953f1b"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "172270"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "7b2b8ac50488ebac5d6f1e48ce053bf8ad9b710e"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TK_FreeRun.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TK_FreeRun.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:5b77ad7adc4d76069cbda4974f703d69586dd5e782414c18f0c596cd2fe67d3f:4a6fc7a1f07c904f",
+      "name": "Library/TKLib/TKLib_Calibration.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTKLib_Calibration.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5b77ad7adc4d76069cbda4974f703d69586dd5e782414c18f0c596cd2fe67d3f"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "178016"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "d71b3a6ada29cbe5a5e13c1363ff9870013f07b0"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TKLib_Calibration.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TKLib_Calibration.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:f7949a1b1985338147c03f9db2a8c28a498bf35bbb311c05ce0f18262004fc2d:25a8908cc4bbf640",
+      "name": "Library/TKLib/TKLib_Calibration.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTKLib_Calibration.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f7949a1b1985338147c03f9db2a8c28a498bf35bbb311c05ce0f18262004fc2d"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "117528"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "cf40d9f3ca5aea1318fa58ea61c81b99f7ae3147"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TKLib_Calibration.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TKLib_Calibration.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:1d95139ec15732f2f6f118f586a7f2abad0be07bb954d58ecc429500864943f7:1c86b7eceb5f5132",
+      "name": "Library/TKLib/TKLib_FreeRun.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTKLib_FreeRun.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1d95139ec15732f2f6f118f586a7f2abad0be07bb954d58ecc429500864943f7"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "178014"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "d1925537f57d3baf230d60ace38ecb2334cb8c42"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TKLib_FreeRun.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TKLib_FreeRun.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:0407c0a21b534a0f4fbd8433e35c075989a766ea3d43a3f5368f183b036010fd:ef10f51d37e82d49",
+      "name": "Library/TKLib/TKLib_FreeRun.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTKLib_FreeRun.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0407c0a21b534a0f4fbd8433e35c075989a766ea3d43a3f5368f183b036010fd"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "117524"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "789900aa9a454681af54d7336b9f61a0147a1b08"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TKLib_FreeRun.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TKLib_FreeRun.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:e8135c3661092371b9284d02c7432c66ba1e57e48f7439f4ddc65a8e1f0ddf4c:d6bb77997445deb9",
+      "name": "Library/TKLib/TKLib_MassProduction.a",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTKLib_MassProduction.a",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e8135c3661092371b9284d02c7432c66ba1e57e48f7439f4ddc65a8e1f0ddf4c"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "178116"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "ab82ff28591542a0516a6afd16740d2a9ff34df2"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TKLib_MassProduction.a"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TKLib_MassProduction.a"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:2711d543924420b6967ed7d3a1defa57aebe9772ac8eba010e50b82db928b507:638544558e21b389",
+      "name": "Library/TKLib/TKLib_MassProduction.lib",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-binary@V3.02.000-133-g4c8bdbfc?file_path=Library%2FTKLib%2FTKLib_MassProduction.lib",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2711d543924420b6967ed7d3a1defa57aebe9772ac8eba010e50b82db928b507"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2L31BSP product scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "134354"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "2fd9a20447d4dd011480d474c1813b2b7887bfd0"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/TKLib/TKLib_MassProduction.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/TKLib/TKLib_MassProduction.lib"
+          }
+        ]
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:generic/nuvoton/m2l31bsp-product@7d75be4053bb0365b838f165216fb42328a69ae2",
+      "dependsOn": [
+        "m2l31bsp:product-component:library-device",
+        "m2l31bsp:product-component:library-numaker",
+        "m2l31bsp:product-component:library-powerdeliverylib",
+        "m2l31bsp:product-component:library-stddriver",
+        "m2l31bsp:product-component:library-tklib",
+        "m2l31bsp:product-component:library-usbhostlib",
+        "pkg:generic/cmsis@6.1.0?source=vendored&path=Library/CMSIS",
+        "binary-file:08e3f8e7095e5b3740a68a41812a02e7770889504ede6ac519561159aab80547:e3a28dd0e35e4029",
+        "binary-file:1ab013beae051c4827d26c38ad92a1cd5f46e7b023ab090f086610b4c66529de:d079490d3460d92b",
+        "binary-file:e5215a5e559f1b1acea9979956f44e3894f9bfd00ac2273c88caff2ccfd1c3c7:69c64297ce48d3e1",
+        "binary-file:a65f15f8cbfe86e9f8b0b95023ad9406369c3ccf135aa3b8ac91599136cb1327:dc5b9d716c59d2cd",
+        "binary-file:5e4e0e7f96b7934c26b4996c931a84d2ec550fa40c8faac2b10a442fc53f1c22:21079b787b3813dc",
+        "binary-file:5c6a48c271e8de69957645002cd1ab69fe7bd5c11a736607f566cb5a0b61990c:5fb4d2f640520b87",
+        "binary-file:511c13eb5146e25c327e028cbdcf7d3bffe0d227c8deff8fe947f40e26fbb03b:4d314aac6575b51e",
+        "binary-file:a78ed9a791872fdfad76bb85377cf90fc1d20101a3b7200b6d19d29076510260:38b2251b5f9157cf",
+        "binary-file:4a07fc96801a0806a5bcf1b7b5c0f93ecfee617e22be956f42be329939120d87:61a3ed2eb2ebf65c",
+        "binary-file:590db5f524547bbf46c385b889283af0be32ecf243adf429e317c3c63f39c7f0:89fe1ecdff6726da",
+        "binary-file:015f6941147e737df926fd9871ac21c407b1fe33a5dce8cc6f6d014f1d16fee8:555134074445bcb7",
+        "binary-file:a15f3661e19db449bdbe0e3901724dba83db1e840a0e28fafaa36665695fc5c0:b608e38ac3058b51",
+        "binary-file:40afcf05bdeebe76dbd17075a5ce806b22a7dbf0f24e2280ba7241a690183d03:da8fafff79c3da90",
+        "binary-file:04b7e71d37238c321ba5f566e27ba84d7926ff94f5dea3d8b059618e650101db:ecd57b8f72a2a58f",
+        "binary-file:1d294386e4515167cbf934aedb8c9a6e69cd9a71d133af0fa72bd789bccd2f5f:5126e3ffcd792611",
+        "binary-file:d44a024b36aaedfe5ce3d264ae41d12a92d74ce2c8b9b0f106571f189501e8b7:db5dc71301e78fc4",
+        "binary-file:73c9c5d90c76c3d2998e0c5f556d0c208a6a1b586283f7d389fb8f3a64953f1b:035057d86dd341bd",
+        "binary-file:5b77ad7adc4d76069cbda4974f703d69586dd5e782414c18f0c596cd2fe67d3f:4a6fc7a1f07c904f",
+        "binary-file:f7949a1b1985338147c03f9db2a8c28a498bf35bbb311c05ce0f18262004fc2d:25a8908cc4bbf640",
+        "binary-file:1d95139ec15732f2f6f118f586a7f2abad0be07bb954d58ecc429500864943f7:1c86b7eceb5f5132",
+        "binary-file:0407c0a21b534a0f4fbd8433e35c075989a766ea3d43a3f5368f183b036010fd:ef10f51d37e82d49",
+        "binary-file:e8135c3661092371b9284d02c7432c66ba1e57e48f7439f4ddc65a8e1f0ddf4c:d6bb77997445deb9",
+        "binary-file:2711d543924420b6967ed7d3a1defa57aebe9772ac8eba010e50b82db928b507:638544558e21b389"
+      ]
+    },
+    {
+      "ref": "m2l31bsp:product-component:library-device",
+      "dependsOn": []
+    },
+    {
+      "ref": "m2l31bsp:product-component:library-numaker",
+      "dependsOn": []
+    },
+    {
+      "ref": "m2l31bsp:product-component:library-powerdeliverylib",
+      "dependsOn": []
+    },
+    {
+      "ref": "m2l31bsp:product-component:library-stddriver",
+      "dependsOn": []
+    },
+    {
+      "ref": "m2l31bsp:product-component:library-tklib",
+      "dependsOn": []
+    },
+    {
+      "ref": "m2l31bsp:product-component:library-usbhostlib",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/cmsis@6.1.0?source=vendored&path=Library/CMSIS",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:08e3f8e7095e5b3740a68a41812a02e7770889504ede6ac519561159aab80547:e3a28dd0e35e4029",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:1ab013beae051c4827d26c38ad92a1cd5f46e7b023ab090f086610b4c66529de:d079490d3460d92b",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:e5215a5e559f1b1acea9979956f44e3894f9bfd00ac2273c88caff2ccfd1c3c7:69c64297ce48d3e1",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:a65f15f8cbfe86e9f8b0b95023ad9406369c3ccf135aa3b8ac91599136cb1327:dc5b9d716c59d2cd",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:5e4e0e7f96b7934c26b4996c931a84d2ec550fa40c8faac2b10a442fc53f1c22:21079b787b3813dc",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:5c6a48c271e8de69957645002cd1ab69fe7bd5c11a736607f566cb5a0b61990c:5fb4d2f640520b87",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:511c13eb5146e25c327e028cbdcf7d3bffe0d227c8deff8fe947f40e26fbb03b:4d314aac6575b51e",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:a78ed9a791872fdfad76bb85377cf90fc1d20101a3b7200b6d19d29076510260:38b2251b5f9157cf",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:4a07fc96801a0806a5bcf1b7b5c0f93ecfee617e22be956f42be329939120d87:61a3ed2eb2ebf65c",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:590db5f524547bbf46c385b889283af0be32ecf243adf429e317c3c63f39c7f0:89fe1ecdff6726da",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:015f6941147e737df926fd9871ac21c407b1fe33a5dce8cc6f6d014f1d16fee8:555134074445bcb7",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:a15f3661e19db449bdbe0e3901724dba83db1e840a0e28fafaa36665695fc5c0:b608e38ac3058b51",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:40afcf05bdeebe76dbd17075a5ce806b22a7dbf0f24e2280ba7241a690183d03:da8fafff79c3da90",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:04b7e71d37238c321ba5f566e27ba84d7926ff94f5dea3d8b059618e650101db:ecd57b8f72a2a58f",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:1d294386e4515167cbf934aedb8c9a6e69cd9a71d133af0fa72bd789bccd2f5f:5126e3ffcd792611",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:d44a024b36aaedfe5ce3d264ae41d12a92d74ce2c8b9b0f106571f189501e8b7:db5dc71301e78fc4",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:73c9c5d90c76c3d2998e0c5f556d0c208a6a1b586283f7d389fb8f3a64953f1b:035057d86dd341bd",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:5b77ad7adc4d76069cbda4974f703d69586dd5e782414c18f0c596cd2fe67d3f:4a6fc7a1f07c904f",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:f7949a1b1985338147c03f9db2a8c28a498bf35bbb311c05ce0f18262004fc2d:25a8908cc4bbf640",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:1d95139ec15732f2f6f118f586a7f2abad0be07bb954d58ecc429500864943f7:1c86b7eceb5f5132",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:0407c0a21b534a0f4fbd8433e35c075989a766ea3d43a3f5368f183b036010fd:ef10f51d37e82d49",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:e8135c3661092371b9284d02c7432c66ba1e57e48f7439f4ddc65a8e1f0ddf4c:d6bb77997445deb9",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-file:2711d543924420b6967ed7d3a1defa57aebe9772ac8eba010e50b82db928b507:638544558e21b389",
+      "dependsOn": []
+    }
+  ]
+}
