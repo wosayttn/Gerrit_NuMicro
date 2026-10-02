@@ -1,0 +1,747 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:11f33af1-dddc-5296-8655-99b086cb694e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-02T04:19:13Z",
+    "supplier": {
+      "name": "Nuvoton Technology Corp."
+    },
+    "authors": [
+      {
+        "name": "Nuvoton Technology Corp."
+      }
+    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "M471 current-candidate generator",
+          "version": "1.0.0",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9048747c6a8ede093cf7317010c390c9b5b40b5b80cf52e3b031618f4e2e49d7"
+            }
+          ]
+        }
+      ]
+    },
+    "component": {
+      "type": "library",
+      "bom-ref": "m471bsp:current-candidate:product",
+      "name": "M471BSP current-candidate product view",
+      "version": "V3.03.000-current-candidate-gbadf61f8",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:candidate-baseline-commit",
+          "value": "badf61f833eb8c37c1a87445db2722c0abec604c"
+        },
+        {
+          "name": "bsp:generation-commit",
+          "value": "uncommitted-null"
+        },
+        {
+          "name": "bsp:release-source-commit",
+          "value": "a1b76a29ddd3b05862c9318e3b8bf0dfef9f0632"
+        },
+        {
+          "name": "bsp:scan-source-commit",
+          "value": "84b9da1dae9fc61df3e1b59c352c2e9887a13bcb"
+        },
+        {
+          "name": "bsp:distribution-commit",
+          "value": "badf61f833eb8c37c1a87445db2722c0abec604c"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "m471bsp:product:device-first-party",
+      "name": "M471 Device first-party files",
+      "version": "V3.03.000-21-ga1b76a29",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m471bsp-local/device-first-party@V3.03.000-21-ga1b76a29",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "29d771826ef9c9587daec3184433a3352f4326bf7412fa93a4d6e79c4c06be28"
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "36"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#product-device-first-party"
+        },
+        {
+          "name": "bsp:scope-exclusion",
+          "value": "Library/Device/Nuvoton/M471/Source/GCC/_syscalls.c"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "SPDX identifiers and Apache-2.0 notices in included source files"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m471bsp:product:stddriver",
+      "name": "M471 StdDriver",
+      "version": "V3.03.000-21-ga1b76a29",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m471bsp-local/stddriver@V3.03.000-21-ga1b76a29",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e1abd188d0b1ce21d35c16572fade0a8d2f0ccb77a8a4db8c9f260050322cce8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "45"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#product-stddriver"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis@6.1.0",
+      "group": "Arm",
+      "name": "CMSIS",
+      "version": "6.1.0",
+      "scope": "required",
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:generic/cmsis@6.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d06c7081a5770656544807f0a446f018a58a319e2c5f4e9be3002e2f6e156269"
+        }
+      ],
+      "pedigree": {
+        "notes": "Vendored subset. Exact upstream tag and commit are not confirmed."
+      },
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "99"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#product-cmsis-runtime"
+        },
+        {
+          "name": "bsp:cpe-status",
+          "value": "not-asserted-authoritative-cpe-unavailable"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/RTOS2/Include/cmsis_os2.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/RTOS2/Include/cmsis_os2.h"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis-dsp@1.10.0",
+      "group": "Arm",
+      "name": "CMSIS-DSP",
+      "version": "1.10.0",
+      "scope": "optional",
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:generic/cmsis-dsp@1.10.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7f7a6ee57bd2f809c4d925ca21a8ad0774232832b9478ad43a1e51471a04bd03"
+        }
+      ],
+      "pedigree": {
+        "notes": "Vendored subset. Exact upstream tag and commit are not confirmed."
+      },
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS/DSP"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "304"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#product-cmsis-dsp"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/DSP/Include/arm_math.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/DSP/Include/arm_math.h"
+        },
+        {
+          "name": "bsp:cpe-status",
+          "value": "not-asserted-authoritative-cpe-unavailable"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "m471bsp:third-party:uos-newlib-syscalls",
+      "name": "uOS++ / newlib syscall support source",
+      "version": "snapshot-edc22f74a278",
+      "scope": "required",
+      "purl": "pkg:generic/m471bsp-local/uos-newlib-syscalls@snapshot-edc22f74a278",
+      "licenses": [
+        {
+          "expression": "LicenseRef-M471-Newlib-Syscalls-NOASSERTION"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "edc22f74a2789ebe7cf4c7cbe01572a6fa0fec7bd428b4b74aed01af6b97386d"
+        }
+      ],
+      "pedigree": {
+        "notes": "The file declares uOS++ III provenance and says parts derive from newlib under GPL. Exact upstream revision and complete applicable license terms are not present in the repository."
+      },
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "unresolved"
+        },
+        {
+          "name": "bsp:license-observation",
+          "value": "Parts of this file are from the newlib sources, issued under GPL."
+        },
+        {
+          "name": "bsp:blocker-id",
+          "value": "BLK-LEGAL-NEWLIB-SYSCALLS"
+        },
+        {
+          "name": "bsp:source-evidence",
+          "value": "Library/Device/Nuvoton/M471/Source/GCC/_syscalls.c"
+        },
+        {
+          "name": "bsp:license-definition",
+          "value": "Document/SBOM/license-definitions.json#LicenseRef-M471-Newlib-Syscalls-NOASSERTION"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/Device/Nuvoton/M471/Source/GCC/_syscalls.c"
+          }
+        ]
+      }
+    },
+    {
+      "type": "data",
+      "bom-ref": "m471bsp:aux:cmsis-documentation",
+      "name": "CMSIS Documentation (excluding separately inventoried jQuery)",
+      "version": "snapshot-9eaa193b500d",
+      "scope": "excluded",
+      "purl": "pkg:generic/m471bsp-local/cmsis-documentation@snapshot-9eaa193b500d",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9eaa193b500d0b3744aee5f2871c379e5326ed3298ecd6407cf27ea58d898f1a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "auxiliary-distributed"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS/Documentation"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "2023"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#aux-cmsis-documentation"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:exclusion-reason",
+          "value": "distributed reference or validation material; not product runtime"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "mixed-content-not-blanket-asserted"
+        },
+        {
+          "name": "bsp:license-definition",
+          "value": "Document/SBOM/license-definitions.json#LicenseRef-M471-CMSIS-Documentation-Mixed-NOASSERTION"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-M471-CMSIS-Documentation-Mixed-NOASSERTION"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "m471bsp:aux:cmsis-corevalidation",
+      "name": "CMSIS CoreValidation",
+      "version": "snapshot-d969b725f178",
+      "scope": "excluded",
+      "purl": "pkg:generic/m471bsp-local/cmsis-corevalidation@snapshot-d969b725f178",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d969b725f178ab6fae96a51a8555bd5f84783b56caba1dcae30a5f5eaf13ff8b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "auxiliary-distributed"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS/CoreValidation"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "64"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#aux-cmsis-corevalidation"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:exclusion-reason",
+          "value": "distributed reference or validation material; not product runtime"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "m471bsp:aux:cmsis-core-test",
+      "name": "CMSIS Core Test",
+      "version": "snapshot-9993c5043671",
+      "scope": "excluded",
+      "purl": "pkg:generic/m471bsp-local/cmsis-core-test@snapshot-9993c5043671",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9993c50436713cd47a60bdd37a71579eb3a92ca3697671d7f6fe11466aec4724"
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "auxiliary-distributed"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS/Core/Test"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "53"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#aux-cmsis-core-test"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:exclusion-reason",
+          "value": "distributed reference or validation material; not product runtime"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/jquery@3.6.0",
+      "name": "jQuery",
+      "version": "3.6.0",
+      "scope": "excluded",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:npm/jquery@3.6.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cbfd4380a876905ede8b38a623784d5347a8f84ce05d9b0a87159214ae2dd940"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Library/CMSIS/Documentation/html/Compiler/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/Core/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/Core_A/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/DAP/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/DSP/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/Driver/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/General/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/NN/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/RTOS2/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/Stream/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/Toolbox/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/View/jquery.js"
+          },
+          {
+            "location": "Library/CMSIS/Documentation/html/Zone/jquery.js"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:sbom-category",
+          "value": "auxiliary-distributed"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CMSIS/Documentation"
+        },
+        {
+          "name": "bsp:path-base",
+          "value": "repository-root"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "13"
+        },
+        {
+          "name": "bsp:component-hash-inventory",
+          "value": "Document/SBOM/aggregate-inventory.json#aux-jquery-3.6.0"
+        },
+        {
+          "name": "bsp:version-license-evidence",
+          "value": "Embedded header in each jquery.js occurrence"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "m471bsp:current-candidate:product",
+      "dependsOn": [
+        "m471bsp:product:device-first-party",
+        "m471bsp:product:stddriver",
+        "pkg:generic/cmsis@6.1.0",
+        "pkg:generic/cmsis-dsp@1.10.0",
+        "m471bsp:third-party:uos-newlib-syscalls",
+        "m471bsp:aux:cmsis-documentation",
+        "m471bsp:aux:cmsis-corevalidation",
+        "m471bsp:aux:cmsis-core-test",
+        "pkg:npm/jquery@3.6.0"
+      ]
+    },
+    {
+      "ref": "m471bsp:product:device-first-party",
+      "dependsOn": []
+    },
+    {
+      "ref": "m471bsp:product:stddriver",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/cmsis@6.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/cmsis-dsp@1.10.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "m471bsp:third-party:uos-newlib-syscalls",
+      "dependsOn": []
+    },
+    {
+      "ref": "m471bsp:aux:cmsis-documentation",
+      "dependsOn": []
+    },
+    {
+      "ref": "m471bsp:aux:cmsis-corevalidation",
+      "dependsOn": []
+    },
+    {
+      "ref": "m471bsp:aux:cmsis-core-test",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/jquery@3.6.0",
+      "dependsOn": []
+    }
+  ],
+  "compositions": [
+    {
+      "aggregate": "incomplete",
+      "assemblies": [
+        "m471bsp:current-candidate:product",
+        "m471bsp:product:device-first-party",
+        "m471bsp:product:stddriver",
+        "pkg:generic/cmsis@6.1.0",
+        "pkg:generic/cmsis-dsp@1.10.0",
+        "m471bsp:third-party:uos-newlib-syscalls",
+        "m471bsp:aux:cmsis-documentation",
+        "m471bsp:aux:cmsis-corevalidation",
+        "m471bsp:aux:cmsis-core-test",
+        "pkg:npm/jquery@3.6.0"
+      ]
+    }
+  ]
+}

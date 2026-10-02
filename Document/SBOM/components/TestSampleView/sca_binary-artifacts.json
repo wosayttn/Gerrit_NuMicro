@@ -1,0 +1,548 @@
+{
+  "components": [
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-dualbank-firmware@3.00?artifact=FMC_DualBankNewFW.bin",
+      "name": "M471 FMC DualBank New Firmware",
+      "version": "3.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-dualbank-firmware@3.00?artifact=FMC_DualBankNewFW.bin",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f856037b3d141a57f4f2324d8ace2d55069a725d94fef582c1b2033357220b9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_DualBankFwUpdate/FMC_DualBankFW/FMC_DualBankNewFW.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "6796"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_DualBankFwUpdate/FMC_DualBankFW/main.c; SampleCode/StdDriver/FMC_DualBankFwUpdate/FMC_DualBankFW/IAR/FMC_DualBankFW.ewp; SampleCode/StdDriver/FMC_DualBankFwUpdate/FMC_DualBankFW/KEIL/FMC_DualBankFW.uvprojx; SampleCode/StdDriver/FMC_DualBankFwUpdate/FMC_DualBankFW/VSCode/FMC_DualBankFW.cproject.yml"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=gcc-eclipse",
+      "name": "M471 FMC IAP LDROM Firmware - GCC Eclipse",
+      "version": "1.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=gcc-eclipse",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "89726bfdacfc1f5ec9c32983fc1ee1d198c286b96c0e702c927dc664d61ac0ba"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_IAP/GCC/LDROM_iap/LDROM_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "3364"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_IAP/LDROM_main.c; SampleCode/StdDriver/FMC_IAP/GCC/LDROM_iap/startup_M471_user.S; SampleCode/StdDriver/FMC_IAP/GCC/LDROM_iap/system_M471_user.c; SampleCode/StdDriver/FMC_IAP/GCC/ap_image.S"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=iar",
+      "name": "M471 FMC IAP LDROM Firmware - IAR",
+      "version": "1.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=iar",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9033bc6ef420a4792ae54c8641be3960edfb6890aac658f06d553106b0d22d67"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_IAP/IAR/Release/Exe/fmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "3945"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_IAP/LDROM_main.c; SampleCode/StdDriver/FMC_IAP/IAR/fmc_ld_iap.ewp; SampleCode/StdDriver/FMC_IAP/IAR/fmc_ap_main.ewp"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-iap-aprom@1.00?toolchain=keil",
+      "name": "M471 FMC IAP APROM Firmware - Keil",
+      "version": "1.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-iap-aprom@1.00?toolchain=keil",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b7fc54741f37f7e012ad4e18647bb75e6a5022f3fa6ecbbc97c017ba682c1325"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_IAP/KEIL/Obj/fmc_ap_main.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "13592"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_IAP/APROM_main.c; SampleCode/StdDriver/FMC_IAP/KEIL/fmc_ap_main.uvprojx; SampleCode/StdDriver/FMC_IAP/KEIL/ap_image.s"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=keil",
+      "name": "M471 FMC IAP LDROM Firmware - Keil",
+      "version": "1.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=keil",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1dad93aee32633ba39fcd2dd0226c817f9ed20fc58d2205e5288bfb3ca77695e"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_IAP/KEIL/Obj/fmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "5124"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_IAP/LDROM_main.c; SampleCode/StdDriver/FMC_IAP/KEIL/fmc_ld_iap.uvprojx; SampleCode/StdDriver/FMC_IAP/KEIL/ap_image.s"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=armclang-vscode",
+      "name": "M471 FMC IAP LDROM Firmware - ArmClang VSCode",
+      "version": "1.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=armclang-vscode",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2adfbee765addf90e4b31edb50233a2c002836024799737d8f59695b1ca663c0"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_IAP/VSCode/out/fmc_ld_iap/ARMCLANG/Release/fmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "5180"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_IAP/LDROM_main.c; SampleCode/StdDriver/FMC_IAP/VSCode/fmc_ld_iap.cproject.yml; SampleCode/StdDriver/FMC_IAP/GCC/ap_image.S"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=gnuc-vscode",
+      "name": "M471 FMC IAP LDROM Firmware - GNUC VSCode",
+      "version": "1.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-iap-ldrom@1.00?toolchain=gnuc-vscode",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57b1387015c6853a7a0c067e05908e4d3c0010597af1adf6e2edee7750c1fd0e"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_IAP/VSCode/out/fmc_ld_iap/GNUC/Release/fmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "6900"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_IAP/LDROM_main.c; SampleCode/StdDriver/FMC_IAP/VSCode/fmc_ld_iap.cproject.yml; SampleCode/StdDriver/FMC_IAP/GCC/ap_image.S"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/nuvoton/m471-fmc-multiword-program@0.10?toolchain=gnuc-vscode",
+      "name": "M471 FMC MultiWordProgram Firmware - GNUC VSCode",
+      "version": "0.10",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-fmc-multiword-program@0.10?toolchain=gnuc-vscode",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "15c6a0409b2353fc4079329eccad52d536e2811a584c9441ffed8075febc28a9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/StdDriver/FMC_MultiWordProgram/VSCode/out/fmc_ld_iap/GNUC/release/fmc_ld_iap.bin"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "6836"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/FMC_MultiWordProgram/main.c; SampleCode/StdDriver/FMC_MultiWordProgram/VSCode/FMC_MultiWordProgram.cproject.yml; SampleCode/StdDriver/FMC_MultiWordProgram/VSCode/FMC_MultiWordProgram.csolution.yml"
+        },
+        {
+          "name": "bsp:path-anomaly",
+          "value": "distributed output directory retains fmc_ld_iap name; no rename or provenance beyond repository context is asserted"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/nuvoton/m471-xomlib@3.00?toolchain=iar",
+      "name": "M471 XOMLib Static Library - IAR",
+      "version": "3.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-xomlib@3.00?toolchain=iar",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f3bdeb96d86be2b6679d6befa94c63fa1ec082bb5d7878da5f9854b6a4a24ddf"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/XOM/XOMLib/lib/XOMLib.a"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "7308"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/XOM/XOMLib/xomlibIAR.c; SampleCode/XOM/XOMLib/lib/xomlib.h; SampleCode/XOM/XOMLib/IAR/XOMLib.ewp"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/nuvoton/m471-xomlib@3.00?toolchain=keil",
+      "name": "M471 XOMLib Static Library - Keil",
+      "version": "3.00",
+      "scope": "required",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m471-xomlib@3.00?toolchain=keil",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1e6cf4f57c7307e8a1c47a14073b2408279147ecc1871a03b50d1f9ebfdc2401"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_path",
+          "value": "SampleCode/XOM/XOMLib/lib/XOMLib.lib"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "1156"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/XOM/XOMLib/xomlib.c; SampleCode/XOM/XOMLib/lib/xomlib.h; SampleCode/XOM/XOMLib/KEIL/XOMLib.uvprojx"
+        }
+      ]
+    }
+  ]
+}
