@@ -1,0 +1,73 @@
+{
+  "sourceCommit": "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+  "status": "BLOCKED",
+  "claimBoundary": "Repository project/assembly metadata proves references to exact binary paths only; it does not prove reproducible generation, final link inclusion, or runtime execution.",
+  "artifacts": [
+    {
+      "toolchain": "IAR",
+      "artifact": {
+        "path": "SampleCode/StdDriver/FMC_IAP/IAR/Release/Exe/fmc_ld_iap.bin",
+        "sha256": "5c3c7de4395fe61af314bcca715a6bbf9ae1289d714775975ad4762148efa82c",
+        "sizeBytes": 1292
+      },
+      "repositoryRelationshipEvidence": [
+        {
+          "path": "SampleCode/StdDriver/FMC_IAP/IAR/fmc_ld_iap.ewp",
+          "sha256": "6b2eab9f5da04600b7fe53ca8b90108b674108ee6ac86e5883e250c5756f6443"
+        },
+        {
+          "path": "SampleCode/StdDriver/FMC_IAP/IAR/fmc_ap_main.ewp",
+          "sha256": "d9bb35ebeef010fe3cc34d2d3f14d3d91373cdf4b2253a5b3bd5d91e9d0ac214"
+        }
+      ],
+      "buildEvidence": "not available in repository",
+      "linkMapEvidence": "not available in repository",
+      "runtimeEvidence": "not available in repository",
+      "requiredEvidence": "A reproducible build log with toolchain version and command/config, output SHA-256 matching this artifact, final APROM link map proving embedding, and target execution record bound to the built image hash."
+    },
+    {
+      "toolchain": "Keil",
+      "artifact": {
+        "path": "SampleCode/StdDriver/FMC_IAP/KEIL/obj/fmc_ld_iap.bin",
+        "sha256": "8174a77f0068f5a87164ffdd10cbe42634f6aa07115753b4c473d7dc67505241",
+        "sizeBytes": 2704
+      },
+      "repositoryRelationshipEvidence": [
+        {
+          "path": "SampleCode/StdDriver/FMC_IAP/KEIL/ap_image.s",
+          "sha256": "65a93f90f624e251d0e49ab30d1674ad01aeb15cf6570780b6feabd3b7175042"
+        }
+      ],
+      "buildEvidence": "not available in repository",
+      "linkMapEvidence": "not available in repository",
+      "runtimeEvidence": "not available in repository",
+      "requiredEvidence": "A reproducible build log with toolchain version and command/config, output SHA-256 matching this artifact, final APROM link map proving embedding, and target execution record bound to the built image hash."
+    },
+    {
+      "toolchain": "GCC",
+      "artifact": {
+        "path": "SampleCode/StdDriver/FMC_IAP/VSCode/bin/fmc_ld_iap.bin",
+        "sha256": "b45a1ccb8981686794e456f272d8fd702e74cbef0d15d09160651c70f2e6fd01",
+        "sizeBytes": 2780
+      },
+      "repositoryRelationshipEvidence": [
+        {
+          "path": "SampleCode/StdDriver/FMC_IAP/VSCode/FMC_IAP_APROM/ap_image.s",
+          "sha256": "166c5ecae1525999e5de3b3bf6922db8a42295b63dc2b59c8bbd8fa5c93e858e"
+        },
+        {
+          "path": "SampleCode/StdDriver/FMC_IAP/VSCode/FMC_IAP_APROM/ap_image_gcc.S",
+          "sha256": "0c93ba258abe78bc06947232bab4c586b18d47723fd35e180dde8765bedb3449"
+        },
+        {
+          "path": "SampleCode/StdDriver/FMC_IAP/VSCode/FMC_IAP_LDROM/FMC_IAP_LDROM.cproject.yml",
+          "sha256": "edca59023daa9f59de1a8e604174ec7fdf375cbc8d70e261a9c1ba6c725243de"
+        }
+      ],
+      "buildEvidence": "not available in repository",
+      "linkMapEvidence": "not available in repository",
+      "runtimeEvidence": "not available in repository",
+      "requiredEvidence": "A reproducible build log with toolchain version and command/config, output SHA-256 matching this artifact, final APROM link map proving embedding, and target execution record bound to the built image hash."
+    }
+  ]
+}

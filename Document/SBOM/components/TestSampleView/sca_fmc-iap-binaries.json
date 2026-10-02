@@ -1,0 +1,313 @@
+{
+    "components":  [
+                       {
+                           "type":  "firmware",
+                           "bom-ref":  "pkg:generic/nuvoton/m2u51-fmc-iap-ldrom@V3.00.000-14-g00b0843b?artifact=fmc_ld_iap.bin\u0026toolchain=iar",
+                           "group":  "Nuvoton",
+                           "name":  "M2U51 FMC_IAP LDROM Firmware - IAR",
+                           "version":  "V3.00.000-14-g00b0843b",
+                           "scope":  "required",
+                           "author":  "Nuvoton Technology Corp.",
+                           "supplier":  {
+                                            "name":  "Nuvoton Technology Corp."
+                                        },
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "5C3C7DE4395FE61AF314BCCA715A6BBF9AE1289D714775975AD4762148EFA82C"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "src_path",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP"
+                                              },
+                                              {
+                                                  "name":  "artifact_size_bytes",
+                                                  "value":  "1292"
+                                              },
+                                              {
+                                                  "name":  "integration",
+                                                  "value":  "sample_firmware_binary"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-origin",
+                                                  "value":  "first-party-build-artifact"
+                                              },
+                                              {
+                                                  "name":  "bsp:source-license",
+                                                  "value":  "Apache-2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-status",
+                                                  "value":  "identified"
+                                              },
+                                              {
+                                                  "name":  "bsp:relationship-evidence",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP/IAR/fmc_ld_iap.ewp; SampleCode/StdDriver/FMC_IAP/IAR/fmc_ap_main.ewp"
+                                              },
+                                              {
+                                                  "name":  "bsp:evidence-file",
+                                                  "value":  "Document/SBOM/components/TestSampleView/sca_fmc-iap-binaries.md"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license",
+                                                  "value":  "Apache-2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-source",
+                                                  "value":  "manual-build-closure-review"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-evidence",
+                                                  "value":  "Document/SBOM/components/TestSampleView/sca_fmc-iap-binaries.md"
+                                              },
+                                              {
+                                                  "name":  "bsp:path",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP/IAR/Release/Exe/fmc_ld_iap.bin"
+                                              },
+                                              {
+                                                  "name":  "bsp:toolchain",
+                                                  "value":  "IAR"
+                                              },
+                                              {
+                                                  "name":  "bsp:version-basis",
+                                                  "value":  "BSP source release identity; toolchain is a PURL qualifier"
+                                              },
+                                              {
+                                                  "name":  "bsp:source-commit",
+                                                  "value":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8"
+                                              },
+                                              {
+                                                  "name":  "bsp:build-link-runtime-evidence",
+                                                  "value":  "fmc-build-link-runtime-evidence.json"
+                                              },
+                                              {
+                                                  "name":  "bsp:runtime-verification-status",
+                                                  "value":  "not-reproduced; release blocker"
+                                              }
+                                          ],
+                           "purl":  "pkg:generic/nuvoton/m2u51-fmc-iap-ldrom@V3.00.000-14-g00b0843b?artifact=fmc_ld_iap.bin\u0026toolchain=iar",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "Apache-2.0"
+                                                            }
+                                            }
+                                        ],
+                           "evidence":  {
+                                            "occurrences":  [
+                                                                {
+                                                                    "location":  "SampleCode/StdDriver/FMC_IAP/IAR/Release/Exe/fmc_ld_iap.bin"
+                                                                }
+                                                            ]
+                                        }
+                       },
+                       {
+                           "type":  "firmware",
+                           "bom-ref":  "pkg:generic/nuvoton/m2u51-fmc-iap-ldrom@V3.00.000-14-g00b0843b?artifact=fmc_ld_iap.bin\u0026toolchain=keil",
+                           "group":  "Nuvoton",
+                           "name":  "M2U51 FMC_IAP LDROM Firmware - Keil",
+                           "version":  "V3.00.000-14-g00b0843b",
+                           "scope":  "required",
+                           "author":  "Nuvoton Technology Corp.",
+                           "supplier":  {
+                                            "name":  "Nuvoton Technology Corp."
+                                        },
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "8174A77F0068F5A87164FFDD10CBE42634F6AA07115753B4C473D7DC67505241"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "src_path",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP"
+                                              },
+                                              {
+                                                  "name":  "artifact_size_bytes",
+                                                  "value":  "2704"
+                                              },
+                                              {
+                                                  "name":  "integration",
+                                                  "value":  "sample_firmware_binary"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-origin",
+                                                  "value":  "first-party-build-artifact"
+                                              },
+                                              {
+                                                  "name":  "bsp:source-license",
+                                                  "value":  "Apache-2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-status",
+                                                  "value":  "identified"
+                                              },
+                                              {
+                                                  "name":  "bsp:relationship-evidence",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP/KEIL/ap_image.s"
+                                              },
+                                              {
+                                                  "name":  "bsp:evidence-file",
+                                                  "value":  "Document/SBOM/components/TestSampleView/sca_fmc-iap-binaries.md"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license",
+                                                  "value":  "Apache-2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-source",
+                                                  "value":  "manual-build-closure-review"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-evidence",
+                                                  "value":  "Document/SBOM/components/TestSampleView/sca_fmc-iap-binaries.md"
+                                              },
+                                              {
+                                                  "name":  "bsp:path",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP/KEIL/obj/fmc_ld_iap.bin"
+                                              },
+                                              {
+                                                  "name":  "bsp:toolchain",
+                                                  "value":  "Keil"
+                                              },
+                                              {
+                                                  "name":  "bsp:version-basis",
+                                                  "value":  "BSP source release identity; toolchain is a PURL qualifier"
+                                              },
+                                              {
+                                                  "name":  "bsp:source-commit",
+                                                  "value":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8"
+                                              },
+                                              {
+                                                  "name":  "bsp:build-link-runtime-evidence",
+                                                  "value":  "fmc-build-link-runtime-evidence.json"
+                                              },
+                                              {
+                                                  "name":  "bsp:runtime-verification-status",
+                                                  "value":  "not-reproduced; release blocker"
+                                              }
+                                          ],
+                           "purl":  "pkg:generic/nuvoton/m2u51-fmc-iap-ldrom@V3.00.000-14-g00b0843b?artifact=fmc_ld_iap.bin\u0026toolchain=keil",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "Apache-2.0"
+                                                            }
+                                            }
+                                        ],
+                           "evidence":  {
+                                            "occurrences":  [
+                                                                {
+                                                                    "location":  "SampleCode/StdDriver/FMC_IAP/KEIL/obj/fmc_ld_iap.bin"
+                                                                }
+                                                            ]
+                                        }
+                       },
+                       {
+                           "type":  "firmware",
+                           "bom-ref":  "pkg:generic/nuvoton/m2u51-fmc-iap-ldrom@V3.00.000-14-g00b0843b?artifact=fmc_ld_iap.bin\u0026toolchain=gcc",
+                           "group":  "Nuvoton",
+                           "name":  "M2U51 FMC_IAP LDROM Firmware - GCC",
+                           "version":  "V3.00.000-14-g00b0843b",
+                           "scope":  "required",
+                           "author":  "Nuvoton Technology Corp.",
+                           "supplier":  {
+                                            "name":  "Nuvoton Technology Corp."
+                                        },
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "B45A1CCB8981686794E456F272D8FD702E74CBEF0D15D09160651C70F2E6FD01"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "src_path",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP"
+                                              },
+                                              {
+                                                  "name":  "artifact_size_bytes",
+                                                  "value":  "2780"
+                                              },
+                                              {
+                                                  "name":  "integration",
+                                                  "value":  "sample_firmware_binary"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-origin",
+                                                  "value":  "first-party-build-artifact"
+                                              },
+                                              {
+                                                  "name":  "bsp:source-license",
+                                                  "value":  "Apache-2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-status",
+                                                  "value":  "identified"
+                                              },
+                                              {
+                                                  "name":  "bsp:relationship-evidence",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP/VSCode/FMC_IAP_APROM/ap_image.s; SampleCode/StdDriver/FMC_IAP/VSCode/FMC_IAP_APROM/ap_image_gcc.S; SampleCode/StdDriver/FMC_IAP/VSCode/FMC_IAP_LDROM/FMC_IAP_LDROM.cproject.yml"
+                                              },
+                                              {
+                                                  "name":  "bsp:evidence-file",
+                                                  "value":  "Document/SBOM/components/TestSampleView/sca_fmc-iap-binaries.md"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license",
+                                                  "value":  "Apache-2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-source",
+                                                  "value":  "manual-build-closure-review"
+                                              },
+                                              {
+                                                  "name":  "bsp:binary-license-evidence",
+                                                  "value":  "Document/SBOM/components/TestSampleView/sca_fmc-iap-binaries.md"
+                                              },
+                                              {
+                                                  "name":  "bsp:path",
+                                                  "value":  "SampleCode/StdDriver/FMC_IAP/VSCode/bin/fmc_ld_iap.bin"
+                                              },
+                                              {
+                                                  "name":  "bsp:toolchain",
+                                                  "value":  "GCC through VSCode CMSIS project"
+                                              },
+                                              {
+                                                  "name":  "bsp:version-basis",
+                                                  "value":  "BSP source release identity; toolchain is a PURL qualifier"
+                                              },
+                                              {
+                                                  "name":  "bsp:source-commit",
+                                                  "value":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8"
+                                              },
+                                              {
+                                                  "name":  "bsp:build-link-runtime-evidence",
+                                                  "value":  "fmc-build-link-runtime-evidence.json"
+                                              },
+                                              {
+                                                  "name":  "bsp:runtime-verification-status",
+                                                  "value":  "not-reproduced; release blocker"
+                                              }
+                                          ],
+                           "purl":  "pkg:generic/nuvoton/m2u51-fmc-iap-ldrom@V3.00.000-14-g00b0843b?artifact=fmc_ld_iap.bin\u0026toolchain=gcc",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "Apache-2.0"
+                                                            }
+                                            }
+                                        ],
+                           "evidence":  {
+                                            "occurrences":  [
+                                                                {
+                                                                    "location":  "SampleCode/StdDriver/FMC_IAP/VSCode/bin/fmc_ld_iap.bin"
+                                                                }
+                                                            ]
+                                        }
+                       }
+                   ]
+}

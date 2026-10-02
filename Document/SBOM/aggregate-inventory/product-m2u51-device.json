@@ -1,0 +1,149 @@
+{
+  "recipe": "sha256-path-nul-content-nul-v1",
+  "pathBase": "Library/Device",
+  "sourceCommit": "00b0843b3254c1c09961d0fc5d4b1b266a547ae8",
+  "fileCount": 35,
+  "aggregateSha256": "ed3d1c9782f8a26ab8e5b6975b5e982cc036a668670079e9724cad7c34b9c372",
+  "files": [
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/acmp_reg.h",
+      "sha256": "0ce76144ae65aca64f0a5f2e8d702eedb53d6507e28f37ebe1b7b573ce15ae63"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/adc_reg.h",
+      "sha256": "438be28810c20bc98845acf9dc5a608e749aecf658c787637f96aa917c9941f4"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/bpwm_reg.h",
+      "sha256": "c08b9a75fe99b94565ce923d9e222e24ab310bbcb5cc8b7a4335052f521b3a2a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/clk_reg.h",
+      "sha256": "6051b83023884a1ffdf11a1d7c52105481894c64e729b45515b04aed7c1f12ca"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/crc_reg.h",
+      "sha256": "dd96d48ec90df825206bda9e45472d4bc9032b98f67add6b04fb368978b96275"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/crypto_reg.h",
+      "sha256": "4fc586dfe281a79d4d9afe92e0377118e65b55bbd853267e4583bce571dc87ac"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/fmc_reg.h",
+      "sha256": "d9fde9d239b8a907125a86afa2d4a7018c3ea760af6e4cf53b96adc5014c56b2"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/gpio_reg.h",
+      "sha256": "7924f4d1cc0cf868b328150fe316592f12ecf0047984b6377f5a7322626285da"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/i2c_reg.h",
+      "sha256": "e01fc479dbadf43123ce5c4aeb26ab0e3870b5012c0a5e18fd3650922d2707a9"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/irqn.h",
+      "sha256": "67d788d825705e81d719040ddbda3f78d1479ae74920f34eabbaa641a0b0587a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/lcd_reg.h",
+      "sha256": "889c90fc982a4a9e293f2649171e412f5660fbfda0bcd4ef716034b27988eeb7"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/M2U51.h",
+      "sha256": "2d6a38b091e33408e1a052c6e2edf6126f88ab21ccbec8a8b8c3972b884f8281"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/NuMicro.h",
+      "sha256": "af1a2f72e36917730046a111b0f3f98911ca156f1921581c8b91f4e1eda11969"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/pdma_reg.h",
+      "sha256": "68233a4fe8e6db10e2638bbac1305573dacbe774ba2afeddfb619f4d5bd6bb81"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/pwm_reg.h",
+      "sha256": "4b1decab918c2ef4528a2632a533b7a3880c07c8286fe61adad90ee41add1f41"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/rtc_reg.h",
+      "sha256": "0503d0c4d72681ac468724e8256188485633e2357fc2b02c73501996e2c23fdb"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/spi_reg.h",
+      "sha256": "271a964da31c273f5c9f8ddda96c2cefc61583898a7cefa14af67581e63ce6c4"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/sys_reg.h",
+      "sha256": "3ce75e34de8cd10f0eead8a93799221d0583dad53ae1474133b91d954d4462d8"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/system_M2U51.h",
+      "sha256": "b50d194280458bed5f379c3a572f6c5ef2bb172ae1763a8efbddd18ae5f5211e"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/timer_reg.h",
+      "sha256": "46711582cd3e96779a94a46c346e4a61694de3fd870fb414c226012228bb18a9"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/uart_reg.h",
+      "sha256": "5b15f4ca2b87c68a4ad37cc2b1fc663b3bffdf92100274689a67d6d9a56c7ca8"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/ui2c_reg.h",
+      "sha256": "a08beabee37de43b9c275f9b8ef451bba9e44e4af73a09d73e7e3e800cb3f731"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/uspi_reg.h",
+      "sha256": "443a40cf47544c21d551e37f27e5561e3633d3a4ae5da13d4dcc446a8c2cd8bb"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/uuart_reg.h",
+      "sha256": "eecb17c03484b5301b98fd5a5adde86ef9d7b5699db64a03a7ee50291051dcea"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/wdt_reg.h",
+      "sha256": "59f9ecf5bb24dc24f0bb3c27385cb977090b126f189cd86238aa24c5d34f19d6"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Include/wwdt_reg.h",
+      "sha256": "0c2163109b7641b1d49a753cda0572356fbbe000b361ea59139b1c0dd248d8c3"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/ARM/APROM.sct",
+      "sha256": "6e9cf9e957b708d711eb3e5b1a011f06ba8cc95aef24cba9cde9d43b8a7d6524"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/ARM/LDROM.sct",
+      "sha256": "729a49b4b4ef693dfc1f27f2794e2f523a1a5ff0784aa867f0dbbfeacd07aeb3"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/ARM/startup_M2U51.c",
+      "sha256": "f761af4150727fad0923fc8274c1b2e126daf55d6fe2422a454f40ce80d318e1"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/GCC/gcc_arm.ld",
+      "sha256": "faf9240cde308a072e0636d765cef688664af3453aedc135ebf64257d2259dae"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/GCC/LDROM.ld",
+      "sha256": "ae8fbe07131b4be809a8ce7856f314f1c1533d33a955bdd9ffe8231749700608"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/GCC/startup_M2U51.S",
+      "sha256": "ebf4863c279d08a8c7fe4ce1944907d5eb2f1853d62c6fee51669ff906896908"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/IAR/startup_M2U51.s",
+      "sha256": "0ddb6ca7d037d723d1625797b69735290ffa61a428a8ebad6aafb93dfc8ff634"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/semihost.s",
+      "sha256": "52ba8d0e9cea2856868407c8a84b16e49469e91c99e42c8cc7ad270c5c746718"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2U51/Source/system_M2U51.c",
+      "sha256": "cc0228a008d9dcddbc9424ad480785a1d2d5af5a78ee8095bd516174847dc848"
+    }
+  ]
+}
