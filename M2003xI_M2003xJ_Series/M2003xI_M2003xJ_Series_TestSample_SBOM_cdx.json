@@ -1,0 +1,430 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e2215aa6-f1f8-4abd-98e1-663f1d6eb994",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-01T23:51:01+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.45.1"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "368fb442fb05a5b7",
+      "type": "application",
+      "name": "MCU Test Sample",
+      "version": "V3.01.000-9-g86a28a7c",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mcu-test-sample@86a28a7c",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components used only for examples, demonstrations, validation, host-side utilities, or testing; not included in product runtime unless explicitly integrated by the user."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "test-sample-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:test-sample-scope-include-path",
+          "value": "SampleCode"
+        }
+      ]
+    },
+    "supplier": {
+      "name": "Nuvoton Technology Corp.",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
+    },
+    "authors": [
+      {
+        "name": "Nuvoton Technology Corp."
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "m2003xi_m2003xj_series:test-sample-component:samplecode",
+      "name": "M2003xI_M2003xJ_Series SampleCode",
+      "version": "V3.01.000-9-g86a28a7c",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/samplecode@86a28a7c",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87d6399da154579fdf897d45232b39c7280a29eeed188fc3c725978d13ace400"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP test-sample component included from test-sample scope path SampleCode",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "test-sample-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:28e4b052d2828b6fc3b57ef70acb8c1d3f8419c50387c305ef763d74549ece84:f23417e45373ec0d",
+      "name": "SampleCode/StdDriver/FMC_DualBankFwUpdate/NewFirmwareSample.bin",
+      "version": "V3.01.000-9-g86a28a7c",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2003xi_m2003xj_series-binary@86a28a7c?file_path=SampleCode%2FStdDriver%2FFMC_DualBankFwUpdate%2FNewFirmwareSample.bin",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "28e4b052d2828b6fc3b57ef70acb8c1d3f8419c50387c305ef763d74549ece84"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2003xI_M2003xJ_Series test-sample scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/FMC_DualBankFwUpdate/NewFirmwareSample.bin"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:e079b9f07af168810b603e579886c3f1b7afa10539aa0c0fec57d4e0e70d961b:e5f8913e2e327446",
+      "name": "SampleCode/StdDriver/FMC_FwUpdateApplication/NewApp.bin",
+      "version": "V3.01.000-9-g86a28a7c",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2003xi_m2003xj_series-binary@86a28a7c?file_path=SampleCode%2FStdDriver%2FFMC_FwUpdateApplication%2FNewApp.bin",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e079b9f07af168810b603e579886c3f1b7afa10539aa0c0fec57d4e0e70d961b"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2003xI_M2003xJ_Series test-sample scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/FMC_FwUpdateApplication/NewApp.bin"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:7e58b7c8e7891d1a2d78b45a0be7bb099e3447cb8624ae8280c385eedb9059ce:9da3c206e2c25ee0",
+      "name": "SampleCode/StdDriver/FMC_IAP/IAR/FMC_IAP_LDROM.bin",
+      "version": "V3.01.000-9-g86a28a7c",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2003xi_m2003xj_series-binary@86a28a7c?file_path=SampleCode%2FStdDriver%2FFMC_IAP%2FIAR%2FFMC_IAP_LDROM.bin",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7e58b7c8e7891d1a2d78b45a0be7bb099e3447cb8624ae8280c385eedb9059ce"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2003xI_M2003xJ_Series test-sample scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/FMC_IAP/IAR/FMC_IAP_LDROM.bin"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:e4962a24e1fc23b33568473c7e854d546b63ea745738fd304228f652aa3cd325:96a5b0b007fc6a14",
+      "name": "SampleCode/StdDriver/FMC_IAP/Keil/FMC_IAP_LDROM.bin",
+      "version": "V3.01.000-9-g86a28a7c",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2003xi_m2003xj_series-binary@86a28a7c?file_path=SampleCode%2FStdDriver%2FFMC_IAP%2FKeil%2FFMC_IAP_LDROM.bin",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4962a24e1fc23b33568473c7e854d546b63ea745738fd304228f652aa3cd325"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2003xI_M2003xJ_Series test-sample scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/FMC_IAP/Keil/FMC_IAP_LDROM.bin"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "binary-file:736961095c4e48aea65ef05a70380a88eefe6fefd7efb29f1abd577d1a386251:336273ad62227882",
+      "name": "SampleCode/StdDriver/FMC_IAP/VSCode/bin/fmc_ld_iap.bin",
+      "version": "V3.01.000-9-g86a28a7c",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/m2003xi_m2003xj_series-binary@86a28a7c?file_path=SampleCode%2FStdDriver%2FFMC_IAP%2FVSCode%2Fbin%2Ffmc_ld_iap.bin",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "736961095c4e48aea65ef05a70380a88eefe6fefd7efb29f1abd577d1a386251"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "scope": "required",
+      "description": "Binary artifact distributed in the M2003xI_M2003xJ_Series test-sample scope.",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/FMC_IAP/VSCode/bin/fmc_ld_iap.bin"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "file"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Nuvoton Software License Agreement.md"
+        },
+        {
+          "name": "bsp:identity-basis",
+          "value": "exact distributed file path, SHA-256, and BSP release"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "368fb442fb05a5b7",
+      "dependsOn": [
+        "binary-file:28e4b052d2828b6fc3b57ef70acb8c1d3f8419c50387c305ef763d74549ece84:f23417e45373ec0d",
+        "binary-file:736961095c4e48aea65ef05a70380a88eefe6fefd7efb29f1abd577d1a386251:336273ad62227882",
+        "binary-file:7e58b7c8e7891d1a2d78b45a0be7bb099e3447cb8624ae8280c385eedb9059ce:9da3c206e2c25ee0",
+        "binary-file:e079b9f07af168810b603e579886c3f1b7afa10539aa0c0fec57d4e0e70d961b:e5f8913e2e327446",
+        "binary-file:e4962a24e1fc23b33568473c7e854d546b63ea745738fd304228f652aa3cd325:96a5b0b007fc6a14",
+        "m2003xi_m2003xj_series:test-sample-component:samplecode"
+      ]
+    }
+  ]
+}
