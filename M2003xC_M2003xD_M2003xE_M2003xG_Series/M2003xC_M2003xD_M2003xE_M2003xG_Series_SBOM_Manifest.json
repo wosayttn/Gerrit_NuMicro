@@ -1,0 +1,252 @@
+{
+  "manifestFormat": "MCU-BSP-SBOM-Manifest",
+  "manifestVersion": "1.0",
+  "serialNumber": "urn:uuid:18debe59-4d51-4525-815a-a0de8d745fda",
+  "createdAt": "2026-09-01T15:50:38.814866Z",
+  "bsp": {
+    "name": "M2003xC_M2003xD_M2003xE_M2003xG_Series",
+    "version": "V3.01.000-9-g86a28a7c",
+    "releaseIdentifierSource": "canonical continuation of formal V3.01.000-2-g612f7b8 using merged commit graph; Gerrit tag refs absent",
+    "gitDescribe": "86a28a7c",
+    "gitCommit": "86a28a7c7a82e110c1dfed7940d83bf7bb917822",
+    "sourceTreeState": "clean",
+    "sourceCommit": "86a28a7c7a82e110c1dfed7940d83bf7bb917822",
+    "sourceCommitStatus": "merged",
+    "sourceGerritChange": 16777,
+    "sourceBranch": "master",
+    "canonicalReleaseIdentity": "V3.01.000-9-g86a28a7c",
+    "canonicalIdentityBasis": {
+      "previousFormalRelease": "V3.01.000-2-g612f7b8",
+      "previousSourceAbbreviation": "612f7b8",
+      "commitCountFromV3.01.000Baseline": 9,
+      "sourceAbbreviation": "86a28a7c",
+      "tagRefsPresent": false
+    },
+    "svnDistribution": {
+      "path": "bsp/M2003Series/M2003xC_M2003xD_M2003xE_M2003xG_Series/V3.01.000-9-g86a28a7c",
+      "publishedRevision": 46,
+      "correctionRevision": 47,
+      "effectiveRevision": 47,
+      "publicationState": "formal-published-r46-corrected-r47"
+    },
+    "artifactDistributionCommit": "resolved-by-containing-git-commit",
+    "artifactDistributionCommitPolicy": "The artifact-only Git commit contains byte-identical formal Product and Test Sample SBOMs. The manifest maps versioned SVN payload names to Git current filenames and embeds the same release and supersession metadata. Its hash is not embedded to avoid self-reference.",
+    "supersession": {
+      "supersedesRelease": "86a28a7c",
+      "supersededSvnRevision": 45,
+      "supersededSourceCommit": "86a28a7c7a82e110c1dfed7940d83bf7bb917822",
+      "reason": "SVN r45 was published before source Gerrit Change 16777 merged.",
+      "historyRewritten": false
+    }
+  },
+  "generationTools": [
+    {
+      "name": "SBOM Generator",
+      "version": "0.2.0"
+    },
+    {
+      "name": "Syft",
+      "version": "1.45.1"
+    },
+    {
+      "name": "CycloneDX CLI",
+      "version": "0.32.0+0ed788d25c13cef9e9a3029603f6b708e3279390"
+    },
+    {
+      "name": "grype",
+      "version": "grype 0.117.0"
+    },
+    {
+      "name": "sbom-checker",
+      "version": "1.0.0"
+    }
+  ],
+  "sbomPackage": {
+    "name": "MCU BSP SBOM Package",
+    "format": "CycloneDX",
+    "formatVersion": "1.6",
+    "contains": [
+      "Product SBOM",
+      "Test Sample SBOM"
+    ]
+  },
+  "sboms": [
+    {
+      "fileName": "M2003xC_M2003xD_M2003xE_M2003xG_Series_Product_SBOM_cdx.json",
+      "sbomType": "Product SBOM",
+      "bomFormat": "CycloneDX",
+      "specVersion": "1.6",
+      "serialNumber": "urn:uuid:57e783f1-4c73-42ee-b8c6-7a6035b5fff9",
+      "sbomVersion": 1,
+      "generatedTimestamp": "2026-09-01T23:50:33+08:00",
+      "metadataComponent": {
+        "bomRef": "daa5d06bb61931b0",
+        "type": "library",
+        "name": "MCU Driver",
+        "version": "V3.01.000-9-g86a28a7c",
+        "properties": [
+          {
+            "name": "bsp:sbom-category",
+            "value": "product"
+          },
+          {
+            "name": "bsp:scope",
+            "value": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+          },
+          {
+            "name": "bsp:scope-policy-file",
+            "value": "product-scope.yaml"
+          },
+          {
+            "name": "bsp:runtime-scope",
+            "value": "true"
+          },
+          {
+            "name": "bsp:included-in-product-firmware",
+            "value": "true"
+          },
+          {
+            "name": "bsp:third-party-components",
+            "value": "Third-party component status is represented by component-level bsp:component-origin properties and manual SCA evidence."
+          },
+          {
+            "name": "bsp:product-scope-include-path",
+            "value": "Library/CMSIS/Core/Include"
+          },
+          {
+            "name": "bsp:product-scope-include-path",
+            "value": "Library/CMSIS/Driver"
+          },
+          {
+            "name": "bsp:product-scope-include-path",
+            "value": "Library/CMSIS/RTOS2"
+          },
+          {
+            "name": "bsp:product-scope-include-path",
+            "value": "Library/Device"
+          },
+          {
+            "name": "bsp:product-scope-include-path",
+            "value": "Library/StdDriver"
+          },
+          {
+            "name": "bsp:product-scope-exclude-path",
+            "value": "Library/CMSIS/Core/Test"
+          },
+          {
+            "name": "bsp:product-scope-exclude-path",
+            "value": "Library/CMSIS/Documentation"
+          },
+          {
+            "name": "bsp:product-scope-exclude-path",
+            "value": "Document/"
+          },
+          {
+            "name": "bsp:product-scope-exclude-path",
+            "value": "SampleCode/"
+          }
+        ]
+      },
+      "scope": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software.",
+      "isProductRuntimeScope": true,
+      "componentSummary": {
+        "componentCount": 5,
+        "componentCountByType": {
+          "library": 5
+        },
+        "applicationNames": [],
+        "fileComponentCount": 0,
+        "fileComponentWithHashCount": 0
+      },
+      "hash": {
+        "algorithm": "SHA-256",
+        "value": "64264b2b898187efd5421e8836f2fef16ea659190e38d29a5cfcbc8d9919d8d2"
+      }
+    },
+    {
+      "fileName": "M2003xC_M2003xD_M2003xE_M2003xG_Series_TestSample_SBOM_cdx.json",
+      "sbomType": "Test Sample SBOM",
+      "bomFormat": "CycloneDX",
+      "specVersion": "1.6",
+      "serialNumber": "urn:uuid:3fa8e580-1fdf-4372-92a2-23a2d131ae27",
+      "sbomVersion": 1,
+      "generatedTimestamp": "2026-09-01T23:50:36+08:00",
+      "metadataComponent": {
+        "bomRef": "efff29a1321672cf",
+        "type": "application",
+        "name": "MCU Test Sample",
+        "version": "V3.01.000-9-g86a28a7c",
+        "properties": [
+          {
+            "name": "bsp:sbom-category",
+            "value": "test-sample"
+          },
+          {
+            "name": "bsp:scope",
+            "value": "Components used only for examples, demonstrations, validation, host-side utilities, or testing; not included in product runtime unless explicitly integrated by the user."
+          },
+          {
+            "name": "bsp:scope-policy-file",
+            "value": "test-sample-scope.yaml"
+          },
+          {
+            "name": "bsp:runtime-scope",
+            "value": "false"
+          },
+          {
+            "name": "bsp:included-in-product-firmware",
+            "value": "false"
+          },
+          {
+            "name": "bsp:test-sample-scope-include-path",
+            "value": "SampleCode/"
+          },
+          {
+            "name": "bsp:test-sample-scope-exclude-path",
+            "value": "Document/"
+          },
+          {
+            "name": "bsp:test-sample-scope-exclude-path",
+            "value": "Library/"
+          }
+        ]
+      },
+      "scope": "Components used only for examples, demonstrations, validation, host-side utilities, or testing; not included in product runtime unless explicitly integrated by the user.",
+      "isProductRuntimeScope": false,
+      "componentSummary": {
+        "componentCount": 4,
+        "componentCountByType": {
+          "application": 1,
+          "file": 3
+        },
+        "applicationNames": [
+          "M2003xC_M2003xD_M2003xE_M2003xG_Series SampleCode"
+        ],
+        "fileComponentCount": 3,
+        "fileComponentWithHashCount": 3
+      },
+      "hash": {
+        "algorithm": "SHA-256",
+        "value": "72460eb3062b981fc461153382cac980bd2fef05ff2aea9c220ff3210ec5de7c"
+      },
+      "relationshipToProductSbom": {
+        "usesProductComponents": true,
+        "productSbomFile": "M2003xC_M2003xD_M2003xE_M2003xG_Series_Product_SBOM_cdx.json",
+        "description": "Test sample firmware may be built using MCU Driver components described in the Product SBOM. These product components are not duplicated in the Test Sample SBOM."
+      }
+    }
+  ],
+  "scopeRule": {
+    "productSbom": "Use as the primary SBOM for product vulnerability assessment and CRA product component transparency.",
+    "testSampleSbom": "Use only when sample, demo, validation, or test-only components are reused, executed, distributed, or integrated by the customer.",
+    "separationRationale": "Product and Test Sample SBOMs are kept separate to avoid treating test/sample utilities as product runtime dependencies."
+  },
+  "customerGuidance": [
+    "Use the Product SBOM as the primary input for product vulnerability assessment.",
+    "Review the Test Sample SBOM only when the corresponding sample/demo/test components are used or redistributed.",
+    "Components in the Test Sample SBOM are not considered product firmware/runtime dependencies unless explicitly integrated by the user."
+  ],
+  "notes": [
+    "This manifest is an index for the SBOM package; it is not a merged CycloneDX BOM."
+  ]
+}

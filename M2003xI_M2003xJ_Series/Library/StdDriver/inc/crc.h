@@ -1,0 +1,194 @@
+/**************************************************************************//**
+ * @file     crc.h
+ * @version  V1.00
+ * @brief    M2003J series CRC driver header file
+ *
+ * @copyright SPDX-License-Identifier: Apache-2.0
+ * @copyright Copyright (c) 2017-2026 Nuvoton Technology Corp. All rights reserved.
+ *****************************************************************************/
+#ifndef __CRC_H__
+#define __CRC_H__
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+
+/** @addtogroup Standard_Driver Standard Driver
+  @{
+*/
+
+/** @addtogroup CRC_Driver CRC Driver
+  @{
+*/
+
+/** @addtogroup CRC_EXPORTED_CONSTANTS CRC Exported Constants
+  @{
+*/
+/*---------------------------------------------------------------------------------------------------------*/
+/*  CRC Polynomial Mode Constant Definitions                                                               */
+/*---------------------------------------------------------------------------------------------------------*/
+#define CRC_CCITT           (0UL << CRC_CTL_CRCMODE_Pos) /*!<CRC Polynomial Mode - CCITT \hideinitializer */
+#define CRC_8               (1UL << CRC_CTL_CRCMODE_Pos) /*!<CRC Polynomial Mode - CRC8 \hideinitializer */
+#define CRC_16              (2UL << CRC_CTL_CRCMODE_Pos) /*!<CRC Polynomial Mode - CRC16 \hideinitializer */
+#define CRC_32              (3UL << CRC_CTL_CRCMODE_Pos) /*!<CRC Polynomial Mode - CRC32 \hideinitializer */
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*  Checksum, Write data Constant Definitions                                                              */
+/*---------------------------------------------------------------------------------------------------------*/
+#define CRC_CHECKSUM_COM    (CRC_CTL_CHKSFMT_Msk)       /*!<CRC Checksum Complement \hideinitializer */
+#define CRC_CHECKSUM_RVS    (CRC_CTL_CHKSREV_Msk)       /*!<CRC Checksum Reverse \hideinitializer */
+#define CRC_WDATA_COM       (CRC_CTL_DATFMT_Msk)        /*!<CRC Write Data Complement \hideinitializer */
+#define CRC_WDATA_RVS       (CRC_CTL_DATREV_Msk)        /*!<CRC Write Data Reverse \hideinitializer */
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*  CPU Write Data Length Constant Definitions                                                             */
+/*---------------------------------------------------------------------------------------------------------*/
+#define CRC_CPU_WDATA_8     (0UL << CRC_CTL_DATLEN_Pos) /*!<CRC Write Data length is 8-bit \hideinitializer */
+#define CRC_CPU_WDATA_16    (1UL << CRC_CTL_DATLEN_Pos) /*!<CRC Write Data length is 16-bit \hideinitializer */
+#define CRC_CPU_WDATA_32    (2UL << CRC_CTL_DATLEN_Pos) /*!<CRC Write Data length is 32-bit \hideinitializer */
+
+/** @} */ /* end of group CRC_EXPORTED_CONSTANTS */
+
+
+/** @addtogroup CRC_EXPORTED_FUNCTIONS CRC Exported Functions
+  @{
+*/
+
+/**
+  * @brief      Set CRC Seed Value
+  *
+  * @param[in]  u32Seed     Seed value
+  *
+  * @return     None
+  *
+  * @details    This macro is used to set CRC seed value.
+  *
+  * @note       User must to perform CRC_CHKSINIT(CRC_CTL[1] CRC Engine Reset) to reload the new seed value
+  *             to CRC controller.
+  * \hideinitializer
+  */
+#define CRC_SET_SEED(u32Seed)   do{ CRC->SEED = (u32Seed); CRC->CTL |= CRC_CTL_CHKSINIT_Msk; }while(0)
+
+/**
+ * @brief       Get CRC Seed Value
+ *
+  * @note       No parameters.
+ *
+ * @return      CRC seed value
+ *
+ * @details     This macro gets the current CRC seed value.
+ * \hideinitializer
+ */
+#define CRC_GET_SEED()          (CRC->SEED)
+
+/**
+ * @brief       CRC Write Data
+ *
+ * @param[in]   u32Data     Write data
+ *
+ * @return      None
+ *
+ * @details    User can write data directly to CRC Write Data Register(CRC_DAT) by this macro to perform CRC operation.
+ * \hideinitializer
+ */
+#define CRC_WRITE_DATA(u32Data)   (CRC->DAT = (u32Data))
+
+/**
+ * @brief Enable the CRC DMA interrupt.
+ * @param[in] crc Pointer to the CRC module.
+ * \hideinitializer
+ */
+
+#define CRC_ENABLE_DMA_INT(crc)              ((crc)->DMACTL |= CRC_DMACTL_INTEN_Msk)
+/**
+ * @brief Disable the CRC DMA interrupt.
+ * @param[in] crc Pointer to the CRC module.
+ * \hideinitializer
+ */
+#define CRC_DISABLE_DMA_INT(crc)             ((crc)->DMACTL &= ~(CRC_DMACTL_INTEN_Msk))
+
+/**
+ * @brief Request abort of the CRC DMA transfer.
+ * @param[in] crc Pointer to the CRC module.
+ * \hideinitializer
+ */
+#define CRC_DMA_ABORT(crc)                   ((crc)->DMACTL |= CRC_DMACTL_ABORT_Msk)
+
+/**
+ * @brief Pause the CRC DMA transfer.
+ * @param[in] crc Pointer to the CRC module.
+ * \hideinitializer
+ */
+#define CRC_DMA_PAUSE(crc)                   ((crc)->DMACTL |= CRC_DMACTL_PAUSE_Msk)
+
+/**
+ * @brief Resume the CRC DMA transfer.
+ * @param[in] crc Pointer to the CRC module.
+ * \hideinitializer
+ */
+#define CRC_DMA_RESUME(crc)                  ((crc)->DMACTL &= ~CRC_DMACTL_PAUSE_Msk)
+
+/**
+ * @brief Read the CRC DMA pause-status bit.
+ * @param[in] crc Pointer to the CRC module.
+ * @return The CRC DMA pause-status bit mask, or 0 if not paused.
+ * \hideinitializer
+ */
+#define CRC_IS_DMA_PAUSE(crc)                ((crc)->DMACTL & CRC_DMACTL_PAUSE_Msk)
+
+/**
+ * @brief Start the CRC DMA transfer.
+ * @param[in] crc Pointer to the CRC module.
+ * \hideinitializer
+ */
+#define CRC_DMA_START(crc)                   ((crc)->DMACTL |= CRC_DMACTL_START_Msk)
+
+/**
+ * @brief Set the CRC DMA source address.
+ * @param[in] crc Pointer to the CRC module.
+ * @param[in] Addr Source address for the DMA transfer.
+ * \hideinitializer
+ */
+#define CRC_SET_DMA_SADDR(crc, Addr)         ((crc)->SADDR = (Addr))
+
+/**
+ * @brief Set the CRC DMA transfer length in words.
+ * @param[in] crc Pointer to the CRC module.
+ * @param[in] Word Number of words to transfer.
+ * \hideinitializer
+ */
+#define CRC_SET_DMACNT_WORD(crc, Word)       ((crc)->DMACNT = (Word<<CRC_DMACNT_DMACNT_Pos))
+
+/**
+ * @brief Read the CRC DMA status register.
+ * @param[in] crc Pointer to the CRC module.
+ * @return The CRC DMA status-register value.
+ * \hideinitializer
+ */
+#define CRC_GET_STATUS(crc)                  ((crc)->DMASTS)
+
+/**
+ * @brief Set the CRC polynomial register.
+ * @param[in] u32Polynomial Polynomial value to write.
+ * \hideinitializer
+ */
+#define CRC_SET_POLYNOMIAL(u32Polynomial)   (CRC->POLYNOMIAL = (u32Polynomial))
+
+void CRC_Open(uint32_t u32Mode, uint32_t u32Attribute, uint32_t u32Seed, uint32_t u32DataLen);
+uint32_t CRC_GetChecksum(void);
+
+/** @} */ /* end of group CRC_EXPORTED_FUNCTIONS */
+
+/** @} */ /* end of group CRC_Driver */
+
+/** @} */ /* end of group Standard_Driver */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
+
+/*** (C) COPYRIGHT 2016 Nuvoton Technology Corp. ***/
