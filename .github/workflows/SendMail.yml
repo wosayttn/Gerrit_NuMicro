@@ -1,0 +1,34 @@
+name: SendMail
+
+on:
+  workflow_dispatch:
+
+jobs:
+  SendMailTest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Simulate failure
+        shell: bash
+        run: |
+          TEST_FILE1="test1.log"
+          TEST_FILE2="test2.log"
+
+          echo "Hello World!! " > $TEST_FILE1
+          echo "Test for ${{ github.ref_name }}" >> $TEST_FILE1
+          cat $TEST_FILE1 > $TEST_FILE2
+
+          echo "$TEST_FILE1,$TEST_FILE2" > attachments.txt
+
+      - name: Send mail
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
