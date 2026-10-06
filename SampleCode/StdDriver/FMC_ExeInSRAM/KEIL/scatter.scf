@@ -1,0 +1,31 @@
+
+
+FLASH 0x00000000 0x00002000
+{
+    FLASH +0
+    {
+         startup_M471.o(RESET, +First)
+         startup_M471.o
+         system_M471.o
+         anon$$obj.o
+         init.o
+         entry*.o
+         handlers.o
+    }
+
+    SRAM1 0x20000000 0x00002000
+    {  
+        * (+RO)
+    }
+
+    SRAM2 0x20002000 0x00001000
+    {
+        * (+RW)
+    
+    }
+
+    ZI +0
+    {
+        * (+ZI)
+    }
+}
