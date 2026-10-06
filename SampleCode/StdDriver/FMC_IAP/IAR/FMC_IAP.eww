@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\FMC_IAP_APROM.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\FMC_IAP_LDROM.ewp</path>
+    </project>
+    <batchBuild>
+        <batchDefinition>
+            <name>BuildAll</name>
+            <member>
+                <project>FMC_IAP_LDROM</project>
+                <configuration>Release</configuration>
+            </member>
+            <member>
+                <project>FMC_IAP_APROM</project>
+                <configuration>Release</configuration>
+            </member>
+        </batchDefinition>
+    </batchBuild>
+</workspace>
