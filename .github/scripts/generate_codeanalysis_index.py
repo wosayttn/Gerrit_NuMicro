@@ -1,0 +1,426 @@
+#!/usr/bin/env python3
+"""Generate reports.json and index.html with Stage 1 / Stage 2 summaries."""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+STAGE_STATUS_RE = re.compile(
+    r'<span class="graph-stage-name">\s*(Stage\s*[12])\s*</span>'
+    r".*?"
+    r'<span class="graph-label status-(\w+)">',
+    re.DOTALL | re.IGNORECASE,
+)
+STAGE_SECTION_RE = re.compile(
+    r'<h2 class="stage-title">\s*(Stage\s*[12])\s*</h2>(.*?)(?=<h2 class="stage-title">|\Z)',
+    re.DOTALL | re.IGNORECASE,
+)
+MISRA_RE = re.compile(r"Total MISRA-C violations:\s*(\d+)", re.IGNORECASE)
+CPPCHECK_RE = re.compile(r"Total CppCheck violations:\s*(\d+)", re.IGNORECASE)
+
+STATUS_LABEL = {
+    "pass": "Pass",
+    "fail": "Fail",
+    "skipped": "Skipped",
+}
+
+
+def _norm_stage(name: str) -> str:
+    return "stage1" if "1" in name else "stage2"
+
+
+def empty_stage() -> dict:
+    return {"status": "N/A", "misra": None, "cppcheck": None}
+
+
+def parse_summary(html: str) -> dict:
+    stage1 = empty_stage()
+    stage2 = empty_stage()
+    stages = {"stage1": stage1, "stage2": stage2}
+
+    for name, status in STAGE_STATUS_RE.findall(html):
+        key = _norm_stage(name)
+        stages[key]["status"] = STATUS_LABEL.get(status.lower(), status.capitalize())
+
+    for name, body in STAGE_SECTION_RE.findall(html):
+        key = _norm_stage(name)
+        misra = MISRA_RE.search(body)
+        cppcheck = CPPCHECK_RE.search(body)
+        if misra:
+            stages[key]["misra"] = int(misra.group(1))
+        if cppcheck:
+            stages[key]["cppcheck"] = int(cppcheck.group(1))
+
+    return {"stage1": stage1, "stage2": stage2}
+
+
+def collect_reports(pages_dir: Path) -> list[dict]:
+    reports = []
+    for path in sorted(pages_dir.glob("code-analysis-summary-*.html")):
+        branch = path.name[len("code-analysis-summary-") : -len(".html")]
+        html = path.read_text(encoding="utf-8", errors="replace")
+        stages = parse_summary(html)
+        reports.append(
+            {
+                "branch": branch,
+                "file": path.name,
+                "stage1": stages["stage1"],
+                "stage2": stages["stage2"],
+            }
+        )
+    reports.sort(key=lambda item: item["branch"])
+    return reports
+
+
+def render_index() -> str:
+    return """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Analysis Reports - NuMicro BSP</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #e0e0e0;
+    padding: 2rem;
+  }
+  .container { max-width: 980px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2.5rem; }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+  header p { color: #94a3b8; font-size: 0.95rem; }
+  .search-box { margin-bottom: 1.5rem; }
+  .search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-box input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  }
+  .search-box input::placeholder { color: #64748b; }
+  .stats { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .stat-card {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    text-align: center;
+  }
+  .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #3b82f6; }
+  .stat-card .number.fail { color: #f87171; }
+  .stat-card .label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.25rem;
+  }
+  .report-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .report-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: all 0.2s ease;
+  }
+  .report-item:hover {
+    background: rgba(59,130,246,0.1);
+    border-color: #3b82f6;
+    transform: translateX(4px);
+  }
+  .report-main { min-width: 0; }
+  .report-item .branch-name { font-weight: 600; font-size: 0.95rem; }
+  .report-item .dept-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-right: 0.75rem;
+  }
+  .dept-ms10 { background: #7c3aed22; color: #a78bfa; border: 1px solid #7c3aed44; }
+  .dept-ms20 { background: #2563eb22; color: #60a5fa; border: 1px solid #2563eb44; }
+  .dept-ms40 { background: #05966922; color: #34d399; border: 1px solid #05966944; }
+  .dept-ms70 { background: #d9770622; color: #fb923c; border: 1px solid #d9770644; }
+  .stage-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    flex: 1;
+  }
+  .stage-card {
+    min-width: 160px;
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: rgba(15, 23, 42, 0.45);
+  }
+  .stage-card .stage-name {
+    font-size: 0.68rem;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 0.2rem;
+  }
+  .stage-card .stage-status {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .stage-card .stage-metrics {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+  }
+  .status-pass { color: #34d399; }
+  .status-fail { color: #f87171; }
+  .status-skipped, .status-na { color: #94a3b8; }
+  .stage-card.status-fail {
+    border-color: #ef444466;
+    background: rgba(239, 68, 68, 0.08);
+  }
+  .stage-card.status-pass {
+    border-color: #10b98144;
+  }
+  .report-item .arrow {
+    color: #64748b;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .report-item:hover .arrow { transform: translateX(4px); color: #3b82f6; }
+  .loading, .empty { text-align: center; padding: 3rem; color: #64748b; }
+  .hidden { display: none; }
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e293b;
+    color: #475569;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 720px) {
+    body { padding: 1rem; }
+    header h1 { font-size: 1.5rem; }
+    .stats { flex-direction: column; }
+    .report-item { flex-wrap: wrap; }
+    .stage-info { width: 100%; justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Code Analysis Reports</h1>
+    <p>NuMicro BSP — Static analysis results by branch</p>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Filter by branch, department, or stage status...">
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat-card">
+      <div class="number" id="total-count">-</div>
+      <div class="label">Total Reports</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" id="dept-count">-</div>
+      <div class="label">Departments</div>
+    </div>
+    <div class="stat-card">
+      <div class="number fail" id="stage1-fail-count">-</div>
+      <div class="label">Stage 1 Fail</div>
+    </div>
+    <div class="stat-card">
+      <div class="number fail" id="stage2-fail-count">-</div>
+      <div class="label">Stage 2 Fail</div>
+    </div>
+  </div>
+
+  <div id="reports" class="report-list">
+    <div class="loading">Loading reports...</div>
+  </div>
+
+  <footer>Powered by GitHub Actions &amp; GitHub Pages</footer>
+</div>
+
+<script>
+(function() {
+  var container = document.getElementById('reports');
+  var searchInput = document.getElementById('search');
+  var items = [];
+
+  function getDeptClass(branch) {
+    if (branch.indexOf('MS10') === 0) return 'dept-ms10';
+    if (branch.indexOf('MS20') === 0) return 'dept-ms20';
+    if (branch.indexOf('MS40') === 0) return 'dept-ms40';
+    if (branch.indexOf('MS70') === 0) return 'dept-ms70';
+    return '';
+  }
+
+  function getDeptLabel(branch) {
+    var m = branch.match(/^(MS\\d+)/);
+    return m ? m[1] : '';
+  }
+
+  function stageOf(item, key) {
+    return item[key] || { status: 'N/A', misra: null, cppcheck: null };
+  }
+
+  function statusClass(status) {
+    var s = (status || 'N/A').toLowerCase();
+    if (s === 'pass') return 'status-pass';
+    if (s === 'fail') return 'status-fail';
+    if (s === 'skipped') return 'status-skipped';
+    return 'status-na';
+  }
+
+  function metricText(stage) {
+    var misra = (stage.misra === null || stage.misra === undefined) ? '-' : stage.misra;
+    var cppcheck = (stage.cppcheck === null || stage.cppcheck === undefined) ? '-' : stage.cppcheck;
+    return 'MISRA ' + misra + ' · CppCheck ' + cppcheck;
+  }
+
+  function stageCard(label, stage) {
+    var cls = statusClass(stage.status);
+    return '<div class="stage-card ' + cls + '">' +
+      '<div class="stage-name">' + label + '</div>' +
+      '<div class="stage-status ' + cls + '">' + (stage.status || 'N/A') + '</div>' +
+      '<div class="stage-metrics">' + metricText(stage) + '</div>' +
+    '</div>';
+  }
+
+  function render(data) {
+    container.innerHTML = '';
+    if (!data || data.length === 0) {
+      container.innerHTML = '<div class="empty">No reports available.</div>';
+      return;
+    }
+    data.forEach(function(item) {
+      var a = document.createElement('a');
+      a.className = 'report-item';
+      a.href = item.file;
+      var dept = getDeptLabel(item.branch);
+      var deptClass = getDeptClass(item.branch);
+      var s1 = stageOf(item, 'stage1');
+      var s2 = stageOf(item, 'stage2');
+      a.innerHTML =
+        '<div class="report-main">' +
+          (dept ? '<span class="dept-badge ' + deptClass + '">' + dept + '</span>' : '') +
+          '<span class="branch-name">' + item.branch + '</span>' +
+        '</div>' +
+        '<div class="stage-info">' +
+          stageCard('Stage 1', s1) +
+          stageCard('Stage 2', s2) +
+        '</div>' +
+        '<span class="arrow">→</span>';
+      container.appendChild(a);
+    });
+  }
+
+  function matchesQuery(item, q) {
+    if (!q) return true;
+    var s1 = stageOf(item, 'stage1');
+    var s2 = stageOf(item, 'stage2');
+    var hay = [
+      item.branch,
+      getDeptLabel(item.branch),
+      'stage1 ' + (s1.status || ''),
+      'stage2 ' + (s2.status || ''),
+      'stage 1 ' + (s1.status || ''),
+      'stage 2 ' + (s2.status || '')
+    ].join(' ').toLowerCase();
+    return hay.indexOf(q) !== -1;
+  }
+
+  function filterAndRender(query) {
+    render(items.filter(function(item) { return matchesQuery(item, query.toLowerCase()); }));
+  }
+
+  function countFails(key) {
+    return items.filter(function(item) {
+      return (stageOf(item, key).status || '').toLowerCase() === 'fail';
+    }).length;
+  }
+
+  fetch('reports.json?t=' + Date.now())
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      items = data || [];
+      items.sort(function(a, b) { return a.branch.localeCompare(b.branch); });
+      document.getElementById('total-count').textContent = items.length;
+      var depts = {};
+      items.forEach(function(item) {
+        var d = getDeptLabel(item.branch);
+        if (d) depts[d] = true;
+      });
+      document.getElementById('dept-count').textContent = Object.keys(depts).length;
+      document.getElementById('stage1-fail-count').textContent = countFails('stage1');
+      document.getElementById('stage2-fail-count').textContent = countFails('stage2');
+      render(items);
+    })
+    .catch(function() {
+      container.innerHTML = '<div class="empty">Failed to load reports.</div>';
+    });
+
+  searchInput.addEventListener('input', function() {
+    filterAndRender(this.value);
+  });
+})();
+</script>
+</body>
+</html>
+"""
+
+
+def main() -> int:
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} <pages_dir>", file=sys.stderr)
+        return 1
+
+    pages_dir = Path(sys.argv[1])
+    pages_dir.mkdir(parents=True, exist_ok=True)
+
+    reports = collect_reports(pages_dir)
+    (pages_dir / "reports.json").write_text(
+        json.dumps(reports, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    (pages_dir / "index.html").write_text(render_index(), encoding="utf-8")
+    print(f"Wrote {len(reports)} reports to {pages_dir / 'reports.json'}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

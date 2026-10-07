@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\RMC_Base.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RMC_Boot0.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RMC_Boot1.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RMC_Boot2.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RMC_Boot3.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RMC_BootLD.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>BuildAll</name>
+      <member>
+        <project>RMC_Base</project>
+        <configuration>Release</configuration>
+      </member>
+      <member>
+        <project>RMC_Boot0</project>
+        <configuration>Release</configuration>
+      </member>
+      <member>
+        <project>RMC_Boot1</project>
+        <configuration>Release</configuration>
+      </member>
+      <member>
+        <project>RMC_Boot2</project>
+        <configuration>Release</configuration>
+      </member>
+      <member>
+        <project>RMC_Boot3</project>
+        <configuration>Release</configuration>
+      </member>
+      <member>
+        <project>RMC_BootLD</project>
+        <configuration>Release</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
