@@ -1,0 +1,14 @@
+sbomType: Product SBOM
+include:
+  - path: Library/CMSIS
+  - path: Library/CMSIS-DSP
+  - path: Library/Device
+  - path: Library/LlsiYcableLib
+  - path: Library/NuMaker
+  - path: Library/StdDriver
+  - path: Library/UsbHostLib
+exclude:
+  - path: Document/
+  - path: SampleCode/
+  - path: ThirdParty/
+  - path: Utilities/
