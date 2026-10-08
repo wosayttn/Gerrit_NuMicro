@@ -1,0 +1,71 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/paho.mqtt.embedded-c@v1.1.0-6035ea2?source=vendored&path=ThirdParty/paho.mqtt.embedded-c",
+      "name": "Eclipse Paho MQTT Embedded C",
+      "version": "v1.1.0-6035ea2",
+      "scope": "required",
+      "author": "Ian Craggs / Eclipse Paho project",
+      "purl": "pkg:generic/paho.mqtt.embedded-c@v1.1.0-6035ea2",
+      "description": "Eclipse Paho MQTT C/C++ client library for embedded platforms vendored in ThirdParty/paho.mqtt.embedded-c, pinned to upstream commit 6035ea2 on master (latest release tag observed: v1.1.0).",
+      "licenses": [
+        {
+          "license": {
+            "name": "Eclipse Public License 2.0 OR Eclipse Distribution License v1.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/paho.mqtt.embedded-c"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "paho_mqtt_embedded_c_version",
+          "value": "v1.1.0-6035ea2"
+        },
+        {
+          "name": "paho_mqtt_embedded_c_latest_release_tag",
+          "value": "v1.1.0"
+        },
+        {
+          "name": "paho_mqtt_embedded_c_version_scheme",
+          "value": "commit_hash"
+        },
+        {
+          "name": "paho_mqtt_embedded_c_included_top_level_paths",
+          "value": ".settings; Debug; doc; MQTTClient; MQTTClient-C; MQTTPacket; test; CMakeLists.txt; library.properties; LICENSE; NOTICE; README.md; about.html; notice.html; edl-v10; epl-v20"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Eclipse Paho MQTT Embedded C"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_mqtt.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/paho.mqtt.embedded-c"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Pinned upstream commit: 6035ea2 (master); latest release tag: v1.1.0; ThirdParty/paho.mqtt.embedded-c/CMakeLists.txt; ThirdParty/paho.mqtt.embedded-c/library.properties"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "ThirdParty/paho.mqtt.embedded-c/LICENSE; ThirdParty/paho.mqtt.embedded-c/NOTICE; ThirdParty/paho.mqtt.embedded-c/README.md; ThirdParty/paho.mqtt.embedded-c/about.html; ThirdParty/paho.mqtt.embedded-c/notice.html; ThirdParty/paho.mqtt.embedded-c/epl-v20; ThirdParty/paho.mqtt.embedded-c/edl-v10; ThirdParty/paho.mqtt.embedded-c/MQTTPacket/src/MQTTPacket.h"
+        }
+      ]
+    }
+  ]
+}
