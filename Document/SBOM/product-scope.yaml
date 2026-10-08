@@ -1,0 +1,19 @@
+sbomType: Product SBOM
+sourceCommit: 00b0843b3254c1c09961d0fc5d4b1b266a547ae8
+include:
+  - path: Library/CMSIS
+  - path: Library/Device
+  - path: Library/LCDLib
+  - path: Library/StdDriver
+exclude:
+  - path: Document/
+  - path: SampleCode/
+  - path: Library/CMSIS/Documentation/
+  - path: Library/CMSIS/Core/Test/
+  - path: Library/Device/Nuvoton/M2U51/Source/GCC/_syscalls.c
+    inventory: excluded-source-inventory.json
+    decision: legal-review-required
+  - path: Library/Device/Nuvoton/M2U51/Source/GCC/semihosting.h
+    inventory: excluded-source-inventory.json
+    decision: legal-review-required
+referenceResolution: every path and referenced evidence artifact must resolve; unresolved references fail
