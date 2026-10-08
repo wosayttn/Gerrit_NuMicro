@@ -87,13 +87,13 @@
     "branch": "MS70_M3351",
     "file": "code-analysis-summary-MS70_M3351.html",
     "stage1": {
-      "status": "Pass",
-      "misra": 0,
+      "status": "Fail",
+      "misra": 2,
       "cppcheck": 0
     },
     "stage2": {
-      "status": "Pass",
-      "misra": 0,
+      "status": "Fail",
+      "misra": 2,
       "cppcheck": 0
     }
   },
