@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "scope": "m2l31-powerdeliverylib",
+  "pathBase": "Library/PowerDeliveryLib",
+  "hashAlgorithm": "sha256-path-nul-content-nul-v1",
+  "aggregateSha256": "c3f3bfed439cfbaa10be30688b99b51b6885306e4d5cbf6d210403902f7c04dc",
+  "repositoryRelativeComparisonSha256": "bb7269d16ffd869829cdb407812c9d8df00a95ab71a2b183d2181b3608ca47f3",
+  "fileCount": 50,
+  "versionAnchor": {
+    "path": "Library/PowerDeliveryLib/Include/Inc/atomic.h",
+    "sha256": "25615ed0b8ff269fe3c160757ebe0e94fac481b6b8c4ca6fdd71b836c5dbaf1b",
+    "role": "version-anchor"
+  },
+  "files": [
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/atomic.h",
+      "size": 3988,
+      "sha256": "25615ed0b8ff269fe3c160757ebe0e94fac481b6b8c4ca6fdd71b836c5dbaf1b",
+      "gitBlobSha1": "eb0adeab03a32790c289c03eb00d429ce20ad47c"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/battery_smart.h",
+      "size": 6486,
+      "sha256": "528aa8f0342ad4cd04e38a14b3d53a81e6a0b72a68778365a3f108021c9a948b",
+      "gitBlobSha1": "a8317366b9230e3b5eb47b4d01afcbc8d1f35599"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/charge_manager.h",
+      "size": 9961,
+      "sha256": "d46bb2abc1354374922c152a6a33c4925219fdc1712a016eb76413f56f665bd5",
+      "gitBlobSha1": "6dcd5e7d194ad8678916feeec3f99612fb07df0b"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/charger.h",
+      "size": 15356,
+      "sha256": "c0150823c1c33992efb0ffdce0549928f7858ad02732b3aac6d504c908f41f2a",
+      "gitBlobSha1": "0c1bd9fa8e0b5cc278c0fa69463181defb1b00ae"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/common.h",
+      "size": 18054,
+      "sha256": "040f93b306195b738f55dd64b06cdc0b6b73366f68c71debf3362d4eb018b857",
+      "gitBlobSha1": "287b9dfd106d15430d42fba8b8f6524ed6e2cb07"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/ec_commands.h",
+      "size": 239092,
+      "sha256": "17f365caf59350ff4cc36b720a19c5dce5d1c444b8975e37db3734eec534be2d",
+      "gitBlobSha1": "969a7a1a91ded282728241f32b42a3260c634b67"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/ec_i2c.h",
+      "size": 20343,
+      "sha256": "a3dde97eb012a6f46dd0fca8b11b77227d7f94c3f472b0b5c325809d60f47445",
+      "gitBlobSha1": "769df27b03d706b1395d13a3b3fae890e054ac0d"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/ec_timer.h",
+      "size": 4411,
+      "sha256": "d3d072c3f349becbfdf732a0f2d25246c3f058f6f217a388fb6eda454355f2ef",
+      "gitBlobSha1": "93b058a011330f47324d5df459c336acd3db6b29"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/gpio_ec.h",
+      "size": 13136,
+      "sha256": "bf21159bcf877a456b2e8410773809798cc50884eaee574626eb3d785ac5276c",
+      "gitBlobSha1": "135561171544cb46b6ef967ec4d9745557634eea"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/host_command.h",
+      "size": 11452,
+      "sha256": "6e64ac92531237c34bc13171645dd1fd2685798890b0b97987269d2f2a6571e5",
+      "gitBlobSha1": "aa923caad3182dc261570ab4a9389c337b07a6c2"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/nct38xx.h",
+      "size": 5158,
+      "sha256": "fb3b55a5df51c67e746a09df722403de908b984fdd1888ba993ead02f0c6f518",
+      "gitBlobSha1": "c17168988e349561dad2669118a99c4feb684d39"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/task_id.h",
+      "size": 1880,
+      "sha256": "c8f9f1fd43259bc49f0b8181a944cb50e6cbed600edca9ec5b25c46fd01db925",
+      "gitBlobSha1": "7c3bf335d7f2411cc012da15fdcf3752cfa22b50"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/tcpci.h",
+      "size": 22979,
+      "sha256": "1c35a4df18812f6855e44c3b4e953410ad0316de8b04df5678b09c8b841f8095",
+      "gitBlobSha1": "3b91ea0ce7439286252a95aa4bc0fb632890b5bd"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/tcpci_ori.h",
+      "size": 14632,
+      "sha256": "172f7a94b6f75cf59fed284acd493e6503bba3726aed830c8c12e8fcbe4ba50b",
+      "gitBlobSha1": "494f2f92467aaca3efa1e3b92ad59091e36a973f"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/tcpm.h",
+      "size": 17883,
+      "sha256": "9bbaa6cc2debdbf98f0fade1e327c2b2848498bcf2856994e189308338663757",
+      "gitBlobSha1": "a6afb13235f8464e4029807e674dc1139f4fe28d"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/timer_ec.h",
+      "size": 4399,
+      "sha256": "79f00dabc61b32efdb28c5a0f0e7798f514305fa6532dd77715e1b2e61a4f85b",
+      "gitBlobSha1": "067debbd13f83eb74c01a1d32bcf77f074c719a7"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_charge.h",
+      "size": 6119,
+      "sha256": "2d501907ab7d6d27790290162aaf65eb85fdbc597965cf6ace80c5b3eca76116",
+      "gitBlobSha1": "f19fc6d7239a76cfb7cb63e1474269ef58daf8dd"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_common.h",
+      "size": 18850,
+      "sha256": "2248dc146cbeb36d6afcd0ca437fa53a49918296a426304485482054eec80d12",
+      "gitBlobSha1": "d9c5bef0a13de11f4a91a6bb3ec455ef4a2b096c"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_dp_alt_mode.h",
+      "size": 2279,
+      "sha256": "8965bbb42d4bdaac8b12c5730e2767c34f2859963b4cd66f72fa2be46b90b320",
+      "gitBlobSha1": "260fea9c9ff1571d61abe9029e9089b53d774d96"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_emsg.h",
+      "size": 712,
+      "sha256": "90f4751c422e268817eb0fc6dd43fc969e70bd9f97ec6064d95eb20930690004",
+      "gitBlobSha1": "899978f0906b21c139b8cbdf214466813a2d5617"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_mux.h",
+      "size": 8356,
+      "sha256": "e1260c0e19144b96a84bfed7d7e455ee909314f3f1b1e70b3d08adb274b0c858",
+      "gitBlobSha1": "636b8784115788f285d483caecf3049902549af4"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd.h",
+      "size": 117757,
+      "sha256": "2e1be5e280d048cd5306daf4535c48032e2094f7ec4dd121c157a380ac8c2b44",
+      "gitBlobSha1": "d33ebca2f4f3323f2d54b6247f11f6b24ed2c39e"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd_dpm.h",
+      "size": 2960,
+      "sha256": "fa143b095836e231e8f93934244a2a2c14039fce941be8a062cbbf57800d5ae6",
+      "gitBlobSha1": "135e46aabab2d9a71d2fa69a649abf89325f4a67"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd_flags.h",
+      "size": 2904,
+      "sha256": "f12a01b048853f6ba9818a9332657b8618a9bdb02e8ee7f5c8e57a3015c4471e",
+      "gitBlobSha1": "6e8e279f55b2e5f2caffd2bc985dc19722a3d16d"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd_tbt.h",
+      "size": 9472,
+      "sha256": "feddb555cff10e72f726832b1128b3e41ba2ebbabfe6ed2743c5be39c3069728",
+      "gitBlobSha1": "7ba9fc65324910d31ec72b8758654d4718c253b4"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd_tcpc.h",
+      "size": 2414,
+      "sha256": "a038f0c877f9616a2698432b12093a739a30ad787f63819e3e367f3a872960a2",
+      "gitBlobSha1": "b9f4c72246a44a9b65f6c8f9023b523f7216e365"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd_tcpm.h",
+      "size": 16686,
+      "sha256": "a4c200c2ea0f670d6e7045cbbcb3f179bda0ec3d59fc88db0be67ddc0754831e",
+      "gitBlobSha1": "af9524308fd201f835cd22a2a1cc8e1544094217"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd_timer.h",
+      "size": 11537,
+      "sha256": "874879ead28a13df6f46b65b78019c0d0c656b215522caedd422a96a95cbaab1",
+      "gitBlobSha1": "ac56edc4de8d417c2cd19aafdd56e18fb126426b"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pd_vdo.h",
+      "size": 34363,
+      "sha256": "001be96cb8f21f9e6e0a3fbf4a1e93c2b78da7390773fe08cb0d8469d0099d77",
+      "gitBlobSha1": "50c80a1c91610978071bd900c8efe00150e10167"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_pe_sm.h",
+      "size": 4207,
+      "sha256": "bc40d25bf553ea32df937837716e17042323df2a85f7bb678cefa3ea539ed72f",
+      "gitBlobSha1": "56f02c055108dcc5a35c4c74dccedba1d74c7ffd"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_prl_sm.h",
+      "size": 3381,
+      "sha256": "da13afd9920bddb55a70d1a384ec86627d28454df85f7dbd2b06463ef27c7675",
+      "gitBlobSha1": "872f9c541ca800e4cbe99cc0da93d980ca5d74a7"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_sm.h",
+      "size": 3477,
+      "sha256": "fd6ee88bea3023ea6c6bb09bfef187518e41e6c5b1a459dff99c64c71f15a284",
+      "gitBlobSha1": "479958df3b6e1a9b054539b11c3c543136f44a8f"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usb_tc_sm.h",
+      "size": 9657,
+      "sha256": "c07c2c36c347f66e1e57744f22f6e6a1d1415b3901e5fec7fe2adf2e83c433ff",
+      "gitBlobSha1": "2a9c6b210de377c505c8734cf9a7d20974ebcd6d"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/usbc_ppc.h",
+      "size": 8947,
+      "sha256": "33ff56c4c3f928f6d80cf39ae0f7dda26d22fc2ad60bfd55f2c5d19132a72ce3",
+      "gitBlobSha1": "03d1b19e185905e440ddd28aba50433764742075"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/Inc/util.h",
+      "size": 11546,
+      "sha256": "88bfe990f7a5d7c2456024285efeac752b6edcd56e70ea851e1055f9127e5aae",
+      "gitBlobSha1": "3b74e495f45e525ecf0dffef68630a4c95ead18d"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/utcpd_config.h",
+      "size": 7767,
+      "sha256": "bdf9909df03ea5fab2ebbc3d0d6631d83aef39c5a0f57bdb010718a1e8cae34c",
+      "gitBlobSha1": "1296d830fc8d921bb08926dc0a6b41b37e072e1f"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/Include/utcpdlib.h",
+      "size": 4921,
+      "sha256": "dfbef591be30986bdb99402365439ee987c9c734294d15c5d0c6fc5e593cb37f",
+      "gitBlobSha1": "079537803a3332ad2736a6beb66be20dfe0a5787"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/libPD_DRP.a",
+      "size": 242760,
+      "sha256": "08e3f8e7095e5b3740a68a41812a02e7770889504ede6ac519561159aab80547",
+      "gitBlobSha1": "f3ce0d9291eacc13541059bb3684ef6d128923a6"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/libPD_SNK.a",
+      "size": 210152,
+      "sha256": "1ab013beae051c4827d26c38ad92a1cd5f46e7b023ab090f086610b4c66529de",
+      "gitBlobSha1": "271466402e85fe036a34ee8f7be882329c8d1ca4"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/libPD_SRC.a",
+      "size": 211320,
+      "sha256": "e5215a5e559f1b1acea9979956f44e3894f9bfd00ac2273c88caff2ccfd1c3c7",
+      "gitBlobSha1": "f63b33f7b17e6e203170aed141ca1231d49db388"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/LICENSE.md",
+      "size": 5909,
+      "sha256": "ee61ebfcdb1c0f17b01f83d7e928711840b62cd58172276cb1a873ea2a13664d",
+      "gitBlobSha1": "762316f5383e3d3cdc26823dea2b4bcc88aa36e9"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_DRP.a",
+      "size": 1755728,
+      "sha256": "a65f15f8cbfe86e9f8b0b95023ad9406369c3ccf135aa3b8ac91599136cb1327",
+      "gitBlobSha1": "c0cb6dc626d672354fb9c96cbf480db9f5e135d4"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_DRP.lib",
+      "size": 369664,
+      "sha256": "5e4e0e7f96b7934c26b4996c931a84d2ec550fa40c8faac2b10a442fc53f1c22",
+      "gitBlobSha1": "20f295aa54e68935c7b0515e5d47b643afae281f"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_DRP_Keil.lib",
+      "size": 369664,
+      "sha256": "5c6a48c271e8de69957645002cd1ab69fe7bd5c11a736607f566cb5a0b61990c",
+      "gitBlobSha1": "40e3c342452c073c10a5a7cb432e6ec73f9e8f90"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_SNK.a",
+      "size": 1731552,
+      "sha256": "511c13eb5146e25c327e028cbdcf7d3bffe0d227c8deff8fe947f40e26fbb03b",
+      "gitBlobSha1": "32c1ad2e89e1c229d7d275e17033e3bd2369518c"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_SNK.lib",
+      "size": 334988,
+      "sha256": "a78ed9a791872fdfad76bb85377cf90fc1d20101a3b7200b6d19d29076510260",
+      "gitBlobSha1": "d77fce98990be3e5664e3ec5b8cd1b8ffaf62d15"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_SNK_Keil.lib",
+      "size": 334988,
+      "sha256": "4a07fc96801a0806a5bcf1b7b5c0f93ecfee617e22be956f42be329939120d87",
+      "gitBlobSha1": "0cc97d08ba0c04f50fe4e2a41ab1551d89481ef5"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_SRC.a",
+      "size": 1734826,
+      "sha256": "590db5f524547bbf46c385b889283af0be32ecf243adf429e317c3c63f39c7f0",
+      "gitBlobSha1": "7638c1bb1561ff2554d2355f4871f85134693820"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_SRC.lib",
+      "size": 337476,
+      "sha256": "015f6941147e737df926fd9871ac21c407b1fe33a5dce8cc6f6d014f1d16fee8",
+      "gitBlobSha1": "767ad3745d9355c5451775511995827261021a4d"
+    },
+    {
+      "path": "Library/PowerDeliveryLib/PD_SRC_Keil.lib",
+      "size": 337476,
+      "sha256": "a15f3661e19db449bdbe0e3901724dba83db1e840a0e28fafaa36665695fc5c0",
+      "gitBlobSha1": "9f24eb83894c1ef0e2a570066cfa9aeadcfca93a"
+    }
+  ]
+}

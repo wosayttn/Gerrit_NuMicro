@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\GIT\\M2L31\\M2L31_0909_AM10\\M2L31\\bsp\\SampleCode\\PowerDelivery\\Numaker_PD30_SNK\\VSCode\\out\\UTCPD_SinkRole\\GNUC\\Release"
+    ]
+}

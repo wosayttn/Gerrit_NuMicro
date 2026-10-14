@@ -1,0 +1,3365 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:c8442c11-6972-4c3a-b547-ed60f76f5b03",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-02T12:53:41+08:00",
+    "supplier": {
+      "name": "Nuvoton Technology Corp."
+    },
+    "authors": [
+      {
+        "name": "Nuvoton SBOM remediation pipeline"
+      }
+    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "Python Software Foundation",
+          "name": "Python",
+          "version": "3.13.15"
+        },
+        {
+          "type": "application",
+          "author": "Nuvoton SBOM remediation",
+          "name": "M2L31 SBOM remediation generator",
+          "version": "1.0.0",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "57c3afdc693950e29887133b37818c4060ba81ccf899be410bcd40deb1cceca0"
+            }
+          ],
+          "properties": [
+            {
+              "name": "bsp:config",
+              "value": "Document/SBOM/config/remediation-config.json"
+            },
+            {
+              "name": "bsp:repository-presence",
+              "value": "external-only pipeline tool"
+            }
+          ]
+        },
+        {
+          "type": "application",
+          "name": "git",
+          "version": "2.53.0.windows.4"
+        },
+        {
+          "type": "application",
+          "author": "Anchore",
+          "name": "grype",
+          "version": "0.117.0",
+          "properties": [
+            {
+              "name": "bsp:config",
+              "value": "Document/SBOM/config/grype-config.yaml"
+            },
+            {
+              "name": "bsp:config-sha256",
+              "value": "33cfacb2222fbd1c8ca5b4042256961537a2c762def19ae22b8708b7d7db87c8"
+            },
+            {
+              "name": "bsp:scan-evidence",
+              "value": "Document/SBOM/evidence/scan-evidence.json"
+            },
+            {
+              "name": "bsp:database-schema",
+              "value": "v6.1.9"
+            },
+            {
+              "name": "bsp:database-built",
+              "value": "2026-08-31T06:37:31Z"
+            },
+            {
+              "name": "bsp:database-sha256",
+              "value": "de9658d5fbee65261a773c9d0ac26fdcadbea9bdeb6126e01eb354a7a9123aa1"
+            },
+            {
+              "name": "bsp:add-cpes-if-none",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "type": "application",
+          "name": "CycloneDX CLI",
+          "version": "0.32.0+0ed788d25c13cef9e9a3029603f6b708e3279390",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b1c00dbb40e628ec8c1252771871341ac4d4aaf032f832d83bd22cb2b1d258ae"
+            }
+          ]
+        },
+        {
+          "type": "application",
+          "name": "sbom-checker",
+          "version": "1.0.0",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d27b5a94002202884d8529106ee2a6f3c34707295e429a5137ef71f21d3c5edd"
+            }
+          ],
+          "properties": [
+            {
+              "name": "bsp:level",
+              "value": "strict"
+            }
+          ]
+        }
+      ]
+    },
+    "component": {
+      "type": "library",
+      "bom-ref": "pkg:generic/nuvoton/m2l31bsp-testsample@7d75be4053bb0365b838f165216fb42328a69ae2",
+      "group": "Nuvoton",
+      "name": "M2L31 BSP TestSample",
+      "version": "candidate-7d75be4053bb",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvoton/m2l31bsp-testsample@7d75be4053bb0365b838f165216fb42328a69ae2",
+      "properties": [
+        {
+          "name": "bsp:scan-source",
+          "value": "Git worktree at fixed baseline"
+        },
+        {
+          "name": "bsp:generation-provenance",
+          "value": "7d75be4053bb0365b838f165216fb42328a69ae2"
+        },
+        {
+          "name": "bsp:release-provenance",
+          "value": "not-assigned"
+        },
+        {
+          "name": "bsp:distribution-provenance",
+          "value": "not-assigned"
+        },
+        {
+          "name": "bsp:lifecycle-commit",
+          "value": "null"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "m2l31bsp:test-sample-component:samplecode",
+      "name": "M2L31 SampleCode",
+      "version": "V3.02.000-133-g4c8bdbfc",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/samplecode@V3.02.000-133-g4c8bdbfc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6901de1113c3bf05946c8159decaa63b7e9f1b58f2433d7d23a0ead093538bc4"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP test-sample component included from test-sample scope path SampleCode/",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "test-sample"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "test-sample-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "false"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "4555"
+        }
+      ]
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-dual-bank-new-firmware@repository-build",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC Dual-Bank Update Firmware",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-dual-bank-new-firmware@repository-build",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fd5aab425ec0a011c07e24da48e9d03969c3554038f9da3e2b4309aa29ec41f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_DualBankFwUpdate"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "10540"
+        },
+        {
+          "name": "toolchain",
+          "value": "repository-distributed sample payload"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_DualBankFwUpdate/App/main.c; SampleCode/StdDriver/RMC_DualBankFwUpdate/App/IAR/App.ewp; SampleCode/StdDriver/RMC_DualBankFwUpdate/App/KEIL/App.uvprojx; SampleCode/StdDriver/RMC_DualBankFwUpdate/App/VSCode/App.cproject.yml"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "91312605db6790b2005040141fcce2087d6e943f"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/RMC_DualBankFwUpdate/NewFirmwareSample.bin"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/RMC_DualBankFwUpdate/NewFirmwareSample.bin"
+          }
+        ]
+      }
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-update-new-app@repository-build",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC Update Application Firmware",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-update-new-app@repository-build",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9c9e05d69f7285821d2933693e8fb1311709fa95d37a55fd8295aa0138d118b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_FwUpdateApplication"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "8560"
+        },
+        {
+          "name": "toolchain",
+          "value": "repository-distributed sample payload"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_FwUpdateApplication/App/main.c; SampleCode/StdDriver/RMC_FwUpdateApplication/App/IAR/App.ewp; SampleCode/StdDriver/RMC_FwUpdateApplication/App/KEIL/App.uvprojx; SampleCode/StdDriver/RMC_FwUpdateApplication/App/VSCode/App.cproject.yml"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "893ab3a3cb238eb399917d2ef1a199aa1a1e3720"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/RMC_FwUpdateApplication/NewApp.bin"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/RMC_FwUpdateApplication/NewApp.bin"
+          }
+        ]
+      }
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@gcc-eclipse",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - GCC Eclipse",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@gcc-eclipse",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3760d4f404b95d3586086637825cbcab586670a8af1ea9b131258695eb02cd38"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "6560"
+        },
+        {
+          "name": "toolchain",
+          "value": "GCC Eclipse"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/GCC/LDROM_iap/.cproject; SampleCode/StdDriver/RMC_IAP/GCC/ap_image.S"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "a7954f4d1ecd37d50499a98e4310a619d7956464"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/RMC_IAP/GCC/LDROM_iap/LDROM_iap.bin"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/RMC_IAP/GCC/LDROM_iap/LDROM_iap.bin"
+          }
+        ]
+      }
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@iar",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - IAR",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@iar",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea786e858d3e7e15e8235484316f3b98dc8d35072767e5b056d6156dca5c3d3a"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "3791"
+        },
+        {
+          "name": "toolchain",
+          "value": "IAR"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/IAR/rmc_ld_iap.ewp; SampleCode/StdDriver/RMC_IAP/IAR/rmc_ap_main.ewp"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "e670f293ec3f05246e19fed26bcba505014e9010"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/RMC_IAP/IAR/Release/Exe/rmc_ld_iap.bin"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/RMC_IAP/IAR/Release/Exe/rmc_ld_iap.bin"
+          }
+        ]
+      }
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@keil",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - Keil",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@keil",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2b125703cc1236c42f6470a4abe0e0a8833b918decf4a4f4d653625040cd55d0"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "3132"
+        },
+        {
+          "name": "toolchain",
+          "value": "Keil"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/KEIL/rmc_ld_iap.uvprojx; SampleCode/StdDriver/RMC_IAP/KEIL/ap_image.s"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "1b74ba081bcc8fa82824f342f65e62118c38f1ad"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/RMC_IAP/KEIL/Obj/rmc_ld_iap.bin"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/RMC_IAP/KEIL/Obj/rmc_ld_iap.bin"
+          }
+        ]
+      }
+    },
+    {
+      "type": "firmware",
+      "bom-ref": "pkg:generic/m2l31-rmc-iap-ldrom@vscode-gcc",
+      "group": "Nuvoton",
+      "name": "M2L31 RMC_IAP LDROM Firmware - VSCode GCC",
+      "version": "repository-build",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/m2l31-rmc-iap-ldrom@vscode-gcc",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "51aeb754c157f956b9c26e1c29e650d4cd91d271c55d832649fde803fe34c0f7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "SampleCode/StdDriver/RMC_IAP"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "5220"
+        },
+        {
+          "name": "toolchain",
+          "value": "GCC through VSCode CMSIS project"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party-build-artifact"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "SampleCode/StdDriver/RMC_IAP/VSCode/RMC_IAP_LDROM/RMC_IAP_LDROM.cproject.yml; SampleCode/StdDriver/RMC_IAP/VSCode/RMC_IAP_APROM/ap_image.s; SampleCode/StdDriver/RMC_IAP/VSCode/RMC_IAP_APROM/ap_image_gcc.S"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "bc0bc3e7f152544926f59e572230f0f1a8f14a29"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/RMC_IAP/VSCode/bin/rmc_ld_iap.bin"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/RMC_IAP/VSCode/bin/rmc_ld_iap.bin"
+          }
+        ]
+      }
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/microsoft-windows-sdk-hid-import-library@repository-copy",
+      "group": "Microsoft",
+      "name": "Microsoft Windows HID Import Library",
+      "version": "repository-copy",
+      "scope": "required",
+      "author": "Microsoft Corporation",
+      "supplier": {
+        "name": "Microsoft Corporation"
+      },
+      "purl": "pkg:generic/microsoft-windows-sdk-hid-import-library@repository-copy",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "22bcccaed9b092f4ab2aa12e1471959ed1847296f350bb6d7390b0718fdb5ca4"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Microsoft-Windows-SDK"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Tool/HIDTransferTest/HIDTransferTest"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "12384"
+        },
+        {
+          "name": "integration",
+          "value": "host-build import library"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "vendor-license"
+        },
+        {
+          "name": "bsp:relationship-evidence",
+          "value": "Tool/HIDTransferTest/HIDTransferTest/HIDTransferTest.vcxproj"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_binary-artifacts.md"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "0040fccad334db07968b6a93d4310c4042342b2a"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Tool/HIDTransferTest/HIDTransferTest/hid.lib"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Tool/HIDTransferTest/HIDTransferTest/hid.lib"
+          }
+        ]
+      }
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/fatfs@R0.12?source=vendored&path=ThirdParty/FatFs",
+      "name": "FatFs",
+      "version": "R0.12",
+      "scope": "required",
+      "author": "ChaN",
+      "supplier": {
+        "name": "ChaN"
+      },
+      "purl": "pkg:generic/fatfs@R0.12",
+      "description": "FatFs - Generic FAT file system module for embedded systems (ANSI C/C89), integrated as vendored source code.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-FatFs-R0.12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/FatFs"
+        },
+        {
+          "name": "fatfs_revision_id",
+          "value": "88100"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "FatFs (ChaN) - Generic FAT file system module"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_fatfs.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/FatFs"
+        },
+        {
+          "name": "bsp:hash-role",
+          "value": "tracked-scope-aggregate"
+        },
+        {
+          "name": "bsp:aggregate-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:aggregate-path-base",
+          "value": "ThirdParty/FatFs"
+        },
+        {
+          "name": "bsp:aggregate-file-count",
+          "value": "139"
+        },
+        {
+          "name": "bsp:version-anchor-path",
+          "value": "ThirdParty/FatFs/src/ff.c"
+        },
+        {
+          "name": "bsp:version-anchor-sha256",
+          "value": "37dacb04a194b8552072f87b95b159d80df2fe60e0196d88d8fd18cb8afae129"
+        },
+        {
+          "name": "bsp:inventory",
+          "value": "Document/SBOM/inventory/fatfs.json"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "139"
+        },
+        {
+          "name": "bsp:path",
+          "value": "ThirdParty/FatFs"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b3b2af6b0bbc4218fdb004f96fdd079d720704765b218a62008601283741a644"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/freertos-kernel@10.5.1?source=vendored&path=ThirdParty/FreeRTOS",
+      "name": "FreeRTOS-Kernel",
+      "version": "10.5.1",
+      "scope": "required",
+      "author": "Amazon.com, Inc. (FreeRTOS project)",
+      "supplier": {
+        "name": "Amazon Web Services, Inc."
+      },
+      "purl": "pkg:generic/freertos-kernel@10.5.1",
+      "description": "FreeRTOS Kernel vendored in ThirdParty/FreeRTOS.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/FreeRTOS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "upstream_manifest",
+          "value": "ThirdParty/FreeRTOS/Source/manifest.yml"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "FreeRTOS Kernel (Amazon FreeRTOS project)"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_freertos.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/FreeRTOS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "ThirdParty/FreeRTOS/Source/manifest.yml; ThirdParty/FreeRTOS/Source/include/FreeRTOS.h; ThirdParty/FreeRTOS/Source/tasks.c; ThirdParty/FreeRTOS/Source/sbom.spdx"
+        },
+        {
+          "name": "bsp:hash-role",
+          "value": "tracked-scope-aggregate"
+        },
+        {
+          "name": "bsp:aggregate-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:aggregate-path-base",
+          "value": "ThirdParty/FreeRTOS"
+        },
+        {
+          "name": "bsp:aggregate-file-count",
+          "value": "144"
+        },
+        {
+          "name": "bsp:version-anchor-path",
+          "value": "ThirdParty/FreeRTOS/Source/include/FreeRTOS.h"
+        },
+        {
+          "name": "bsp:version-anchor-sha256",
+          "value": "4fb17b1ff11fc3f82cff4e04f4546fc82ff3115ef213097fd942c3acdb657fbb"
+        },
+        {
+          "name": "bsp:inventory",
+          "value": "Document/SBOM/inventory/freertos.json"
+        },
+        {
+          "name": "bsp:cpe-identity-evidence",
+          "value": "{\"formalEvidence\":\"M2U51BSP/V3.00.000-12-g2d7239bf/Document/SBOM/components/TestSampleView/sca_freertos.json\",\"formalEvidenceSha256\":\"c34bdf0b5413c57cfb65d2f9f0b8a077489b1ba296a8af4615a6ad928db563c2\",\"formalAggregateSha256\":\"8b5255922f674077cbb1ea038fc5fd78adb40b013e5dbdd8a9531758c8d42113\",\"bindingRule\":\"canonical CPE is adopted only because the complete 144-file sha256-path-nul-content-nul-v1 aggregate is byte-identical; this is component identity evidence, not M2L31 vulnerability approval\"}"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:component-hash-algorithm",
+          "value": "sha256-path-nul-content-nul-v1"
+        },
+        {
+          "name": "bsp:component-hash-file-count",
+          "value": "144"
+        },
+        {
+          "name": "bsp:path",
+          "value": "ThirdParty/FreeRTOS"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d396d0257baa029714b1507428b4aeaed19e144b821e8677b1528737b32ed83b"
+        }
+      ],
+      "cpe": "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*"
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:c7649879a10c9332fc0f9744c7e3224647aee9e7e62c7e21cf9e987462e3dd06:e05d0c4f3554d3c5",
+      "group": "Microsoft Corporation",
+      "name": "WDF Coinstaller - SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/WdfCoInstaller01011.dll",
+      "version": "1.11.9200.16384",
+      "scope": "required",
+      "author": "Microsoft Corporation",
+      "supplier": {
+        "name": "Microsoft Corporation"
+      },
+      "purl": "pkg:generic/wdf-coinstaller@1.11.9200.16384",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7649879a10c9332fc0f9744c7e3224647aee9e7e62c7e21cf9e987462e3dd06"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Microsoft-Software-License-Terms"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1629040"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "vendor-license"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/windowsdriver-x86-wdfcoinstaller01011-dll.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "windowsdriver-amd64-WdfCoInstaller01011-sha256-c7649879"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows driver co-installer"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "vendor-license"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-x86-wdfcoinstaller01011-dll.md-3b9d7d32b21ed617a344095018bd1efce8c8968a28bf69fb6f55902a1e54999a"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "e943ea45ef7ea3a49af33be05596a7485dea604f"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/WdfCoInstaller01011.dll"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/WdfCoInstaller01011.dll"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/WdfCoInstaller01011.dll"
+          },
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/WdfCoInstaller01011.dll"
+          }
+        ]
+      }
+    },
+    {
+      "type": "library",
+      "bom-ref": "binary-sca:4f18b5d2c28aa66b648c8683c6d09b52b92cbbee85984bbefad5f38a64bc2a14:d6895f2a4607765f",
+      "group": "libusb-win32 project",
+      "name": "libusb-win32 - SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusb0.dll",
+      "version": "1.2.6.0",
+      "scope": "required",
+      "author": "libusb-win32 project",
+      "supplier": {
+        "name": "libusb-win32 project"
+      },
+      "purl": "pkg:generic/libusb-win32@1.2.6.0?file_path=SampleCode%2FISP%2FISP_DFU%2FWindowsDriver%2Famd64%2Flibusb0.dll",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f18b5d2c28aa66b648c8683c6d09b52b92cbbee85984bbefad5f38a64bc2a14"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "76384"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/windowsdriver-amd64-libusb0-dll.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "windowsdriver-amd64-libusb0-dll-sha256-4f18b5d2"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB user-space library/tool dependency"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-amd64-libusb0-dll.md-fc3448c9b865f92f8a6af9c43482a77afdb4489b221d56fb0ab7d5d8083242d0"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "f916b089867ee05ae63cba8a375890d9244e3dcf"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusb0.dll"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusb0.dll"
+          }
+        ]
+      }
+    },
+    {
+      "type": "library",
+      "bom-ref": "binary-sca:5e84d13636fbce7869cddc8b20c7d83fa0063e98c319e8e5ab751edc9ee1da76:f836201765fe349f",
+      "group": "libusb-win32 project",
+      "name": "libusb-win32 - SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusb0_x86.dll",
+      "version": "1.2.6.0",
+      "scope": "required",
+      "author": "libusb-win32 project",
+      "supplier": {
+        "name": "libusb-win32 project"
+      },
+      "purl": "pkg:generic/libusb-win32@1.2.6.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5e84d13636fbce7869cddc8b20c7d83fa0063e98c319e8e5ab751edc9ee1da76"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "46592"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/windowsdriver-amd64-libusb0-x86-dll.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "windowsdriver-amd64-libusb0-x86-dll-sha256-5e84d136"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB user-space library/tool dependency"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-x86-libusb0-dll.md-b58e95b36bc02292609bab19fa63717f05a8fb38fb582161d471289c2e93fa6c"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "5badbad16f22a09fbedec51f82798ca0b24b3bae"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusb0_x86.dll"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/install-filter.exe"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusb0.dll"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusb0_x86.dll"
+          },
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/install-filter.exe"
+          },
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusb0.dll"
+          }
+        ]
+      }
+    },
+    {
+      "type": "library",
+      "bom-ref": "binary-sca:592cd24bae321f1cb6cbe2f6e1bc5c05e279328e1c86814eb64ea1e89fdea188:6f68e2c1d6f8a91d",
+      "group": "libusbK project",
+      "name": "libusbK - SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK.dll",
+      "version": "3.0.7.0",
+      "scope": "required",
+      "author": "libusbK project",
+      "supplier": {
+        "name": "libusbK project"
+      },
+      "purl": "pkg:generic/libusbk@3.0.7.0?file_path=SampleCode%2FISP%2FISP_DFU%2FWindowsDriver%2Famd64%2FlibusbK.dll",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "592cd24bae321f1cb6cbe2f6e1bc5c05e279328e1c86814eb64ea1e89fdea188"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-3.0-only"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "99128"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/windowsdriver-amd64-libusbk-dll.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "windowsdriver-amd64-libusbk-dll-sha256-592cd24b"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB driver/library dependency"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-amd64-libusbk-dll.md-4139d0df4c69e1ce49eaae328920bfab26e45e3c90a77059988870c357ce7eb5"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "d8112b9e825d4ea9ab0ee96685aa18b02ab58e4f"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK.dll"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK.dll"
+          }
+        ]
+      }
+    },
+    {
+      "type": "library",
+      "bom-ref": "binary-sca:22803c719494f193d22519bfaff9484fecdcf1fadd6f082efd024fcee0b97ba4:b9791c799f7df765",
+      "group": "libusbK project",
+      "name": "libusbK - SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK_x86.dll",
+      "version": "3.0.7.0",
+      "scope": "required",
+      "author": "libusbK project",
+      "supplier": {
+        "name": "libusbK project"
+      },
+      "purl": "pkg:generic/libusbk@3.0.7.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "22803c719494f193d22519bfaff9484fecdcf1fadd6f082efd024fcee0b97ba4"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-3.0-only"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "84280"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/windowsdriver-amd64-libusbk-x86-dll.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "windowsdriver-amd64-libusbk-x86-dll-sha256-22803c71"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB driver/library dependency"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-x86-libusbk-dll.md-ed1e70d0d6dbd31b41d9aa95e27121f4c9dd53267c941ee3edd0cfc2ca59580f"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "0d41062911fabaa111324b1e7887ccee4f491000"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK_x86.dll"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusbK.dll"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK_x86.dll"
+          },
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusbK.dll"
+          }
+        ]
+      }
+    },
+    {
+      "type": "library",
+      "bom-ref": "binary-sca:00caca07869b19d10b370552ac7cc2f6f2ee246fc15db11650f6cd3f4ef9b666:8aa3d5ad788cb917",
+      "group": "libusb-win32 project",
+      "name": "libusb-win32 - SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusb0_x86.dll",
+      "version": "1.2.6.0",
+      "scope": "required",
+      "author": "libusb-win32 project",
+      "supplier": {
+        "name": "libusb-win32 project"
+      },
+      "purl": "pkg:generic/libusb-win32@1.2.6.0?file_path=SampleCode%2FISP%2FISP_DFU%2FWindowsDriver%2Fx86%2Flibusb0_x86.dll",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "00caca07869b19d10b370552ac7cc2f6f2ee246fc15db11650f6cd3f4ef9b666"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "LGPL-2.1-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "67680"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/windowsdriver-x86-libusb0-x86-dll.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "windowsdriver-x86-libusb0-x86-dll-sha256-00caca07"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB user-space library/tool dependency"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-x86-libusb0-x86-dll.md-389d1248eec5ee111213a9acb023d1b9827a729fa9123d2b1e9fe3c143954bfc"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "6e475b90ac77bbf206e4dfe8239f37dd52e1d215"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusb0_x86.dll"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusb0_x86.dll"
+          }
+        ]
+      }
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:ebe3b7708dd974ee87efed3113028d266af87ca8dbae77c47c6f7612824d3d6c:e3b02a89dec958d0",
+      "group": "Microsoft Corporation",
+      "name": "WinUSB co-installer - SampleCode/ISP/ISP_DFU/WindowsDriver/x86/winusbcoinstaller2.dll",
+      "version": "6.1.7600.16385 (win7_rtm.090713-1255)",
+      "scope": "required",
+      "author": "Microsoft Corporation",
+      "supplier": {
+        "name": "Microsoft Corporation"
+      },
+      "purl": "pkg:generic/winusb-co-installer@6.1.7600.16385%20%28win7_rtm.090713-1255%29?file_path=SampleCode%2FISP%2FISP_DFU%2FWindowsDriver%2Fx86%2Fwinusbcoinstaller2.dll",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ebe3b7708dd974ee87efed3113028d266af87ca8dbae77c47c6f7612824d3d6c"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Microsoft-Software-License-Terms"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "851176"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "vendor-license"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/windowsdriver-x86-winusbcoinstaller2-dll.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "windowsdriver-x86-winusbcoinstaller2-dll-sha256-ebe3b770"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows driver co-installer"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "vendor-license"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-x86-winusbcoinstaller2-dll.md-b0d19ae82d7ce187b97ecde1336006a2eb0cec3f10039884814149bd0a7f5c66"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "fc450d2b25d0f8069454cc0bde5ba9c13927fe4d"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/winusbcoinstaller2.dll"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/winusbcoinstaller2.dll"
+          }
+        ]
+      }
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:911e4c166fe9b06c8e2e31ab46b56ef662c43cba208d2088ca1d41c6d584e183:a5f94c445c17f408",
+      "group": "Nuvoton",
+      "name": "NuvPos58 Driver - SampleCode/StdDriver/USBD_Micro_Printer/Windows driver/NuvPos58_Driver.exe",
+      "version": "1.0",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvpos58-driver@1.0?file_path=SampleCode%2FStdDriver%2FUSBD_Micro_Printer%2FWindows%20driver%2FNuvPos58_Driver.exe",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "911e4c166fe9b06c8e2e31ab46b56ef662c43cba208d2088ca1d41c6d584e183"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1299564"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/samplecode-usbd-micro-printer-nuvpos58-driver-exe.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "samplecode-usbd-micro-printer-nuvpos58-driver-exe-sha256-911e4c16"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows printer driver installer"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "samplecode-usbd-micro-printer-nuvpos58-driver-exe.md-023496b951b5c7043f995e01ca891e6662a71dfcd9cc148f067314ae146e2222"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "afb6248f301272f1622da3fbf84effef5e803a22"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_Micro_Printer/Windows driver/NuvPos58_Driver.exe"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_Micro_Printer/Windows driver/NuvPos58_Driver.exe"
+          }
+        ]
+      }
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:ce0ed66a5db0a0c061fd92975939f48e93affad15f3f6e806d44b3e82078b3db:0834cff93a752b20",
+      "group": "Nuvoton",
+      "name": "NUVPOS58 x64 installer - SampleCode/StdDriver/USBD_Printer_And_HID_Transfer/Windows driver/NUVPOS58_X64.exe",
+      "version": "1.01",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvpos58-x64-installer@1.01?file_path=SampleCode%2FStdDriver%2FUSBD_Printer_And_HID_Transfer%2FWindows%20driver%2FNUVPOS58_X64.exe",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ce0ed66a5db0a0c061fd92975939f48e93affad15f3f6e806d44b3e82078b3db"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "662163"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/samplecode-usbd-printer-and-hid-transfer-nuvpos58-x64-exe.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "samplecode-usbd-printer-and-hid-transfer-nuvpos58-x64-exe-sha256-ce0ed66a"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows printer driver installer"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "samplecode-usbd-printer-and-hid-transfer-nuvpos58-x64-exe.md-996a40a474efa07e48d4ba025137e24e21674f87eac2515af16bbef84cb73620"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "6b826dfa3edc5bcd364c1d1157d2d2ff6744c58d"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_Printer_And_HID_Transfer/Windows driver/NUVPOS58_X64.exe"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_Printer_And_HID_Transfer/Windows driver/NUVPOS58_X64.exe"
+          }
+        ]
+      }
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:76e4d01dbf17ca7525e3a9156bd7e6274c5db0fff88a25943c25c8d2bdd38d92:79d73c1470b69b8d",
+      "group": "Nuvoton",
+      "name": "NUVPOS58 x86 installer - SampleCode/StdDriver/USBD_Printer_And_HID_Transfer/Windows driver/NUVPOS58_X86.exe",
+      "version": "1.01",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/nuvpos58-x86-installer@1.01?file_path=SampleCode%2FStdDriver%2FUSBD_Printer_And_HID_Transfer%2FWindows%20driver%2FNUVPOS58_X86.exe",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "76e4d01dbf17ca7525e3a9156bd7e6274c5db0fff88a25943c25c8d2bdd38d92"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Proprietary"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "621575"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/samplecode-usbd-printer-and-hid-transfer-nuvpos58-x86-exe.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "samplecode-usbd-printer-and-hid-transfer-nuvpos58-x86-exe-sha256-76e4d01d"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows printer driver installer"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "proprietary"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "samplecode-usbd-printer-and-hid-transfer-nuvpos58-x86-exe.md-65aa0409908b7d0dcdc203f499118241bae430f92b2108337010cb95a9b516a6"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "26cc9cfbcd98b9659f027d6ec0bb13d7150225c3"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_Printer_And_HID_Transfer/Windows driver/NUVPOS58_X86.exe"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_Printer_And_HID_Transfer/Windows driver/NUVPOS58_X86.exe"
+          }
+        ]
+      }
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:574f697b673b96f472321fce24cedbd5a7b3d8711067e23c7b065ae6ab074e1a:b191d4dffdaa7c89",
+      "group": "Nuvoton",
+      "name": "HID Transfer Test Tool - Tool/HIDTransferTest/Debug/HIDTransferTest.exe",
+      "version": "1.1.0.0",
+      "scope": "required",
+      "author": "Nuvoton Technology Corp.",
+      "supplier": {
+        "name": "Nuvoton Technology Corp."
+      },
+      "purl": "pkg:generic/hid-transfer-test-tool@1.1.0.0?file_path=Tool%2FHIDTransferTest%2FDebug%2FHIDTransferTest.exe",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "574f697b673b96f472321fce24cedbd5a7b3d8711067e23c7b065ae6ab074e1a"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "745984"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:binary-license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/components/TestSampleView/sca_windows-binaries.md"
+        },
+        {
+          "name": "bsp:vendor-license-evidence",
+          "value": "Document/SBOM/license-evidence/tool-hidtransfertest-exe.md"
+        },
+        {
+          "name": "bsp:binary-database-entry",
+          "value": "tool-hidtransfertest-exe-sha256-574f697b"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows HID transfer test utility"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "tool-hidtransfertest-exe.md-7d8494d9fb412f05d7a8e05708e0f3f3e1b548143963ae09fc5796f8608bb649"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "33a74cde504ace99b041c77ec7d864d7c84ba4d7"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Tool/HIDTransferTest/Debug/HIDTransferTest.exe"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Tool/HIDTransferTest/Debug/HIDTransferTest.exe"
+          }
+        ]
+      }
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:0594f3caa3685bb11b6dbb146849de0c94fb0c309e1a543a7bfa3cf9d93f2c5f:9d2639c3122cda74",
+      "group": "Nuvoton",
+      "name": "TouchView - Tool/TK/TouchView.exe",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/touchview@1.0.0.1?file_path=Tool%2FTK%2FTouchView.exe",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0594f3caa3685bb11b6dbb146849de0c94fb0c309e1a543a7bfa3cf9d93f2c5f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "3062784"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows touch panel view utility"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "tool-tk-touchview-exe.md-4912cc1cb75bc05dcce166af6710609ca19999a18b3673b78a27560668f9bdcb"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "e315f966fd2ea2f5a7eea4a2333132a06114cb20"
+        },
+        {
+          "name": "bsp:company-status",
+          "value": "embedded-placeholder-overridden-by-copyright-and-directory-license"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/touchview.json"
+        },
+        {
+          "name": "bsp:license-evidence-sha256",
+          "value": "ee61ebfcdb1c0f17b01f83d7e928711840b62cd58172276cb1a873ea2a13664d"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Tool/TK/TouchView.exe"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/evidence/touchview-license-bindings.md"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Tool/TK/TouchView.exe"
+          }
+        ]
+      },
+      "supplier": {
+        "name": "Nuvoton Technology Corporation"
+      },
+      "author": "Nuvoton Technology Corporation",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Software-License-Agreement"
+        }
+      ]
+    },
+    {
+      "type": "application",
+      "bom-ref": "binary-sca:798717b616ae59f81bb7cb4428a653f424838ac305bdfccc75623e69cce53cac:6169de179c84e74a",
+      "group": "Nuvoton",
+      "name": "TouchView MP - Tool/TK/TouchView_MP.exe",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/touchview-mp@1.0.0.1?file_path=Tool%2FTK%2FTouchView_MP.exe",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "798717b616ae59f81bb7cb4428a653f424838ac305bdfccc75623e69cce53cac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "2779648"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows touch panel mass production utility"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "tool-tk-touchview-mp-exe.md-ca74085876a56c927c0134a62fbb7d09498bfb7e468a8081bd1dbeeb9cc5660d"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "17d9f2f176be298e42e949e524967dc1ae64690f"
+        },
+        {
+          "name": "bsp:company-status",
+          "value": "embedded-placeholder-overridden-by-copyright-and-directory-license"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/touchview.json"
+        },
+        {
+          "name": "bsp:license-evidence-sha256",
+          "value": "ee61ebfcdb1c0f17b01f83d7e928711840b62cd58172276cb1a873ea2a13664d"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Tool/TK/TouchView_MP.exe"
+        },
+        {
+          "name": "bsp:binary-license-evidence",
+          "value": "Document/SBOM/evidence/touchview-license-bindings.md"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Tool/TK/TouchView_MP.exe"
+          }
+        ]
+      },
+      "supplier": {
+        "name": "Nuvoton Technology Corporation"
+      },
+      "author": "Nuvoton Technology Corporation",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Nuvoton-Software-License-Agreement"
+        }
+      ]
+    },
+    {
+      "type": "device-driver",
+      "bom-ref": "binary-db:windowsdriver-amd64-libusbk-sys-sha256-1df66ff2",
+      "name": "libusbK",
+      "version": "3.0.7.0 built by: WinDDK",
+      "supplier": {
+        "name": "libusbK project"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1df66ff22e2eaec27180756d90926ca5b07e8bcf6b0e4e3c56471e63a3a05fa6"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-3.0-only"
+        }
+      ],
+      "description": "host-side Windows USB driver/library dependency",
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-amd64-libusbk-sys.md-9939bc188b08c3fdd9e571101c36c1a1a1ba177ebc0d4a59007da213c10dcbdb"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB driver/library dependency"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "47928"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "e09ee126dc4655ca2d3088641db115a9db7cc460"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK.sys"
+        }
+      ],
+      "purl": "pkg:generic/libusbk@3.0.7.0?arch=amd64",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/amd64/libusbK.sys"
+          }
+        ]
+      }
+    },
+    {
+      "type": "device-driver",
+      "bom-ref": "binary-db:windowsdriver-x86-libusb0-sys-sha256-aa7d75a4",
+      "name": "libusb-win32 kernel driver",
+      "version": "1.2.6.0",
+      "supplier": {
+        "name": "libusb-win32 project"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa7d75a4d01b405aab7c848674bbed392b64c6e374e20fd72adc3c96294e2f00"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ],
+      "description": "host-side Windows USB kernel driver dependency",
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-x86-libusb0-sys.md-4c89d593d4d27a62b3af200b823fb954020a86284673421173bbf6032332e355"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB kernel driver dependency"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "42592"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "5322e5b978a964f0fb601ebb75fae4aae34bbd87"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusb0.sys"
+        }
+      ],
+      "purl": "pkg:generic/libusb-win32-kernel-driver@1.2.6.0?arch=x86",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusb0.sys"
+          }
+        ]
+      }
+    },
+    {
+      "type": "device-driver",
+      "bom-ref": "binary-db:windowsdriver-x86-libusbk-sys-sha256-6265ae9a",
+      "name": "libusbK",
+      "version": "3.0.7.0 built by: WinDDK",
+      "supplier": {
+        "name": "libusbK project"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6265ae9ae5c49f515613f0b749ad8390a1b34ca326203318bffeb6c2c281d2d0"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "BSD-3-Clause OR GPL-3.0-only"
+        }
+      ],
+      "description": "host-side Windows USB driver/library dependency",
+      "properties": [
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:license-status",
+          "value": "identified"
+        },
+        {
+          "name": "bsp:license-source",
+          "value": "manual-binary-license-mapping"
+        },
+        {
+          "name": "bsp:license-match-method",
+          "value": "sha256"
+        },
+        {
+          "name": "bsp:license-evidence-id",
+          "value": "windowsdriver-x86-libusbk-sys.md-1d0f48b3f33d09875957cc8dde9e2669ced2616948e526588ceb6eaaa04eb8c1"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "false"
+        },
+        {
+          "name": "bsp:runtime-dependency",
+          "value": "false"
+        },
+        {
+          "name": "bsp:usage",
+          "value": "host-side Windows USB driver/library dependency"
+        },
+        {
+          "name": "artifact_size_bytes",
+          "value": "42552"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "67b8ff4b6464c178b8af7e18aa0438a577dfcef6"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusbK.sys"
+        }
+      ],
+      "purl": "pkg:generic/libusbk@3.0.7.0?arch=x86",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/x86/libusbK.sys"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:67f7a835255ef3a5a61c4694c66fd839fe0673d9dee538309c1c7d928fee369c:4b47c74bb69ea84e",
+      "name": "Nu_DFU.cat",
+      "version": "3.0.7.0",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@3.0.7.0?file_path=SampleCode%2FISP%2FISP_DFU%2FWindowsDriver%2FNu_DFU.cat",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67f7a835255ef3a5a61c4694c66fd839fe0673d9dee538309c1c7d928fee369c"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "19530"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "c15b9a2937d0aa85364753220a410fab61258b96"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.inf#DriverVer/CatalogFile"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.cat"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.cat"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:547dd05c27fe0fa9f34120e292dc9af7abcf59ffbcd800160c4f4debb9018f82:fca43fa26cea158d",
+      "name": "Nu_DFU.inf",
+      "version": "3.0.7.0",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@3.0.7.0?file_path=SampleCode%2FISP%2FISP_DFU%2FWindowsDriver%2FNu_DFU.inf",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "547dd05c27fe0fa9f34120e292dc9af7abcf59ffbcd800160c4f4debb9018f82"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "7868"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "392aa3150dd0e981d28d82d5feb286e711042c2e"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.inf#DriverVer"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.inf"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.inf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:c52ff1835d5fe3d7912212ba1fa6910e4a5cf382a9f2f8a9054d0976e33f4fda:0fa884fae9839441",
+      "name": "NuvotonCDC.inf",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_And_HID_Keyboard%2FWindows%20Driver%2FNuvotonCDC.inf",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c52ff1835d5fe3d7912212ba1fa6910e4a5cf382a9f2f8a9054d0976e33f4fda"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1961"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "6abf722fced41a84bd0f8b64a3bad2fbf6007c59"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/NuvotonCDC.inf#DriverVer"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/NuvotonCDC.inf"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/NuvotonCDC.inf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:e311feb4c350ace1dcb5b3105e58b1e89a83c7ec07c538548a5f5d212796a806:49760b7ad3905db2",
+      "name": "nuvotoncdc.cat",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_And_HID_Keyboard%2FWindows%20Driver%2Fnuvotoncdc.cat",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e311feb4c350ace1dcb5b3105e58b1e89a83c7ec07c538548a5f5d212796a806"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "7389"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "5ae95b10b91b42e452cf445dc9562317725d16c8"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/NuvotonCDC.inf#DriverVer/CatalogFile"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/nuvotoncdc.cat"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/nuvotoncdc.cat"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:9302b17c38a256538eab064a898a6a8dd862f15c8ab7dae022a6426ba1741f88:771e010d269de26b",
+      "name": "NuvotonCDC.inf",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_And_HID_Transfer%2FWindows%20Driver%2FNuvotonCDC.inf",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9302b17c38a256538eab064a898a6a8dd862f15c8ab7dae022a6426ba1741f88"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1961"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "191f5b3c4864d74122df51ae66b89f8e23d43d59"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/NuvotonCDC.inf#DriverVer"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/NuvotonCDC.inf"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/NuvotonCDC.inf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:7b31521105436861138b1063daf667b573a07c7d05f6fae717a1a60bb3b6465a:9ee727d80a4cb596",
+      "name": "nuvotoncdc.cat",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_And_HID_Transfer%2FWindows%20Driver%2Fnuvotoncdc.cat",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7b31521105436861138b1063daf667b573a07c7d05f6fae717a1a60bb3b6465a"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "7389"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "6968aca5fecbf7ea52fb5669f630365d03f13cc5"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/NuvotonCDC.inf#DriverVer/CatalogFile"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/nuvotoncdc.cat"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/nuvotoncdc.cat"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:764d66cb75baccfab34a85783cd00d81fb82683a23268c4c62f269dd02db1927:d48f6c8ef0e968f5",
+      "name": "Nuvoton_DUAL_CDC0.inf",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_DualPort%2FWindows%20Driver%2FNuvoton_DUAL_CDC0.inf",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "764d66cb75baccfab34a85783cd00d81fb82683a23268c4c62f269dd02db1927"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1976"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "9ac23a031ffb38bf4cbb9c5e396d8cf6226d613e"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC0.inf#DriverVer"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC0.inf"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC0.inf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:7b81c10c81dead4c1e2b1226f6ab378887aea5e58a56f33941008a0ee693371b:ff9e5b938c467588",
+      "name": "Nuvoton_DUAL_CDC1.inf",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_DualPort%2FWindows%20Driver%2FNuvoton_DUAL_CDC1.inf",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7b81c10c81dead4c1e2b1226f6ab378887aea5e58a56f33941008a0ee693371b"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1974"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "e88d48395e5b769d53d59343a80862b644f873cc"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC1.inf#DriverVer"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC1.inf"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC1.inf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:e95072664412099f5a2e3a9947590a151ad3859ab61d30ad25615e9ea00049ba:fa21ae18bde8ddf5",
+      "name": "nuvoton_daul_cdc0.cat",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_DualPort%2FWindows%20Driver%2Fnuvoton_daul_cdc0.cat",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e95072664412099f5a2e3a9947590a151ad3859ab61d30ad25615e9ea00049ba"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "7497"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "e15af6f52c1ddaa43d52c5c6c34f489ccd609ccd"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC0.inf#DriverVer/CatalogFile"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/nuvoton_daul_cdc0.cat"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/nuvoton_daul_cdc0.cat"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:50e4d1c80e74127bd753d45e2ac2c75e2a4cb7661ac3a2fdd98b6fc97ed97915:6bef28defcd839f9",
+      "name": "nuvoton_daul_cdc1.cat",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_DualPort%2FWindows%20Driver%2Fnuvoton_daul_cdc1.cat",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "50e4d1c80e74127bd753d45e2ac2c75e2a4cb7661ac3a2fdd98b6fc97ed97915"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "7497"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "535bf081759cb30bd50e4a8b4319dad950127e59"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC1.inf#DriverVer/CatalogFile"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/nuvoton_daul_cdc1.cat"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/nuvoton_daul_cdc1.cat"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:7ff2bbae774fcb1b9e357e17de7c9952d26e9caced5ecd5042d937342c5b8eb2:9e592c992b33fd33",
+      "name": "NuvotonCDC.inf",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_SerialEmulator%2FWindows%20Driver%2FNuvotonCDC.inf",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7ff2bbae774fcb1b9e357e17de7c9952d26e9caced5ecd5042d937342c5b8eb2"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1949"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "d5552efa6dc647ed92c928f08ae9a31418db88e1"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/NuvotonCDC.inf#DriverVer"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/NuvotonCDC.inf"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/NuvotonCDC.inf"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:a0872babc2e2d928a529f032d24633b4585045b01d0e25657648063f2b592632:0e1f8b1e33a3d7b0",
+      "name": "nuvotoncdc.cat",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_SerialEmulator%2FWindows%20Driver%2Fnuvotoncdc.cat",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a0872babc2e2d928a529f032d24633b4585045b01d0e25657648063f2b592632"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "7377"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "c3cf3ac23a602aa06360827a08dfb110b63d0f40"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/NuvotonCDC.inf#DriverVer/CatalogFile"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/nuvotoncdc.cat"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/nuvotoncdc.cat"
+          }
+        ]
+      }
+    },
+    {
+      "type": "file",
+      "bom-ref": "repo-file:sha256:e24005a5831b442af34eb82caed6a141707a9a307c7f54317389ff97d24e34fb:84fec48e3edb5549",
+      "name": "NuvotonCDC.inf",
+      "version": "1.0.0.1",
+      "scope": "required",
+      "purl": "pkg:generic/nuvoton/driver-artifact@1.0.0.1?file_path=SampleCode%2FStdDriver%2FUSBD_VCOM_and_MassStorage%2FWindows%20Driver%2FNuvotonCDC.inf",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e24005a5831b442af34eb82caed6a141707a9a307c7f54317389ff97d24e34fb"
+        }
+      ],
+      "description": "Git-tracked Windows driver package artifact.",
+      "licenses": [
+        {
+          "expression": "LicenseRef-Pending-Legal-Decision"
+        }
+      ],
+      "properties": [
+        {
+          "name": "artifact_size_bytes",
+          "value": "1959"
+        },
+        {
+          "name": "bsp:git-blob-sha1",
+          "value": "20af414b387de82d5da3dde6f6c8f9cd7834083d"
+        },
+        {
+          "name": "bsp:legal-status",
+          "value": "authority-required"
+        },
+        {
+          "name": "bsp:license-expression-meaning",
+          "value": "placeholder only; not an authoritative license conclusion"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "SampleCode/StdDriver/USBD_VCOM_and_MassStorage/Windows Driver/NuvotonCDC.inf#DriverVer"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/evidence/windows-driver-artifacts.json"
+        },
+        {
+          "name": "bsp:path",
+          "value": "SampleCode/StdDriver/USBD_VCOM_and_MassStorage/Windows Driver/NuvotonCDC.inf"
+        }
+      ],
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SampleCode/StdDriver/USBD_VCOM_and_MassStorage/Windows Driver/NuvotonCDC.inf"
+          }
+        ]
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:generic/nuvoton/m2l31bsp-testsample@7d75be4053bb0365b838f165216fb42328a69ae2",
+      "dependsOn": [
+        "m2l31bsp:test-sample-component:samplecode",
+        "pkg:generic/m2l31-rmc-dual-bank-new-firmware@repository-build",
+        "pkg:generic/m2l31-rmc-update-new-app@repository-build",
+        "pkg:generic/m2l31-rmc-iap-ldrom@gcc-eclipse",
+        "pkg:generic/m2l31-rmc-iap-ldrom@iar",
+        "pkg:generic/m2l31-rmc-iap-ldrom@keil",
+        "pkg:generic/m2l31-rmc-iap-ldrom@vscode-gcc",
+        "pkg:generic/microsoft-windows-sdk-hid-import-library@repository-copy",
+        "pkg:generic/fatfs@R0.12?source=vendored&path=ThirdParty/FatFs",
+        "pkg:generic/freertos-kernel@10.5.1?source=vendored&path=ThirdParty/FreeRTOS",
+        "binary-sca:c7649879a10c9332fc0f9744c7e3224647aee9e7e62c7e21cf9e987462e3dd06:e05d0c4f3554d3c5",
+        "binary-sca:4f18b5d2c28aa66b648c8683c6d09b52b92cbbee85984bbefad5f38a64bc2a14:d6895f2a4607765f",
+        "binary-sca:5e84d13636fbce7869cddc8b20c7d83fa0063e98c319e8e5ab751edc9ee1da76:f836201765fe349f",
+        "binary-sca:592cd24bae321f1cb6cbe2f6e1bc5c05e279328e1c86814eb64ea1e89fdea188:6f68e2c1d6f8a91d",
+        "binary-sca:22803c719494f193d22519bfaff9484fecdcf1fadd6f082efd024fcee0b97ba4:b9791c799f7df765",
+        "binary-sca:00caca07869b19d10b370552ac7cc2f6f2ee246fc15db11650f6cd3f4ef9b666:8aa3d5ad788cb917",
+        "binary-sca:ebe3b7708dd974ee87efed3113028d266af87ca8dbae77c47c6f7612824d3d6c:e3b02a89dec958d0",
+        "binary-sca:911e4c166fe9b06c8e2e31ab46b56ef662c43cba208d2088ca1d41c6d584e183:a5f94c445c17f408",
+        "binary-sca:ce0ed66a5db0a0c061fd92975939f48e93affad15f3f6e806d44b3e82078b3db:0834cff93a752b20",
+        "binary-sca:76e4d01dbf17ca7525e3a9156bd7e6274c5db0fff88a25943c25c8d2bdd38d92:79d73c1470b69b8d",
+        "binary-sca:574f697b673b96f472321fce24cedbd5a7b3d8711067e23c7b065ae6ab074e1a:b191d4dffdaa7c89",
+        "binary-sca:0594f3caa3685bb11b6dbb146849de0c94fb0c309e1a543a7bfa3cf9d93f2c5f:9d2639c3122cda74",
+        "binary-sca:798717b616ae59f81bb7cb4428a653f424838ac305bdfccc75623e69cce53cac:6169de179c84e74a",
+        "binary-db:windowsdriver-amd64-libusbk-sys-sha256-1df66ff2",
+        "binary-db:windowsdriver-x86-libusb0-sys-sha256-aa7d75a4",
+        "binary-db:windowsdriver-x86-libusbk-sys-sha256-6265ae9a",
+        "repo-file:sha256:67f7a835255ef3a5a61c4694c66fd839fe0673d9dee538309c1c7d928fee369c:4b47c74bb69ea84e",
+        "repo-file:sha256:547dd05c27fe0fa9f34120e292dc9af7abcf59ffbcd800160c4f4debb9018f82:fca43fa26cea158d",
+        "repo-file:sha256:c52ff1835d5fe3d7912212ba1fa6910e4a5cf382a9f2f8a9054d0976e33f4fda:0fa884fae9839441",
+        "repo-file:sha256:e311feb4c350ace1dcb5b3105e58b1e89a83c7ec07c538548a5f5d212796a806:49760b7ad3905db2",
+        "repo-file:sha256:9302b17c38a256538eab064a898a6a8dd862f15c8ab7dae022a6426ba1741f88:771e010d269de26b",
+        "repo-file:sha256:7b31521105436861138b1063daf667b573a07c7d05f6fae717a1a60bb3b6465a:9ee727d80a4cb596",
+        "repo-file:sha256:764d66cb75baccfab34a85783cd00d81fb82683a23268c4c62f269dd02db1927:d48f6c8ef0e968f5",
+        "repo-file:sha256:7b81c10c81dead4c1e2b1226f6ab378887aea5e58a56f33941008a0ee693371b:ff9e5b938c467588",
+        "repo-file:sha256:e95072664412099f5a2e3a9947590a151ad3859ab61d30ad25615e9ea00049ba:fa21ae18bde8ddf5",
+        "repo-file:sha256:50e4d1c80e74127bd753d45e2ac2c75e2a4cb7661ac3a2fdd98b6fc97ed97915:6bef28defcd839f9",
+        "repo-file:sha256:7ff2bbae774fcb1b9e357e17de7c9952d26e9caced5ecd5042d937342c5b8eb2:9e592c992b33fd33",
+        "repo-file:sha256:a0872babc2e2d928a529f032d24633b4585045b01d0e25657648063f2b592632:0e1f8b1e33a3d7b0",
+        "repo-file:sha256:e24005a5831b442af34eb82caed6a141707a9a307c7f54317389ff97d24e34fb:84fec48e3edb5549"
+      ]
+    },
+    {
+      "ref": "m2l31bsp:test-sample-component:samplecode",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/m2l31-rmc-dual-bank-new-firmware@repository-build",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/m2l31-rmc-update-new-app@repository-build",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/m2l31-rmc-iap-ldrom@gcc-eclipse",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/m2l31-rmc-iap-ldrom@iar",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/m2l31-rmc-iap-ldrom@keil",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/m2l31-rmc-iap-ldrom@vscode-gcc",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/microsoft-windows-sdk-hid-import-library@repository-copy",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/fatfs@R0.12?source=vendored&path=ThirdParty/FatFs",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:generic/freertos-kernel@10.5.1?source=vendored&path=ThirdParty/FreeRTOS",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:c7649879a10c9332fc0f9744c7e3224647aee9e7e62c7e21cf9e987462e3dd06:e05d0c4f3554d3c5",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:4f18b5d2c28aa66b648c8683c6d09b52b92cbbee85984bbefad5f38a64bc2a14:d6895f2a4607765f",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:5e84d13636fbce7869cddc8b20c7d83fa0063e98c319e8e5ab751edc9ee1da76:f836201765fe349f",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:592cd24bae321f1cb6cbe2f6e1bc5c05e279328e1c86814eb64ea1e89fdea188:6f68e2c1d6f8a91d",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:22803c719494f193d22519bfaff9484fecdcf1fadd6f082efd024fcee0b97ba4:b9791c799f7df765",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:00caca07869b19d10b370552ac7cc2f6f2ee246fc15db11650f6cd3f4ef9b666:8aa3d5ad788cb917",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:ebe3b7708dd974ee87efed3113028d266af87ca8dbae77c47c6f7612824d3d6c:e3b02a89dec958d0",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:911e4c166fe9b06c8e2e31ab46b56ef662c43cba208d2088ca1d41c6d584e183:a5f94c445c17f408",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:ce0ed66a5db0a0c061fd92975939f48e93affad15f3f6e806d44b3e82078b3db:0834cff93a752b20",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:76e4d01dbf17ca7525e3a9156bd7e6274c5db0fff88a25943c25c8d2bdd38d92:79d73c1470b69b8d",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:574f697b673b96f472321fce24cedbd5a7b3d8711067e23c7b065ae6ab074e1a:b191d4dffdaa7c89",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:0594f3caa3685bb11b6dbb146849de0c94fb0c309e1a543a7bfa3cf9d93f2c5f:9d2639c3122cda74",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-sca:798717b616ae59f81bb7cb4428a653f424838ac305bdfccc75623e69cce53cac:6169de179c84e74a",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-db:windowsdriver-amd64-libusbk-sys-sha256-1df66ff2",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-db:windowsdriver-x86-libusb0-sys-sha256-aa7d75a4",
+      "dependsOn": []
+    },
+    {
+      "ref": "binary-db:windowsdriver-x86-libusbk-sys-sha256-6265ae9a",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:67f7a835255ef3a5a61c4694c66fd839fe0673d9dee538309c1c7d928fee369c:4b47c74bb69ea84e",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:547dd05c27fe0fa9f34120e292dc9af7abcf59ffbcd800160c4f4debb9018f82:fca43fa26cea158d",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:c52ff1835d5fe3d7912212ba1fa6910e4a5cf382a9f2f8a9054d0976e33f4fda:0fa884fae9839441",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:e311feb4c350ace1dcb5b3105e58b1e89a83c7ec07c538548a5f5d212796a806:49760b7ad3905db2",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:9302b17c38a256538eab064a898a6a8dd862f15c8ab7dae022a6426ba1741f88:771e010d269de26b",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:7b31521105436861138b1063daf667b573a07c7d05f6fae717a1a60bb3b6465a:9ee727d80a4cb596",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:764d66cb75baccfab34a85783cd00d81fb82683a23268c4c62f269dd02db1927:d48f6c8ef0e968f5",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:7b81c10c81dead4c1e2b1226f6ab378887aea5e58a56f33941008a0ee693371b:ff9e5b938c467588",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:e95072664412099f5a2e3a9947590a151ad3859ab61d30ad25615e9ea00049ba:fa21ae18bde8ddf5",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:50e4d1c80e74127bd753d45e2ac2c75e2a4cb7661ac3a2fdd98b6fc97ed97915:6bef28defcd839f9",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:7ff2bbae774fcb1b9e357e17de7c9952d26e9caced5ecd5042d937342c5b8eb2:9e592c992b33fd33",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:a0872babc2e2d928a529f032d24633b4585045b01d0e25657648063f2b592632:0e1f8b1e33a3d7b0",
+      "dependsOn": []
+    },
+    {
+      "ref": "repo-file:sha256:e24005a5831b442af34eb82caed6a141707a9a307c7f54317389ff97d24e34fb:84fec48e3edb5549",
+      "dependsOn": []
+    }
+  ]
+}

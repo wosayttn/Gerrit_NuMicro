@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "matchPolicy": "exact-path-and-sha256",
+  "records": [
+    {
+      "path": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.cat",
+      "sha256": "67f7a835255ef3a5a61c4694c66fd839fe0673d9dee538309c1c7d928fee369c",
+      "gitBlobSha1": "c15b9a2937d0aa85364753220a410fab61258b96",
+      "supplierEvidence": {
+        "method": "Windows Get-AuthenticodeSignature",
+        "status": "Valid",
+        "subject": "CN=Nuvoton Technology Corporation, O=Nuvoton Technology Corporation, L=Hsinchu, C=TW, SERIALNUMBER=28112646, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.1=Hsinchu, OID.1.3.6.1.4.1.311.60.2.1.3=TW",
+        "thumbprintSha1": "2DFEC4522504C3F23BB63B550689C017417DFE17"
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/ISP/ISP_DFU/WindowsDriver/Nu_DFU.inf",
+      "sha256": "547dd05c27fe0fa9f34120e292dc9af7abcf59ffbcd800160c4f4debb9018f82",
+      "gitBlobSha1": "392aa3150dd0e981d28d82d5feb286e711042c2e",
+      "supplierEvidence": {
+        "method": "INF fields",
+        "fields": {
+          "Provider": "libusbK",
+          "DriverVer": "12/01/2014, 3.0.7.0",
+          "CatalogFile": "Nu_DFU.cat",
+          "Class": "libusbk devices"
+        },
+        "resolvedProvider": "libusbK"
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/NuvotonCDC.inf",
+      "sha256": "c52ff1835d5fe3d7912212ba1fa6910e4a5cf382a9f2f8a9054d0976e33f4fda",
+      "gitBlobSha1": "6abf722fced41a84bd0f8b64a3bad2fbf6007c59",
+      "supplierEvidence": {
+        "method": "INF fields",
+        "fields": {
+          "Provider": "%COMPANY%",
+          "DriverVer": "10/02/2014,1.0.0.1",
+          "CatalogFile": "NuvotonCDC.cat",
+          "Class": "Ports",
+          "COMPANY": "Nuvoton Co., Ltd."
+        },
+        "resolvedProvider": "Nuvoton Co., Ltd."
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_And_HID_Keyboard/Windows Driver/nuvotoncdc.cat",
+      "sha256": "e311feb4c350ace1dcb5b3105e58b1e89a83c7ec07c538548a5f5d212796a806",
+      "gitBlobSha1": "5ae95b10b91b42e452cf445dc9562317725d16c8",
+      "supplierEvidence": {
+        "method": "Windows Get-AuthenticodeSignature",
+        "status": "Valid",
+        "subject": "CN=Nuvoton Technology Corporation, O=Nuvoton Technology Corporation, L=Hsinchu, S=Taiwan, C=TW",
+        "thumbprintSha1": "B17DB18A291871D020DDD6340ED61629A81D9F50"
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/NuvotonCDC.inf",
+      "sha256": "9302b17c38a256538eab064a898a6a8dd862f15c8ab7dae022a6426ba1741f88",
+      "gitBlobSha1": "191f5b3c4864d74122df51ae66b89f8e23d43d59",
+      "supplierEvidence": {
+        "method": "INF fields",
+        "fields": {
+          "Provider": "%COMPANY%",
+          "DriverVer": "10/02/2014,1.0.0.1",
+          "CatalogFile": "NuvotonCDC.cat",
+          "Class": "Ports",
+          "COMPANY": "Nuvoton Co., Ltd."
+        },
+        "resolvedProvider": "Nuvoton Co., Ltd."
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_And_HID_Transfer/Windows Driver/nuvotoncdc.cat",
+      "sha256": "7b31521105436861138b1063daf667b573a07c7d05f6fae717a1a60bb3b6465a",
+      "gitBlobSha1": "6968aca5fecbf7ea52fb5669f630365d03f13cc5",
+      "supplierEvidence": {
+        "method": "Windows Get-AuthenticodeSignature",
+        "status": "Valid",
+        "subject": "CN=Nuvoton Technology Corporation, O=Nuvoton Technology Corporation, L=Hsinchu, S=Taiwan, C=TW",
+        "thumbprintSha1": "B17DB18A291871D020DDD6340ED61629A81D9F50"
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC0.inf",
+      "sha256": "764d66cb75baccfab34a85783cd00d81fb82683a23268c4c62f269dd02db1927",
+      "gitBlobSha1": "9ac23a031ffb38bf4cbb9c5e396d8cf6226d613e",
+      "supplierEvidence": {
+        "method": "INF fields",
+        "fields": {
+          "Provider": "%COMPANY%",
+          "DriverVer": "01/05/2015,1.0.0.1",
+          "CatalogFile": "nuvoton_daul_cdc0.cat",
+          "Class": "Ports",
+          "COMPANY": "Nuvoton Co., Ltd."
+        },
+        "resolvedProvider": "Nuvoton Co., Ltd."
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/Nuvoton_DUAL_CDC1.inf",
+      "sha256": "7b81c10c81dead4c1e2b1226f6ab378887aea5e58a56f33941008a0ee693371b",
+      "gitBlobSha1": "e88d48395e5b769d53d59343a80862b644f873cc",
+      "supplierEvidence": {
+        "method": "INF fields",
+        "fields": {
+          "Provider": "%COMPANY%",
+          "DriverVer": "01/05/2015,1.0.0.1",
+          "CatalogFile": "nuvoton_daul_cdc1.cat",
+          "Class": "Ports",
+          "COMPANY": "Nuvoton Co., Ltd."
+        },
+        "resolvedProvider": "Nuvoton Co., Ltd."
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/nuvoton_daul_cdc0.cat",
+      "sha256": "e95072664412099f5a2e3a9947590a151ad3859ab61d30ad25615e9ea00049ba",
+      "gitBlobSha1": "e15af6f52c1ddaa43d52c5c6c34f489ccd609ccd",
+      "supplierEvidence": {
+        "method": "Windows Get-AuthenticodeSignature",
+        "status": "Valid",
+        "subject": "CN=Nuvoton Technology Corporation, O=Nuvoton Technology Corporation, L=Hsinchu, S=Taiwan, C=TW",
+        "thumbprintSha1": "B17DB18A291871D020DDD6340ED61629A81D9F50"
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_DualPort/Windows Driver/nuvoton_daul_cdc1.cat",
+      "sha256": "50e4d1c80e74127bd753d45e2ac2c75e2a4cb7661ac3a2fdd98b6fc97ed97915",
+      "gitBlobSha1": "535bf081759cb30bd50e4a8b4319dad950127e59",
+      "supplierEvidence": {
+        "method": "Windows Get-AuthenticodeSignature",
+        "status": "Valid",
+        "subject": "CN=Nuvoton Technology Corporation, O=Nuvoton Technology Corporation, L=Hsinchu, S=Taiwan, C=TW",
+        "thumbprintSha1": "B17DB18A291871D020DDD6340ED61629A81D9F50"
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/NuvotonCDC.inf",
+      "sha256": "7ff2bbae774fcb1b9e357e17de7c9952d26e9caced5ecd5042d937342c5b8eb2",
+      "gitBlobSha1": "d5552efa6dc647ed92c928f08ae9a31418db88e1",
+      "supplierEvidence": {
+        "method": "INF fields",
+        "fields": {
+          "Provider": "%COMPANY%",
+          "DriverVer": "10/02/2014,1.0.0.1",
+          "CatalogFile": "NuvotonCDC.cat",
+          "Class": "Ports",
+          "COMPANY": "Nuvoton Co., Ltd."
+        },
+        "resolvedProvider": "Nuvoton Co., Ltd."
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_SerialEmulator/Windows Driver/nuvotoncdc.cat",
+      "sha256": "a0872babc2e2d928a529f032d24633b4585045b01d0e25657648063f2b592632",
+      "gitBlobSha1": "c3cf3ac23a602aa06360827a08dfb110b63d0f40",
+      "supplierEvidence": {
+        "method": "Windows Get-AuthenticodeSignature",
+        "status": "Valid",
+        "subject": "CN=Nuvoton Technology Corporation, O=Nuvoton Technology Corporation, L=Hsinchu, S=Taiwan, C=TW",
+        "thumbprintSha1": "B17DB18A291871D020DDD6340ED61629A81D9F50"
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    },
+    {
+      "path": "SampleCode/StdDriver/USBD_VCOM_and_MassStorage/Windows Driver/NuvotonCDC.inf",
+      "sha256": "e24005a5831b442af34eb82caed6a141707a9a307c7f54317389ff97d24e34fb",
+      "gitBlobSha1": "20af414b387de82d5da3dde6f6c8f9cd7834083d",
+      "supplierEvidence": {
+        "method": "INF fields",
+        "fields": {
+          "Provider": "%COMPANY%",
+          "DriverVer": "10/02/2014,1.0.0.1",
+          "CatalogFile": "NuvotonCDC.cat",
+          "Class": "Ports",
+          "COMPANY": "Nuvoton Co., Ltd."
+        },
+        "resolvedProvider": "Nuvoton Co., Ltd."
+      },
+      "license": null,
+      "legalStatus": "authority-required"
+    }
+  ]
+}

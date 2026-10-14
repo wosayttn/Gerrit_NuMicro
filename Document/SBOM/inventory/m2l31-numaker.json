@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "scope": "m2l31-numaker",
+  "pathBase": "Library/NuMaker",
+  "hashAlgorithm": "sha256-path-nul-content-nul-v1",
+  "aggregateSha256": "75df62789c61c0573d119ac09ac7a96640e3508eae8377dfb542a82295c511c6",
+  "repositoryRelativeComparisonSha256": "6302dbf9060872e88504b8e81657f447836def593e4965bcb96af6bbcf06df95",
+  "fileCount": 2,
+  "versionAnchor": {
+    "path": "Library/NuMaker/common/xmodem.c",
+    "sha256": "8394ed10c271dcce15556e2ae324242ac7155c0c06a3d756747e542c0a87be2b",
+    "role": "version-anchor"
+  },
+  "files": [
+    {
+      "path": "Library/NuMaker/common/xmodem.c",
+      "size": 16034,
+      "sha256": "8394ed10c271dcce15556e2ae324242ac7155c0c06a3d756747e542c0a87be2b",
+      "gitBlobSha1": "9793fe9c90542383c94eb95761db29b6f5d138a9"
+    },
+    {
+      "path": "Library/NuMaker/common/xmodem.h",
+      "size": 1295,
+      "sha256": "02e64a5cb29e6cdbd7eb98b9def1c4f21dd1c12a7e6bd0efa4de0987c42b2ca9",
+      "gitBlobSha1": "820069a8316e70d792429aaa27a12b1808c0e264"
+    }
+  ]
+}

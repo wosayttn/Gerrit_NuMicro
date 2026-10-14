@@ -1,0 +1,6 @@
+{
+    "debug.hideSlowPreLaunchWarning": true,
+    "clangd.arguments": [
+        "--compile-commands-dir=c:\\Project\\M2L31_0512_Git\\M2L31\\bsp\\SampleCode\\TouchKey\\AllInOne_TK\\VSCode\\out\\TK\\GNUC\\Calibration"
+    ]
+}

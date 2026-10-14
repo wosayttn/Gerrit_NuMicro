@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "scope": "m2l31-device",
+  "pathBase": "Library/Device",
+  "hashAlgorithm": "sha256-path-nul-content-nul-v1",
+  "aggregateSha256": "d20344d184712e80406cde6d56127318bc3b1739d82ffc794c26cc977dabebce",
+  "repositoryRelativeComparisonSha256": "910d1f7fe9fba117f39f2296a880e7776328159981c2d8c5e2623aabdd1e8d87",
+  "fileCount": 59,
+  "versionAnchor": {
+    "path": "Library/Device/Nuvoton/M2L31/Include/M2L31.h",
+    "sha256": "7d25cbe0bc2cd3f88d55a8b290585d8fb614d1fc783414a482a4a2c5df9e76ba",
+    "role": "version-anchor"
+  },
+  "files": [
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/acmp_reg.h",
+      "size": 32561,
+      "sha256": "77b3fab75d1d80bb16d6376d1da66e4f7c37e0c840d300327a561198d57c108d",
+      "gitBlobSha1": "fe6c162e676ae32c46bba2127c14731ee1763484"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/canfd_reg.h",
+      "size": 131735,
+      "sha256": "7abe4a37b92fe3584255b5c7bc2a85a3e1b0dd3e4deb73f76e6fb785b69b46bc",
+      "gitBlobSha1": "27e071c4ea55aa995aee689955287ca9cacfe293"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/clk_reg.h",
+      "size": 196571,
+      "sha256": "c90499e95531fc48d89902a5e60ad8a80d63c3c05bc5444fc0613547b6e2d56e",
+      "gitBlobSha1": "3eaa609c1c28b65f4d10311f779411bf265ec470"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/crc_reg.h",
+      "size": 16962,
+      "sha256": "fa610150d3a4ff80cb1574d4d3a30fc2cb533db0ae799d39f04a1bef428267b4",
+      "gitBlobSha1": "5084547c049051687be1be8b2413c4851c8aae9a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/crypto_reg.h",
+      "size": 43836,
+      "sha256": "94e7dbb40f51fc00ef94f6482869511f1329687978426b8527eca014508fde5b",
+      "gitBlobSha1": "5f1d8134f4e613521a4ea22caaab826c248aef23"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/dac_reg.h",
+      "size": 16171,
+      "sha256": "6c3ded6936dc6be9df1a642f41cd531435cbc57214f6ca78dea07716d043e6a2",
+      "gitBlobSha1": "545280a3b0658efec8b23ddf35d7aaa8e91eec0a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/eadc_reg.h",
+      "size": 254777,
+      "sha256": "c642357b9b390ee06e89d0b1c0a698908631b49c35d237d8365f5615c1df9df1",
+      "gitBlobSha1": "89374359f0efee8151a98b3c882a0940ee2f298e"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/ebi_reg.h",
+      "size": 19087,
+      "sha256": "c0880a7fcf326efd3b2b7239385cec768d58822f971e5569e73767cd37da1e5d",
+      "gitBlobSha1": "f1190fd70890f963962a19bad6e6d75f12c6f29f"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/ecap_reg.h",
+      "size": 29743,
+      "sha256": "8da0d0d855b6e7f2fc17ddc4d89bf0bb9309c04731adcff6a37a4c6b2c16d8d1",
+      "gitBlobSha1": "63575de87d1992c92a1bf215c76fe7546ad4a9f2"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/epwm_reg.h",
+      "size": 415471,
+      "sha256": "e44cc2aed212b8aef336ddeed4087b6ed78598b6982639e282c0bc40fd72e94c",
+      "gitBlobSha1": "58ac6f21979966a40047d6ee9d62416a43575bb3"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/eqei_reg.h",
+      "size": 34350,
+      "sha256": "bf8af3fb20771c37b93f1d6df8afde1c4c36bd09a278cba8ed8e6a66c63b3bc3",
+      "gitBlobSha1": "863f5e1e80d3250c5e806194bddca32e5191fb0e"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/gpio_reg.h",
+      "size": 89208,
+      "sha256": "ddc68b51a4fc5ba2206f821ea0594b17d9db7c84042e26cdc9892f23b5617008",
+      "gitBlobSha1": "662764a1ee99d2b2cb24ecb4dc8786b1c7d95f2f"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/i2c_reg.h",
+      "size": 64681,
+      "sha256": "a8a9a3bf6b5badde41fcdf06241cd2a173776d2450656692cd46e202bb2a13e5",
+      "gitBlobSha1": "2e2663b34a08a9446d87b84cf3edc1314909f416"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/irqn.h",
+      "size": 13399,
+      "sha256": "d91100d7136cb0d537c9d6065a889b5d17d59f0b310607961acd978b0623fda3",
+      "gitBlobSha1": "e001cafd1e33d548541227ba09ec0c27b3a96206"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/lpadc_reg.h",
+      "size": 78368,
+      "sha256": "96109f3cd6f3bc4eb24b10aac834054bc4453b9711971d4c393dd0cf5dec67ec",
+      "gitBlobSha1": "003949ecaf30189d8fd4eac49ea7547397e8f647"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/lpgpio_reg.h",
+      "size": 37055,
+      "sha256": "74aa1e751ef74f4b1e9c6cd24c3c2987ab50c8fedc34fd12bc19000404a68ac0",
+      "gitBlobSha1": "440c5147bc427cea16b9f7fe80e0c1f69ebd7511"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/lpi2c_reg.h",
+      "size": 46156,
+      "sha256": "5006754987cfbb65060ed67759aec53a0fdb44c3892deaadd7e24ff1bc3e3d7e",
+      "gitBlobSha1": "f1591a1db95f7806e0f59a7c984c7033df3404fb"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/lppdma_reg.h",
+      "size": 36249,
+      "sha256": "b1be9d7ddd4b17db120b6eba469ae8b2c7d285af485af2b38b1928aff8f666fb",
+      "gitBlobSha1": "e0a08acdf59b7d577eb27671c449b1866c4f3d2a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/lpspi_reg.h",
+      "size": 55881,
+      "sha256": "4189823ae7cf4067fe4e3c58efcffbce0e17e773140ab3d7743c974a2bcfc2ca",
+      "gitBlobSha1": "78fd5f15ca40c3ab0fe0fcd8d71cee3beafd30d3"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/lptmr_reg.h",
+      "size": 58811,
+      "sha256": "90ecb5db36766c9c0d728b28fb0fde4692758c228aaff7582e0a576e6689d2d7",
+      "gitBlobSha1": "e3fb364da5bf9b5f71edc6f3b0b8f9898ba1180a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/lpuart_reg.h",
+      "size": 99707,
+      "sha256": "f023e7d0318de2f7eb024b9899cd96992b74276a1cdc15c60897357d74cef50a",
+      "gitBlobSha1": "9f02a4f73b9f2b2b0c2295c81359723b34916e7e"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/M2L31.h",
+      "size": 28688,
+      "sha256": "7d25cbe0bc2cd3f88d55a8b290585d8fb614d1fc783414a482a4a2c5df9e76ba",
+      "gitBlobSha1": "a22eb1e5368f998fd1fc19ebe0d0a35e7c8d0d23"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/NuMicro.h",
+      "size": 465,
+      "sha256": "42b09ecae697bfcc601e4f21faf1e017cd6659eb9386c91941fed7b6fbfdab15",
+      "gitBlobSha1": "df58040a85a66060498894ba92641b562f908f9b"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/opa_reg.h",
+      "size": 37389,
+      "sha256": "63b09d6c554456436ee4087514d7f602ae8164c484584bd174b194a880b5ebec",
+      "gitBlobSha1": "fe80a76df3aee19b447c45426d290b2f82d196d0"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/otg_reg.h",
+      "size": 30432,
+      "sha256": "76e1c50e9ab0913226f79bfa9154126f2b89918d5d9869f342bc9dce587b4de2",
+      "gitBlobSha1": "cd44d128b8f11c35565625f52e353d04342b9a71"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/pdma_reg.h",
+      "size": 63648,
+      "sha256": "abe4bbf17ac0101135fa7445f432ed1e0c6f940c95b49a09e2725d033c0f59af",
+      "gitBlobSha1": "f736216ec3e512864d36da3300d72bedf5b52c1c"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/pwm_reg.h",
+      "size": 303620,
+      "sha256": "fe33eab4bf9f72517303076376d68ca8b5ca838db8018988d7f47614dedae461",
+      "gitBlobSha1": "11745d920f845ff91afba6170438edf5073e2031"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/qspi_reg.h",
+      "size": 51317,
+      "sha256": "4139c88de9c78a50ad94b7a09091dcab5797180ee5cfc2a24218becd986bebce",
+      "gitBlobSha1": "cc6a03d9ddce7563da260034b9747b4c66ba3f87"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/rmc_reg.h",
+      "size": 74200,
+      "sha256": "065ebb0e4381eca82f40a4a247545de01247a85af7a296942126b021baa8800b",
+      "gitBlobSha1": "c49f950706af2146dc23d09b53f248c8cc0d355f"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/rtc_reg.h",
+      "size": 76188,
+      "sha256": "b1c62f6d4b5dc4dfd61273963b14657205654d36a2fa62e269ed6b4e28c61dc8",
+      "gitBlobSha1": "a431b5441f223846783f501944d67990e1d3aa95"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/spi_reg.h",
+      "size": 71669,
+      "sha256": "a9009ba8d253d2a87dba8c687c94d6afeb20ee2cb05b57221e8b886277fc1850",
+      "gitBlobSha1": "b117881d7c368ab44924c7b39461c9d6fb26fc1f"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/sys_reg.h",
+      "size": 374265,
+      "sha256": "ccdea13329f8791046fb4b627cee5184e5dcf5f78265a55f54724a602b2aa422",
+      "gitBlobSha1": "a5053304b52dc044e00f3535adf121fc58ee8fcd"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/system_M2L31.h",
+      "size": 3013,
+      "sha256": "9ef5ff2b2e9ee744984ed7b15a32b3fa54db8d840b5444ef14407bc68f2ca7e7",
+      "gitBlobSha1": "abfc260be049ac0fc8593f39ecb3940f41474f0b"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/timer_reg.h",
+      "size": 65870,
+      "sha256": "c91448fb8cbcd011d234b143cd6ea23905ca18f89e89a96a28a53a1cea85dd9a",
+      "gitBlobSha1": "33e8823173bcda8aad3d26db5278273c565251d0"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/tk_reg.h",
+      "size": 144533,
+      "sha256": "73cbf748022aa551476574a89dec2d80bd9fb36be10b95a2f59dff770f309419",
+      "gitBlobSha1": "d80a10590e64d13186aa9c7a25f780ddac8f86ba"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/trng_reg.h",
+      "size": 15292,
+      "sha256": "db983c3e00f24805b87b5ae70406854985f85579ea02f472ce53d220d6a2dd28",
+      "gitBlobSha1": "b81531ee1821ca5e26d5e1d41103492b21612d2b"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/ttmr_reg.h",
+      "size": 15044,
+      "sha256": "ff9e1b674556f6b5dec675a2df3788dfdc1f193020e8348c099b7e094805eb41",
+      "gitBlobSha1": "f51d9f5b196b8dd73295a742a52705ff50be12f1"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/uart_reg.h",
+      "size": 119003,
+      "sha256": "5591038920fcffba19508adf50909e31706d91688b48fc760bcaf00936ec86b3",
+      "gitBlobSha1": "853180093036eb71b3a8c02b566fa597367e83dd"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/ui2c_reg.h",
+      "size": 43750,
+      "sha256": "7d4ed0759baa1f1f26ac3918b3d0f01e67f9466ec95a080e2b22b0cd0d7f7e1b",
+      "gitBlobSha1": "00ae06c5f1f04209e4ddbc1d8c81beeaf566df22"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/usbd_reg.h",
+      "size": 120822,
+      "sha256": "783d875d9aefb50cf2880f92749d48cb70e370440a9af47b08930864cb95bc41",
+      "gitBlobSha1": "bb9451be216667e648a48c23b0dd5f2cde5967e7"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/usbh_reg.h",
+      "size": 62129,
+      "sha256": "e13293a8a61f3836eb323cc838243ce489efd844f532f00df1b37a4fb7d9b12d",
+      "gitBlobSha1": "2c4c64ee45e9eae307618966ee00a49656a9068c"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/uspi_reg.h",
+      "size": 51765,
+      "sha256": "b46ca5791ea540850da53c27ea6357e9ec50d69cb2c517fdea525a6e8086d145",
+      "gitBlobSha1": "4ab82fb664d729f15c3ecbaaeb86be1e65f47935"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/utcpd_reg.h",
+      "size": 141249,
+      "sha256": "c5829dbe03e0e6ba97a616f53fd9a6544bdd124c55b1301bee38dbb022ee6cee",
+      "gitBlobSha1": "8a0e6d1d4a75b47ec2449c073eac29a2c4908f4e"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/uuart_reg.h",
+      "size": 53140,
+      "sha256": "034c8482cdb29b129a2f0c5f42133697d0aa9f955256622522d397e668ae9c80",
+      "gitBlobSha1": "1c78b3355f3543f0d82374be8f3beda92bf619ea"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/wdt_reg.h",
+      "size": 12066,
+      "sha256": "e81bdfa44753f05efd324906e6b1e89716ff01eea02a5e66763ebc0adaf381ec",
+      "gitBlobSha1": "9866c02fab1ca3d767689fbbcfe41c137664012a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Include/wwdt_reg.h",
+      "size": 9125,
+      "sha256": "fa7413327d57a55a955bc5b34832953768caca73ffdd909064302780c72f5e50",
+      "gitBlobSha1": "4b2f9af637a4b442fc6585d8bf7dd18f1be6009b"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/ARM/APROM.sct",
+      "size": 4062,
+      "sha256": "af289c6655fa9466ff7b237560482461415c830a1340b10a8f0f54f5f968f09f",
+      "gitBlobSha1": "cbd7410860f103604801d0b8c54803bf6bef5984"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/ARM/LDROM.sct",
+      "size": 4048,
+      "sha256": "0c0b5df91620da6268f0d4207b7a98e93bcf4fa27e78fd95ded798db2343966b",
+      "gitBlobSha1": "09b64f50244bd224779d694c2323832cf3a41716"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/ARM/startup_M2L31.c",
+      "size": 23657,
+      "sha256": "28ebe00448feb692c1dbee68d60e99eabf337b608a931e605de00a51df62d13a",
+      "gitBlobSha1": "fb4267182fb8ec58da76ced6a523914d1e6ed0a1"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/ARM/startup_M2L31.s",
+      "size": 23118,
+      "sha256": "a3d6ddfb3d2663181c33a67570b1b11aacb9ac2b70e853b24b337dcdd36cedb4",
+      "gitBlobSha1": "e1056f00906875ee9e1e5bca80942cb64a029098"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/GCC/_syscalls.c",
+      "size": 25155,
+      "sha256": "f2a6dff29c7eeb015068e34b4498b99a154a86d67adb2f9cf1ed935d2fd3cd7e",
+      "gitBlobSha1": "21f6d44aac32e488327de02aa9f3df63a2d64fa5"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/GCC/gcc_arm.ld",
+      "size": 4267,
+      "sha256": "ed82d7a0e2c91bc4eb8687360505393165cb46627419b3d430823860a91bc013",
+      "gitBlobSha1": "c68ea2060a481666ba6185b11d504cfc21b70bfb"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/GCC/LDROM.ld",
+      "size": 4249,
+      "sha256": "763b4ad6f7684171382eb22d6d302fa0e7da29a6cd6eebb82b443f3f2466e36f",
+      "gitBlobSha1": "a6104ea181e34d061e83dfc61f2e7bf15e2dbccc"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/GCC/semihosting.h",
+      "size": 3673,
+      "sha256": "5d5aa6773af98cff582cb3d30757d3fc56a6a668c662394b6bdacb0a24310bfe",
+      "gitBlobSha1": "0fd7b14740887d864ec42ec3b55367d67f4cf07a"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/GCC/startup_M2L31.S",
+      "size": 20424,
+      "sha256": "1a4ba9a255d20699b08704d5979b38c98fa283dd8c29879e1c591deecfdc579d",
+      "gitBlobSha1": "34fa703b0446619f1070eb247a23682da3368663"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/IAR/LDROM.icf",
+      "size": 1310,
+      "sha256": "ea1291a278d36c683e1411595ae257a63e6e1f04d9b425769a04de732dbf97b3",
+      "gitBlobSha1": "5981f3ada402bea5d71a2dd8cbee1d4faae8a736"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/IAR/startup_M2L31.s",
+      "size": 17177,
+      "sha256": "2f98a12d00c68fd40fb562a8a093c7e03f80cb5dfc1a60c678d0c971e0f424b0",
+      "gitBlobSha1": "a7a31e47afeae72e7eb30447a73c986520240ad3"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/semihost.s",
+      "size": 958,
+      "sha256": "2bcd6e0bc2022f11c092adb753f25925715b0663dfa48897c062d91dded9774e",
+      "gitBlobSha1": "f4d3d35f7bd031a8c71abbc4ae8073e90119d38d"
+    },
+    {
+      "path": "Library/Device/Nuvoton/M2L31/Source/system_M2L31.c",
+      "size": 3386,
+      "sha256": "49da60df77ce3ce6499af042d4b875ad6d0d3764586820ec6787604fe61afc0d",
+      "gitBlobSha1": "fdebd86210a3b2ba431cf508836d77b68a58a527"
+    }
+  ]
+}

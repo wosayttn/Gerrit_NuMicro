@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "7d75be4053bb0365b838f165216fb42328a69ae2",
+  "overall": "PASS_WITH_RELEASE_BLOCKERS",
+  "checks": [
+    {
+      "id": "dependency-reachability",
+      "status": "PASS"
+    },
+    {
+      "id": "purl-collision",
+      "status": "PASS"
+    },
+    {
+      "id": "tracked-artifact-closure",
+      "status": "PASS"
+    },
+    {
+      "id": "canonical-aggregate",
+      "status": "PASS"
+    },
+    {
+      "id": "cpe-authority",
+      "status": "PASS"
+    },
+    {
+      "id": "vulnerability-disposition",
+      "status": "BLOCKED",
+      "blocker": "BLK-PSIRT-VEX-DISPOSITION"
+    },
+    {
+      "id": "legal-closure",
+      "status": "BLOCKED",
+      "blockerCount": 13
+    }
+  ],
+  "gaps": [
+    "CAT/INF authoritative license decisions are unresolved.",
+    "PSIRT/VEX disposition is pending for scanner range matches."
+  ]
+}

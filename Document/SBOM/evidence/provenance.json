@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "scanSource": {
+    "type": "git-worktree",
+    "commit": "7d75be4053bb0365b838f165216fb42328a69ae2"
+  },
+  "generation": {
+    "timestamp": "2026-09-02T12:53:41+08:00",
+    "generator": {
+      "name": "M2L31 SBOM remediation generator",
+      "version": "1.0.0",
+      "sha256": "57c3afdc693950e29887133b37818c4060ba81ccf899be410bcd40deb1cceca0",
+      "repositoryPresence": "external-only",
+      "statement": "The generation utility is pipeline tooling and is intentionally not distributed in the BSP."
+    },
+    "config": "Document/SBOM/config/remediation-config.json",
+    "configSha256": "d6774feb79743341ac4991dfc3c8cc2e28b2735b32e2023608cac12364ce452b"
+  },
+  "release": {
+    "identity": null,
+    "lifecycleCommit": null
+  },
+  "distribution": {
+    "identity": null
+  }
+}
