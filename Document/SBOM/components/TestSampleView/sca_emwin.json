@@ -1,0 +1,61 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/emwin@6.46.12?source=vendored&path=ThirdParty/emWin_light",
+      "name": "emWin",
+      "version": "6.46.12",
+      "scope": "required",
+      "author": "SEGGER Microcontroller GmbH",
+      "manufacturer": {
+        "name": "SEGGER Microcontroller GmbH"
+      },
+      "supplier": {
+        "name": "SEGGER Microcontroller GmbH"
+      },
+      "purl": "pkg:generic/emwin@6.46.12",
+      "description": "SEGGER emWin light GUI library (headers and prebuilt Keil/IAR/GCC static libraries) licensed to Nuvoton Technology Corporation and vendored in ThirdParty/emWin_light.",
+      "licenses": [
+        {
+          "license": {
+            "name": "SEGGER emWin license (software licensed by SEGGER Software GmbH to Nuvoton Technology Corporation)"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "ThirdParty/emWin_light"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "binary_libraries",
+          "value": "Lib/libNUemWin_CM33_GNU.a; Lib/NUemWin_CM33_IAR.a; Lib/NUemWin_CM33_Keil.lib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "SEGGER emWin (licensed to Nuvoton)"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/TestSampleView/sca_emwin.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "ThirdParty/emWin_light"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "ThirdParty/emWin_light/Include/GUI_Version.h (GUI_VERSION 646012); ThirdParty/emWin_light/Include/GUI.h (SEGGER license header)"
+        }
+      ]
+    }
+  ]
+}
