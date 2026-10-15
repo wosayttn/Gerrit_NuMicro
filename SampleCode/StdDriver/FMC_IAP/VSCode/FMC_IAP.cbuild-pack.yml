@@ -1,0 +1,5 @@
+cbuild-pack:
+  resolved-packs:
+    - resolved-pack: Nuvoton::NuMicroM4_DFP@1.0.3
+      selected-by-pack:
+        - Nuvoton::NuMicroM4_DFP

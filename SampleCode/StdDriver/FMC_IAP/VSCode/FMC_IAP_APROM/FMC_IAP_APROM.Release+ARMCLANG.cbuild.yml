@@ -1,0 +1,102 @@
+build:
+  generated-by: csolution version 2.9.0
+  solution: ../FMC_IAP.csolution.yml
+  project: FMC_IAP_APROM.cproject.yml
+  context: FMC_IAP_APROM.Release+ARMCLANG
+  compiler: AC6
+  device: Nuvoton::M471KI8AE
+  device-pack: Nuvoton::NuMicroM4_DFP@1.0.3
+  processor:
+    fpu: sp
+    core: Cortex-M4
+  packs:
+    - pack: Nuvoton::NuMicroM4_DFP@1.0.3
+      path: ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM4_DFP/1.0.3
+  optimize: balanced
+  debug: on
+  misc:
+    ASM:
+      - -masm=auto
+    C:
+      - -std=c99
+      - -fno-rtti
+      - -funsigned-char
+      - -fshort-enums
+      - -fshort-wchar
+      - -ffunction-sections
+      - -Wno-packed
+      - -Wno-missing-variable-declarations
+      - -Wno-missing-prototypes
+      - -Wno-missing-noreturn
+      - -Wno-sign-conversion
+      - -Wno-nonportable-include-path
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+      - -Wno-license-management
+      - -Wno-parentheses-equality
+      - -D__MICROLIB
+    Link:
+      - --library_type=microlib
+      - --map
+      - --load_addr_map_info
+      - --xref
+      - --callgraph
+      - --symbols
+      - --info sizes
+      - --info totals
+      - --info unused
+      - --info veneers
+      - --map --datacompressor=off --info=inline --entry Reset_Handler
+      - --strict
+      - --summary_stderr
+      - --info summarysizes
+      - --diag_suppress=6314
+  add-path:
+    - ../../../../../Library/Device/Nuvoton/M471/Include
+    - ../../../../../Library/CMSIS/Core/Include
+    - ../../../../../Library/StdDriver/inc
+    - ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM4_DFP/1.0.3/Device/M471/Include
+  add-path-asm:
+    - ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM4_DFP/1.0.3/Device/M471/Include
+  output-dirs:
+    intdir: ../tmp
+    outdir: ../out/FMC_IAP_APROM/ARMCLANG/Release
+    rtedir: RTE
+  output:
+    - type: bin
+      file: FMC_IAP_APROM.bin
+    - type: elf
+      file: FMC_IAP_APROM.axf
+  linker:
+    script: ../../../../../Library/Device/Nuvoton/M471/Source/ARM/APROM.sct
+  groups:
+    - group: CMSIS
+      files:
+        - file: ../../../../../Library/Device/Nuvoton/M471/Source/ARM/startup_M471.c
+          category: sourceC
+        - file: ../../../../../Library/Device/Nuvoton/M471/Source/system_M471.c
+          category: sourceC
+    - group: Library
+      files:
+        - file: ../../../../../Library/StdDriver/src/retarget.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/clk.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/sys.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/uart.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/fmc.c
+          category: sourceC
+    - group: User
+      files:
+        - file: ../../APROM_main.c
+          category: sourceC
+        - file: ap_image.s
+          category: sourceAsm
+  licenses:
+    - license: <unknown>
+      packs:
+        - pack: Nuvoton::NuMicroM4_DFP@1.0.3

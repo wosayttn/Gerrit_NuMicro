@@ -1,0 +1,16 @@
+build-idx:
+  generated-by: csolution version 2.9.0
+  csolution: FMC_IAP.csolution.yml
+  tmpdir: tmp
+  cprojects:
+    - cproject: FMC_IAP_APROM/FMC_IAP_APROM.cproject.yml
+    - cproject: FMC_IAP_LDROM/FMC_IAP_LDROM.cproject.yml
+  cbuilds:
+    - cbuild: FMC_IAP_APROM/FMC_IAP_APROM.Release+GNUC.cbuild.yml
+      project: FMC_IAP_APROM
+      configuration: .Release+GNUC
+      messages:
+        info:
+          - FMC_IAP.cbuild-pack.yml - file is already up-to-date
+          - FMC_IAP_APROM.Release+GNUC.cbuild.yml - file generated successfully
+  rebuild: true

@@ -1,0 +1,90 @@
+build:
+  generated-by: csolution version 2.9.0
+  solution: ../FMC_IAP.csolution.yml
+  project: FMC_IAP_LDROM.cproject.yml
+  context: FMC_IAP_LDROM.Release+GNUC
+  compiler: GCC
+  device: Nuvoton::M471KI8AE
+  device-pack: Nuvoton::NuMicroM4_DFP@1.0.3
+  processor:
+    fpu: sp
+    core: Cortex-M4
+  packs:
+    - pack: Nuvoton::NuMicroM4_DFP@1.0.3
+      path: ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM4_DFP/1.0.3
+  optimize: balanced
+  debug: on
+  misc:
+    ASM:
+      - -mthumb
+      - -fmessage-length=0
+      - -fsigned-char
+      - -ffunction-sections
+      - -fdata-sections
+      - -g
+      - -x assembler-with-cpp
+    C:
+      - -std=gnu11
+      - --specs=nano.specs
+      - -Wno-return-type
+      - -Wno-unused-but-set-variable
+      - -fdata-sections
+      - -ffunction-sections
+      - -fno-builtin
+      - -fshort-enums
+      - -funsigned-char
+      - -mthumb
+      - -Wno-main
+      - -gdwarf-4
+    Link:
+      - -mthumb
+      - -fmessage-length=0
+      - -fsigned-char
+      - -g
+      - --specs=nano.specs
+      - -Wl,--gc-sections,-Map="../out/FMC_IAP_LDROM/GNUC/Release/FMC_IAP_LDROM.elf.map"
+  add-path:
+    - ../../../../../Library/Device/Nuvoton/M471/Include
+    - ../../../../../Library/CMSIS/Core/Include
+    - ../../../../../Library/StdDriver/inc
+    - ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM4_DFP/1.0.3/Device/M471/Include
+  add-path-asm:
+    - ${CMSIS_PACK_ROOT}/Nuvoton/NuMicroM4_DFP/1.0.3/Device/M471/Include
+  output-dirs:
+    intdir: ../tmp
+    outdir: ../out/FMC_IAP_LDROM/GNUC/Release
+    rtedir: RTE
+  output:
+    - type: bin
+      file: FMC_IAP_LDROM.bin
+    - type: elf
+      file: FMC_IAP_LDROM.elf
+  linker:
+    script: ../../../../../Library/Device/Nuvoton/M471/Source/GCC/gcc_arm.ld
+  groups:
+    - group: CMSIS
+      files:
+        - file: ../../../../../Library/Device/Nuvoton/M471/Source/GCC/startup_M471.S
+          category: sourceAsm
+        - file: ../../../../../Library/Device/Nuvoton/M471/Source/system_M471.c
+          category: sourceC
+    - group: Library
+      files:
+        - file: ../../../../../Library/StdDriver/src/retarget.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/clk.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/sys.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/uart.c
+          category: sourceC
+        - file: ../../../../../Library/StdDriver/src/fmc.c
+          category: sourceC
+    - group: User
+      files:
+        - file: ../../LDROM_main.c
+          category: sourceC
+  licenses:
+    - license: <unknown>
+      packs:
+        - pack: Nuvoton::NuMicroM4_DFP@1.0.3
