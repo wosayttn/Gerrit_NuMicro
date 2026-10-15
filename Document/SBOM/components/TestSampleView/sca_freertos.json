@@ -1,0 +1,119 @@
+{
+    "components":  [
+                       {
+                           "type":  "library",
+                           "bom-ref":  "pkg:generic/freertos-kernel@10.5.1?path=ThirdParty%2FFreeRTOS\u0026source=vendored",
+                           "name":  "FreeRTOS-Kernel",
+                           "version":  "10.5.1",
+                           "scope":  "required",
+                           "author":  "Amazon Web Services, Inc. (FreeRTOS project)",
+                           "supplier":  {
+                                            "name":  "Amazon Web Services, Inc."
+                                        },
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "MIT"
+                                                            }
+                                            }
+                                        ],
+                           "purl":  "pkg:generic/freertos-kernel@10.5.1",
+                           "cpe":  "cpe:2.3:o:amazon:freertos:10.5.1:*:*:*:*:*:*:*",
+                           "description":  "FreeRTOS Kernel 10.5.1 vendored for the M2U51 FreeRTOS sample projects, including kernel source, headers, portable layers, memory managers, license material, and Demo/Common files.",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "d396d0257baa029714b1507428b4aeaed19e144b821e8677b1528737b32ed83b"
+                                          }
+                                      ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/v10.5.1"
+                                                      }
+                                                  ],
+                           "properties":  [
+                                              {
+                                                  "name":  "src_path",
+                                                  "value":  "ThirdParty/FreeRTOS"
+                                              },
+                                              {
+                                                  "name":  "integration",
+                                                  "value":  "vendored_source"
+                                              },
+                                              {
+                                                  "name":  "freertos_kernel_version",
+                                                  "value":  "10.5.1"
+                                              },
+                                              {
+                                                  "name":  "freertos_included_top_level_paths",
+                                                  "value":  "Demo; License; Source; README.md; links_to_doc_pages_for_the_demo_projects.url"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-origin",
+                                                  "value":  "third-party"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-source",
+                                                  "value":  "FreeRTOS Kernel (Amazon Web Services)"
+                                              },
+                                              {
+                                                  "name":  "bsp:evidence-file",
+                                                  "value":  "Document/SBOM/components/TestSampleView/sca_freertos.md"
+                                              },
+                                              {
+                                                  "name":  "bsp:evidence-path",
+                                                  "value":  "ThirdParty/FreeRTOS"
+                                              },
+                                              {
+                                                  "name":  "bsp:version-evidence",
+                                                  "value":  "ThirdParty/FreeRTOS/Source/manifest.yml; ThirdParty/FreeRTOS/Source/sbom.spdx; ThirdParty/FreeRTOS/Source/include/FreeRTOS.h"
+                                              },
+                                              {
+                                                  "name":  "bsp:license-evidence",
+                                                  "value":  "ThirdParty/FreeRTOS/License/license.txt; ThirdParty/FreeRTOS/Source/sbom.spdx"
+                                              },
+                                              {
+                                                  "name":  "bsp:upstream-traceability",
+                                                  "value":  "Embedded SPDX document identifies upstream tag v10.5.1; upstream commit is not recorded in the vendored files."
+                                              },
+                                              {
+                                                  "name":  "bsp:path",
+                                                  "value":  "ThirdParty/FreeRTOS"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-hash-algorithm",
+                                                  "value":  "sha256-path-nul-content-nul-v1"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-hash-path-base",
+                                                  "value":  "ThirdParty/FreeRTOS"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-hash-file-count",
+                                                  "value":  "144"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-hash-inventory",
+                                                  "value":  "Document/SBOM/aggregate-inventory/test-freertos-kernel.json"
+                                              },
+                                              {
+                                                  "name":  "bsp:hash-purpose",
+                                                  "value":  "content-identity"
+                                              },
+                                              {
+                                                  "name":  "bsp:identity-authority",
+                                                  "value":  "repository-relative path, source commit, exact inventory, and SHA-256"
+                                              },
+                                              {
+                                                  "name":  "bsp:source-commit",
+                                                  "value":  "00b0843b3254c1c09961d0fc5d4b1b266a547ae8"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-granularity",
+                                                  "value":  "directory"
+                                              }
+                                          ]
+                       }
+                   ]
+}
