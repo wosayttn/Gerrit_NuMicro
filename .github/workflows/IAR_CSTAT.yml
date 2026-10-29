@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 350   # ⏱️ Global 5.8-hour timeout for the entire job    
     container: ghcr.io/iarsystems/arm:9.70.1-base
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
       - name: Static Analysis
@@ -71,7 +71,7 @@ jobs:
 
       - name: Upload project report (C-STAT)
         if: always()  # ← ensures upload runs on success, failure, or timeout
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: IAR-CSTAT-Report-${{ github.ref_name }}
           path: '**/SampleCode/**/C-STAT/*.html'

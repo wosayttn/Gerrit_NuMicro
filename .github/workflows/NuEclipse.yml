@@ -18,7 +18,7 @@ jobs:
         
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
@@ -113,12 +113,10 @@ jobs:
         shell: bash
         run: |
           mkdir -p artifacts
-          find . -type d -name "SampleCode" -exec sh -c '
-            find "$1" -type f -name "*.hex" -exec cp --parents {} artifacts/ \;
-          ' _ {} \;
+          find . -not -path './artifacts/*' -path '*/SampleCode/*' -type f -name '*.hex' -exec cp --parents -t artifacts/ {} +
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: firmware-artifacts
           path: artifacts/

@@ -80,7 +80,7 @@ runs:
         fi
 
     - name: Send mail
-      uses: dawidd6/action-send-mail@v5
+      uses: dawidd6/action-send-mail@v23
       with:
         connection_url: ${{ inputs.mail-connection }}
         subject: "[Github Action] | [${{ inputs.ref-name }}] | [${{ inputs.workflow-name }}] Job"
