@@ -27,4 +27,11 @@ DST_REPO_URL="https://${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git"
 # Define workflow set
 WORKFLOWS=("NuEclipse" "VSCode" "IAR" "MDK5" "CodeAnalysis")
 
+# Submodule handling mode when generating GitHub repo:
+#   "auto"    - Keep public HTTPS submodules (rewrite git@github.com to https://);
+#               flatten internal Gerrit / relative-path submodules into regular files
+#   "flatten" - Flatten (inline) all submodules into regular files
+#   "keep"    - Keep all submodules as gitlinks
+SUBMODULE_MODE="auto"
+
 export GITHUB_TOKEN=${GITHUB_TOKEN}
