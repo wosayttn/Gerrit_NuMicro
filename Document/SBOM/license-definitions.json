@@ -1,0 +1,51 @@
+{
+  "format": "mcu-bsp-packaged-license-definitions",
+  "version": 1,
+  "definitions": [
+    {
+      "licenseId": "LicenseRef-M471-Newlib-Syscalls-NOASSERTION",
+      "status": "unresolved",
+      "extractedText": "Parts of this file are from the newlib sources, issued under GPL.",
+      "evidencePath": "Library/Device/Nuvoton/M471/Source/GCC/_syscalls.c",
+      "evidenceSha256": "edc22f74a2789ebe7cf4c7cbe01572a6fa0fec7bd428b4b74aed01af6b97386d",
+      "blockerId": "BLK-LEGAL-NEWLIB-SYSCALLS",
+      "notice": "This LicenseRef records observed text and NOASSERTION; it is not a normalized GPL conclusion."
+    },
+    {
+      "licenseId": "LicenseRef-M471-CMSIS-Documentation-Mixed-NOASSERTION",
+      "status": "mixed-no-blanket-assertion",
+      "extractedText": "NOASSERTION for the aggregate. Separately identified jQuery occurrences are excluded from this aggregate.",
+      "evidencePath": "Document/SBOM/aggregate-inventory.json#aux-cmsis-documentation",
+      "evidenceSha256": "9eaa193b500d0b3744aee5f2871c379e5326ed3298ecd6407cf27ea58d898f1a",
+      "notice": "This LicenseRef prevents a false blanket license over mixed documentation content."
+    },
+    {
+      "licenseId": "LicenseRef-M471-SampleCode-Mixed-NOASSERTION",
+      "status": "mixed-no-blanket-assertion",
+      "extractedText": "NOASSERTION for the aggregate. Binary artifacts and the legacy FreeRTOS ParTest source are represented separately.",
+      "evidencePath": "Document/SBOM/aggregate-inventory.json#test-sample-distribution",
+      "evidenceSha256": "994861caf6f5a4934e5e478dee396ae1063bab3925cf3f49895a658a8c836568",
+      "notice": "This LicenseRef prevents a false first-party Apache-2.0 blanket assertion."
+    },
+    {
+      "licenseId": "LicenseRef-M471-FreeRTOS-7.4-Exception-NOASSERTION",
+      "status": "unresolved",
+      "extractedText": "GNU General Public License (version 2) ... AND MODIFIED BY the FreeRTOS exception.",
+      "evidencePath": "SampleCode/FreeRTOS/Blinky/ParTest.c",
+      "evidenceSha256": "1a6960c2ed6a8f8913b3ba6aa6d1da5bf4b4a7d028d58566dc3b6880f502ec15",
+      "blockerId": "BLK-LEGAL-FREERTOS-7-EXCEPTION",
+      "notice": "The complete exception text is not packaged; this is NOASSERTION rather than a fabricated SPDX exception expression."
+    },
+    {
+      "licenseId": "LicenseRef-Nuvoton-Software-License-Agreement",
+      "status": "identified-formal-source-not-packaged",
+      "extractedText": "Formal SVN r43 evidence identifies the Nuvoton Software License Agreement; the agreement text is not packaged in Git pending distribution approval.",
+      "evidencePath": "Document/SBOM/license-evidence/samplecode-xom-xomlib-xomaddr-exe.md",
+      "evidenceSha256": "1cf3c4a3cba8a59a64c35c8a4f505d4c4412e735bb8bb179c79ed4aa1529fc88",
+      "formalSource": "SVN r43 bsp/m471/V3.03.000-21-ga1b76a29/Nuvoton Software License Agreement.md",
+      "formalSourceSha256": "8c61cd7eb3a4bd8693bb3678c57c9568d328ad661dc5f4682fcf306644dcf9fe",
+      "blockerId": "BLK-LEGAL-NUVOTON-AGREEMENT-GIT-DISTRIBUTION",
+      "notice": "The formal agreement is not copied into Git without Legal approval."
+    }
+  ]
+}
