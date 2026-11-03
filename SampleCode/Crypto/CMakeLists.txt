@@ -1,0 +1,7 @@
+add_subdirectory(mbedTLS_PSA_Hash_SHA)
+add_subdirectory(mbedTLS_PSA_Cipher_AES)
+add_subdirectory(mbedTLS_PSA_AEAD)
+add_subdirectory(mbedTLS_PSA_SignVerify_ECC)
+add_subdirectory(mbedTLS_PSA_KeyAggrement_ECC)
+add_subdirectory(mbedTLS_PSA_SignVerify_RSA)
+add_subdirectory(mbedTLS_PSA_KeyAggrement_RSA)

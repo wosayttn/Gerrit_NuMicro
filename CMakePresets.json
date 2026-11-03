@@ -1,0 +1,90 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "armclang",
+            "displayName": "build with armclang",
+            "description": "",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_VERBOSE_MAKEFILE" : "OFF",
+                "CMAKE_C_COMPILER_WORKS" : true,
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}"
+            }
+        },
+        {
+            "name": "mbedtls4-ninja",
+            "displayName": "M2354 Mbed TLS 4.x Firmware (Ninja)",
+            "description": "Build the PSA sample firmware with the pinned Mbed TLS 4.x overlay",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/cmake-mbedtls4-armclang-asm",
+            "cacheVariables": {
+                "CMAKE_VERBOSE_MAKEFILE": "OFF",
+                "CMAKE_C_COMPILER_WORKS": true,
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": ""
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "mbedtls4-hash",
+            "displayName": "Build PSA Hash SHA firmware",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": ["mbedTLS_PSA_Hash_SHA"]
+        },
+        {
+            "name": "mbedtls4-cipher",
+            "displayName": "Build PSA Cipher AES firmware",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": ["mbedTLS_PSA_Cipher_AES"]
+        },
+        {
+            "name": "mbedtls4-aead",
+            "displayName": "Build PSA AEAD firmware",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": ["mbedTLS_PSA_AEAD"]
+        },
+        {
+            "name": "mbedtls4-signverify-ecc",
+            "displayName": "Build PSA SignVerify ECC firmware",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": ["mbedTLS_PSA_SignVerify_ECC"]
+        },
+        {
+            "name": "mbedtls4-keyagreement-ecc",
+            "displayName": "Build PSA Key Agreement ECC firmware",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": ["mbedTLS_PSA_KeyAggrement_ECC"]
+        },
+        {
+            "name": "mbedtls4-signverify-rsa",
+            "displayName": "Build PSA SignVerify RSA firmware",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": ["mbedTLS_PSA_SignVerify_RSA"]
+        },
+        {
+            "name": "mbedtls4-keyagreement-rsa",
+            "displayName": "Build PSA Key Agreement RSA firmware",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": ["mbedTLS_PSA_KeyAggrement_RSA"]
+        },
+        {
+            "name": "mbedtls4-all",
+            "displayName": "Build all Mbed TLS 4.x PSA samples",
+            "configurePreset": "mbedtls4-ninja",
+            "targets": [
+                "mbedTLS_PSA_Hash_SHA",
+                "mbedTLS_PSA_Cipher_AES",
+                "mbedTLS_PSA_AEAD",
+                "mbedTLS_PSA_SignVerify_ECC",
+                "mbedTLS_PSA_KeyAggrement_ECC",
+                "mbedTLS_PSA_SignVerify_RSA",
+                "mbedTLS_PSA_KeyAggrement_RSA"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+LR_ROM 0x00000000 0x00100000 {
+    ER_ROM 0x00000000 0x00100000 {
+        *.o (RESET, +First)
+        *(InRoot$$Sections)
+        .ANY (+RO)
+        .ANY (+XO)
+    }
+
+    RW_NOINIT 0x20000000 UNINIT (0x00040000 - Stack_Size - Heap_Size) {
+        *.o (.bss.noinit)
+        *.o (.bss.noinit.*)
+    }
+
+    RW_RAM AlignExpr(+0, 8) (0x00040000 - Stack_Size - Heap_Size - AlignExpr(ImageLength(RW_NOINIT), 8)) {
+        *(+RW +ZI)
+    }
+
+    ARM_LIB_HEAP AlignExpr(+0, 8) EMPTY Heap_Size {
+    }
+
+    ARM_LIB_STACK 0x20040000 EMPTY -Stack_Size {
+    }
+}
