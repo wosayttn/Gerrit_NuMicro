@@ -1,0 +1,11 @@
+view: ProductView
+include:
+  - Library/CMSIS/Core/Include
+  - Library/CMSIS/Driver
+  - Library/CMSIS/RTOS2
+  - Library/Device/Nuvoton/M2003J
+  - Library/StdDriver
+exclude:
+  - Library/CMSIS/Core/Test
+  - Library/CMSIS/Documentation
+  - SampleCode

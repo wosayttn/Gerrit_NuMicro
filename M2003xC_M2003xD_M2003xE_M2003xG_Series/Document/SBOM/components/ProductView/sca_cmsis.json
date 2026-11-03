@@ -1,0 +1,89 @@
+{
+    "components":  [
+                       {
+                           "type":  "library",
+                           "bom-ref":  "pkg:github/ARM-software/CMSIS_6@6.1.0?source=vendored\u0026path=Library/CMSIS",
+                           "name":  "CMSIS",
+                           "version":  "6.1.0",
+                           "scope":  "required",
+                           "author":  "Arm Limited",
+                           "purl":  "pkg:github/ARM-software/CMSIS_6@6.1.0",
+                           "description":  "Arm CMSIS vendored source subset covering CMSIS-Core headers, CMSIS-Driver interfaces and templates, and CMSIS-RTOS2 API and OS Tick source files.",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "Apache-2.0"
+                                                            }
+                                            }
+                                        ],
+                           "properties":  [
+                                              {
+                                                  "name":  "src_path",
+                                                  "value":  "Library/CMSIS"
+                                              },
+                                              {
+                                                  "name":  "integration",
+                                                  "value":  "vendored_source_subset"
+                                              },
+                                              {
+                                                  "name":  "cmsis_core_version",
+                                                  "value":  "6.1.0"
+                                              },
+                                              {
+                                                  "name":  "cmsis_rtos2_api_version",
+                                                  "value":  "2.3.0"
+                                              },
+                                              {
+                                                  "name":  "cmsis_driver_common_api_version",
+                                                  "value":  "2.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:cmsis-driver-release",
+                                                  "value":  "2.10.0"
+                                              },
+                                              {
+                                                  "name":  "bsp:included-paths",
+                                                  "value":  "Library/CMSIS/Core/Include; Library/CMSIS/Driver; Library/CMSIS/RTOS2"
+                                              },
+                                              {
+                                                  "name":  "bsp:excluded-paths",
+                                                  "value":  "Library/CMSIS/Core/Test; Library/CMSIS/Documentation"
+                                              },
+                                              {
+                                                  "name":  "bsp:upstream-repository",
+                                                  "value":  "https://github.com/ARM-software/CMSIS_6"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-origin",
+                                                  "value":  "third-party"
+                                              },
+                                              {
+                                                  "name":  "bsp:component-source",
+                                                  "value":  "Arm CMSIS"
+                                              },
+                                              {
+                                                  "name":  "bsp:evidence-file",
+                                                  "value":  "Document/SBOM/components/ProductView/sca_cmsis.json"
+                                              },
+                                              {
+                                                  "name":  "bsp:evidence-path",
+                                                  "value":  "Library/CMSIS"
+                                              },
+                                              {
+                                                  "name":  "bsp:version-evidence",
+                                                  "value":  "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h; Library/CMSIS/Documentation/html/General/revision_history.html"
+                                              },
+                                              {
+                                                  "name":  "bsp:license-evidence",
+                                                  "value":  "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+                                              }
+                                          ],
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "3b9195c5373a2a4dbfd968b083b3d7f5f446f9ec2e126f75928ac1ff4356b91e"
+                                          }
+                                      ]
+                       }
+                   ]
+}
