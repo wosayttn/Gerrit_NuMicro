@@ -89,7 +89,7 @@
     "stage1": {
       "status": "Fail",
       "misra": 2,
-      "cppcheck": 0
+      "cppcheck": 1
     },
     "stage2": {
       "status": "Fail",
