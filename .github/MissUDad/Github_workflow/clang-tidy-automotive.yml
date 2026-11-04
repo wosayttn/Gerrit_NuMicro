@@ -1,0 +1,134 @@
+name: clang-tidy-automotive
+
+on:
+  #push:
+  #  branches:
+  #    - MS70_M3351
+  workflow_dispatch:
+
+jobs:
+  clang-tidy:
+    name: clang-tidy-automotive
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      #- name: Install Packages
+      #  run: |
+      #    sudo apt-get update
+      #    sudo apt-get install -y dos2unix
+
+      - name: Cache clang-tidy-automotive build
+        uses: actions/cache@v4
+        with:
+          path: /opt/clang-tidy-automotive/
+          key: clang-tidy-automotive-${{ runner.os }}-${{ github.ref }}
+
+      - name: Setup clang-tidy-automotive
+        shell: bash
+        run: |
+          set -euxo pipefail
+
+          # Clone clang-tidy-automotive (only if not already cached)
+          if [ ! -d /opt/clang-tidy-automotive ]; then
+            sudo apt-get update
+            sudo apt install -y clang-20 cmake ninja-build
+
+            git clone --depth=1 https://github.com/wosayttn/clang-tidy-automotive /opt/clang-tidy-automotive
+
+            cd /opt/clang-tidy-automotive
+
+            # Download and extract LLVM
+            wget -q https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-20.1.8.tar.gz
+            tar xzf llvmorg-20.1.8.tar.gz
+
+            # Save more cache usage.
+            rm -f llvmorg-20.1.8.tar.gz
+
+            ./setup.sh     > /dev/null 2>&1
+            mkdir build
+            cd build
+            cmake -G Ninja \
+                  -DCMAKE_CXX_COMPILER=/usr/bin/clang++-20 \
+                  -DCMAKE_C_COMPILER=/usr/bin/clang-20 \
+                  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+                  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                  -DCMAKE_BUILD_TYPE=Release \
+                  -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" \
+                  -DLLVM_TARGETS_TO_BUILD="X86" \
+                  ../llvm-project-llvmorg-20.1.8/llvm > /dev/null 2>&1
+
+            ninja -j $(nproc) clang-tidy
+          fi
+
+          cd /opt/clang-tidy-automotive
+          # Verify clang-tidy-automotive build
+          echo "=== clang-tidy-automotive version ==="
+          ./build/bin/clang-tidy --version
+
+          echo "=== Run automotive rule sample test ==="
+          ./build/bin/clang-tidy \
+            --checks="automotive-*" \
+            test/checkers/automotive/statement/avoid-goto.c -- 
+
+      - name: clang-tidy-automotive
+        shell: bash
+        run: |
+          CLANG_TIDY_AUTOMOTIVE="/opt/clang-tidy-automotive/"
+          CLANG_TIDY_BIN="/opt/clang-tidy-automotive/build/bin/clang-tidy"
+          CLANG_TIDY_LOG="$GITHUB_WORKSPACE/clang-tidy-automotive.log"
+          BSP_SERIES=$(ls $GITHUB_WORKSPACE/Library/Device/Nuvoton/ | head -n 1)
+          INCLUDE_PATHS=(
+            "-I$GITHUB_WORKSPACE/Library/CMSIS/Core/Include/"
+            "-I$GITHUB_WORKSPACE/Library/Device/Nuvoton/$BSP_SERIES/Include/"
+            "-I$GITHUB_WORKSPACE/Library/StdDriver/inc/"
+          )
+
+          cd $CLANG_TIDY_AUTOMOTIVE
+          set +e
+
+          # Timestamped section for StdDriver
+          {
+            echo "========================================================="
+            echo "🧩 CLANG-TIDY AUTOMOTIVE REPORT (StdDriver & SampleCode)"
+            echo "📦 BSP_SERIES: $BSP_SERIES"
+            echo "📅 DATE: $(date '+%Y-%m-%d %H:%M:%S')"
+            echo "========================================================="
+          } | tee -a "$CLANG_TIDY_LOG"
+
+          mapfile -t cfiles < <(
+            find "$GITHUB_WORKSPACE/Library/StdDriver/src" -type f -name '*.c'
+            find "$GITHUB_WORKSPACE/SampleCode" -type f -name '*.c'
+          )
+
+          for cfile in "${cfiles[@]}"; do
+            {
+              echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+              echo "🧩 Analysis ${cfile}"
+              echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+            } | tee -a "$CLANG_TIDY_LOG"
+
+            # covert
+            #dos2unix ${cfile} > /dev/null 2>&1
+
+            "$CLANG_TIDY_BIN" \
+                --checks="automotive-*" \
+                --header-filter='.*' \
+                --quiet \
+                "${cfile}" \
+                -- \
+                -D__ARM_ARCH_PROFILE=\'M\' \
+                -D__ARM_ACLE=200 \
+                "${INCLUDE_PATHS[@]}" >> "$CLANG_TIDY_LOG" 2>&1
+          done
+
+          set -e
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Clang-Tidy-Automotive-Analysis-Report-${{ github.ref_name }}
+          path: clang-tidy-automotive.log
+          if-no-files-found: error

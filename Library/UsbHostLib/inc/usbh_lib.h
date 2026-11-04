@@ -1,0 +1,429 @@
+/**************************************************************************//**
+ * @file     usbh_lib.h
+ * @version  V1.00
+ * @brief    USB Host library exported header file.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * @copyright (C) 2021 Nuvoton Technology Corp. All rights reserved.
+ ******************************************************************************/
+#ifndef  _USBH_LIB_H_
+#define  _USBH_LIB_H_
+
+#include "NuMicro.h"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+/** @addtogroup LIBRARY Library
+  @{
+*/
+
+/** @addtogroup USBH_Library USBH Library
+  @{
+*/
+
+/** @addtogroup USBH_EXPORTED_CONSTANTS USBH Exported Constants
+  @{
+*/
+
+#define USBH_OK                     0      /*!< No error.                                       */
+#define USBH_ERR_MEM_FREE_INVALID   -5     /*!< Try to free an invalid memory block             */
+#define USBH_ERR_MEMORY_OUT         -10    /*!< Out of memory.                                  */
+#define USBH_ERR_IF_ALT_LIMIT       -11    /*!< Number of alternative interface > MAX_ALT_PER_IFACE */
+#define USBH_ERR_IF_EP_LIMIT        -15    /*!< Number of endpoints > MAX_EP_PER_IFACE          */
+#define USBH_ERR_NOT_SUPPORTED      -101   /*!< Device/Class/Transfer not supported             */
+#define USBH_ERR_NOT_MATCHED        -103   /*!< Not macthed                                     */
+#define USBH_ERR_NOT_EXPECTED       -104   /*!< Unknown or unexpected                           */
+#define USBH_ERR_INVALID_PARAM      -105   /*!< Invalid parameter                               */
+#define USBH_ERR_NOT_FOUND          -106   /*!< Device or interface not found                   */
+#define USBH_ERR_EP_NOT_FOUND       -107   /*!< Endpoint not found                              */
+#define USBH_ERR_DESCRIPTOR         -137   /*!< Failed to parse USB descriptors                 */
+#define USBH_ERR_SET_DEV_ADDR       -139   /*!< Failed to set device address                    */
+#define USBH_ERR_SET_CONFIG         -151   /*!< Failed to set device configuration              */
+
+#define USBH_ERR_TRANSFER           -201   /*!< USB transfer error                              */
+#define USBH_ERR_TIMEOUT            -203   /*!< USB transfer time-out                           */
+#define USBH_ERR_ABORT              -205   /*!< USB transfer aborted due to disconnect or reset */
+#define USBH_ERR_PORT_RESET         -255   /*!< Hub port reset failed                           */
+#define USBH_ERR_SCH_OVERRUN        -257   /*!< USB isochronous schedule overrun                */
+#define USBH_ERR_DISCONNECTED       -259   /*!< USB device was disconnected                     */
+
+#define USBH_ERR_TRANSACTION        -271   /*!< USB transaction timeout, CRC, Bad PID, etc.     */
+#define USBH_ERR_BABBLE_DETECTED    -272   /*!< A "babble" is detected during the transaction   */
+#define USBH_ERR_DATA_BUFF          -274   /*!< Data buffer overrun or underrun                 */
+
+#define USBH_ERR_CC_NO_ERR          -280   /*!< OHCI CC code - no error                         */
+#define USBH_ERR_CRC                -281   /*!< USB trasfer CRC error                           */
+#define USBH_ERR_BIT_STUFF          -282   /*!< USB transfer bit stuffing error                 */
+#define USBH_ERR_DATA_TOGGLE        -283   /*!< USB trasfer data toggle error                   */
+#define USBH_ERR_STALL              -284   /*!< USB trasfer STALL error                         */
+#define USBH_ERR_DEV_NO_RESP        -285   /*!< USB trasfer device no response error            */
+#define USBH_ERR_PID_CHECK          -286   /*!< USB trasfer PID check failure                   */
+#define USBH_ERR_UNEXPECT_PID       -287   /*!< USB trasfer unexpected PID error                */
+#define USBH_ERR_DATA_OVERRUN       -288   /*!< USB trasfer data overrun error                  */
+#define USBH_ERR_DATA_UNDERRUN      -289   /*!< USB trasfer data underrun error                 */
+#define USBH_ERR_BUFF_OVERRUN       -292   /*!< USB trasfer buffer overrun error                */
+#define USBH_ERR_BUFF_UNDERRUN      -293   /*!< USB trasfer buffer underrun error               */
+#define USBH_ERR_NOT_ACCESS0        -294   /*!< USB trasfer not accessed error                  */
+#define USBH_ERR_NOT_ACCESS1        -295   /*!< USB trasfer not accessed error                  */
+
+#define USBH_ERR_OHCI_INIT          -301   /*!< Failed to initialize OHIC controller.           */
+#define USBH_ERR_OHCI_EP_BUSY       -303   /*!< The endpoint is under transfer.                 */
+
+#define USBH_ERR_EHCI_INIT          -501   /*!< Failed to initialize EHCI controller.           */
+#define USBH_ERR_EHCI_QH_BUSY       -503   /*!< the Queue Head is busy.                         */
+
+#define UMAS_OK                     0      /*!< No error.                                       */
+#define UMAS_ERR_NO_DEVICE          -1031  /*!< No Mass Stroage Device found.                   */
+#define UMAS_ERR_IO                 -1033  /*!< Device read/write failed.                       */
+#define UMAS_ERR_INIT_DEVICE        -1035  /*!< failed to init MSC device                       */
+#define UMAS_ERR_CMD_STATUS         -1037  /*!< SCSI command status failed                      */
+#define UMAS_ERR_IVALID_PARM        -1038  /*!< Invalid parameter.                              */
+#define UMAS_ERR_DRIVE_NOT_FOUND    -1039  /*!< drive not found                                 */
+
+#define HID_RET_OK                  0      /*!< Return with no errors.                          */
+#define HID_RET_DEV_NOT_FOUND       -1081  /*!< HID device not found or removed.                */
+#define HID_RET_IO_ERR              -1082  /*!< USB transfer failed.                            */
+#define HID_RET_INVALID_PARAMETER   -1083  /*!< Invalid parameter.                              */
+#define HID_RET_OUT_OF_MEMORY       -1084  /*!< Out of memory.                                  */
+#define HID_RET_NOT_SUPPORTED       -1085  /*!< Function not supported.                         */
+#define HID_RET_EP_NOT_FOUND        -1086  /*!< Endpoint not found.                             */
+#define HID_RET_PARSING             -1087  /*!< Failed to parse HID descriptor                  */
+#define HID_RET_XFER_IS_RUNNING     -1089  /*!< The transfer has been enabled.                  */
+#define HID_RET_REPORT_NOT_FOUND    -1090  /*!< The transfer has been enabled.                  */
+
+#define UAC_RET_OK                   0     /*!< Return with no errors.                          */
+#define UAC_RET_DEV_NOT_FOUND       -2001  /*!< Audio Class device not found or removed.        */
+#define UAC_RET_FUNC_NOT_FOUND      -2002  /*!< Audio device has no this function.              */
+#define UAC_RET_IO_ERR              -2003  /*!< USB transfer failed.                            */
+#define UAC_RET_DATA_LEN            -2004  /*!< Unexpected transfer length                      */
+#define UAC_RET_INVALID             -2005  /*!< Invalid parameter or usage.                     */
+#define UAC_RET_OUT_OF_MEMORY       -2007  /*!< Out of memory.                                  */
+#define UAC_RET_DRV_NOT_SUPPORTED   -2009  /*!< Function not supported by this UAC driver.      */
+#define UAC_RET_DEV_NOT_SUPPORTED   -2011  /*!< Function not supported by the UAC device.       */
+#define UAC_RET_PARSER              -2013  /*!< Failed to parse UAC descriptor                  */
+#define UAC_RET_IS_STREAMING        -2015  /*!< Audio pipe is on streaming.                     */
+
+#define UVC_RET_OK                   0     /*!< Return with no errors.                          */
+#define UVC_RET_DEV_NOT_FOUND       -3001  /*!< Video Class device not found or removed.        */
+#define UVC_RET_FUNC_NOT_FOUND      -3002  /*!< video device has no this function.              */
+#define UVC_RET_IO_ERR              -3003  /*!< USB transfer failed.                            */
+#define UVC_RET_DATA_LEN            -3004  /*!< Unexpected transfer length                      */
+#define UVC_RET_INVALID             -3005  /*!< Invalid parameter or usage.                     */
+#define UVC_RET_OUT_OF_MEMORY       -3007  /*!< Out of memory.                                  */
+#define UVC_RET_DRV_NOT_SUPPORTED   -3009  /*!< Function not supported by this UVC driver.      */
+#define UVC_RET_DEV_NOT_SUPPORTED   -3011  /*!< Function not supported by the UVC device.       */
+#define UVC_RET_NOT_SUPPORT         -3012  /*!< Not supported.                                  */
+#define UVC_RET_PARSER              -3013  /*!< Failed to parse UVC descriptor                  */
+#define UVC_RET_IS_STREAMING        -3015  /*!< Video pipe is on streaming.                     */
+
+#define RNDIS_OK                       0      /*!< No error.                                       */
+#define RNDIS_ERR_NOT_READY            (-4001) /*!< RNDIS session or required state is unavailable. */
+#define RNDIS_ERR_NO_RESOURCE          (-4002) /*!< RNDIS resource allocation failed.               */
+#define RNDIS_ERR_FRAME_SIZE           (-4003) /*!< Ethernet frame length is invalid.               */
+#define RNDIS_ERR_BUSY                  (-4004) /*!< RNDIS transmit resource is busy.                */
+#define RNDIS_ERR_PROTOCOL              (-4005) /*!< RNDIS protocol validation or an internal RNDIS invariant failed. */
+
+/** @} end of group USBH_EXPORTED_CONSTANTS */
+
+/** @addtogroup USBH_EXPORTED_TYPEDEF USBH Exported Typedef
+  @{
+*/
+struct udev_t;
+typedef void (CONN_FUNC)(struct udev_t *udev, int param);
+
+struct line_coding_t;
+struct cdc_dev_t;
+typedef void (CDC_CB_FUNC)(struct cdc_dev_t *cdev, uint8_t *rdata, int data_len);
+
+struct usbhid_dev;
+typedef void (HID_IR_FUNC)(struct usbhid_dev *hdev, uint16_t ep_addr, int status, uint8_t *rdata, uint32_t data_len);    /*!< interrupt in callback function \hideinitializer */
+typedef void (HID_IW_FUNC)(struct usbhid_dev *hdev, uint16_t ep_addr, int status, uint8_t *wbuff, uint32_t *data_len);   /*!< interrupt out callback function \hideinitializer */
+
+struct uac_dev_t;
+typedef int (UAC_CB_FUNC)(struct uac_dev_t *dev, uint8_t *data, int len);    /*!< audio in callback function \hideinitializer */
+
+struct uvc_dev_t;
+typedef int (UVC_CB_FUNC)(struct uvc_dev_t *dev, uint8_t *data, int len);    /*!< video callback function \hideinitializer */
+
+typedef enum image_format_e
+{
+    UVC_FORMAT_INVALID = 0,
+    UVC_FORMAT_YUY2    = 1,
+    UVC_FORMAT_NV12    = 2,
+    UVC_FORMAT_M420    = 3,
+    UVC_FORMAT_I420    = 4,
+    UVC_FORMAT_MJPEG   = 11,
+}  IMAGE_FORMAT_E;
+
+typedef enum
+{
+    RNDIS_STATE_ENUMERATED = 0,
+    RNDIS_STATE_PAIRED,
+    RNDIS_STATE_INITIALIZING,
+    RNDIS_STATE_QUERYING,
+    RNDIS_STATE_SETTING_FILTER,
+    RNDIS_STATE_RUNNING,
+    RNDIS_STATE_FAILED,
+    RNDIS_STATE_DETACHED
+} RNDIS_STATE_E;
+
+typedef enum
+{
+    RNDIS_FAILURE_NONE = 0,
+    RNDIS_FAILURE_ALLOCATION,
+    RNDIS_FAILURE_NOTIFICATION_ARM,
+    RNDIS_FAILURE_NOTIFICATION_TIMEOUT,
+    RNDIS_FAILURE_NOTIFICATION_TRANSPORT,
+    RNDIS_FAILURE_NOTIFICATION_PROTOCOL,
+    RNDIS_FAILURE_SEND_TRANSPORT,
+    RNDIS_FAILURE_SEND_LENGTH,
+    RNDIS_FAILURE_GET_TRANSPORT,
+    RNDIS_FAILURE_GET_LIMIT,
+    RNDIS_FAILURE_CONTROL_DEADLINE,
+    RNDIS_FAILURE_RESPONSE_PROTOCOL
+} RNDIS_FAILURE_E;
+
+typedef struct
+{
+    uint32_t rx_packets;              /*!< Accepted Ethernet frames received by the RNDIS worker. */
+    uint32_t rx_bytes;                /*!< Bytes in accepted Ethernet frames received by the RNDIS worker. */
+    uint32_t rx_drops;                /*!< Received Ethernet frames rejected by validation. */
+    uint32_t tx_packets;              /*!< Ethernet frames completed successfully by USB bulk-OUT. */
+    uint32_t tx_bytes;                /*!< Bytes in Ethernet frames completed successfully by USB bulk-OUT. */
+    uint32_t tx_drops;                /*!< Ethernet frames rejected or failed during transmit processing. */
+    uint32_t transfer_errors;         /*!< USB bulk transfer errors observed by the RNDIS driver. */
+    uint32_t control_errors;          /*!< RNDIS encapsulated-control transaction errors. */
+    uint32_t stale_completions;       /*!< Completions or notification events ignored due to stale lifecycle, I/O state, or request identity. */
+    uint32_t notification_events;     /*!< Valid RNDIS interrupt notification events consumed. */
+    uint32_t notification_errors;     /*!< RNDIS interrupt notification transport errors. */
+    uint32_t notification_invalid;    /*!< RNDIS interrupt notifications rejected by validation. */
+    uint32_t get_polls;               /*!< Encapsulated-response GET requests submitted. */
+    uint32_t get_transport_errors;    /*!< Encapsulated-response GET transport errors. */
+} RNDIS_STATS_T;
+
+/**
+ * @brief Scalar snapshot of the most recent normal RNDIS bulk-OUT completion.
+ * @details This does not expose a DMA buffer, UTR, slot, or pointer.  A non-zero
+ *          `completion_sequence` identifies one worker-published completion;
+ *          `submit_id` identifies the accepted send that completed.  The two
+ *          counters are non-zero while their respective 32-bit sequences have
+ *          not wrapped.  `abort_pending` is retained as a reserved legacy
+ *          compatibility field; normal RNDIS TX exposes no abort operation
+ *          and the current implementation reports 0.
+ */
+typedef struct
+{
+    uint32_t submit_id;               /*!< Identifier of the most recently completed TX submission. */
+    uint32_t completion_sequence;     /*!< Non-zero sequence incremented for each published TX completion. */
+    int32_t completion_status;        /*!< USB completion status for the reported TX submission. */
+    uint32_t actual_length;           /*!< Actual USB bulk-OUT transfer length in bytes. */
+    uint32_t expected_wire_length;    /*!< Submitted RNDIS packet length in bytes, including the RNDIS header. */
+    uint8_t abort_pending;            /*!< Reserved legacy field; normal RNDIS TX reports zero. */
+} RNDIS_TX_OUTCOME_T;
+
+typedef enum
+{
+    RNDIS_RX_DIAG_NONE = 0,
+    RNDIS_RX_DIAG_SHORT_ACTUAL,
+    RNDIS_RX_DIAG_ACTUAL_EXCEEDS_SLOT,
+    RNDIS_RX_DIAG_MESSAGE_TYPE,
+    RNDIS_RX_DIAG_MESSAGE_LENGTH_MISMATCH,
+    RNDIS_RX_DIAG_OFFSET_ADDITION_OVERFLOW,
+    RNDIS_RX_DIAG_DATA_START_LENGTH_OVERFLOW,
+    RNDIS_RX_DIAG_DATA_START_IN_FIXED_HEADER,
+    RNDIS_RX_DIAG_DATA_END_EXCEEDS_MESSAGE,
+    RNDIS_RX_DIAG_ETHERNET_TOO_SHORT,
+    RNDIS_RX_DIAG_DATA_EXCEEDS_LIMIT,
+    RNDIS_RX_DIAG_USB_ERROR,
+    RNDIS_RX_DIAG_ACCEPTED
+} RNDIS_RX_DIAG_EVENT_E;
+
+/**
+ * @brief Last worker-published RX validation result for one live session.
+ * @details Header fields are zero unless the worker first proved that the
+ *          completed DMA buffer contains the complete 44-byte fixed header.
+ *          `sequence` is non-zero and advances for every published event.
+ */
+typedef struct
+{
+    uint32_t sequence;                /*!< Non-zero sequence incremented for each published RX diagnostic. */
+    RNDIS_RX_DIAG_EVENT_E event;      /*!< Validation result for the most recently processed RX completion. */
+    int32_t usb_status;               /*!< USB completion status captured for the RX transfer. */
+    uint32_t actual_length;           /*!< Actual USB bulk-IN transfer length in bytes. */
+    uint32_t message_type;            /*!< RNDIS message type when the fixed header is valid; otherwise zero. */
+    uint32_t message_length;          /*!< RNDIS message length when the fixed header is valid; otherwise zero. */
+    uint32_t data_offset;             /*!< RNDIS payload offset when the fixed header is valid; otherwise zero. */
+    uint32_t data_length;             /*!< RNDIS Ethernet payload length when the fixed header is valid; otherwise zero. */
+} RNDIS_RX_DIAG_T;
+
+typedef struct rndis_session_t RNDIS_SESSION_T;
+typedef void (RNDIS_RX_CB_FUNC)(RNDIS_SESSION_T *session, uint8_t const *frame, uint16_t frame_len);
+
+/** @} end of group USBH_EXPORTED_TYPEDEF */
+
+/** @addtogroup USBH_EXPORTED_FUNCTIONS USBH Exported Functions
+  @{
+*/
+
+/*------------------------------------------------------------------*/
+/*                                                                  */
+/*  USB Core Library APIs                                           */
+/*                                                                  */
+/*------------------------------------------------------------------*/
+extern void usbh_core_init(void);
+extern void usbh_core_init_ex(int ovc_alv);
+extern void usbh_core_deinit(void);
+extern int  usbh_pooling_hubs(void);
+extern void usbh_install_conn_callback(CONN_FUNC *conn_func, CONN_FUNC *disconn_func);
+extern void usbh_suspend(void);
+extern void usbh_resume(void);
+extern struct udev_t *usbh_find_device(const char *hub_id, int port);
+
+/**
+ * @brief  A function return current tick count.
+ * @return Current tick.
+ * @details User application must provide this function to return current tick.
+ *          The tick should increase by 1 for every 10 ms.
+ */
+extern uint32_t get_ticks(void);   /* This function must be provided by user application. */
+
+/*------------------------------------------------------------------*/
+/*                                                                  */
+/*  USB Communication Device Class Library APIs                     */
+/*                                                                  */
+/*------------------------------------------------------------------*/
+extern void     usbh_cdc_init(void);
+extern struct cdc_dev_t *usbh_cdc_get_device_list(void);
+
+/// @cond HIDDEN_SYMBOLS
+
+extern int32_t  usbh_cdc_get_line_coding(struct cdc_dev_t *cdev, struct line_coding_t *line_code);
+extern int32_t  usbh_cdc_set_line_coding(struct cdc_dev_t *cdev, struct line_coding_t *line_code);
+
+/// @endcond HIDDEN_SYMBOLS
+
+extern int32_t  usbh_cdc_set_control_line_state(struct cdc_dev_t *cdev, int active_carrier, int DTE_present);
+extern int32_t  usbh_cdc_start_polling_status(struct cdc_dev_t *cdev, CDC_CB_FUNC *func);
+extern int32_t  usbh_cdc_start_to_receive_data(struct cdc_dev_t *cdev, CDC_CB_FUNC *func);
+extern int32_t  usbh_dcache_cdc_send_data(struct cdc_dev_t *cdev, uint8_t const *buff, int buff_len);
+extern int32_t  usbh_cdc_send_data(struct cdc_dev_t *cdev, uint8_t *buff, int buff_len);
+
+/*------------------------------------------------------------------*/
+/*                                                                  */
+/*  USB Human Interface Class Library APIs                          */
+/*                                                                  */
+/*------------------------------------------------------------------*/
+extern void     usbh_hid_init(void);
+extern struct usbhid_dev *usbh_hid_get_device_list(void);
+extern int32_t  usbh_hid_get_report_descriptor(struct usbhid_dev *hdev, uint8_t *desc_buf, uint16_t buf_max_len);
+extern int32_t  usbh_hid_get_report(struct usbhid_dev *hdev, int rtp_typ, int rtp_id, uint8_t *data, uint16_t len);
+extern int32_t  usbh_hid_set_report(struct usbhid_dev *hdev, int rtp_typ, int rtp_id, uint8_t *data, uint16_t len);
+extern int32_t  usbh_hid_get_idle(struct usbhid_dev *hdev, int rtp_id, uint8_t *idle_rate);
+extern int32_t  usbh_hid_set_idle(struct usbhid_dev *hdev, int rtp_id, uint8_t idle_rate);
+extern int32_t  usbh_hid_get_protocol(struct usbhid_dev *hdev, uint8_t *protocol);
+extern int32_t  usbh_hid_set_protocol(struct usbhid_dev *hdev, uint8_t protocol);
+extern int32_t  usbh_hid_start_int_read(struct usbhid_dev *hdev, uint8_t ep_addr, HID_IR_FUNC *func);
+extern int32_t  usbh_hid_stop_int_read(struct usbhid_dev *hdev, uint8_t ep_addr);
+extern int32_t  usbh_hid_start_int_write(struct usbhid_dev *hdev, uint8_t ep_addr, HID_IW_FUNC *func);
+extern int32_t  usbh_hid_stop_int_write(struct usbhid_dev *hdev, uint8_t ep_addr);
+
+/*------------------------------------------------------------------*/
+/*                                                                  */
+/*  USB Mass Storage Class Library APIs                             */
+/*                                                                  */
+/*------------------------------------------------------------------*/
+extern int  usbh_umas_init(void);
+extern int  usbh_umas_disk_status(int drv_no);
+extern int  usbh_umas_read(int drv_no, uint32_t sec_no, int sec_cnt, uint8_t *buff);
+extern int  usbh_umas_write(int drv_no, uint32_t sec_no, int sec_cnt, uint8_t *buff);
+extern int  usbh_umas_ioctl(int drv_no, int cmd, void *buff);
+
+/// @cond HIDDEN_SYMBOLS
+
+extern int  usbh_umas_reset_disk(int drv_no);
+
+/// @endcond HIDDEN_SYMBOLS
+
+/*------------------------------------------------------------------*/
+/*                                                                  */
+/*  USB Audio Class Library APIs                                    */
+/*                                                                  */
+/*------------------------------------------------------------------*/
+extern void usbh_uac_init(void);
+extern int usbh_uac_open(struct uac_dev_t *uac);
+extern struct uac_dev_t *usbh_uac_get_device_list(void);
+extern int usbh_uac_get_channel_number(struct uac_dev_t *uac, uint8_t target);
+extern int usbh_uac_get_bit_resolution(struct uac_dev_t *uac, uint8_t target, uint8_t *byte_cnt);
+extern int usbh_uac_get_sampling_rate(struct uac_dev_t *uac, uint8_t target, uint32_t *srate_list, int max_cnt, uint8_t *type);
+extern int usbh_uac_sampling_rate_control(struct uac_dev_t *uac, uint8_t target, uint8_t req, uint32_t *srate);
+extern int usbh_uac_mute_control(struct uac_dev_t *uac, uint8_t target, uint8_t req, uint16_t chn, uint8_t *mute);
+extern int usbh_uac_vol_control(struct uac_dev_t *uac, uint8_t target, uint8_t req, uint16_t chn, uint16_t *volume);
+extern int usbh_uac_auto_gain_control(struct uac_dev_t *uac, uint8_t target, uint8_t req, uint16_t chn, uint8_t *bAGC);
+extern int usbh_uac_start_audio_in(struct uac_dev_t *uac, UAC_CB_FUNC *func);
+extern int usbh_uac_stop_audio_in(struct uac_dev_t *uac);
+extern int usbh_uac_start_audio_out(struct uac_dev_t *uac, UAC_CB_FUNC *func);
+extern int usbh_uac_stop_audio_out(struct uac_dev_t *uac);
+/* UAC 2.0 Clock Source Control APIs */
+extern int usbh_uac2_get_clock_source_id(struct uac_dev_t *uac, uint8_t target);
+extern int usbh_uac2_clock_set_freq(struct uac_dev_t *uac, uint8_t target, uint32_t freq);
+extern int usbh_uac2_clock_get_freq(struct uac_dev_t *uac, uint8_t target, uint32_t *freq);
+
+/*------------------------------------------------------------------*/
+/*                                                                  */
+/*  USB Video Class Library APIs                                    */
+/*                                                                  */
+/*------------------------------------------------------------------*/
+extern void usbh_uvc_init(void);
+extern struct uvc_dev_t *usbh_uvc_get_device_list(void);
+extern int usbh_get_video_format(struct uvc_dev_t *vdev, int index, IMAGE_FORMAT_E *format, int *width, int *height);
+extern int usbh_set_video_format(struct uvc_dev_t *vdev, IMAGE_FORMAT_E format, int width, int height);
+extern int usbh_get_video_still_format(struct uvc_dev_t *vdev, int index, IMAGE_FORMAT_E *format, int *width, int *height);
+extern int usbh_set_video_still_format(struct uvc_dev_t *vdev, IMAGE_FORMAT_E format, int width, int height);
+extern void usbh_uvc_set_video_buffer(struct uvc_dev_t *vdev, uint8_t *image_buff, int img_buff_size);
+extern int usbh_uvc_start_streaming(struct uvc_dev_t *vdev, UVC_CB_FUNC *func);
+extern int usbh_uvc_stop_streaming(struct uvc_dev_t *vdev);
+extern int usbh_uvc_still_image_trigger_control(struct uvc_dev_t *vdev, uint8_t capture);
+
+/*------------------------------------------------------------------*/
+/*                                                                  */
+/*  USB RNDIS Class Library APIs                                    */
+/*                                                                  */
+/*------------------------------------------------------------------*/
+extern void usbh_rndis_init(void);
+extern int32_t usbh_rndis_core_ready(void);
+extern void usbh_rndis_poll(void);
+extern RNDIS_SESSION_T *usbh_rndis_get_device_list(void);
+extern int32_t usbh_rndis_set_rx_callback(RNDIS_SESSION_T *session, RNDIS_RX_CB_FUNC *callback);
+extern int32_t usbh_rndis_send_frame(RNDIS_SESSION_T *session, uint8_t const *frame, uint16_t frame_len);
+extern int32_t usbh_rndis_send_frame_tracked(RNDIS_SESSION_T *session, uint8_t const *frame, uint16_t frame_len, uint32_t *submit_id);
+extern int32_t usbh_rndis_get_tx_outcome(RNDIS_SESSION_T const *session, RNDIS_TX_OUTCOME_T *outcome);
+extern RNDIS_STATE_E usbh_rndis_get_state(RNDIS_SESSION_T const *session);
+extern int32_t usbh_rndis_get_session_generation(RNDIS_SESSION_T const *session, uint32_t *generation);
+extern int32_t usbh_rndis_get_stats(RNDIS_SESSION_T const *session, RNDIS_STATS_T *stats);
+extern int32_t usbh_rndis_get_rx_diagnostic(RNDIS_SESSION_T const *session, RNDIS_RX_DIAG_T *diagnostic);
+extern RNDIS_FAILURE_E usbh_rndis_get_failure(RNDIS_SESSION_T const *session);
+extern char const *usbh_rndis_failure_string(RNDIS_FAILURE_E failure);
+extern int32_t usbh_rndis_get_mac_address(RNDIS_SESSION_T const *session, uint8_t mac[6]);
+
+/// @cond HIDDEN_SYMBOLS
+
+extern void dump_ehci_regs(void);
+extern void dump_ehci_ports(void);
+extern uint32_t  usbh_memory_used(void);
+
+/// @endcond HIDDEN_SYMBOLS
+
+/** @} end of group USBH_EXPORTED_FUNCTIONS */
+
+/** @} end of group USBH_Library */
+
+/** @} end of group LIBRARY */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  /* _USBH_LIB_H_ */
