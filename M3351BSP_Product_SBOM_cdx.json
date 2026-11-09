@@ -1,0 +1,729 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:e3684344-4976-4e07-addb-53c36b200633",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-09T16:21:32+08:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.57.0"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "d1c4282f5afeb9be",
+      "type": "library",
+      "name": "MCU Driver",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/mcu-driver@V3.00.003",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:scope",
+          "value": "Components included in, linked with, deployed to, or reasonably expected to be integrated into final product firmware/software."
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        },
+        {
+          "name": "bsp:third-party-components",
+          "value": "none identified in product scope based on the defined Product SBOM scope policy"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Commu"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/CryptoAccelerator"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/LlsiYcableLib"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/Storage"
+        },
+        {
+          "name": "bsp:product-scope-include-path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Document/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "SampleCode/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "ThirdParty/"
+        },
+        {
+          "name": "bsp:product-scope-exclude-path",
+          "value": "Tool/"
+        }
+      ]
+    },
+    "lifecycles": [
+      {
+        "phase": "pre-build"
+      }
+    ],
+    "supplier": {
+      "name": "Nuvoton Technology Corp.",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
+    },
+    "authors": [
+      {
+        "name": "Nuvoton Technology Corp."
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-commu",
+      "name": " Commu",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-commu@V3.00.003",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3fe691ef9385bc024d9df99913bd1815affdd07bd4eb782c3119b425279bd3d1"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Commu",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Commu"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-cryptoaccelerator",
+      "name": " CryptoAccelerator",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-cryptoaccelerator@V3.00.003",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "949dfb3879eb3e0fc823c4408a5adf50c24f35a468428df566dc47d094beecfc"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/CryptoAccelerator",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/CryptoAccelerator"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-device",
+      "name": " Device",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-device@V3.00.003",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "edc9df69a6f785d7fbc0dfaa66aceb11fc02c8132a05694cda9eabc3dc76e2b6"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Device",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Device"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-llsiycablelib",
+      "name": " LlsiYcableLib",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-llsiycablelib@V3.00.003",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9df0e0ecc8cd71d6368cd34e90be0b45b7dd44e6c4d7704b1edae3220712335f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/LlsiYcableLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/LlsiYcableLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-stddriver",
+      "name": " StdDriver",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-stddriver@V3.00.003",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "92ca50e38f38fd4ac70752f2d397075ccb1438beed7a71881042afd7f33ca66d"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/StdDriver",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/StdDriver"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-storage",
+      "name": " Storage",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-storage@V3.00.003",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "27818d7e310d206d43739fb31d6d9aece763b3da5c148b29cc2b4f2de35314fd"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/Storage",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/Storage"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "bsp:product-component:library-usbhostlib",
+      "name": " UsbHostLib",
+      "version": "V3.00.003",
+      "supplier": {
+        "name": "Nuvoton Technology Corp.",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/library-usbhostlib@V3.00.003",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dfc2d04965b614dd636285b0efd56783553e820aa3b1cfd726f9543dc36ed2df"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "scope": "required",
+      "description": "Directory-level first-party BSP product component included from product scope path Library/UsbHostLib",
+      "properties": [
+        {
+          "name": "bsp:sbom-category",
+          "value": "product"
+        },
+        {
+          "name": "bsp:path",
+          "value": "Library/UsbHostLib"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "first-party"
+        },
+        {
+          "name": "bsp:component-granularity",
+          "value": "directory"
+        },
+        {
+          "name": "bsp:scope-policy-file",
+          "value": "product-scope.yaml"
+        },
+        {
+          "name": "bsp:runtime-scope",
+          "value": "true"
+        },
+        {
+          "name": "bsp:included-in-product-firmware",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:github/arm-software/CMSIS-Compiler@2.2.0?source=vendored&path=Library/CMSIS/Compiler",
+      "name": "CMSIS-Compiler",
+      "version": "2.2.0",
+      "scope": "optional",
+      "author": "Arm Limited",
+      "manufacturer": {
+        "name": "Arm Limited"
+      },
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "purl": "pkg:github/arm-software/CMSIS-Compiler@2.2.0",
+      "description": "Arm CMSIS-Compiler software components vendored in Library/CMSIS/Compiler for standard I/O, file-operation, and RTOS interface retargeting.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS/Compiler"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "bsp:upstream-repository",
+          "value": "https://github.com/ARM-software/CMSIS-Compiler"
+        },
+        {
+          "name": "bsp:upstream-tag",
+          "value": "v2.2.0"
+        },
+        {
+          "name": "bsp:upstream-commit",
+          "value": "218fffe5bcd4da3594d411437b1b773f52f6ca36"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS-Compiler"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis-compiler.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS/Compiler"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Compiler/ARM.CMSIS-Compiler.pdsc"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/Compiler/LICENSE; Library/CMSIS/Compiler/README.md"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fe48e7daf8e930eb2b7af0745c044e35c843af37b36c894b2495531e033e28da"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:github/ARM-software/CMSIS_6@6.3.0?source=vendored&path=Library/CMSIS",
+      "name": "CMSIS",
+      "version": "6.3.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "manufacturer": {
+        "name": "Arm Limited"
+      },
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "purl": "pkg:github/ARM-software/CMSIS_6@6.3.0",
+      "description": "Arm CMSIS vendored in Library/CMSIS, including CMSIS-Core, CMSIS-Driver, CMSIS-RTOS2 API headers, and Documentation/index.html.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source_subset"
+        },
+        {
+          "name": "cmsis_core_version",
+          "value": "6.2.0"
+        },
+        {
+          "name": "cmsis_rtos2_api_version",
+          "value": "2.3.0"
+        },
+        {
+          "name": "cmsis_driver_common_api_version",
+          "value": "2.0"
+        },
+        {
+          "name": "bsp:included-paths",
+          "value": "Library/CMSIS/Core; Library/CMSIS/Driver; Library/CMSIS/RTOS2; Library/CMSIS/Documentation/index.html"
+        },
+        {
+          "name": "bsp:upstream-repository",
+          "value": "https://github.com/ARM-software/CMSIS_6"
+        },
+        {
+          "name": "bsp:upstream-tag",
+          "value": "v6.3.0"
+        },
+        {
+          "name": "bsp:upstream-commit",
+          "value": "45dab712ad84f8cbbf2b7bfc089c19088507df6f"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+        },
+        {
+          "name": "bsp:license-evidence",
+          "value": "Library/CMSIS/Core/Include/cmsis_version.h; Library/CMSIS/RTOS2/Include/cmsis_os2.h; Library/CMSIS/Driver/Include/Driver_Common.h"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3e1c4b3fd188c006da86a529d32f55913e05c2675d613c516e283ac9ab0c72e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "d1c4282f5afeb9be",
+      "dependsOn": [
+        "bsp:product-component:library-commu",
+        "bsp:product-component:library-cryptoaccelerator",
+        "bsp:product-component:library-device",
+        "bsp:product-component:library-llsiycablelib",
+        "bsp:product-component:library-stddriver",
+        "bsp:product-component:library-storage",
+        "bsp:product-component:library-usbhostlib"
+      ]
+    }
+  ],
+  "signature": {
+    "algorithm": "ES256",
+    "keyId": "chhsieh3",
+    "publicKey": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "2WX0ObGneISlGMbNTkF9LENdVCjeW_uahPTKzXpt_hs",
+      "y": "dxKx3Rjw22-nGanAa_XPYM21-ARYttNVTX78O2b9jHk"
+    },
+    "value": "_CCuLHCIAbKTymYTEGbUenlMgHmr_2IXE8HQgb_BrQCFNdoEiZh1WF1DW5fKpYVRrzEYrHbAedxEQzXYSVcyZg"
+  }
+}
