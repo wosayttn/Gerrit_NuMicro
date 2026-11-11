@@ -1,0 +1,185 @@
+name: IAR GH Runner 
+
+on:
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  workflow_dispatch:
+
+# Set a new GitHub Actions Secret named IAR_LMS_BEARER_TOKEN
+# for your repository. The secret is then propagated to an
+# Environment variable used for all jobs within this workflow
+env:
+  IAR_LMS_BEARER_TOKEN: ${{ secrets.IAR_LMS_BEARER_TOKEN }}
+
+jobs:
+  build-project:
+    name: Build project
+    runs-on: ubuntu-latest
+    container: ghcr.io/iarsystems/arm:9.70.1-base
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Check compiler version and patch IAR device config
+        shell: bash
+        run: |
+          # Find the installed IAR version path dynamically
+          IAR_PATH=$(find /opt/iar -maxdepth 2 -type d -name "arm" | head -n 1)
+
+          if [ -z "$IAR_PATH" ]; then
+            echo "❌ IAR installation path not found."
+            exit 1
+          fi
+
+          DEVICE_DIR="$IAR_PATH/config/devices/Nuvoton/"
+          echo "📁 Using IAR device directory: $DEVICE_DIR"
+
+          mkdir -p "$DEVICE_DIR"
+          cp -af "$GITHUB_WORKSPACE/.github/IAR_Nuvoton/devices/"* "$DEVICE_DIR/"
+
+          find $DEVICE_DIR
+
+          LINKER_DIR="$IAR_PATH/config/linker/Nuvoton/"
+          echo "📁 Using IAR device directory: $LINKER_DIR"
+
+          mkdir -p "$LINKER_DIR"
+          cp -af "$GITHUB_WORKSPACE/.github/IAR_Nuvoton/linker/"* "$LINKER_DIR/"
+
+          find $LINKER_DIR
+
+          echo "🔧 Compiler version:"
+          iccarm --version
+
+      - name: Build all IAR projects
+        shell: bash
+        run: |
+          REPO_ROOT="$GITHUB_WORKSPACE"
+          chmod +x "$GITHUB_WORKSPACE/.github/workflows/vcpkg_blacklist_check.sh"
+
+          mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
+          declare -a attachments=()
+
+          set +e
+          for sol_path in "${solutions[@]}"; do
+
+            dir=$(dirname "$sol_path")
+            sol_name=$(basename "$sol_path")
+            log_path="$dir/$sol_name.log"
+
+            #echo "🔨 Building $dir on $RUNNER_OS"
+            iarbuild $sol_path -build '*' -log warnings > "$log_path" 2>&1
+            ret1=$?
+
+            # Check log file
+            $REPO_ROOT/.github/workflows/vcpkg_blacklist_check.sh $log_path
+            ret2=$?
+
+            if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
+              echo "❌ Build failed: $sol_path"
+              echo "🔍 Log:"
+              cat "$log_path"
+
+              # FIXME: Window post-action checking.
+              if grep -Eq "/bin/sh:|NuBL33" "$log_path"; then
+                echo "ℹ️  Skipping log due to pattern matching in log"
+              else
+                attachments+=("$log_path")   # add log into the set
+              fi
+
+            else
+              echo "✅ Build success: $sol_path"
+            fi
+
+          done
+          set -e
+
+          # List all the paths of failed logs at the end (if any)
+          if [[ ${#attachments[@]} -ne 0 ]]; then
+            echo "🚨 The following builds failed:"
+            for log in "${attachments[@]}"; do
+              echo "  - $log"
+            done
+            printf "%s," "${attachments[@]}" | sed 's/,$//' > attachments.txt
+            echo "Wrote attachments.txt"
+          else
+            echo "🎉 All builds succeeded!"
+          fi
+
+      - name: Send mail
+        if: failure()
+        uses: ./.github/actions/send-mail
+        with:
+          mail-connection: ${{ secrets.MAIL_CONNECTION }}
+          mail-to-ms10: ${{ secrets.MAIL_TO_MS10 }}
+          mail-to-ms20: ${{ secrets.MAIL_TO_MS20 }}
+          mail-to-ms40: ${{ secrets.MAIL_TO_MS40 }}
+          mail-to-ms70: ${{ secrets.MAIL_TO_MS70 }}
+          default-mail-to: ${{ secrets.MAIL_TO }}
+          workflow-name: ${{ github.workflow }}
+          ref-name: ${{ github.ref_name }}
+
+
+      - name: Collect artifacts with directory structure
+        run: |
+          mkdir -p artifacts
+          find SampleCode -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-artifacts
+          path: artifacts/
+
+  cstat-project:
+    name: Static Code Analysis
+    needs: build-project
+    runs-on: ubuntu-latest
+    container: ghcr.io/iarsystems/arm:9.70.1-base
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static Analysis
+        shell: bash
+        run: |
+          MISSUDAD_IAR="$GITHUB_WORKSPACE/.github/MissUDad/IAR"
+          MISSUDAD_IAR_EWT="$MISSUDAD_IAR/c-stat.ewt"
+          mapfile -t solutions < <(find ./SampleCode -name '*.ewp')
+          declare -a attachments=()
+
+          set +e
+          for sol_path in "${solutions[@]}"; do
+
+            dir=$(dirname "$sol_path")
+            sol_name=$(basename "$sol_path")
+            sol_base_name="${sol_name%.*}"
+            ewt_path="$dir/$sol_base_name.ewt"
+            log_path="$dir/$sol_name.cstat.log"
+
+            cp -f "$MISSUDAD_IAR_EWT" "$ewt_path"
+
+            iarbuild $sol_path -cstat_analyze '*' -log all > $log_path
+            ret1=$?
+
+            iarbuild $sol_path -cstat_report '*' -log all >> $log_path
+            ret2=$?
+
+            if [[ $ret1 -ne 0 || $ret2 -ne 0 ]]; then
+              echo "❌ Build failed: $sol_path"
+              echo "🔍 Log:"
+              cat "$log_path"
+              attachments+=("$log_path")   #add log into the set.
+            else
+              echo "✅ Analysis success: $sol_path"
+            fi
+
+          done
+          set -e
+
+      - name: Upload project report (C-STAT)
+        uses: actions/upload-artifact@v4
+        with:
+          name: IAR-C-STAT-Analysis-Report-${{ github.ref_name }}
+          path: SampleCode/**/C-STAT/*.html
+          if-no-files-found: error
