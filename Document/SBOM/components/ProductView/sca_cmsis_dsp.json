@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:generic/cmsis-dsp@1.10.0?source=vendored&path=Library/CMSIS-DSP",
+      "name": "CMSIS-DSP",
+      "version": "1.10.0",
+      "scope": "required",
+      "author": "Arm Limited",
+      "manufacturer": {
+        "name": "Arm Limited"
+      },
+      "supplier": {
+        "name": "Arm Limited"
+      },
+      "purl": "pkg:generic/cmsis-dsp@1.10.0",
+      "description": "Arm CMSIS-DSP public headers and sources vendored in Library/CMSIS-DSP.",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ARM-software/CMSIS-DSP"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "src_path",
+          "value": "Library/CMSIS-DSP"
+        },
+        {
+          "name": "integration",
+          "value": "vendored_source"
+        },
+        {
+          "name": "bsp:component-origin",
+          "value": "third-party"
+        },
+        {
+          "name": "bsp:component-source",
+          "value": "Arm CMSIS-DSP"
+        },
+        {
+          "name": "bsp:evidence-file",
+          "value": "Document/SBOM/components/ProductView/sca_cmsis_dsp.json"
+        },
+        {
+          "name": "bsp:evidence-path",
+          "value": "Library/CMSIS-DSP"
+        },
+        {
+          "name": "bsp:version-evidence",
+          "value": "Library/CMSIS-DSP/Include/arm_math.h (@version V1.10.0; SPDX-License-Identifier: Apache-2.0); Library/CMSIS-DSP/LICENSE"
+        }
+      ]
+    }
+  ]
+}
