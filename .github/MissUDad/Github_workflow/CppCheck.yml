@@ -1,0 +1,66 @@
+name: CppCheck
+
+on:
+  #push:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  #pull_request:
+  #  branches-ignore:
+  #    - main
+  #    - master
+  workflow_dispatch:
+
+jobs:
+  CppCheck:
+    name: MISRA-C Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: cppcheck installation
+        run: |
+          sudo apt-get update
+          sudo apt-get -qq install cppcheck
+
+      - name: cppcheck-misra-c-2012
+        shell: bash
+        run: |
+              MISSUDAD_CPPCHECK="$GITHUB_WORKSPACE/.github/MissUDad/CppCheck"
+              MISSUDAD_MISRA_RULE="$MISSUDAD_CPPCHECK/misra.rules"
+              MISSUDAD_MISRA_JSON="$MISSUDAD_CPPCHECK/misra.json"
+              BSP_SERIES=$(ls $GITHUB_WORKSPACE/Library/Device/Nuvoton/ | head -n 1)
+
+              echo "🧩 BSP_SERIES=$BSP_SERIES"
+              echo "🧩 CPPCHECK Version:"
+              cppcheck --version
+
+              cd $GITHUB_WORKSPACE
+              #cp -af $MISSUDAD_MISRA_RULE .
+              cppcheck --enable=all --inconclusive --std=c99 --addon="$MISSUDAD_MISRA_JSON" -j 8 --force \
+                --output-file="$GITHUB_WORKSPACE/cppcheck_report.txt" --xml --xml-version=2 \
+                --checkers-report="$GITHUB_WORKSPACE/misra.log" \
+                --suppress=staticFunction \
+                --suppress=missingInclude \
+                --suppress=missingIncludeSystem \
+                --suppress=unusedFunction \
+                -I "$GITHUB_WORKSPACE/Library/CMSIS/Core/Include/" \
+                -I "$GITHUB_WORKSPACE/Library/Device/Nuvoton/$BSP_SERIES/Include/" \
+                -I "$GITHUB_WORKSPACE/Library/StdDriver/inc/" \
+                $GITHUB_WORKSPACE/Library/StdDriver/src/
+
+                cat $GITHUB_WORKSPACE/misra.log
+
+      - name: cppcheck-htmlreport
+        shell: bash
+        run: |
+              MISSUDAD_CPPCHECK="$GITHUB_WORKSPACE/.github/MissUDad/CppCheck"
+              cppcheck-htmlreport --file="$GITHUB_WORKSPACE/cppcheck_report.txt" --report-dir=cppcheck_html --title="BSP-StdDriver MISRA Report"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CppCheck-MISRA-Analysis-Report-${{ github.ref_name }}
+          path: cppcheck_html
