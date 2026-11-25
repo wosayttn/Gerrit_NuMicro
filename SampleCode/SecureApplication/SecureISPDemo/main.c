@@ -1,0 +1,69 @@
+/**************************************************************************//**
+ * @file    main.c
+ * @version V1.00
+ * @brief   Demonstrate how to initialize a SecureISP client mode.
+ *          This sample code needs to work with USBH_SecureISP sample code.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * @copyright (C) 2023 Nuvoton Technology Corp. All rights reserved.
+ *****************************************************************************/
+#include <stdio.h>
+#include "NuMicro.h"
+#include "hid_transfer.h"
+
+int32_t ExecuteSecureISP(void);
+
+void SYS_Init(void)
+{
+    /*---------------------------------------------------------------------------------------------------------*/
+    /* Init System Clock                                                                                       */
+    /*---------------------------------------------------------------------------------------------------------*/
+    /* Enable clock */
+    CLK_EnableXtalRC(CLK_SRCCTL_HXTEN_Msk);
+    CLK_EnableXtalRC(CLK_SRCCTL_HIRC48MEN_Msk);
+
+    /* Wait for clock ready */
+    CLK_WaitClockReady(CLK_STATUS_HXTSTB_Msk);
+    CLK_WaitClockReady(CLK_STATUS_HIRC48MSTB_Msk);
+
+    /* Enable PLL0 220MHz clock from HIRC and switch SCLK clock source to PLL0 */
+    CLK_SetBusClock(CLK_SCLKSEL_SCLKSEL_APLL0, CLK_APLLCTL_APLLSRC_HIRC, FREQ_220MHZ);
+
+    /* Update System Core Clock */
+    /* User can use SystemCoreClockUpdate() to calculate SystemCoreClock. */
+    SystemCoreClockUpdate();
+
+    /* Enable module clock */
+    CLK_EnableModuleClock(ISP0_MODULE);
+    SetDebugUartCLK();
+
+    /*---------------------------------------------------------------------------------------------------------*/
+    /* Init I/O Multi-function                                                                                 */
+    /*---------------------------------------------------------------------------------------------------------*/
+    SetDebugUartMFP();
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*  Main Function                                                                                          */
+/*---------------------------------------------------------------------------------------------------------*/
+int32_t main(void)
+{
+    /* Unlock protected registers */
+    SYS_UnlockReg();
+    /* Init System, IP clock and multi-function I/O */
+    SYS_Init();
+    /* Init Debug UART to 115200-8N1 for print message */
+    InitDebugUart();
+
+    printf("System clock:   %d Hz.\n", SystemCoreClock);
+    printf("+---------------------------------------+\n");
+    printf("|  SecureISP Demo (VECMAP: 0x%08X)  |\n", FMC_GetVECMAP());
+    printf("+---------------------------------------+\n");
+
+    while (1)
+    {
+        ExecuteSecureISP();
+    }
+}
+
+/*** (C) COPYRIGHT 2023 Nuvoton Technology Corp. ***/
